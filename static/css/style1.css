@@ -1,0 +1,37 @@
+.h1,.h2,.h3,.h4,.h5,.h6,.a,.span,.p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18;
+    color: #666;
+}
+.image_footer-logo{
+    max-height: 15%;
+    max-width: 15%;
+}
+.image_footer-museo{
+    max-height: 5%;
+    max-width: 100px;
+}
+.image_header-museo{
+    max-height: 10%;
+    max-width: 100px;
+}
+footer{
+    color: #fff;
+    width: 100%;
+    opacity: initial;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+}
+.header{
+    background-color: #008776;
+    width: 100%;
+    opacity: initial;
+    outline: 0;
+}
+nav-link{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18;
+    color: #666;
+}
+

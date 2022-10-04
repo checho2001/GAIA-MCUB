@@ -24,7 +24,7 @@ footer{
     flex-direction: column;
 }
 .header{
-    background-color: #008776;
+    background-color: #84ae40;
     width: 100%;
     opacity: initial;
     outline: 0;
@@ -34,4 +34,18 @@ nav-link{
     font-size: 18;
     color: #666;
 }
-
+.body-login {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+  }
+  .forms-login {
+    max-width: 500px;
+    padding: 15px;
+  }
+  .btn-login
+  {
+    background-color: #84ae40;
+  }

@@ -5,7 +5,19 @@ from django.db import models
 
 class Users(models.Model):
     UsersID = models.AutoField(primary_key=True)
-    Name = models.CharField(max_length=500)
-    mail = models.CharField(max_length=500)
+   
+    
+class Especimen(models.Model):
+    UsersID = models.CharField(max_length=500)
+    Registradopor = models.CharField(max_length=500)
+    Ocurrencias = models.CharField(max_length=500)
+    Departamento = models.CharField(max_length=500)
+    Municipio = models.CharField(max_length=500)
+
+   
     password = models.CharField(max_length=500)
+    estado= models.BooleanField(default=False)
+   
+    USERNAME_FIELD='email'
+    REQUIRED_FIELDS = ['email', 'password']
 

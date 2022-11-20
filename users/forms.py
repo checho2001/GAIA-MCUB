@@ -2,7 +2,10 @@ from django import forms
 from .models import User
 from django.core.exceptions import ValidationError
 from .models import Rol
-from django.contrib.auth.forms import UserCreationForm
+
+
+
+
 class loginForm(forms.Form):
     username = forms.EmailField(
         error_messages={'required':'Por favor ingrese su correo electronico para continuar'},
@@ -36,19 +39,101 @@ class loginForm(forms.Form):
 
         return mail
 
-class NewUserForm(forms.Form):
-	email = forms.EmailField(required=True)
 
-	class Meta:
-		model = User
-		fields = ("correo", "contrasenia", "contrasenia2")
 
-	def save(self, commit=True):
-		user = super(NewUserForm, self).save(commit=False)
-		user.email = self.cleaned_data['email']
-		if commit:
-			user.save()
-		return user
+
+class CustomUser(forms.Form):
+    nombre = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su nombre',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )
+    apellido = forms.CharField(
+        error_messages={'required':'Por favor ingresa un apellido valido'},
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su apellido',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )
+    correo = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs= {
+                'placeholder':'Example@email.com',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )
+    ROLES =[]
+    for roles in Rol.objects.filter(estado=True):
+        ROLES.append((roles.id, roles.nombre_rol))
+
+    
+    roles = forms.ChoiceField(
+        choices = ROLES, )    
+
+
+def clean_nombre(self):
+        nomb = self.cleaned_data['nombre']
+        for l in nomb:
+            if l.isnumeric():
+                raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros'))
+        
+        nombre = nomb
+        partes=nombre.split(" ")
+        reconstruido = ""
+        for p in partes:
+            if p!='':
+                reconstruido+=p+" "
+        nombre = reconstruido.strip()
+
+        if not (nombre.replace(" ", "").isalpha()):
+            raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros o caracteres especiales'))
+        
+        nomb = nombre.upper()
+        
+        return nomb
+def clean_apellido(self):
+        apel = self.cleaned_data['apellido']
+        for l in apel:
+            if l.isnumeric():
+                raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
+        
+        partes = apel.split(" ")
+
+        if len(partes) < 2:
+            raise ValidationError(_('Apellido invalido - Debes tener al menos dos apellidos para poder registrarte'))
+        
+        nombre = apel
+        partes=nombre.split(" ")
+        reconstruido = ""
+        for p in partes:
+            if p!='':
+                reconstruido+=p+" "
+        nombre = reconstruido.strip()
+
+        if not (nombre.replace(" ", "").isalpha()):
+            raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros o caracteres especiales'))
+        
+        apel = nombre.upper()
+        
+        return apel
+    
+def clean_correo(self):
+        mail = self.cleaned_data['correo']
+        if User.objects.filter(email=mail).count():
+            raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
+        return mail      
+
 class NewEspecimen(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=255,required=True)
     NombreDelConjuntoDatos = forms.CharField(max_length=500)

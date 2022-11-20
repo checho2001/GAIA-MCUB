@@ -2,16 +2,29 @@ from statistics import mode
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-class User(AbstractUser):
-    pass
-   
-    
- 
-
 class Rol(models.Model):
-    idrol=models.IntegerField()
-    nombrerol = models.CharField(max_length=50)
+    nombre_rol = models.CharField(max_length=50)
     estado = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.nombre_eps
+
+class User(AbstractUser):
+    ROLES = (
+
+        ('Patient', 'Patient'),
+        ('Doctor', 'Doctor'),
+        ('Physician', 'Physician'),
+
+    )
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=60)
+    apellido = models.CharField(max_length=60)
+    email = models.EmailField(max_length=255, unique=True, db_index=True)
+    rol = models.CharField(max_length=50, choices = ROLES, null=True)
+   
+   
+
 
 class Especimen(models.Model):
     NumeroCatalogo = models.CharField(max_length=500)
@@ -35,4 +48,7 @@ class Especimen(models.Model):
     NombreComun = models.CharField(max_length=500)
     USERNAME_FIELD='NumeroCatalogo'
     REQUIRED_FIELDS = ['NumeroCatalogo', 'NombreDelConjuntoDatos',]
+    class Meta:
+       managed = False
+       db_table = 'Especimenes'
 

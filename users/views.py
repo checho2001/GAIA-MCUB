@@ -8,15 +8,16 @@ from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
-from .forms import NewUserForm
 class IndexView(View):
         def get(self,request):
             return render(request,"index.html")
 class Galry(View):
         def get(self,request):
             return render(request,"galery.html")
+class Dashboard(View):
+        def get(self,request):
+            return render(request,"dashboard.html")			
 			
-
 def login(request):
     formulario = loginForm()
     if request.method == 'POST':
@@ -27,26 +28,26 @@ def login(request):
     return render(request,"login.html",{'form':formulario})  
 
 
-def register_request(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful." )
-			return redirect("main:index")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request=request, template_name="registerUser.html", context={"register_form":form})
-def register_especimen(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful." )
-			return redirect("main:index")
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request=request, template_name="registerUser.html", context={"register_form":form})	
-   
+def register(request):
+
+    if request.method == 'POST':
+        form = CustomUser(request.POST)
+
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            apellido = form.cleaned_data['apellido']
+            correo = form.cleaned_data['correo']
+            rol = form.cleaned_data['rol']
+            
+
+            user = User(nombre= nombre, apellido = apellido ,email = correo,rol=Rol.objects.get(id=rol))
+            user.is_superuser = False
+            user.is_staff = False
+            user.is_active = False
+            user.save()
+           
+    else:
+        form = CustomUser()
+
+
+    return render(request, 'registerUser.html', {'form':form})

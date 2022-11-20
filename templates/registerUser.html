@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
@@ -19,28 +19,32 @@
             <div class="row g-0">
                 <div class="p-5">
 
-                  <form class=" w-100 m-auto">
-                    <h1 class="mb-3 fw-normal"style="color: #84ae40">Registro Usuario</h1>
-
-                    <div class="form-floating ">
-                      <input type="email" class="h3 form-control h3" id="correo" placeholder="@unbosque.edu.co">
-                      <label for="floatingInput">Correo Institucional</label>
+                  <form action= "{%url 'register' %}" method= POST class=" w-100 m-auto">
+                   
+                    {% csrf_token %}
+                    <div class="form-row mb-2">
+                      <div class="form-group col-md-6">
+                          <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
+                          <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
+                          {{ form.nombre }}
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label class="font-weight-bold">Apellido<span class="text-danger"> *</span></label>
+                          <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
+                          {{ form.apellido }}
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Correo<span class="text-danger"> *</span></label>
+                        <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
+                        {{ form.correo }}
                     </div>
-                    <div class="form-floating no-border text-center">
-                      <input type="password" class=" h3 form-control h3" id="password" placeholder="Contraseña">
-                      <label for="floatingPassword">Contraseña</label>
-                    </div>
-					<div class="form-floating no-border text-center">
-						<input type="password" class=" h3 form-control h3" id="password" placeholder="Contraseña">
-						<label for="floatingPassword">Rol</label>
-					  </div>
-
-                    <div class="checkbox mb-3">
-                      <label>
-                        <input type="checkbox" value="remember-me"> Recordar datos
-                      </label>
-                    </div>
-                    <button class="btn-login w-100 btn-lg border-light text-light " type="submit">Ingresar</button>
+                    <div class="form-group mb-3">
+                      <label class="font-weight-bold">Rol<span class="text-danger"> *</span></label>
+                      <!--<input type="email" name="correoUser" class="form-control" placeholder="Example@email.com" required>-->
+                      {{ form.rol }}
+                  </div>
+			
+                    <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
 
                   </form>
                 </div>

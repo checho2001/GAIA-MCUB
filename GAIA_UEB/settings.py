@@ -17,9 +17,6 @@ SECRET_KEY = 'django-insecure-z^%r=a+r%r)c)xx9-$l6t3+f8ht@78#ywsu7a1pwivgdh*f@4g
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-from mongoengine import connect
-connect('employeedb', username='my_username', password='secret_password')
 # Application definition
 
 INSTALLED_APPS = [
@@ -34,8 +31,8 @@ INSTALLED_APPS = [
 ]
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE','GitHub.GAIA-MCUB.users.settings')
-django.setup()
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -74,7 +71,7 @@ DATABASES = {
             'NAME': 'GAIA',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://saortizc:lina040220@cluster0.x58wvtr.mongodb.net/?retryWrites=true&w=majority'
+                'host': 'mongodb+srv://saortizc:mfuadIuyNJkBMEgI@cluster0.juku4qn.mongodb.net/?retryWrites=true&w=majority'
             }
         }
 }

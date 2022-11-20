@@ -11,5 +11,6 @@ urlpatterns = [
     path('inicio/', admin.site.urls),
     path('', IndexView.as_view()),
     path('login/', views.login, name='login'),
+    path("register/", views.register_request, name="registerUser"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

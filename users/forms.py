@@ -2,7 +2,7 @@ from django import forms
 from .models import Users
 from django.core.exceptions import ValidationError
 from .models import Rol
-
+from django.contrib.auth.forms import UserCreationForm
 class loginForm(forms.Form):
     username = forms.EmailField(
         error_messages={'required':'Por favor ingrese su correo electronico para continuar'},
@@ -36,53 +36,16 @@ class loginForm(forms.Form):
 
         return mail
 
-class registerUserForm(forms.Form):
-        nombre = forms.CharField( error_messages={'required':'Por favor ingresa un nombre valido'},
-        strip = True,widget=forms.TextInput(
-            attrs= {'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : '',
-                }
-            ))
-        apellido = forms.CharField( error_messages={'required':'Por favor ingresa un nombre valido'},
-        strip = True,
-        widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : '',
-                }
-            ))
-        ROLES = []
-        ROLES.append((1,"Curador"))
-        for roles in Rol.objects.filter(estado = True):
-                ROLES.append((roles.idrol, roles.nombrerol))
-        rol = forms.ChoiceField(
-        choices = ROLES,
-        widget=forms.Select(
-            attrs= {
-                'default' : 1,
-                'required' : True,
-                'class' : '',
-                }
-            )
-        )
-        password =  forms.CharField(
-        widget=forms.PasswordInput(
-                attrs= {
-                'placeholder':'Ingrese su contraseña',
-                'required' : True,
-                'name' : 'passUser',
-                'class' : '',
-                }
-            )
-        )
-        correo = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs= {
-                'placeholder':'Example@email.com',
-                'required' : True,
-                'class' : '',
-                }
-            )
-        )
+class NewUserForm(UserCreationForm):
+	email = forms.EmailField(required=True)
+
+	class Meta:
+		model = Users
+		fields = ("correo", "contrasenia", "contrasenia2")
+
+	def save(self, commit=True):
+		user = super(NewUserForm, self).save(commit=False)
+		user.email = self.cleaned_data['email']
+		if commit:
+			user.save()
+		return user

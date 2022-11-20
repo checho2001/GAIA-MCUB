@@ -3,26 +3,21 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class Rol(models.Model):
-    nombre_rol = models.CharField(max_length=50)
-    estado = models.BooleanField(default=True)
+    id = models.AutoField(primary_key=True)
+    nombrerol = models.CharField(max_length=50)
+   
     
     def __str__(self):
         return self.nombre_eps
 
 class User(AbstractUser):
-    ROLES = (
 
-        ('Patient', 'Patient'),
-        ('Doctor', 'Doctor'),
-        ('Physician', 'Physician'),
-
-    )
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=60)
     apellido = models.CharField(max_length=60)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
-    rol = models.CharField(max_length=50, choices = ROLES, null=True)
-   
+    rol= models.ForeignKey(Rol,on_delete=models.CASCADE)
+    password = models.CharField(max_length=50)
    
 
 

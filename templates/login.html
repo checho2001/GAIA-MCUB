@@ -19,16 +19,19 @@
             <div class="row g-0">
                 <div class="p-5">
 
-                  <form class=" w-100 m-auto">
+                  <form  action="{% url 'login' %}" method= POST class=" w-100 m-auto">
+                    {% csrf_token %}
                     <h1 class="mb-3 fw-normal"style="color: #84ae40">Inicio de Sesion</h1>
 
                     <div class="form-floating ">
-                      <input type="email" class="h3 form-control h3" id="correo" placeholder="@unbosque.edu.co">
+                      {{ form.username }}
                       <label for="floatingInput">Correo Institucional</label>
                     </div>
-                    <div class="form-floating no-border text-center">
-                      <input type="password" class=" h3 form-control h3" id="password" placeholder="Contraseña">
+
+                    <div class="form-floating">
+                      {{ form.password }}
                       <label for="floatingPassword">Contraseña</label>
+
                     </div>
 
                     <div class="checkbox mb-3">
@@ -36,7 +39,7 @@
                         <input type="checkbox" value="remember-me"> Recordar datos
                       </label>
                     </div>
-                    <button class="btn-login w-100 btn-lg border-light text-light " type="submit">Ingresar</button>
+                    <button class="btn-login w-100 btn-lg border-light text-light  "  value="Login" type="submit">Ingresar</button>
 
                   </form>
                 </div>

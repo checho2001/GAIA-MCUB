@@ -73,12 +73,20 @@ class CustomUser(forms.Form):
                 }
             )
         )
-    ROLES =[]
-    for roles in Rol.objects.filter(estado=True):
-        ROLES.append((roles.id, roles.nombre_rol))
-
+    password =  forms.CharField(
+        widget=forms.PasswordInput(
+                attrs= {
+                'placeholder':'Ingrese su contraseña',
+                'required' : True,
+                'name' : 'passUser',
+                'class' : 'form-control',
+                }
+            )
+        )    
+    ROLES =[(1,"Auxiliar"),(2,"Pasante"),(3,"Curador"),(4,"Otro")]
     
-    roles = forms.ChoiceField(
+    
+    rol = forms.ChoiceField(
         choices = ROLES, )    
 
 

@@ -71,7 +71,7 @@ DATABASES = {
             'NAME': 'GAIA',
             'ENFORCE_SCHEMA': False,
             'CLIENT': {
-                'host': 'mongodb+srv://saortizc:mfuadIuyNJkBMEgI@cluster0.juku4qn.mongodb.net/?retryWrites=true&w=majority'
+                'host': 'mongodb+srv://saortizc:lina040220@cluster0.x58wvtr.mongodb.net/?retryWrites=true&w=majority'
             }
         }
 }

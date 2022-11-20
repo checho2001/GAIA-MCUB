@@ -1,5 +1,5 @@
 from django import forms
-from .models import Users
+from .models import User
 from django.core.exceptions import ValidationError
 from .models import Rol
 from django.contrib.auth.forms import UserCreationForm
@@ -29,18 +29,18 @@ class loginForm(forms.Form):
 
     def clean_username(self):
         mail = self.cleaned_data['username']
-        if Users.objects.filter(email=mail).count():
+        if User.objects.filter(email=mail).count():
             pass
         else:
             raise ValidationError(('Correo no valido - Este correo no se encuentra registrado, por favor vuelva a intentarlo'))
 
         return mail
 
-class NewUserForm(UserCreationForm):
+class NewUserForm(forms.Form):
 	email = forms.EmailField(required=True)
 
 	class Meta:
-		model = Users
+		model = User
 		fields = ("correo", "contrasenia", "contrasenia2")
 
 	def save(self, commit=True):
@@ -49,3 +49,26 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+class NewEspecimen(forms.Form):
+    NumeroCatalogo = forms.CharField(max_length=255,required=True)
+    NombreDelConjuntoDatos = forms.CharField(max_length=500)
+    ComentarioRegistroBiologico = forms.CharField(max_length=500)
+    RegistradoPor = forms.CharField(max_length=500)
+    NumeroIndividuo = forms.IntegerField()
+    FechaEvento = forms.DateTimeField()
+    Habitad= forms.CharField(max_length=500)
+    Departamento= forms.CharField(max_length=500)
+    Municipio= forms.CharField(max_length=500)
+    IdentificadoPor= forms.CharField(max_length=500)
+    FechaIdentificacion = forms.DateTimeField()
+    IdentificacionReferencias = forms.CharField(max_length=500)
+    ComentarioIdentificacion = forms.CharField(max_length=500)
+    NombreCientificoComentarioRegistroBiologico = forms.CharField(max_length=500)
+    Clase = forms.CharField(max_length=500)
+    Orden = forms.CharField(max_length=500)
+    Familia = forms.CharField(max_length=500)
+    Genero = forms.CharField(max_length=500)
+    NombreComun = forms.CharField(max_length=500)
+    
+
+	     

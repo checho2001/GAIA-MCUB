@@ -1,10 +1,9 @@
 from django.shortcuts import render
-
 from django.views import View
 from django.contrib.auth import login
 from users.forms import *
 from  users.forms import loginForm
-from .models import Users
+from .models import User
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login
@@ -13,6 +12,10 @@ from .forms import NewUserForm
 class IndexView(View):
         def get(self,request):
             return render(request,"index.html")
+class Galry(View):
+        def get(self,request):
+            return render(request,"galery.html")
+			
 
 def login(request):
     formulario = loginForm()
@@ -35,4 +38,15 @@ def register_request(request):
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="registerUser.html", context={"register_form":form})
+def register_especimen(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return redirect("main:index")
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm()
+	return render (request=request, template_name="registerUser.html", context={"register_form":form})	
    

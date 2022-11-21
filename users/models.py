@@ -22,6 +22,34 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 
+class Genero(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombreGenero = models.CharField(max_length=50)
+    
+class Familia(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombreFamilia = models.CharField(max_length=50)
+    genero= models.ForeignKey(Genero,on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nombreFamilia 
+class Orden(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombreOrden = models.CharField(max_length=50)
+    familia= models.ForeignKey(Familia,on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nombreOrden
+    
+class Clase(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombreClase = models.CharField(max_length=50)
+    ordern= models.ForeignKey(Orden,on_delete=models.CASCADE)
+   
+    
+    def __str__(self):
+        return self.nombreClase
+           
 
 class Especimen(models.Model):
     NumeroCatalogo = models.CharField(max_length=500)
@@ -38,10 +66,7 @@ class Especimen(models.Model):
     IdentificacionReferencias = models.CharField(max_length=500)
     ComentarioIdentificacion = models.CharField(max_length=500)
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)
-    Clase = models.CharField(max_length=500)
-    Orden = models.CharField(max_length=500)
-    Familia = models.CharField(max_length=500)
-    Genero = models.CharField(max_length=500)
+    Clase =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
     USERNAME_FIELD='NumeroCatalogo'
     REQUIRED_FIELDS = ['NumeroCatalogo', 'NombreDelConjuntoDatos',]

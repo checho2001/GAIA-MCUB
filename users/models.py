@@ -22,9 +22,6 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 
-
-
-
 class Genero(models.Model):
     id = models.AutoField(primary_key=True)
     nombreGenero = models.CharField(max_length=50)
@@ -56,7 +53,25 @@ class Clase(models.Model):
         return self.nombreClase
            
 
-class Especimen(models.Model):
+class TipoActividad(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombreactividad = models.CharField(max_length=50)
+   
+    
+    def __str__(self):
+        return self.nombreactividad
+class Actividades(models.Model):
+    id = models.AutoField(primary_key=True)
+    NumeroCatalogo = models.CharField(max_length=50)
+    TareaRealizada = models.CharField(max_length=50)
+    Hora = models.CharField(max_length=50)
+    Fecha = models.CharField(max_length=50)
+    Descripcion = models.CharField(max_length=50)
+ 
+    def __str__(self):
+        return self.TareaRealizada
+
+class Ejemplar(models.Model):
     NumeroCatalogo = models.CharField(max_length=500)
     NombreDelConjuntoDatos = models.CharField(max_length=500)
     ComentarioRegistroBiologico = models.CharField(max_length=500)
@@ -75,7 +90,6 @@ class Especimen(models.Model):
     NombreComun = models.CharField(max_length=500)
     USERNAME_FIELD='NumeroCatalogo'
     REQUIRED_FIELDS = ['NumeroCatalogo', 'NombreDelConjuntoDatos',]
-    class Meta:
-       managed = False
-       db_table = 'Especimenes'
-
+    
+    def __str__(self):
+        return self.NumeroCatalogo        

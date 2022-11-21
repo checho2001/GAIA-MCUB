@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User
+from .models import User, Actividades
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -62,4 +62,19 @@ def register(request):
 
 class registro(View):
         def get(self,request):
-            return render(request,"register.html")    
+            return render(request,"register.html")
+            
+def registroActividad(request):
+    if request.method == 'POST':
+        form = ActividadesForm(request.POST)
+        if form.is_valid():
+            NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
+            TareaRealizada = form.cleaned_data['TareaRealizada']
+            Hora = form.cleaned_data['Hora']
+            Fecha = form.cleaned_data['Fecha']
+            Descripcion = form.cleaned_data['Descripcion']
+            a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TareaRealizada.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)
+            a.save()
+    else:
+        form = CustomUser()
+    return render(request, 'registerUser.html', {'form':form})

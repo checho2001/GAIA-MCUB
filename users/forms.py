@@ -166,4 +166,43 @@ class NewEspecimen(forms.Form):
     NombreComun = forms.CharField(max_length=500)
     
 
-	     
+class ActividadesForm(forms.Form):
+    NumeroCatalogo = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su nombre',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )
+    Actividaes =[(1,"Determinación de las muestras a familia, género o especie"),
+    (2,"Conservación del material"),(3,"Montaje del material en seco"),
+    (4,"Registro de los datos en Excel"),(5,"Organizar la colección por orden alfabético"),
+    (6,"Revisión bibliográfica"),(7,"Curación de los ejemplares")]
+    TareaRealizada = forms.ChoiceField(
+        choices = Actividaes, )
+
+
+    Hora = forms.CharField( )
+    Fecha =  forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=forms.DateTimeInput(attrs={
+            'class': 'form-control datetimepicker-input',
+            'data-target': '#datetimepicker1'
+        })
+    )
+    Descripcion = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su nombre',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )        
+    

@@ -33,7 +33,6 @@ def login(request):
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             print(user)
-            
             if user is not  None:
                 auth.login(request, user)
                 return HttpResponseRedirect(reverse('dashboard'))

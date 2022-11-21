@@ -53,13 +53,19 @@
                       <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
                       <br>
                   </div>
-                    <div class="form-control">
-                      {{ form.rol }}
-                      <label class="font-weight-bold">Rol<span class="text-danger"> *</span></label>
+                    <div class="form-floating col-12 ">
+                      
+                        <select class="form-select ">
+                          <option selected>Rol</option>
+                          <option value="1">Auxiliar</option>
+                          <option value="2">Pasante</option>
+                          <option value="3">Curador</option>
+                          <option value="4">Otro</option>
+                        </select>
                       <!--<input type="email" name="correoUser" class="form-control" placeholder="Example@email.com" required>-->
                       
-                  </div>
-			
+                    </div>
+                    <br>
                     <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
 
                   </form>

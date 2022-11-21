@@ -9,9 +9,9 @@
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
 
-<body class="m-0 vh-100 row  text-center align-items-center justify-content-center body-login "  >
+<body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
-  <div class=" container py-5 h-100">
+  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-5">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
@@ -22,33 +22,33 @@
                   <form action= "{%url 'register' %}" method= POST class=" w-100 m-auto">
                    
                     {% csrf_token %}
-                    <div class="form-row mb-2">
-                      <div class="form-group col-md-6">
+                    <div class="form-group mb-2">
+                      <div class="form-floating col-md-6">
                         <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
                         <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
                         {{ form.username }}
                     </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-floating col-md-6">
                           <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
                           <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
                           {{ form.nombre }}
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-floating col-md-6">
                           <label class="font-weight-bold">Apellido<span class="text-danger"> *</span></label>
                           <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
                           {{ form.apellido }}
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-floating col-md-6">
                         <label class="font-weight-bold">Correo<span class="text-danger"> *</span></label>
                         <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
                         {{ form.correo }}
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-floating col-md-6">
                       <label  type="password" class="font-weight-bold">Contraseña<span class="text-danger"> *</span></label>
                       <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
                       {{ form.password }}
                   </div>
-                    <div class="form-group mb-3">
+                    <div class="form-floating mb-3">
                       <label class="font-weight-bold">Rol<span class="text-danger"> *</span></label>
                       <!--<input type="email" name="correoUser" class="form-control" placeholder="Example@email.com" required>-->
                       {{ form.rol }}
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <img class="bg-image" src="../static/images/bg-singnin.jpeg" alt="bg-login"> 
+    
   </div>
   
 </body>

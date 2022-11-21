@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
+<form action= "{%url 'registroActividad' %}" method= POST class=" w-100 m-auto">
 <section class="  h-100 h-custom gradient-custom-2">
+  
+    {% csrf_token %}
     <div class=" container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-10">
@@ -20,9 +23,9 @@
                     <div class="mb-4 pb-2">
                         <div class="row">
                             <div class="mb-4 pb-2 mb-md-0 pb-md-0">
-                              
                               <div class="form-outline">
-                                <input type="text" id="clase" class="form-control form-control-lg" placeholder="Numero de Catalogo"/>
+                                {{ form.NumeroCatalogo }}
+
                               </div>
                             </div>
                           </div>
@@ -31,17 +34,8 @@
                         <div class="row">
                             <div class="mb-4 pb-2 mb-md-0 pb-md-0">
                               
-                              <div class="form-outline">
-                                <select class="col-12 form-select-lg  form-control">
-                                  <option selected>Tarea realizada</option>
-                                  <option value="1">Determinacion de muestras</option>
-                                  <option value="2">Conservacion de material</option>
-                                  <option value="3">Montaje del material en seco</option>
-                                  <option value="4">Registro de la base de datos en Excel</option>
-                                  <option value="5">Organizar la coleccion por orden afabético</option>
-                                  <option value="6">Revisión bibligráfica</option>
-                                  <option value="7">Curación de los ejemplares</option>
-                                </select>
+                              <div class="form-outline col-12 form-select-lg  form-control">
+                                {{ form.TareaRealizada }}
                               </div>
                             </div>
                           </div>
@@ -49,32 +43,22 @@
                     <div class="mb-4 pb-2">  
                     <div class="row">
                         <div class="col-sm-6 mb-4 pb-2 mb-md-0 pb-md-0">
-                            <div class="form-outline">
-                                <input type="text" id="clase" class="form-control form-control-lg" placeholder="Hora de registro (24h)"/>
+                            <div class="form-outline form-control form-control-lg">
+                              {{ form.Hora }}
                             </div>
                         </div>
-                        <div class="col-sm-6 mb-4 pb-2 mb-md-0 pb-md-0">
-                          <div class="form-outline">
-                            <input type="text" id="clase" class="form-control form-control-lg" placeholder=" Fecha(DD/MM/AAAA)"/>
-                        </div>
+                       
                       </div>
                     </div>
                     </div>
-                    <div class="mb-4 pb-2">  
-                        <div class="row">
-                            <div class="mb-4 pb-2 mb-md-0 pb-md-0">
-                                <div class="form-outline">
-                                    <input type="text" id="clase" class="form-control form-control-lg" placeholder="Tarea realizada"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
   
                     <div class="mb-4 pb-2">  
                         <div class="row">
                             <div class="mb-4 pb-2 mb-md-0 pb-md-0">
                                 <div class="form-outline">
-                                    <textarea class="form-control " placeholder="Descripción" rows="4" cols="50" id="descripcion" name="descripcion" " required="" ></textarea>
+                                  
+                                  {{ form.Descripcion }}
                                 </div>
                             </div>
                         </div>
@@ -83,7 +67,8 @@
                         <div class="row">
                             <div class="mb-4 pb-2 mb-md-0 pb-md-0">
                                 <div class="form-outline">
-                                    <button type="button" class="btn-login w-100 btn-lg border-light text-light">Generar Informe</button>
+                                    <button type="button"  value="registroActividad" class="btn-login w-100 btn-lg border-light text-light">Generar Informe</button>
+                                  </form> 
                                 </div>
                             </div>
                         </div>

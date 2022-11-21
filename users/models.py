@@ -66,7 +66,7 @@ class Actividades(models.Model):
     TareaRealizada = models.CharField(max_length=50)
     Hora = models.CharField(max_length=50)
     Fecha = models.CharField(max_length=50)
-    Descripcion = models.CharField(max_length=50)
+    Descripcion = models.CharField(max_length=500)
  
     def __str__(self):
         return self.TareaRealizada
@@ -88,8 +88,7 @@ class Ejemplar(models.Model):
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)
     Clase =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
-    USERNAME_FIELD='NumeroCatalogo'
-    REQUIRED_FIELDS = ['NumeroCatalogo', 'NombreDelConjuntoDatos',]
+   
     
     def __str__(self):
         return self.NumeroCatalogo        

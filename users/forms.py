@@ -143,7 +143,6 @@ def clean_correo(self):
             raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
         return mail     
 
-
 class NewEspecimen(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=255,required=True)
     NombreDelConjuntoDatos = forms.CharField(max_length=500)
@@ -172,7 +171,7 @@ class ActividadesForm(forms.Form):
         strip = True,
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su nombre',
+                'placeholder':'Digite El numero de catalogo',
                 'required' : True,
                 'class' : 'form-control',
                 }
@@ -186,20 +185,34 @@ class ActividadesForm(forms.Form):
         choices = Actividaes, )
 
 
-    Hora = forms.CharField( )
-    Fecha =  forms.DateTimeField(
-        input_formats=['%d/%m/%Y %H:%M'],
-        widget=forms.DateTimeInput(attrs={
-            'class': 'form-control datetimepicker-input',
-            'data-target': '#datetimepicker1'
-        })
-    )
+    Hora = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite El numero de catalogo',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )
+    Fecha = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite la descripcion',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )        
     Descripcion = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},
         strip = True,
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su nombre',
+                'placeholder':'Digite la descripcion',
                 'required' : True,
                 'class' : 'form-control',
                 }

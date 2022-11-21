@@ -24,7 +24,9 @@ class Dashboard(View):
 class PerfilU(View):
         def get(self,request):
             return render(request,"profile.html")		            		
-			
+class informe(View):
+        def get(self,request):
+            return render(request,"informe.html")			
 def login(request):
     form = loginForm(request.POST) 
     if request.method == 'POST':

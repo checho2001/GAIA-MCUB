@@ -23,35 +23,41 @@
                    
                     {% csrf_token %}
                     <div class="form-group mb-2">
-                      <div class="form-floating col-md-6">
+                      <div class="form-floating">
+                        {{ form.username }}
                         <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
                         <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
-                        {{ form.username }}
+                        <br>
                     </div>
-                      <div class="form-floating col-md-6">
+                      <div class="form-floating">
+                        {{ form.nombre }}
                           <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
                           <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
-                          {{ form.nombre }}
+                          <br>
                       </div>
-                      <div class="form-floating col-md-6">
+                      <div class="form-floating">
+                        {{ form.apellido }}
                           <label class="font-weight-bold">Apellido<span class="text-danger"> *</span></label>
                           <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
-                          {{ form.apellido }}
+                          <br>
                       </div>
-                      <div class="form-floating col-md-6">
+                      <div class="form-floating">
+                        {{ form.correo }}
                         <label class="font-weight-bold">Correo<span class="text-danger"> *</span></label>
                         <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
-                        {{ form.correo }}
+                        <br>
                     </div>
-                    <div class="form-floating col-md-6">
+                    <div class="form-floating">
+                      {{ form.password }}
                       <label  type="password" class="font-weight-bold">Contraseña<span class="text-danger"> *</span></label>
                       <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
-                      {{ form.password }}
+                      <br>
                   </div>
-                    <div class="form-floating mb-3">
+                    <div class="form-control">
+                      {{ form.rol }}
                       <label class="font-weight-bold">Rol<span class="text-danger"> *</span></label>
                       <!--<input type="email" name="correoUser" class="form-control" placeholder="Example@email.com" required>-->
-                      {{ form.rol }}
+                      
                   </div>
 			
                     <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>

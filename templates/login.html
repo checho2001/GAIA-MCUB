@@ -24,15 +24,16 @@
                     <h1 class="mb-3 fw-normal"style="color: #84ae40">Inicio de Sesion</h1>
 
                     <div class="form-floating">
+                      {{ form.username }}
                       <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
                       <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
-                      {{ form.username }}
-                  </div>
+                      <br>
+                    </div>
 
                     <div class="form-floating">
                       {{ form.password }}
                       <label name="password" for="floatingPassword">Contraseña</label>
-
+                      <br>
                     </div>
 
                     <div class="checkbox mb-3">

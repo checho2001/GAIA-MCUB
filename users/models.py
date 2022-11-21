@@ -8,17 +8,19 @@ class Rol(models.Model):
    
     
     def __str__(self):
-        return self.nombre_eps
+        return self.nombrerol
 
 class User(AbstractUser):
 
     id = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=60)
     nombre = models.CharField(max_length=60)
     apellido = models.CharField(max_length=60)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     rol= models.ForeignKey(Rol,on_delete=models.CASCADE)
     password = models.CharField(max_length=50)
-   
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username',]
 
 
 class Especimen(models.Model):

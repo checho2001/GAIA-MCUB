@@ -3,45 +3,6 @@ from .models import User
 from django.core.exceptions import ValidationError
 from .models import Rol
 
-
-
-
-class loginForm(forms.Form):
-    username = forms.EmailField(
-        error_messages={'required':'Por favor ingrese su correo electronico para continuar'},
-        widget=forms.EmailInput(
-            attrs= {
-                'placeholder':'Example@email.com',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            )
-        )
-    password =  forms.CharField(
-        widget=forms.PasswordInput(
-                attrs= {
-                'placeholder':'Ingrese su contraseña',
-                'required' : True,
-                'name' : 'passUser',
-                'class' : 'form-control',
-                }
-            )
-        )
-    
-    
-
-    def clean_username(self):
-        mail = self.cleaned_data['username']
-        if User.objects.filter(email=mail).count():
-            pass
-        else:
-            raise ValidationError(('Correo no valido - Este correo no se encuentra registrado, por favor vuelva a intentarlo'))
-
-        return mail
-
-
-
-
 class CustomUser(forms.Form):
     nombre = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},
@@ -82,13 +43,23 @@ class CustomUser(forms.Form):
                 'class' : 'form-control',
                 }
             )
-        )    
+        )
+    username = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su nombre',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )        
     ROLES =[(1,"Auxiliar"),(2,"Pasante"),(3,"Curador"),(4,"Otro")]
     
     
     rol = forms.ChoiceField(
         choices = ROLES, )    
-
 
 def clean_nombre(self):
         nomb = self.cleaned_data['nombre']
@@ -141,6 +112,37 @@ def clean_correo(self):
         if User.objects.filter(email=mail).count():
             raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
         return mail      
+class loginForm(forms.Form):
+    username = forms.CharField(
+        error_messages={'required':'Por favor ingresa un nombre valido'},
+        strip = True,
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su nombre',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )   
+    password =  forms.CharField(
+        widget=forms.PasswordInput(
+                attrs= {
+                'placeholder':'Ingrese su contraseña',
+                'required' : True,
+                'name' : 'passUser',
+                'class' : 'form-control',
+                }
+            )
+        )
+    
+    
+
+def clean_correo(self):
+        mail = self.cleaned_data['correo']
+        if User.objects.filter(email=mail).count():
+            raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
+        return mail     
+
 
 class NewEspecimen(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=255,required=True)

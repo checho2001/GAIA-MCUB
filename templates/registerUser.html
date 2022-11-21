@@ -24,6 +24,11 @@
                     {% csrf_token %}
                     <div class="form-row mb-2">
                       <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
+                        <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
+                        {{ form.username }}
+                    </div>
+                      <div class="form-group col-md-6">
                           <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
                           <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
                           {{ form.nombre }}

@@ -20,7 +20,10 @@ class Galry(View):
             return render(request,"galery.html")
 class Dashboard(View):
         def get(self,request):
-            return render(request,"dashboard.html")			
+            return render(request,"dashboard.html")	
+class PerfilU(View):
+        def get(self,request):
+            return render(request,"profile.html")		            		
 			
 def login(request):
     form = loginForm(request.POST) 
@@ -33,16 +36,14 @@ def login(request):
             
             if user is not  None:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('register'))
+                return HttpResponseRedirect(reverse('dashboard'))
                    
     return render(request, 'login.html', {'form':form})
      
 
 def register(request):
-
     if request.method == 'POST':
         form = CustomUser(request.POST)
-
         if form.is_valid():
             username = form.cleaned_data['username']
             nombre = form.cleaned_data['nombre']
@@ -55,9 +56,11 @@ def register(request):
             user.is_staff = False
             user.is_active = True
             user.save()
-           
     else:
         form = CustomUser()
-
-
     return render(request, 'registerUser.html', {'form':form})
+
+
+class registro(View):
+        def get(self,request):
+            return render(request,"register.html")    

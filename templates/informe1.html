@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/css/style1.css" >
+    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+</head>
+
+<body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
+
+  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-5">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+                <div class="p-5">
+                  <h3 class="fw-normal mb-5 text-center" style="color: #84ae40;">Informe de la actividad</h3>
+                  <form action= "{%url 'registroActividad' %}" method= POST class=" w-100 m-auto">
+                   
+                    {% csrf_token %}
+                    <div class="form-group mb-2">
+                      <div class="form-floating">
+                        
+                        {{ form.NumeroCatalogo }}
+                        <label class="font-weight-bold">Numero Catalogo<span class="text-danger"> *</span></label>
+                        <br>
+                    </div>
+                      
+                      <div class="form-floating">
+                        {{ form.Hora }}
+                        <label class="font-weight-bold">Hora<span class="text-danger"> *</span></label>
+                         
+                          <br>
+                      </div>
+                      <div class="form-floating">
+                        {{ form.Fecha }}
+                        <label class="font-weight-bold">Fecha<span class="text-danger"> *</span></label>
+
+                        
+                        
+                        <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.Descripcion }}
+                      <label class="font-weight-bold">Descripción<span class="text-danger"> *</span></label>
+
+                     
+                      <br>
+                    
+                  </div>
+                  <div class="form-floating">
+                    {{ form.TareaRealizada }}
+                     
+                      <br>
+                  </div>
+                
+                    <br>
+                    <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</body>
+  

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from users.views import IndexView,Galry,Dashboard,PerfilU,registro,informe
+from users.views import IndexView,Galry,Dashboard,PerfilU,registro,registroActividad
 
 from users import views
 from django.conf import settings
@@ -15,6 +15,6 @@ urlpatterns = [
     path("registerE/", registro.as_view(), name="registerE"),
     path('dash/', Dashboard.as_view(),name="dashboard"),
     path('perfilU/', PerfilU.as_view(),name="perfilU"),
-    path('informe/', informe.as_view(),name="informe"),
+    path('informe/',  views.registroActividad,name="registroActividad"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

@@ -56,6 +56,7 @@ def register(request):
             user.is_staff = False
             user.is_active = True
             user.save()
+            
     else:
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form})

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <title>Galaria</title>
+        <link rel="stylesheet" href="../static/css/style1.css" >
+        <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../static/css/sidebars.css" >
+        <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+        <script type="text/javascript" src="../static/js/sidebars.js"> </script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+        <div class="row ">
+            <div class="col-2" style="background-color: #008776; height: 100%">
+                <div class="flex-shrink-0 p-3 " style="width: 280px; height: 2000px;">
+                    <span class="fs-5 fw-semibold text-light">Categorias</span>
+                    </a>
+                    <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
+                        Reino
+                        </button>
+                        <div class="collapse show" id="reino-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Animalia</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Plantae</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Fungi</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Protista</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Monera</a></li>
+                        </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
+                        Subgrupo
+                        </button>
+                        <div class="collapse" id="subgrupo-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Vertebrados</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Invertebrados</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Moluscos</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Anélidos</a></li>
+                        </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
+                        Filo
+                        </button>
+                        <div class="collapse" id="filo-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Porifera</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Cnidaria</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Ctenophora</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Placozoa</a></li>
+                        </ul>
+                        </div>
+                    </li>
+                    <li class="border-top my-3"></li>
+                    <form class="d-flex" role="search">
+                    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+                    </form>
+                    </ul>
+                </div>
+            </div> 
+            <div>
+                
+            </div>
+        </div>
+    </main>
+  </body>

@@ -18,39 +18,36 @@
           <div class="card-body p-0">
             <div class="row g-0">
                 <div class="p-5">
-
                   <form action= "{%url 'register' %}" method= POST class=" w-100 m-auto">
-                   
                     {% csrf_token %}
                     <div class="form-group mb-2">
                       <div class="form-floating">
                         {{ form.username }}
                         <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
-                        <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
+                        
                         <br>
                     </div>
                       <div class="form-floating">
                         {{ form.nombre }}
                           <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
-                          <!--<input type="text" name="nombreUser" class="form-control" placeholder="Digite su nombre" required>-->
+                          
                           <br>
                       </div>
                       <div class="form-floating">
                         {{ form.apellido }}
                           <label class="font-weight-bold">Apellido<span class="text-danger"> *</span></label>
-                          <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
+                         
                           <br>
                       </div>
                       <div class="form-floating">
                         {{ form.correo }}
                         <label class="font-weight-bold">Correo<span class="text-danger"> *</span></label>
-                        <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
-                        <br>
+                       
                     </div>
                     <div class="form-floating">
                       {{ form.password }}
                       <label  type="password" class="font-weight-bold">Contraseña<span class="text-danger"> *</span></label>
-                      <!--<input type="text" name="apellidoUser" class="form-control" placeholder="Digite su apellido" required>-->
+                     
                       <br>
                   </div>
                     <div class="form-floating col-12 ">

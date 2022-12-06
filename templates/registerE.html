@@ -9,131 +9,136 @@
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
 
-<body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
+<section class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
   <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-5">
+      <div class="col-12">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
-                <div class="p-5">
-                  <form action= "{%url 'registerE' %}" method= POST class=" w-100 m-auto">
+                
+                  <form action= "{%url 'registerE' %}" method= POST class="  m-auto">
                     {% csrf_token %}
-                    <h1 class="mb-3 fw-normal"style="color: #84ae40">Registro Ejemplar</h1>
-                    <div class="form-group mb-2">
-                      <div class="form-floating">
-                        
-                        {{ form.NumeroCatalogo }}
-                        
-                        <label class="font-weight-bold">NumeroCatalogo<span class="text-danger"> *</span></label>
-                        
-                        <br>
-                    </div>
-                      <div class="form-floating">
-                        {{ form.NombreDelConjuntoDatos }}
-                          <label class="font-weight-bold">NombreDelConjuntoDatos<span class="text-danger"> *</span></label>
+                    <h1 class="mb-5 fw-normal"style="color: #84ae40">Registro Ejemplar</h1>
+                    <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          
+                          {{ form.NumeroCatalogo }}
+                          
+                          <label class="font-weight-bold">NumeroCatalogo<span class="text-danger"> *</span></label>
                           
                           <br>
-                      </div>
-                      <div class="form-floating">
-                        {{ form.ComentarioRegistroBiologico }}
-                          <label class="font-weight-bold">ComentarioRegistroBiologico<span class="text-danger"> *</span></label>
-                         
+                        </div>
+                        <div class="form-floating">
+                          {{ form.NombreDelConjuntoDatos }}
+                            <label class="font-weight-bold">NombreDelConjuntoDatos<span class="text-danger"> *</span></label>
+                            
+                            <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.ComentarioRegistroBiologico }}
+                            <label class="font-weight-bold">ComentarioRegistroBiologico<span class="text-danger"> *</span></label>
+                          
+                            <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.RegistradoPor }}
+                          <label class="font-weight-bold">RegistradoPor<span class="text-danger"> *</span></label>
                           <br>
+                        </div>
+                        <div class="form-floating">
+                            {{ form.NumeroIndividuo }}
+                            <label  type="password" class="font-weight-bold">NumeroIndividuo<span class="text-danger"> *</span></label>
+                          
+                            <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.FechaEvento }}
+                          <label  type="password" class="font-weight-bold">FechaEvento<span class="text-danger"> *</span></label>
+                        
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.Habitad }}
+                          <label  type="password" class="font-weight-bold">Habitad<span class="text-danger"> *</span></label>
+                        
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.Departamento }}
+                          <label  type="password" class="font-weight-bold">Departamento<span class="text-danger"> *</span></label>
+                        
+                          <br>
+                        </div>
+
                       </div>
-                      <div class="form-floating">
-                        {{ form.RegistradoPor }}
-                        <label class="font-weight-bold">RegistradoPor<span class="text-danger"> *</span></label>
-                        <br>
                     </div>
-                    <div class="form-floating">
-                      {{ form.NumeroIndividuo }}
-                      <label  type="password" class="font-weight-bold">NumeroIndividuo<span class="text-danger"> *</span></label>
-                     
-                      <br>
-                  </div>
-                  <div class="form-floating">
-                    {{ form.FechaEvento }}
-                    <label  type="password" class="font-weight-bold">FechaEvento<span class="text-danger"> *</span></label>
-                   
-                    <br>
-                </div>
-                <div class="form-floating">
-                  {{ form.Habitad }}
-                  <label  type="password" class="font-weight-bold">Habitad<span class="text-danger"> *</span></label>
-                 
-                  <br>
-              </div>
-              <div class="form-floating">
-                {{ form.Departamento }}
-                <label  type="password" class="font-weight-bold">Departamento<span class="text-danger"> *</span></label>
-               
-                <br>
+                    <div class="col-lg-6">
+                      <div class="form-floating">
+                        {{ form.Municipio }}
+                        <label  type="password" class="font-weight-bold">Municipio<span class="text-danger"> *</span></label>
+                        <br>
+                      </div>
+            <div class="form-floating">
+              {{ form.IdentificadoPor }}
+              <label  type="password" class="font-weight-bold">IdentificadoPor<span class="text-danger"> *</span></label>
+            
+              <br>
             </div>
             <div class="form-floating">
-              {{ form.Municipio }}
-              <label  type="password" class="font-weight-bold">Municipio<span class="text-danger"> *</span></label>
-             
+              {{ form.FechaIdentificacion }}
+              <label  type="password" class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
+            
               <br>
-          </div>
-          <div class="form-floating">
-            {{ form.IdentificadoPor }}
-            <label  type="password" class="font-weight-bold">IdentificadoPor<span class="text-danger"> *</span></label>
-           
-            <br>
-        </div>
-        <div class="form-floating">
-          {{ form.FechaIdentificacion }}
-          <label  type="password" class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
-         
-          <br>
-      </div>
-      <div class="form-floating">
-        {{ form.IdentificacionReferencias }}
-        <label  type="password" class="font-weight-bold">IdentificacionReferencias<span class="text-danger"> *</span></label>
-       
-        <br>
-    </div>
-    <div class="form-floating">
-      {{ form.ComentarioIdentificacion }}
-      <label  type="password" class="font-weight-bold">ComentarioIdentificacion<span class="text-danger"> *</span></label>
-     
-      <br>
-  </div>
-  <div class="form-floating">
-    {{ form.NombreCientificoComentarioRegistroBiologico }}
-    <label  type="password" class="font-weight-bold">NombreCientificoComentarioRegistroBiologico<span class="text-danger"> *</span></label>
-   
-    <br>
-</div>
-<div class="form-floating col-12 ">
-                      
-  {{ form.ClaseE }}
-  <label  type="password" class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
-  
-</div>
-<br>
-<div class="form-floating">
-  {{ form.NombreComun }}
-  <label  type="password" class="font-weight-bold">NombreComun<span class="text-danger"> *</span></label>
- 
+            </div>
+            <div class="form-floating">
+              {{ form.IdentificacionReferencias }}
+              <label  type="password" class="font-weight-bold">IdentificacionReferencias<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+              {{ form.ComentarioIdentificacion }}
+              <label  type="password" class="font-weight-bold">ComentarioIdentificacion<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+              {{ form.NombreCientificoComentarioRegistroBiologico }}
+              <label  type="password" class="font-weight-bold">NombreCientificoComentarioRegistroBiologico<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+                                  
+              {{ form.ClaseE }}
+              <label  type="password" class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
+              
+            </div>
   <br>
-</div>
+  <div class="form-floating">
+    {{ form.NombreComun }}
+    <label  type="password" class="font-weight-bold">NombreComun<span class="text-danger"> *</span></label>
+  
+    <br>
+  </div>
 
-                    <br>
-                    <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
+                      <br>
+                      <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
 
-                  </form>
-                </div>
-              </div>
+                    
+                    </div>
+                  </div>  
             </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
   
-</body>
+  
+</section>
   

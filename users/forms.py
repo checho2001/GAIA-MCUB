@@ -62,56 +62,26 @@ class CustomUser(forms.Form):
         choices = ROLES, )    
     def clean_correo(self):
         mail = self.cleaned_data['correo']
-        if "@unbosque.edu.co" not in mail:   # any check you need
+        if "@unbosque.edu.co" not in mail:   
             raise forms.ValidationError("Must be a gmail address")
         if User.objects.filter(email=mail).count():
             raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
         return mail      
-def clean_nombre(self):
-        nomb = self.cleaned_data['nombre']
-        for l in nomb:
-            if l.isnumeric():
-                raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros'))
+    def clean_nombre(self):
+            nomb = self.cleaned_data['nombre']
+            for l in nomb:
+                if l.isnumeric():
+                    raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros'))
+            if not (nomb.replace(" ", "").isalpha()):
+                raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros o caracteres especiales'))
+            return nomb
+    def clean_apellido(self):
+            apel = self.cleaned_data['apellido']
+            for l in apel:
+                if l.isnumeric():
+                    raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
         
-        nombre = nomb
-        partes=nombre.split(" ")
-        reconstruido = ""
-        for p in partes:
-            if p!='':
-                reconstruido+=p+" "
-        nombre = reconstruido.strip()
-
-        if not (nombre.replace(" ", "").isalpha()):
-            raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros o caracteres especiales'))
-        
-        nomb = nombre.upper()
-        
-        return nomb
-def clean_apellido(self):
-        apel = self.cleaned_data['apellido']
-        for l in apel:
-            if l.isnumeric():
-                raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
-        
-        partes = apel.split(" ")
-
-        if len(partes) < 2:
-            raise ValidationError(_('Apellido invalido - Debes tener al menos dos apellidos para poder registrarte'))
-        
-        nombre = apel
-        partes=nombre.split(" ")
-        reconstruido = ""
-        for p in partes:
-            if p!='':
-                reconstruido+=p+" "
-        nombre = reconstruido.strip()
-
-        if not (nombre.replace(" ", "").isalpha()):
-            raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros o caracteres especiales'))
-        
-        apel = nombre.upper()
-        
-        return apel
+            return apel
     
 
 class loginForm(forms.Form):
@@ -139,11 +109,7 @@ class loginForm(forms.Form):
     
     
 
-def clean_correo(self):
-        mail = self.cleaned_data['correo']
-        if User.objects.filter(email=mail).count():
-            raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
-        return mail     
+   
 
 class NewEspecimen(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(

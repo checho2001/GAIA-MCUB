@@ -3,8 +3,33 @@ from .models import User
 from django.core.exceptions import ValidationError
 from .models import Rol
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import RegexValidator
+
+def mail_validator(self):
+    mail = self.cleaned_data['correo']
+    if "@unbosque.edu.co" not in mail:   
+        raise forms.ValidationError("Must be a gmail address")
+    if User.objects.filter(email=mail).count():
+        raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
+    return mail
+    
+def field_validator(value):
+    nomb = value
+    for l in nomb:
+        if l.isnumeric():
+            raise forms.ValidationError("No debe contener caracteres numericos")
+        if not (nomb.replace(" ", "").isalpha()):
+            raise forms.ValidationError("Name should start with s")
+    return nomb
 class CustomUser(forms.Form):
-    nombre = forms.CharField(
+    nombre = forms.CharField( 
+        validators=[
+        RegexValidator(
+            regex='^[a-zA-Z0-9]*$',
+            message='Username must be Alphanumeric',
+            code='invalid_username'
+        ),
+    ],
         error_messages={'required':'Por favor ingresa un nombre valido'},
         strip = True,
         widget=forms.TextInput(
@@ -12,10 +37,12 @@ class CustomUser(forms.Form):
                 'placeholder':'Digite su nombre',
                 'required' : True,
                 'class' : 'form-control',
+
                 }
             )
+        
         )
-    apellido = forms.CharField(
+    apellido = forms.CharField(validators=[field_validator],
         error_messages={'required':'Por favor ingresa un apellido valido'},
         widget=forms.TextInput(
             attrs= {
@@ -26,12 +53,13 @@ class CustomUser(forms.Form):
             )
         )
     correo = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs= {
-                'placeholder':'Example@email.com',
+        widget=forms.EmailInput( 
+        attrs= {
+                'placeholder':'Digite su correo',
                 'required' : True,
                 'class' : 'form-control',
                 }
+            
             )
         )
     password =  forms.CharField(
@@ -45,11 +73,11 @@ class CustomUser(forms.Form):
             )
         )
     username = forms.CharField(
-        error_messages={'required':'Por favor ingresa un nombre valido'},
+        error_messages={'required':''},
         strip = True,
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su nombre',
+                'placeholder':'Digite su usuario',
                 'required' : True,
                 'class' : 'form-control',
                 }

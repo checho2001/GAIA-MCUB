@@ -12,16 +12,19 @@ from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 class IndexView(View):
         def get(self,request):
             return render(request,"index.html")
 class Galry(View):
         def get(self,request):
             return render(request,"galery.html")
-class Dashboard(View):
+          
+class Dashboard(View):  
         def get(self,request):
-            return render(request,"dashboard.html")	
+            return render(request,"dashboard.html")
+                	
 class PerfilU(View):
         def get(self,request):
             return render(request,"profile.html")		            		
@@ -43,7 +46,7 @@ def login(request):
                    
     return render(request, 'login.html', {'form':form})
      
-
+@login_required
 def register(request):
     if request.method == 'POST':
         form = CustomUser(request.POST)
@@ -69,7 +72,7 @@ def register(request):
 class registro(View):
         def get(self,request):
             return render(request,"register.html")
-            
+@login_required           
 def registroActividad(request):
     form = ActividadesForm(request.POST)
     if request.method == 'POST':
@@ -85,7 +88,7 @@ def registroActividad(request):
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})
 
-
+@login_required 
 def registerE(request):
     if request.method == 'POST':
         form = NewEspecimen(request.POST)
@@ -118,3 +121,11 @@ def registerE(request):
     else:
         form = NewEspecimen()
     return render(request, 'registerE.html', {'form':form})    
+
+
+
+@login_required
+def custom_logout(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("home")

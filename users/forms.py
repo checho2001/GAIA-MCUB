@@ -4,32 +4,13 @@ from django.core.exceptions import ValidationError
 from .models import Rol
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
+from django import forms
 
-def mail_validator(self):
-    mail = self.cleaned_data['correo']
-    if "@unbosque.edu.co" not in mail:   
-        raise forms.ValidationError("Must be a gmail address")
-    if User.objects.filter(email=mail).count():
-        raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
-    return mail
-    
-def field_validator(value):
-    nomb = value
-    for l in nomb:
-        if l.isnumeric():
-            raise forms.ValidationError("No debe contener caracteres numericos")
-        if not (nomb.replace(" ", "").isalpha()):
-            raise forms.ValidationError("Name should start with s")
-    return nomb
+from datetime import date
+
 class CustomUser(forms.Form):
     nombre = forms.CharField( 
-        validators=[
-        RegexValidator(
-            regex='^[a-zA-Z0-9]*$',
-            message='Username must be Alphanumeric',
-            code='invalid_username'
-        ),
-    ],
+        
         error_messages={'required':'Por favor ingresa un nombre valido'},
         strip = True,
         widget=forms.TextInput(
@@ -42,7 +23,7 @@ class CustomUser(forms.Form):
             )
         
         )
-    apellido = forms.CharField(validators=[field_validator],
+    apellido = forms.CharField(
         error_messages={'required':'Por favor ingresa un apellido valido'},
         widget=forms.TextInput(
             attrs= {
@@ -91,7 +72,7 @@ class CustomUser(forms.Form):
     def clean_correo(self):
         mail = self.cleaned_data['correo']
         if "@unbosque.edu.co" not in mail:   
-            raise forms.ValidationError("Must be a gmail address")
+            raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
         if User.objects.filter(email=mail).count():
             raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
         return mail      
@@ -100,21 +81,19 @@ class CustomUser(forms.Form):
             for l in nomb:
                 if l.isnumeric():
                     raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros'))
-            if not (nomb.replace(" ", "").isalpha()):
-                raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros o caracteres especiales'))
+    
             return nomb
     def clean_apellido(self):
             apel = self.cleaned_data['apellido']
             for l in apel:
                 if l.isnumeric():
                     raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
-        
             return apel
     
 
 class loginForm(forms.Form):
     username = forms.CharField(
-        error_messages={'required':'Por favor ingresa un nombre valido'},
+        error_messages={'required':'Por favor ingresa un correo valido'},
         strip = True,
         widget=forms.TextInput(
             attrs= {
@@ -134,7 +113,12 @@ class loginForm(forms.Form):
                 }
             )
         )
+    def clean_username(self):
+        mail = self.cleaned_data['correo']
+        if "@unbosque.edu.co" not in mail:   
+            raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
     
+        return mail  
     
 
    
@@ -272,16 +256,10 @@ class ActividadesForm(forms.Form):
         choices = Actividaes, )
 
 
-    Hora = forms.CharField(
-        error_messages={'required':'Por favor ingresa un nombre valido'},
-        strip = True,
-        widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite El numero de catalogo',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            )
+    Hora = forms.TimeField(   widget=forms.SelectDateWidget(
+        
+        attrs={'class': 'form-control',}
+    )
         )
     Fecha = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},

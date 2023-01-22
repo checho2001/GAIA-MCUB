@@ -256,22 +256,16 @@ class ActividadesForm(forms.Form):
         choices = Actividaes, )
 
 
-    Hora = forms.TimeField(   widget=forms.SelectDateWidget(
+    Hora = forms.TimeField(   widget=forms.TimeInput(
         
         attrs={'class': 'form-control',}
     )
         )
-    Fecha = forms.CharField(
-        error_messages={'required':'Por favor ingresa un nombre valido'},
-        strip = True,
-        widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite la descripcion',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            )
-        )        
+    Fecha = forms.DateField(   widget=forms.SelectDateWidget(
+        
+        attrs={'class': 'form-control',}
+    )
+        )
     Descripcion = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},
         strip = True,

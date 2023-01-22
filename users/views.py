@@ -76,13 +76,15 @@ class registro(View):
 def registroActividad(request):
     form = ActividadesForm(request.POST)
     if request.method == 'POST':
+     
         if form.is_valid():
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
             TareaRealizada = form.cleaned_data['TareaRealizada']
             Hora = form.cleaned_data['Hora']
             Fecha = form.cleaned_data['Fecha']
             Descripcion = form.cleaned_data['Descripcion']
-            a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)         
+            a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
+                
             a.save()
     else:
         form = ActividadesForm()

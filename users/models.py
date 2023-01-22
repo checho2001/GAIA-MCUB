@@ -64,9 +64,9 @@ class Actividades(models.Model):
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=50)
     TareaRealizada = models.CharField(max_length=50)
-    Hora = models.TimeField()
-    Fecha = models.CharField(max_length=50)
-    Descripcion = models.CharField(max_length=500)
+    Hora = models.TimeField(max_length=50)
+    Fecha = models.DateField(max_length=50)
+    Descripcion = models.CharField(max_length=1000)
  
     def __str__(self):
         return self.TareaRealizada

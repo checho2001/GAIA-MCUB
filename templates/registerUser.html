@@ -65,17 +65,20 @@
                     <br> 
 
 
-                    <div class="alert alert-danger alert-dismissible fade show">
+                   
                       {% for field in form %}
                       {% if field.errors %}
-                          <div cclass="alert alert-danger alert-dismissible fade show" role="alert">
+                      <div class="alert alert-danger alert-dismissible fade show">
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                {{ field.errors }}
+
                           </div>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                       {% endif %}
                     
                   {% endfor %}
-                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                  </div>
+                     
               
                    
                   </form>

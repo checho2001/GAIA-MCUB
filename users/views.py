@@ -84,7 +84,6 @@ def registroActividad(request):
             Fecha = form.cleaned_data['Fecha']
             Descripcion = form.cleaned_data['Descripcion']
             a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
-                
             a.save()
     else:
         form = ActividadesForm()

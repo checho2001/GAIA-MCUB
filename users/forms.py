@@ -114,7 +114,7 @@ class loginForm(forms.Form):
             )
         )
     def clean_username(self):
-        mail = self.cleaned_data['correo']
+        mail = self.cleaned_data['username']
         if "@unbosque.edu.co" not in mail:   
             raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
     
@@ -235,7 +235,10 @@ class NewEspecimen(forms.Form):
                 }
             ))
     
-
+class DateInput(forms.DateInput):
+    input_type='date'
+class TimeInput(forms.TimeInput):
+    input_type='time'    
 class ActividadesForm(forms.Form):
     NumeroCatalogo = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},
@@ -256,15 +259,14 @@ class ActividadesForm(forms.Form):
         choices = Actividaes, )
 
 
-    Hora = forms.TimeField(   widget=forms.TimeInput(
+    Hora = forms.TimeField(   widget=TimeInput(
         
         attrs={'class': 'form-control',}
     )
+
         )
-    Fecha = forms.DateField(   widget=forms.SelectDateWidget(
-        
-        attrs={'class': 'form-control',}
-    )
+    Fecha = forms.DateField(   widget=DateInput(  
+        attrs={'class': 'form-control',})
         )
     Descripcion = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},

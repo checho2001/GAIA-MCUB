@@ -6,8 +6,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,Ejemplar
-from .forms import loginForm, NewEspecimen
+from .models import User, Actividades, TipoActividad,Clase,especimen
+from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
@@ -92,7 +92,7 @@ def registroActividad(request):
 @login_required 
 def registerE(request):
     if request.method == 'POST':
-        form = NewEspecimen(request.POST)
+        form = EjemplarForm(request.POST)
         if form.is_valid():
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
             NombreDelConjuntoDatos = form.cleaned_data['NombreDelConjuntoDatos']
@@ -111,16 +111,14 @@ def registerE(request):
             NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
             ClaseE = form.cleaned_data['ClaseE']
             NombreComun = form.cleaned_data['NombreComun']
-            e = Ejemplar(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
+            e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=Departamento,Municipio=Municipio
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
             NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun)
-            print(e)
-           
             e.save()
             
     else:
-        form = NewEspecimen()
+        form = EjemplarForm()
     return render(request, 'registerE.html', {'form':form})    
 
 

@@ -121,124 +121,12 @@ class loginForm(forms.Form):
         return mail  
     
 
-   
-
-class NewEspecimen(forms.Form):
-    NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    NombreDelConjuntoDatos = forms.CharField(max_length=500,  widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    RegistradoPor = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    NumeroIndividuo = forms.IntegerField( widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    FechaEvento = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    Habitad= forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    Departamento= forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    Municipio= forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    IdentificadoPor= forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    FechaIdentificacion = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    IdentificacionReferencias = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    ComentarioIdentificacion = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    NombreCientificoComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    TipoClases =[(1,"Aves")]
-    
-    
-    ClaseE = forms.ChoiceField(
-        choices = TipoClases, ) 
-    NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'placeholder':'Digite su nombre',
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    
 class DateInput(forms.DateInput):
     input_type='date'
 class TimeInput(forms.TimeInput):
-    input_type='time'    
+    input_type='time'       
+
+
 class ActividadesForm(forms.Form):
     NumeroCatalogo = forms.CharField(
         error_messages={'required':'Por favor ingresa un nombre valido'},
@@ -280,3 +168,93 @@ class ActividadesForm(forms.Form):
             )
         )        
     
+class EjemplarForm(forms.Form):
+    NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    NombreDelConjuntoDatos = forms.CharField(max_length=500,  widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    RegistradoPor = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    NumeroIndividuo = forms.IntegerField( widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    FechaEvento = forms.CharField( widget=DateInput(  
+        attrs={'class': 'form-control',}))
+    Habitad= forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    Departamento= forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    Municipio= forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    IdentificadoPor= forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+               
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    FechaIdentificacion = forms.CharField( widget=DateInput(  
+        attrs={'class': 'form-control',}))
+    IdentificacionReferencias = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    ComentarioIdentificacion = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    NombreCientificoComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    TipoClases =[(1,"Aves")]
+    
+    
+    ClaseE = forms.ChoiceField(
+        choices = TipoClases, ) 
+    NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))    

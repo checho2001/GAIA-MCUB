@@ -52,7 +52,6 @@ class Clase(models.Model):
     def __str__(self):
         return self.nombreClase
            
-
 class TipoActividad(models.Model):
     id = models.AutoField(primary_key=True)
     nombreactividad = models.CharField(max_length=50)
@@ -71,24 +70,25 @@ class Actividades(models.Model):
     def __str__(self):
         return self.TareaRealizada
 
-class Ejemplar(models.Model):
+    
+   
+class especimen(models.Model):
+    id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=500)
     NombreDelConjuntoDatos = models.CharField(max_length=500)
     ComentarioRegistroBiologico = models.CharField(max_length=500)
     RegistradoPor = models.CharField(max_length=500)
     NumeroIndividuo = models.IntegerField()
-    FechaEvento = models.CharField(max_length=500)
+    FechaEvento = models.DateField(max_length=50)
     Habitad= models.CharField(max_length=500)
     Departamento= models.CharField(max_length=500)
     Municipio= models.CharField(max_length=500)
     IdentificadoPor= models.CharField(max_length=500)
-    FechaIdentificacion = models.CharField(max_length=500)
+    FechaIdentificacion = models.DateField(max_length=50)
     IdentificacionReferencias = models.CharField(max_length=500)
     ComentarioIdentificacion = models.CharField(max_length=500)
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)
     ClaseE =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
-   
-    
     def __str__(self):
-        return self.NumeroCatalogo        
+        return self.NumeroCatalogo     

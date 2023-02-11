@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import User,departamento, municipio
 from django.core.exceptions import ValidationError
 from .models import Rol
 from django.utils.translation import gettext_lazy as _
@@ -207,18 +207,35 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    Departamento= forms.CharField(max_length=500, widget=forms.TextInput(
+    DEPARTAMENTOS = []
+    MUNICIPIOS = []
+    
+    for departamentos in departamento.objects.all():
+        DEPARTAMENTOS.append((departamentos.id,departamentos.nombre))     
+       
+   
+        
+    
+    departamento = forms.ChoiceField(
+        choices = DEPARTAMENTOS,
+        widget=forms.Select(
             attrs= {
-                'required' : True,
+                'default' : 1,
                 'class' : 'form-control',
                 }
-            ))
-    Municipio= forms.CharField(max_length=500, widget=forms.TextInput(
+            )
+        )
+    municipio = forms.ChoiceField(
+        choices = MUNICIPIOS,
+        widget=forms.Select(
             attrs= {
-                'required' : True,
+                'default' : 1,
                 'class' : 'form-control',
                 }
-            ))
+            )
+        )    
+
+            
     IdentificadoPor= forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                
@@ -250,7 +267,12 @@ class EjemplarForm(forms.Form):
     
     
     ClaseE = forms.ChoiceField(
-        choices = TipoClases, ) 
+        choices = TipoClases,  widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            )) 
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 

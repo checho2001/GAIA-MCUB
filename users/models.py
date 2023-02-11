@@ -70,8 +70,13 @@ class Actividades(models.Model):
     def __str__(self):
         return self.TareaRealizada
 
-    
-   
+class departamento(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre= models.CharField( max_length=50)
+class municipio(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre= models.ForeignKey(departamento,on_delete=models.CASCADE)
+    municipio= models.CharField(max_length=50) 
 class especimen(models.Model):
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=500)
@@ -81,8 +86,8 @@ class especimen(models.Model):
     NumeroIndividuo = models.IntegerField()
     FechaEvento = models.DateField(max_length=50)
     Habitad= models.CharField(max_length=500)
-    Departamento= models.CharField(max_length=500)
-    Municipio= models.CharField(max_length=500)
+    Departamento = models.ForeignKey(departamento,on_delete=models.CASCADE)
+    Municipio= models.ForeignKey(municipio,on_delete=models.CASCADE)
     IdentificadoPor= models.CharField(max_length=500)
     FechaIdentificacion = models.DateField(max_length=50)
     IdentificacionReferencias = models.CharField(max_length=500)

@@ -62,7 +62,7 @@ class TipoActividad(models.Model):
 class Actividades(models.Model):
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=50)
-    TareaRealizada = models.CharField(max_length=50)
+    TareaRealizada = models.ForeignKey(TipoActividad,on_delete=models.CASCADE)
     Hora = models.TimeField(max_length=50)
     Fecha = models.DateField(max_length=50)
     Descripcion = models.CharField(max_length=1000)
@@ -96,4 +96,9 @@ class especimen(models.Model):
     ClaseE =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
     def __str__(self):
-        return self.NumeroCatalogo     
+        return self.NumeroCatalogo
+class UserAction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tarea = models.CharField(max_length=100)
+    ejemplar = models.CharField(max_length=100)
+    tiempo = models.DateTimeField(auto_now_add=True)             

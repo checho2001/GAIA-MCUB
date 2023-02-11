@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -23,7 +23,9 @@ class Galry(View):
           
 class Dashboard(View):  
         def get(self,request):
-            return render(request,"dashboard.html")
+            actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
+            print("acciones", actions)
+            return render(request,"dashboard.html",{'actions': actions})
                 	
 class PerfilU(View):
         def get(self,request):
@@ -85,6 +87,7 @@ def registroActividad(request):
             Descripcion = form.cleaned_data['Descripcion']
             a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
             a.save()
+            UserAction.objects.create(user=request.user, tarea=form.cleaned_data['TareaRealizada'],ejemplar= form.cleaned_data['NumeroCatalogo'])
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})

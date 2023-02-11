@@ -232,52 +232,25 @@
             </div>
             <div class="col-sm-6 mw-100">
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Reportes usuarios</h1></div>
-              <table class="table">
+              <table>
                 <thead>
                   <tr>
-                    <th scope="col">Numero</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Descipción</th>
+                    <th>Fecha</th>
+                    <th>Tarea</th>
+                    <th>Usuario</th>
+                    <th>Ejemplar</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for action in actions %}
                   <tr>
-                    <th scope="row">1</th>
-                    <td>mlopezl</td>
-                    <td>Auxiliar</td>
-                    <td>21/11/2022</td>
-                    <td>descripcion</td>
+                    
+                    <td>{{ action.tiempo }}</td>
+                    <td>{{ action.tarea }}</td>
+                    <td>{{ action.user }}</td>
+                    <td>{{ action.ejemplar }}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>mlopezl</td>
-                    <td>Auxiliar</td>
-                    <td>21/11/2022</td>
-                    <td>descripcion</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>mlopezl</td>
-                    <td>Auxiliar</td>
-                    <td>21/11/2022</td>
-                    <td>descripcion</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>mlopezl</td>
-                    <td>Auxiliar</td>
-                    <td>21/11/2022</td>
-                    <td>descripcion</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>mlopezl</td>
-                    <td>Auxiliar</td>
-                    <td>21/11/2022</td>
-                    <td>descripcion</td>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
               <div class="row">

@@ -1,5 +1,5 @@
 from django import forms
-from .models import User,departamento, municipio
+from .models import User,departamento, municipio, TipoActividad
 from django.core.exceptions import ValidationError
 from .models import Rol
 from django.utils.translation import gettext_lazy as _
@@ -64,11 +64,18 @@ class CustomUser(forms.Form):
                 }
             )
         )        
-    ROLES =[(1,"Auxiliar"),(2,"Pasante"),(3,"Curador"),(4,"Otro")]
-    
+    ROLES =[]
+        
+    for rol in Rol.objects.all():
+        ROLES.append((rol.id,rol.nombrerol))     
     
     rol = forms.ChoiceField(
-        choices = ROLES, )    
+        choices = ROLES,  widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            ))    
     def clean_correo(self):
         mail = self.cleaned_data['correo']
         if "@unbosque.edu.co" not in mail:   
@@ -139,12 +146,18 @@ class ActividadesForm(forms.Form):
                 }
             )
         )
-    Actividaes =[(1,"Determinación de las muestras a familia, género o especie"),
-    (2,"Conservación del material"),(3,"Montaje del material en seco"),
-    (4,"Registro de los datos en Excel"),(5,"Organizar la colección por orden alfabético"),
-    (6,"Revisión bibliográfica"),(7,"Curación de los ejemplares")]
+    TAREAS = []
+    
+    for tarea in TipoActividad.objects.all():
+        TAREAS.append((tarea.id,tarea.nombreactividad))     
+       
     TareaRealizada = forms.ChoiceField(
-        choices = Actividaes, )
+        choices = TAREAS,  widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            ))
 
 
     Hora = forms.TimeField(   widget=TimeInput(
@@ -267,12 +280,7 @@ class EjemplarForm(forms.Form):
     
     
     ClaseE = forms.ChoiceField(
-        choices = TipoClases,  widget=forms.Select(
-            attrs= {
-                'default' : 1,
-                'class' : 'form-control',
-                }
-            )) 
+        choices = TipoClases, ) 
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 

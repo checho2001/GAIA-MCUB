@@ -45,7 +45,8 @@ nav-link{
   }
   .btn-login
   {
-    background-color: #84ae40;
+    background-color: #008776;
+    color: #008776;
   }
   .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;

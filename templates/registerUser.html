@@ -23,12 +23,15 @@
                     <div class="form-group mb-2">
                       <div class="form-floating">
                         {{ form.username }}
+                        
+
                         <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
                         
                         <br>
                     </div>
                       <div class="form-floating">
                         {{ form.nombre }}
+                        
                           <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
                           
                           <br>
@@ -57,8 +60,27 @@
                       
                     </div>
                     <br>
-                    <button class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
+                    <button  onclick="location.href = '/dash'" class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
+                    <br>
+                    <br> 
 
+
+                   
+                      {% for field in form %}
+                      {% if field.errors %}
+                      <div class="alert alert-danger alert-dismissible fade show">
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                               {{ field.errors }}
+
+                          </div>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                      {% endif %}
+                    
+                  {% endfor %}
+                     
+              
+                   
                   </form>
                 </div>
               </div>

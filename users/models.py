@@ -52,7 +52,6 @@ class Clase(models.Model):
     def __str__(self):
         return self.nombreClase
            
-
 class TipoActividad(models.Model):
     id = models.AutoField(primary_key=True)
     nombreactividad = models.CharField(max_length=50)
@@ -63,32 +62,43 @@ class TipoActividad(models.Model):
 class Actividades(models.Model):
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=50)
-    TareaRealizada = models.CharField(max_length=50)
-    Hora = models.CharField(max_length=50)
-    Fecha = models.CharField(max_length=50)
-    Descripcion = models.CharField(max_length=500)
+    TareaRealizada = models.ForeignKey(TipoActividad,on_delete=models.CASCADE)
+    Hora = models.TimeField(max_length=50)
+    Fecha = models.DateField(max_length=50)
+    Descripcion = models.CharField(max_length=1000)
  
     def __str__(self):
         return self.TareaRealizada
 
-class Ejemplar(models.Model):
+class departamento(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre= models.CharField( max_length=50)
+class municipio(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre= models.ForeignKey(departamento,on_delete=models.CASCADE)
+    municipio= models.CharField(max_length=50) 
+class especimen(models.Model):
+    id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=500)
     NombreDelConjuntoDatos = models.CharField(max_length=500)
     ComentarioRegistroBiologico = models.CharField(max_length=500)
     RegistradoPor = models.CharField(max_length=500)
     NumeroIndividuo = models.IntegerField()
-    FechaEvento = models.CharField(max_length=500)
+    FechaEvento = models.DateField(max_length=50)
     Habitad= models.CharField(max_length=500)
-    Departamento= models.CharField(max_length=500)
-    Municipio= models.CharField(max_length=500)
+    Departamento = models.ForeignKey(departamento,on_delete=models.CASCADE)
+    Municipio= models.ForeignKey(municipio,on_delete=models.CASCADE)
     IdentificadoPor= models.CharField(max_length=500)
-    FechaIdentificacion = models.CharField(max_length=500)
+    FechaIdentificacion = models.DateField(max_length=50)
     IdentificacionReferencias = models.CharField(max_length=500)
     ComentarioIdentificacion = models.CharField(max_length=500)
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)
     ClaseE =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
-   
-    
     def __str__(self):
-        return self.NumeroCatalogo        
+        return self.NumeroCatalogo
+class UserAction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tarea = models.CharField(max_length=100)
+    ejemplar = models.CharField(max_length=100)
+    tiempo = models.DateTimeField(auto_now_add=True)             

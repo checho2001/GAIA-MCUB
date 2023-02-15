@@ -17,6 +17,9 @@ from django.contrib.auth import logout
 class IndexView(View):
         def get(self,request):
             return render(request,"index.html")
+class CambioContrasenia(View):
+        def get(self,request):
+            return render(request,"changepassword.html")
 class Galry(View):
         def get(self,request):
             return render(request,"galery.html")

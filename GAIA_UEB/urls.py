@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from users.views import IndexView,Galry,Dashboard,PerfilU,registro,registroActividad,registerE,EjemplarP
+from users.views import IndexView,Galry,Dashboard,PerfilU,registro,registroActividad,registerE,EjemplarP,CambioContrasenia
 
 from users import views
 from django.conf import settings
@@ -12,6 +12,7 @@ urlpatterns = [
     path('', IndexView.as_view(),name='home'),
     path('login/', views.login, name='login'),
     path('galery/', Galry.as_view(),name="galery"),
+    path('cambio/', CambioContrasenia.as_view(),name="cambio"),
     path("register/", views.register, name="register"),
     path("registerE/", views.registerE, name="registerE"),
     path('dash/', Dashboard.as_view(),name="dashboard"),

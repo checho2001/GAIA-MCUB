@@ -75,7 +75,7 @@ class departamento(models.Model):
     nombre= models.CharField( max_length=50)
 class municipio(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre= models.ForeignKey(departamento,on_delete=models.CASCADE)
+    departamento = models.ForeignKey(departamento,on_delete=models.CASCADE)
     municipio= models.CharField(max_length=50) 
 class especimen(models.Model):
     id = models.AutoField(primary_key=True)

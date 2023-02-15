@@ -41,7 +41,8 @@ def login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            print(user)
+            print(user.id)
+            print("Hola")
             if user is not  None:
                 auth.login(request, user)
                 return HttpResponseRedirect(reverse('dashboard'))

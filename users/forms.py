@@ -224,7 +224,10 @@ class EjemplarForm(forms.Form):
     MUNICIPIOS = []
     
     for departamentos in departamento.objects.all():
-        DEPARTAMENTOS.append((departamentos.id,departamentos.nombre))     
+        DEPARTAMENTOS.append((departamentos.id,departamentos.nombre))
+
+    for municipio in municipio.objects.all():
+        MUNICIPIOS.append((municipio.id,municipio.municipio)) 
        
    
         

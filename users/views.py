@@ -14,9 +14,16 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+
 class IndexView(View):
         def get(self,request):
             return render(request,"index.html")
+class Not_Logged(View):
+        def get(self,request):
+            return render(request,"notloged.html")            
 class CambioContrasenia(View):
         def get(self,request):
             return render(request,"changepassword.html")
@@ -24,10 +31,10 @@ class Galry(View):
         def get(self,request):
             return render(request,"galery.html")
           
-class Dashboard(View):  
+class Dashboard(View):
+        @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
             actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
-            print("acciones", actions)
             return render(request,"dashboard.html",{'actions': actions})
                 	
 class PerfilU(View):
@@ -36,7 +43,8 @@ class PerfilU(View):
 class EjemplarP(View):
         def get(self,request):
             return render(request,"paginaejemplar.html")		            		
-						
+
+
 def login(request):
     form = loginForm(request.POST) 
     if request.method == 'POST':
@@ -52,7 +60,7 @@ def login(request):
                    
     return render(request, 'login.html', {'form':form})
      
-@login_required
+@login_required(login_url='redirect')
 def register(request):
     if request.method == 'POST':
         form = CustomUser(request.POST)
@@ -74,11 +82,7 @@ def register(request):
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form})
 
-
-class registro(View):
-        def get(self,request):
-            return render(request,"register.html")
-@login_required           
+@login_required(login_url='redirect')
 def registroActividad(request):
     form = ActividadesForm(request.POST)
     if request.method == 'POST':
@@ -96,7 +100,7 @@ def registroActividad(request):
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})
 
-@login_required 
+@login_required(login_url='redirect')
 def registerE(request):
     if request.method == 'POST':
         form = EjemplarForm(request.POST)
@@ -131,7 +135,7 @@ def registerE(request):
 
 
 
-@login_required
+@login_required(login_url='redirect')
 def custom_logout(request):
     logout(request)
     messages.info(request, "Logged out successfully!")

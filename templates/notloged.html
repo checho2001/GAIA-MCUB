@@ -10,6 +10,7 @@
 </head>
 
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center"  >
+  
     <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-5">
@@ -19,6 +20,7 @@
                       <div class="p-5">
       
                         <form  action="{% url 'login' %}" method= POST class=" w-100 m-auto">
+                          {% csrf_token %}
                           <h2 class="mb-3 fw-normal"style="color: #008776">Aún no se ha iniciado sesión</h2>
 
 

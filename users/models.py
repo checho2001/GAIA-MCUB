@@ -22,6 +22,10 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 
+    def group_defined():
+        if(Rol.id == 1):
+            print("hola")
+
 class Genero(models.Model):
     id = models.AutoField(primary_key=True)
     nombreGenero = models.CharField(max_length=50)

@@ -16,6 +16,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.models import Group
+
+
 
 
 class IndexView(View):
@@ -52,7 +55,6 @@ def login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            print(user.id)
             print("Hola")
             if user is not  None:
                 auth.login(request, user)
@@ -77,7 +79,18 @@ def register(request):
             user.is_staff = False
             user.is_active = True
             user.save()
-            
+            if(rol == 1):
+                group = Group.objects.get(name='Auxiliar')
+                user.groups.add(group)
+            elif(rol == 2):
+                group = Group.objects.get(name='Pasante')
+                user.groups.add(group)
+            elif(rol == 3):
+                group = Group.objects.get(name='Curador')
+                user.groups.add(group)
+            elif(rol == 4):
+                group = Group.objects.get(name='Otro')
+                user.groups.add(group)
     else:
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form})
@@ -140,3 +153,6 @@ def custom_logout(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
     return redirect("home")
+
+
+    

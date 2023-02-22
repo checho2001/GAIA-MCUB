@@ -290,4 +290,8 @@ class EjemplarForm(forms.Form):
                 'required' : True,
                 'class' : 'form-control',
                 }
-            ))    
+            ))
+
+    Image = forms.ImageField(
+
+    )

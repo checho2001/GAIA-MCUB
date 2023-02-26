@@ -180,7 +180,20 @@ class ActividadesForm(forms.Form):
                 }
             )
         )        
-    
+class Especimen_Form(forms.Form):
+    NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    NombreDelConjuntoDatos = forms.CharField(max_length=500,  widget=forms.TextInput(
+            attrs= {
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+
 class EjemplarForm(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
             attrs= {
@@ -290,5 +303,9 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-
-   
+    '''
+    Image = forms.ImageField(
+        required=False,
+        error_messages={'required':'Please select the image of the cover', 'invalid':'The format of your image is invalid, please try again'},
+    )
+    '''

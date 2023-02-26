@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -135,13 +135,13 @@ def registerE(request):
             NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
             ClaseE = form.cleaned_data['ClaseE']
             NombreComun = form.cleaned_data['NombreComun']
-            Imagen = form.cleaned_data['Image']
+         
             print("Se guardo")
            
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
-            , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=Departamento.objects.get(id=Departamento),Municipio=Municipio.objects.get(id=Municipio)
+            , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun, Imagen=Imagen)
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun)
             e.save()
             
     else:

@@ -219,14 +219,15 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    NumeroIndividuo = forms.IntegerField( widget=forms.TextInput(
+    NumeroIndividuo =  forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 'required' : True,
                 'class' : 'form-control',
                 }
             ))
-    FechaEvento = forms.CharField( widget=DateInput(  
-        attrs={'class': 'form-control',}))
+    FechaEvento =  forms.DateField(   widget=DateInput(  
+        attrs={'class': 'form-control',})
+        )
     Habitad= forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 'required' : True,
@@ -240,12 +241,9 @@ class EjemplarForm(forms.Form):
         DEPARTAMENTOS.append((departamentos.id,departamentos.nombre))
 
     for municipio in municipio.objects.all():
-        MUNICIPIOS.append((municipio.id,municipio.municipio)) 
-       
-   
-        
+        MUNICIPIOS.append((municipio.id,municipio.municipio))     
     
-    departamento = forms.ChoiceField(
+    Departamento = forms.ChoiceField(
         choices = DEPARTAMENTOS,
         widget=forms.Select(
             attrs= {
@@ -254,7 +252,7 @@ class EjemplarForm(forms.Form):
                 }
             )
         )
-    municipio = forms.ChoiceField(
+    Municipio = forms.ChoiceField(
         choices = MUNICIPIOS,
         widget=forms.Select(
             attrs= {
@@ -272,8 +270,9 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    FechaIdentificacion = forms.CharField( widget=DateInput(  
-        attrs={'class': 'form-control',}))
+    FechaIdentificacion =  forms.DateField(   widget=DateInput(  
+        attrs={'class': 'form-control',})
+        )
     IdentificacionReferencias = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 'required' : True,

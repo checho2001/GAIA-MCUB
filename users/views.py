@@ -4,10 +4,10 @@ from django.contrib.auth import login
 from users.forms import *
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from  users.forms import loginForm
+from  users.forms import *
 from django.urls import reverse
 from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction
-from .forms import loginForm
+from .forms import *
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
@@ -75,20 +75,21 @@ def register(request):
             rol = form.cleaned_data['rol']
             user = User(username=username,nombre= nombre, apellido = apellido , email = correo,rol=Rol.objects.get(id=rol),password=make_password(password))
             print(user)
+            print(rol)
             user.is_superuser = False
             user.is_staff = False
             user.is_active = True
             user.save()
-            if(rol == 1):
+            if(rol == "1"):
                 group = Group.objects.get(name='Auxiliar')
                 user.groups.add(group)
-            elif(rol == 2):
+            if(rol == "2"):
                 group = Group.objects.get(name='Pasante')
                 user.groups.add(group)
-            elif(rol == 3):
+            if(rol == "3"):
                 group = Group.objects.get(name='Curador')
                 user.groups.add(group)
-            elif(rol == 4):
+            if(rol == "4"):
                 group = Group.objects.get(name='Otro')
                 user.groups.add(group)
     else:
@@ -116,8 +117,10 @@ def registroActividad(request):
 @login_required(login_url='redirect')
 def registerE(request):
     if request.method == 'POST':
+        #form = EjemplarForm(request.POST)
         form = EjemplarForm(request.POST)
         if form.is_valid():
+            print("Is valid")
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
             NombreDelConjuntoDatos = form.cleaned_data['NombreDelConjuntoDatos']
             ComentarioRegistroBiologico = form.cleaned_data['ComentarioRegistroBiologico']
@@ -135,17 +138,18 @@ def registerE(request):
             NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
             ClaseE = form.cleaned_data['ClaseE']
             NombreComun = form.cleaned_data['NombreComun']
-            Imagen = form.cleaned_data['Image']
-            print("Se guardo")
+            print("Se guardo")    
            
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=Departamento.objects.get(id=Departamento),Municipio=Municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun, Imagen=Imagen)
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun)
             e.save()
-            
+        else:
+            print("No entra") 
     else:
         form = EjemplarForm()
+        print("No entra")
     return render(request, 'registerE.html', {'form':form})    
 
 

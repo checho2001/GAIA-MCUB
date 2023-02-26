@@ -99,9 +99,9 @@ class especimen(models.Model):
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)
     ClaseE =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
-    image = models.ImageField(upload_to="ejemplares", null = True)
     def __str__(self):
         return self.NumeroCatalogo
+        
 class UserAction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tarea = models.CharField(max_length=100)

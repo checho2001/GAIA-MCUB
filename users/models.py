@@ -99,12 +99,13 @@ class especimen(models.Model):
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)
     ClaseE =  models.ForeignKey(Clase,on_delete=models.CASCADE)
     NombreComun = models.CharField(max_length=500)
+    Image = models.ImageField(upload_to="ejemplares", null=True)
 
-    def str(self):
-        return self.NumeroCatalogo
+    def __str__(self):
+        return "Ejemplar" + str(self.NumeroCatalogo)  
 
 class UserAction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tarea = models.CharField(max_length=100)
     ejemplar = models.CharField(max_length=100)
-    tiempo = models.DateTimeField(auto_now_add=True)             
+    tiempo = models.DateTimeField(auto_now_add=True)

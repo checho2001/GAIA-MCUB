@@ -112,7 +112,7 @@ def registroActividad(request):
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})
-
+'''
 @login_required(login_url='redirect')
 def registerE(request):
     if request.method == 'POST':
@@ -147,9 +147,43 @@ def registerE(request):
     else:
         form = EjemplarForm()
     return render(request, 'registerE.html', {'form':form})    
+'''
 
+@login_required(login_url='redirect')
+def registerE(request):
+    if request.method == 'POST':
+        form = EjemplarForm(request.POST)
+        if form.is_valid():
+            print("is valid")
+            NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
+            NombreDelConjuntoDatos = form.cleaned_data['NombreDelConjuntoDatos']
+            ComentarioRegistroBiologico = form.cleaned_data['ComentarioRegistroBiologico']
+            RegistradoPor = form.cleaned_data['RegistradoPor']
+            NumeroIndividuo = form.cleaned_data['NumeroIndividuo']
+            FechaEvento = form.cleaned_data['FechaEvento']
+            Habitad = form.cleaned_data['Habitad']
+            Departamento = form.cleaned_data['Departamento']
+            Municipio = form.cleaned_data['Municipio']
+            IdentificadoPor = form.cleaned_data['IdentificadoPor']
+            FechaEvento = form.cleaned_data['FechaEvento']
+            FechaIdentificacion = form.cleaned_data['FechaIdentificacion']
+            IdentificacionReferencias = form.cleaned_data['FechaEvento']
+            ComentarioIdentificacion = form.cleaned_data['ComentarioIdentificacion']
+            NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
+            ClaseE = form.cleaned_data['ClaseE']
+            NombreComun = form.cleaned_data['NombreComun']
 
+            print("Se guarda")
 
+            e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
+            , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
+            ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun)
+            e.save()
+    else:
+        form = EjemplarForm()
+    return render(request, 'registerE.html', {'form':form}) 
+   
 @login_required(login_url='redirect')
 def custom_logout(request):
     logout(request)

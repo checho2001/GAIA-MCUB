@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from users.views import IndexView,Galry,Dashboard,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register
+from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register
 
 from users import views
 from django.conf import settings
@@ -19,6 +19,9 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("registerE/", views.registerE, name="registerE"),
     path('dash/', Dashboard.as_view(),name="dashboard"),
+    path('dashAux/', Dashboard_Aux.as_view(),name="dashboardAux"),
+    path('dashPas/', Dashboard_Pas.as_view(),name="dashboardPas"),
+    path('dashCur/', Dashboard_Cur.as_view(),name="dashboardCur"),
     path('perfilU/', PerfilU.as_view(),name="perfilU"),
     path('informe/',  views.registroActividad,name="registroActividad"),
     path('ejemplar/',  EjemplarP.as_view(),name="Ejemplar"),

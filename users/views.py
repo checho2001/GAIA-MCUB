@@ -33,6 +33,16 @@ class CambioContrasenia(View):
 class Galry(View):
         def get(self,request):
             return render(request,"galery.html")
+        
+class Dashboard_Aux(View):
+        def get(self,request):
+            return render(request,"dashauxiliar.html")
+class Dashboard_Pas(View):
+        def get(self,request):
+            return render(request,"dashpasante.html")
+class Dashboard_Cur(View):
+        def get(self,request):
+            return render(request,"dashcurador.html")
           
 class Dashboard(View):
         @method_decorator(login_required(login_url='redirect')   ) 
@@ -58,6 +68,15 @@ def login(request):
             print("Hola")
             if user is not  None:
                 auth.login(request, user)
+                if user.groups.filter(name__in=['Auxiliar']):
+                    print('usuario pertenece a auxiliar')
+                    return HttpResponseRedirect(reverse('dashboardAux'))
+                if user.groups.filter(name__in=['Pasante']):
+                    print('usuario pertenece a pasante')
+                    return HttpResponseRedirect(reverse('dashboardPas'))
+                if user.groups.filter(name__in=['Curador']):
+                    print('usuario pertenece a curador')
+                    return HttpResponseRedirect(reverse('dashboardCur'))
                 return HttpResponseRedirect(reverse('dashboard'))
                    
     return render(request, 'login.html', {'form':form})
@@ -152,7 +171,7 @@ def registerE(request):
 @login_required(login_url='redirect')
 def registerE(request):
     if request.method == 'POST':
-        form = EjemplarForm(request.POST)
+        form = EjemplarForm(request.POST, request.FILES)
         if form.is_valid():
             print("is valid")
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']

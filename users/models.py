@@ -19,6 +19,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     rol= models.ForeignKey(Rol,on_delete=models.CASCADE)
     password = models.CharField(max_length=50)
+    estado = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 

@@ -92,7 +92,7 @@
                   </button>
                   <div class="collapse show" id="registro-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" onclick="location.href = '/register'" class="link-dark d-inline-flex text-decoration-none rounded text-light"> Usuario </a></li>
+                      <li><a href="#" onclick="location.href = '/informe'" class="link-dark d-inline-flex text-decoration-none rounded text-light"> Actividades </a></li>
 
                       <li><a href="#"  onclick="location.href = '/registerE'" class="link-dark d-inline-flex text-decoration-none rounded text-light">Especimen</a></li>
                   </ul>
@@ -122,64 +122,33 @@
           </div>
       </div> 
         <div class="col-sm-10 mw-100" style="background-color: #eee;">
-          <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
+          <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo Auxiliar</h1></div>
           <hr>
           <div class="row">
             <div class="col-sm-6 mw-100 ">
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Tareas</h1></div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Tarea</th>
+                    <th>Usuario</th>
+                    <th>Ejemplar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for action in actions %}
+                  <tr>
+                    
+                    <td>{{ action.tiempo }}</td>
+                    <td>{{ action.tarea }}</td>
+                    <td>{{ action.user }}</td>
+                    <td>{{ action.ejemplar }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
               
-              <br>   
-              <div class="list-group w-auto">
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
-                  
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Tarea#1</h6>
-                      <p class="mb-0 opacity-75">tarea1</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">10</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#1</h6>
-                        <p class="mb-0 opacity-75">tarea1</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#1</h6>
-                        <p class="mb-0 opacity-75">tarea1</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#1</h6>
-                        <p class="mb-0 opacity-75">tarea1</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#1</h6>
-                        <p class="mb-0 opacity-75">tarea1</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
               </div>
 
             </div>
@@ -188,16 +157,25 @@
               <table>
                 <thead>
                   <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
                     <th>Fecha</th>
-                    <th>Tarea</th>
-                    <th>Descripcion</th>
-                    <th>Ejemplar</th>
+                    <th>Cientifico</th>
+                    <th>Editar</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for esp in especimenes %}
                   <tr>
-                    <h6>Aqui van las cosas del for</h6>
+                    
+                    <td>{{ esp.id }}</td>
+                    <td>{{ esp.NombreComun }}</td>
+                    <td>{{ esp.FechaIdentificacion }}</td>
+                    <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
+                    <td><a href="updateE/{{esp.id}}">Edit Specimen</a></td>
+
                   </tr>
+                  {% endfor %}
                 </tbody>
               </table>
               <div class="row">

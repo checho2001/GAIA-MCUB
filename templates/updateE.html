@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../../static/css/style1.css" >
+    <link rel="stylesheet" href="../../static/fonts/linearicons/style.css" >
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" >
+    <script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js"> </script>
+</head>
+
+<section class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
+
+  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+                
+                  <form action= "{%url 'updateE' %}" method= POST class="  m-auto">
+                    {% csrf_token %}
+                    <h1 class="mb-5 fw-normal"style="color: #008776">Registro Ejemplar</h1>
+                    <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          
+                          {{ form.NumeroCatalogo }}
+                          
+                          <label class="font-weight-bold">NumeroCatalogo<span class="text-danger"> *</span></label>
+                          
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                          
+                          {{ form.NombreDelConjuntoDatos }}
+                          
+                          <label class="font-weight-bold">NombreDelConjuntoDatos<span class="text-danger"> *</span></label>
+                          
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.ComentarioRegistroBiologico }}
+                            <label class="font-weight-bold">ComentarioRegistroBiologico<span class="text-danger"> *</span></label>
+                          
+                            <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.RegistradoPor }}
+                          <label class="font-weight-bold">RegistradoPor<span class="text-danger"> *</span></label>
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                            {{ form.NumeroIndividuo }}
+                            <label   class="font-weight-bold">NumeroIndividuo<span class="text-danger"> *</span></label>
+                          
+                            <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.FechaEvento }}
+                          <label   class="font-weight-bold">FechaEvento<span class="text-danger"> *</span></label>
+                        
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.Habitad }}
+                          <label   class="font-weight-bold">Habitad<span class="text-danger"> *</span></label>
+                        
+                          <br>
+                        </div>
+                        <div class="form-floating">
+                          {{ form.Departamento }}
+                          <label  class="font-weight-bold">Departamento<span class="text-danger"> *</span></label>
+                        
+                          <br>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group m-2">
+                      <div class="form-floating">
+                        {{ form.Municipio }}
+                        <label class="font-weight-bold">Municipio<span class="text-danger"> *</span></label>
+                        <br>
+                      </div>
+            <div class="form-floating">
+              {{ form.IdentificadoPor }}
+              <label   class="font-weight-bold">IdentificadoPor<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+              {{ form.FechaIdentificacion }}
+              <label   class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+              {{ form.IdentificacionReferencias }}
+              <label  class="font-weight-bold">IdentificacionReferencias<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+              {{ form.ComentarioIdentificacion }}
+              <label  class="font-weight-bold">ComentarioIdentificacion<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+              {{ form.NombreCientificoComentarioRegistroBiologico }}
+              <label  class="font-weight-bold">NombreCientificoComentarioRegistroBiologico<span class="text-danger"> *</span></label>
+            
+              <br>
+            </div>
+            <div class="form-floating">
+                                  
+              {{ form.ClaseE }}
+              <label  class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
+              
+            </div>
+            <div class="form-floating">
+                                  
+              {{ form.Image }}
+              <label  class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
+              
+            </div>
+  <br>
+  <div class="form-floating">
+    {{ form.NombreComun }}
+    <label  type="password" class="font-weight-bold">NombreComun<span class="text-danger"> *</span></label>
+  
+    <br>
+  </div>
+
+                      <br>
+                      <button class=" w-100 btn-lg border-light text-light "  value="Register"  type="submit" style="background-color:#008776 ;">Ingresar</button>
+
+                    
+                    </div>
+                  </div>
+                  </form>  
+                  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</section>
+  

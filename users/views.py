@@ -36,7 +36,9 @@ class Galry(View):
         
 class Dashboard_Aux(View):
         def get(self,request):
-            return render(request,"dashauxiliar.html")
+            actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
+            especimenes = especimen.objects.all()
+            return render(request,"dashauxiliar.html",{'especimenes':especimenes,'actions':actions})
 class Dashboard_Pas(View):
         def get(self,request):
             return render(request,"dashpasante.html")
@@ -209,5 +211,10 @@ def custom_logout(request):
     messages.info(request, "Logged out successfully!")
     return redirect("home")
 
+
+
+class update_ejemplar(View):
+        def get(self,request,id):
+            return render(request,"updateE.html")
 
     

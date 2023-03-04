@@ -211,10 +211,27 @@ def custom_logout(request):
     messages.info(request, "Logged out successfully!")
     return redirect("home")
 
-
-
 class update_ejemplar(View):
         def get(self,request,id):
             return render(request,"updateE.html")
 
-    
+@login_required(login_url='redirect')
+def update(request):
+    if request.method == 'POST':
+        form = Update(request.POST)
+        if form.is_valid():
+            Username = form.cleaned_data['username']
+            nombre = form.cleaned_data['nombre']
+            apellido = form.cleaned_data['apellido']
+            correo = form.cleaned_data['correo']
+            rol = form.cleaned_data['rol']
+            user = User.objects.get(username=Username)
+            user.nombre=nombre
+            user.apellido= apellido
+            user.email=correo
+            user.rol=rol
+            user.save()
+            
+    else:
+        form = Update()
+    return render(request, 'registerUser.html', {'form':form})    

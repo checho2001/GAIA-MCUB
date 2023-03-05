@@ -111,6 +111,22 @@
                   </ul>
                   </div>
               </li>
+
+              <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#registro-collapse" aria-expanded="true">
+                Modificar Usuario
+                </button>
+                <div class="collapse show" id="registro-collapse">
+     
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a href="#" onclick="location.href = '/UpdateUser'"class="link-dark d-inline-flex text-decoration-none rounded text-light">Auxiliar</a></li>
+                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Auxiliar de Curatoría</a></li>
+                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Pasante</a></li>
+                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Curador General del Área</a></li>
+                  
+                </ul>
+                </div>
+            </li>
               <hr>
               <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
               <div class="dropdown border-top">
@@ -141,93 +157,50 @@
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Actividades</h1></div>
               
               <br>   
-              <div class="list-group w-auto">
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Cantidad de registros sin revisar">
-                  
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Determinación de las muestras a familia, género o especie</h6>
-                      <p class="mb-0 opacity-75">Cantidad de registros sin revisar</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">10</small>
-                  </div>
+              
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Cambios de alcohol realizados ">
-                  
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Conservación del material</h6>
-                      <p class="mb-0 opacity-75">Cambios de alcohol realizados hoy</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">11</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Revisiones bibliograficas">
-                  
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Montaje del material en seco </h6>
-                      <p class="mb-0 opacity-75">Revisiones bibliograficas del dia de hoy</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Exportaciones a excel realizadas">
-                  
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Registro de los datos en Excel </h6>
-                      <p class="mb-0 opacity-75">Revisiones bibliograficas del dia de hoy</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Cambios en los entantes y registros fisicos">
-                 
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Organizar la colección por orden alfabético</h6>
-                      <p class="mb-0 opacity-75">Revisiones bibliograficas del dia de hoy</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Actualización de estado de materiales en transito">
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Procesamiento del material en tránsito </h6>
-                      <p class="mb-0 opacity-75">Revisiones bibliograficas del dia de hoy</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Revisión bibliográfica omg omg">
-                  
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Revisión bibliográfica </h6>
-                      <p class="mb-0 opacity-75">Revisiones bibliograficas del dia de hoy</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Curiaciones por notificar">
 
                   <div class="d-flex gap-2 w-100 justify-content-between">
                     <div>
-                      <h6 class="mb-0">Curación de los ejemplares </h6>
-                      <p class="mb-0 opacity-75">texto ejemplo</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
+          
                 </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Trabajos de laborato sin revisar">
+                
+                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
+                  <h6 class="mb-0">Historial Usuarios </h6>
                   <div class="d-flex gap-2 w-100 justify-content-between">
+                   
                     <div>
-                      <h6 class="mb-0">Trabajo en laboratorio </h6>
-                      <p class="mb-0 opacity-75">texto ejemplo</p>
+                      {% for action in actions %}
+                      <h6 class="mb-0">Fecha </h6>
+                      <p class="mb-0 opacity-75">{{ action.tiempo }}</p>
+                      {% endfor %}
                     </div>
-                    <small class="opacity-50 text-nowrap">12</small>
+                    
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
+                      
+                    <div>
+                      {% for action in actions %}
+                   
+                      <h6 class="mb-0">Tarea </h6>
+                      <p class="mb-0 opacity-75">{{ action.tarea }}</p>
+                      {% endfor %}
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
+                      <div>
+                        {% for action in actions %}
+                     
+                        <h6 class="mb-0">Usuario </h6>
+                        <p class="mb-0 opacity-75">{{ action.user }}</p>
+                        {% endfor %}
+                      </div>
+                      <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
+                        <div>
+                          {% for action in actions %}
+                       
+                          <h6 class="mb-0">Ejemplar </h6>
+                          <p class="mb-0 opacity-75">{{ action.ejemplar }}</p>
+                          {% endfor %}
+                        </div>
                   </div>
                 </a>
                 <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="esto no tengo ni idea que es">
@@ -242,31 +215,7 @@
               </div>
 
             </div>
-            <div class="col-sm-6 mw-100">
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Reportes usuarios</h1></div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Tarea</th>
-                    <th>Usuario</th>
-                    <th>Ejemplar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for action in actions %}
-                  <tr>
-                    
-                    <td>{{ action.tiempo }}</td>
-                    <td>{{ action.tarea }}</td>
-                    <td>{{ action.user }}</td>
-                    <td>{{ action.ejemplar }}</td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-              <div class="row">
-                <div class="col-sm-1">
+           
                   <br>
                 </div>
                 <div class="col-sm-4">

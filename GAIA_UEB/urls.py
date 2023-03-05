@@ -25,8 +25,10 @@ urlpatterns = [
     path('perfilU/', PerfilU.as_view(),name="perfilU"),
     path('informe/',  views.registroActividad,name="registroActividad"),
     path('ejemplar/',  EjemplarP.as_view(),name="Ejemplar"),
-    path('logout', views.custom_logout, name='logout'),
     path('dashAux/updateE/<int:id>', update_ejemplar.as_view(), name='updateE'),
+    path("UpdateUser/", views.update_aux_curatoria, name="UpdateU"),
+    path('logout', views.custom_logout, name='logout'),
+ 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 

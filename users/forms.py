@@ -193,122 +193,6 @@ class Especimen_Form(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-'''
-class EjemplarForm(forms.Form):
-    NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    NombreDelConjuntoDatos = forms.CharField(max_length=500,  widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    RegistradoPor = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    NumeroIndividuo =  forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    FechaEvento =  forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control',})
-        )
-    Habitad= forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    DEPARTAMENTOS = []
-    MUNICIPIOS = []
-    
-    for departamentos in departamento.objects.all():
-        DEPARTAMENTOS.append((departamentos.id,departamentos.nombre))
-
-    for municipio in municipio.objects.all():
-        MUNICIPIOS.append((municipio.id,municipio.municipio))     
-    
-    Departamento = forms.ChoiceField(
-        choices = DEPARTAMENTOS,
-        widget=forms.Select(
-            attrs= {
-                'default' : 1,
-                'class' : 'form-control',
-                }
-            )
-        )
-    Municipio = forms.ChoiceField(
-        choices = MUNICIPIOS,
-        widget=forms.Select(
-            attrs= {
-                'default' : 1,
-                'class' : 'form-control',
-                }
-            )
-        )    
-
-            
-    IdentificadoPor= forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-               
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    FechaIdentificacion =  forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control',})
-        )
-    IdentificacionReferencias = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    ComentarioIdentificacion = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    NombreCientificoComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    TipoClases =[(1,"Aves")]
-    
-    
-    ClaseE = forms.ChoiceField(
-        choices = TipoClases, ) 
-    NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    
-    Image = forms.ImageField(
-        required=False,
-        error_messages={'required':'Please select the image of the cover', 'invalid':'The format of your image is invalid, please try again'},
-    )
-    '''
 
 
 class EjemplarForm(forms.Form):
@@ -424,6 +308,20 @@ class EjemplarForm(forms.Form):
         error_messages={'required':'Please select the image of the cover', 'invalid':'The format of your image is invalid, please try again'},
     )
 class Update(forms.Form):
+    USUARIOS = []
+
+    for useri in User.objects.all():
+        USUARIOS.append((useri.id, useri.username))
+    username = forms.ChoiceField(
+        choices = USUARIOS,
+        widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            )
+        )
+
     nombre = forms.CharField( 
         
         error_messages={'required':'Por favor ingresa un nombre valido'},

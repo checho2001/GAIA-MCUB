@@ -1,6 +1,6 @@
 from statistics import mode
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,Group
 
 class Rol(models.Model):
     id = models.AutoField(primary_key=True)
@@ -25,7 +25,9 @@ class User(AbstractUser):
 
     def group_defined():
         if(Rol.id == 1):
-            print("hola")
+            grupo = Group.objects.get_or_create(name='Auxiliar')
+        if(Rol.id == 2):
+            grupo2 = Group.objects.get_or_create(name='Pasante')
 
 class Genero(models.Model):
     id = models.AutoField(primary_key=True)

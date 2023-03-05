@@ -67,7 +67,7 @@ def login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            print("Hola")
+   
             if user is not  None:
                 auth.login(request, user)
                 if user.groups.filter(name__in=['Auxiliar']):
@@ -102,16 +102,16 @@ def register(request):
             user.save()
             if(rol == 1):
                 group = Group.objects.get(name='Auxiliar')
-                user.groups.add(group)
+                group.user_set.add(user)
             elif(rol == 2):
                 group = Group.objects.get(name='Pasante')
-                user.groups.add(group)
+                group.user_set.add(user)
             elif(rol == 3):
                 group = Group.objects.get(name='Curador')
-                user.groups.add(group)
+                group.user_set.add(user)
             elif(rol == 4):
                 group = Group.objects.get(name='Otro')
-                user.groups.add(group)
+                group.user_set.add(user)
     else:
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form})
@@ -133,42 +133,7 @@ def registroActividad(request):
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})
-'''
-@login_required(login_url='redirect')
-def registerE(request):
-    if request.method == 'POST':
-        form = EjemplarForm(request.POST)
-        if form.is_valid():
-            NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
-            NombreDelConjuntoDatos = form.cleaned_data['NombreDelConjuntoDatos']
-            ComentarioRegistroBiologico = form.cleaned_data['ComentarioRegistroBiologico']
-            RegistradoPor = form.cleaned_data['RegistradoPor']
-            NumeroIndividuo = form.cleaned_data['NumeroIndividuo']
-            FechaEvento = form.cleaned_data['FechaEvento']
-            Habitad = form.cleaned_data['Habitad']
-            Departamento = form.cleaned_data['Departamento']
-            Municipio = form.cleaned_data['Municipio']
-            IdentificadoPor = form.cleaned_data['IdentificadoPor']
-            FechaEvento = form.cleaned_data['FechaEvento']
-            FechaIdentificacion = form.cleaned_data['FechaIdentificacion']
-            IdentificacionReferencias = form.cleaned_data['FechaEvento']
-            ComentarioIdentificacion = form.cleaned_data['ComentarioIdentificacion']
-            NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
-            ClaseE = form.cleaned_data['ClaseE']
-            NombreComun = form.cleaned_data['NombreComun']
-         
-            print("Se guardo")
-           
-            e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
-            , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
-            ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun)
-            e.save()
-            
-    else:
-        form = EjemplarForm()
-    return render(request, 'registerE.html', {'form':form})    
-'''
+
 
 @login_required(login_url='redirect')
 def registerE(request):
@@ -216,22 +181,84 @@ class update_ejemplar(View):
             return render(request,"updateE.html")
 
 @login_required(login_url='redirect')
-def update(request):
+def update_aux(request):
+    group = Group.objects.get(name="Auxiliar")
+    users = User.objects.filter(groups__name="Auxiliar")
     if request.method == 'POST':
         form = Update(request.POST)
         if form.is_valid():
-            Username = form.cleaned_data['username']
+            username = form.cleaned_data['username']
             nombre = form.cleaned_data['nombre']
             apellido = form.cleaned_data['apellido']
             correo = form.cleaned_data['correo']
             rol = form.cleaned_data['rol']
-            user = User.objects.get(username=Username)
+            user = username=User.objects.get(id=username)
             user.nombre=nombre
             user.apellido= apellido
             user.email=correo
-            user.rol=rol
+            user.rol=Rol.objects.get(id=rol)
             user.save()
             
     else:
         form = Update()
-    return render(request, 'registerUser.html', {'form':form})    
+    return render(request, 'UpdateUser.html', {'form':form})
+@login_required(login_url='redirect')
+def update_aux_curatoria(request):
+    if request.method == 'POST':
+        form = Update(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            nombre = form.cleaned_data['nombre']
+            apellido = form.cleaned_data['apellido']
+            correo = form.cleaned_data['correo']
+            rol = form.cleaned_data['rol']
+            user = username=User.objects.get(id=username)
+            user.nombre=nombre
+            user.apellido= apellido
+            user.email=correo
+            user.rol=Rol.objects.get(id=rol)
+            user.save()
+            
+    else:
+        form = Update()
+    return render(request, 'UpdateUser.html', {'form':form})    
+@login_required(login_url='redirect')
+def update_pasante(request):
+    if request.method == 'POST':
+        form = Update(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            nombre = form.cleaned_data['nombre']
+            apellido = form.cleaned_data['apellido']
+            correo = form.cleaned_data['correo']
+            rol = form.cleaned_data['rol']
+            user = username=User.objects.get(id=username)
+            user.nombre=nombre
+            user.apellido= apellido
+            user.email=correo
+            user.rol=Rol.objects.get(id=rol)
+            user.save()
+            
+    else:
+        form = Update()
+    return render(request, 'UpdateUser.html', {'form':form})    
+@login_required(login_url='redirect')
+def update_curador(request):
+    if request.method == 'POST':
+        form = Update(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            nombre = form.cleaned_data['nombre']
+            apellido = form.cleaned_data['apellido']
+            correo = form.cleaned_data['correo']
+            rol = form.cleaned_data['rol']
+            user = username=User.objects.get(id=username)
+            user.nombre=nombre
+            user.apellido= apellido
+            user.email=correo
+            user.rol=Rol.objects.get(id=rol)
+            user.save()
+            
+    else:
+        form = Update()
+    return render(request, 'UpdateUser.html', {'form':form})    

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar
+from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar
 
 from users import views
 from django.conf import settings
@@ -28,7 +28,7 @@ urlpatterns = [
     path('dashAux/updateE/<int:id>', update_ejemplar.as_view(), name='updateE'),
     path("UpdateUser/", views.update_aux_curatoria, name="UpdateU"),
     path('logout', views.custom_logout, name='logout'),
- 
+    path('load_data/', load_data, name='load_data'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 

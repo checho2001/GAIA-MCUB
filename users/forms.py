@@ -1,5 +1,5 @@
 from django import forms
-from .models import User,departamento, municipio, TipoActividad
+from .models import User,departamento, municipio, TipoActividad,especimen
 from django.core.exceptions import ValidationError
 from .models import Rol
 from django.utils.translation import gettext_lazy as _
@@ -135,17 +135,16 @@ class TimeInput(forms.TimeInput):
 
 
 class ActividadesForm(forms.Form):
-    NumeroCatalogo = forms.CharField(
-        error_messages={'required':'Por favor ingresa un nombre valido'},
-        strip = True,
-        widget=forms.TextInput(
+    CATALOGO = []
+    for useri in especimen.objects.all():
+        CATALOGO.append((useri.id, useri.NumeroCatalogo))
+    NumeroCatalogo = forms.ChoiceField(
+        choices = CATALOGO,  widget=forms.Select(
             attrs= {
-                'placeholder':'Digite El numero de catalogo',
-                'required' : True,
+                'default' : 1,
                 'class' : 'form-control',
                 }
-            )
-        )
+            ))  
     TAREAS = []
     
     for tarea in TipoActividad.objects.all():
@@ -296,6 +295,12 @@ class EjemplarForm(forms.Form):
     
     ClaseE = forms.ChoiceField(
         choices = TipoClases, ) 
+    Orden = forms.ChoiceField(
+        choices = TipoClases, ) 
+    Genero = forms.ChoiceField(
+        choices = TipoClases, )
+    Familia = forms.ChoiceField(
+        choices = TipoClases, )  
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 
@@ -303,6 +308,7 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
+    
     Image = forms.ImageField(
         required=False,
         error_messages={'required':'Please select the image of the cover', 'invalid':'The format of your image is invalid, please try again'},

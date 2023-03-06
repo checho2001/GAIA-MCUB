@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
         <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
         <link rel="stylesheet" href="../static/css/sidebars.css" >
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
     <style>
@@ -28,7 +31,10 @@
         left: -1px;
         padding: 10px 7px 5px;
     }
-    
+    .table-responsive {
+      max-height: 450px; 
+      overflow-y: scroll;
+    }
     .DivWithScroll{
         height:120px;
         overflow:scroll;
@@ -53,7 +59,10 @@
         width: 1.5rem;
         height: 100vh;
       }
-
+      .sidebar {
+        width: 20%;
+        float: left;
+      }
       .bi {
         vertical-align: -.125em;
         fill: currentColor;
@@ -63,7 +72,7 @@
         position: relative;
         z-index: 2;
         height: 2.75rem;
-        overflow-y: hidden;
+        
       }
 
       .nav-scroller .nav {
@@ -79,10 +88,13 @@
     </style>
   </head>
   <body>
+    <nav>
     <main>
+    
       <div class="row mw-100 overflow-auto" >
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
+            <ul class="nav-scroller ">
               <span class="fs-5 fw-semibold text-light">Tablon</span>
               </a>
               <ul class="list-unstyled ps-0">
@@ -150,6 +162,7 @@
           </div>
       </div> 
         <div class="col-sm-10 mw-100" style="background-color: #eee;">
+         
           <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           <hr>
           <div class="row">
@@ -164,63 +177,44 @@
                     <div>
           
                 </a>
-                
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
-                  <h6 class="mb-0">Historial Usuarios </h6>
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                   
-                    <div>
-                      {% for action in actions %}
-                      <h6 class="mb-0">Fecha </h6>
-                      <p class="mb-0 opacity-75">{{ action.tiempo }}</p>
-                      {% endfor %}
-                    </div>
-                    
-                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
+                <div class="table-responsive">
+                <table class="table table-sm table-striped" data-page-size="10" data-toggle="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Tarea Realizada</th>
+                      <th scope="col">Usuario</th>
+                      <th scope="col">Ejemplar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for action in actions %}
+                    <tr>
+                      <td>{{ action.tiempo }}</td>
+                      <td>{{ action.tarea }}</td>
+                      <td>{{ action.user }}</td>
+                      <td>{{ action.ejemplar }}</td>
                       
-                    <div>
-                      {% for action in actions %}
                    
-                      <h6 class="mb-0">Tarea </h6>
-                      <p class="mb-0 opacity-75">{{ action.tarea }}</p>
-                      {% endfor %}
-                    </div>
-                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
-                      <div>
-                        {% for action in actions %}
-                     
-                        <h6 class="mb-0">Usuario </h6>
-                        <p class="mb-0 opacity-75">{{ action.user }}</p>
-                        {% endfor %}
-                      </div>
-                      <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" >
-                        <div>
-                          {% for action in actions %}
-                       
-                          <h6 class="mb-0">Ejemplar </h6>
-                          <p class="mb-0 opacity-75">{{ action.ejemplar }}</p>
-                          {% endfor %}
-                        </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="esto no tengo ni idea que es">
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Confirmación de las especies </h6>
-                      <p class="mb-0 opacity-75">texto ejemplo</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">12</small>
-                  </div>
-                </a>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+               
+              </div>
+                  
+               
               </div>
 
             </div>
-           
+          
                   <br>
+
+                
                 </div>
                 <div class="col-sm-4">
                   <br>
-                    <button class=" w-100 btn-lg border-light text-light "  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Exportar Excel</button>
+                    <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Exportar Excel</button>
                 </div>
                 <div class="col-sm-2">
                   <br>
@@ -239,5 +233,8 @@
           </div>
         </div>
       </div>
+    </ul>
     </main>
+  </nav>
   </body>
+  </html>

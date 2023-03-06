@@ -17,8 +17,9 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import Group
-
-
+import pandas as pd
+import tkinter as tk
+from tkinter import filedialog
 
 
 class IndexView(View):
@@ -127,7 +128,7 @@ def registroActividad(request):
             Hora = form.cleaned_data['Hora']
             Fecha = form.cleaned_data['Fecha']
             Descripcion = form.cleaned_data['Descripcion']
-            a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
+            a = Actividades(NumeroCatalogo=especimen.objects.get(id=NumeroCatalogo),TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
             a.save()
             UserAction.objects.create(user=request.user, tarea=form.cleaned_data['TareaRealizada'],ejemplar= form.cleaned_data['NumeroCatalogo'])
     else:
@@ -262,3 +263,23 @@ def update_curador(request):
     else:
         form = Update()
     return render(request, 'UpdateUser.html', {'form':form})    
+def load_data(request):
+    root = tk.Tk()
+    root.withdraw()
+
+   
+    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=['catalogNumber', 'datasetName', 'occurrenceRemarks', 'recordedBy', 'individualCount',
+                                              'eventDate', 'habitat', 'stateProvince', 'county', 'identifiedBy',  'dateIdentified',
+                                                'identificationReferences', 'identificationRemarks', 'scientificName', '0', 'order', 'family', 'genus', 
+                                                'vernacularName'])
+ 
+    for _, row in data.iterrows():
+        e = especimen(NumeroCatalogo=row['catalogNumber'], NombreDelConjuntoDatos=row['datasetName'], ComentarioRegistroBiologico=row['occurrenceRemarks'], RegistradoPor=row['recordedBy'], 
+                              NumeroIndividuo=row['individualCount'], FechaEvento=row['eventDate'], Habitad=row['habitat'], Departamento=row['stateProvince'], Municipio=row['county'], IdentificadoPor=row['identifiedBy'], 
+                              FechaIdentificacion=row['dateIdentified'], IdentificacionReferencias=row['identificationReferences'], ComentarioIdentificacion=row['identificationRemarks'], NombreCientificoComentarioRegistroBiologico=row['scientificName'],
+                              ClaseE=row['0'],  Orden=row['order'],  Genero=row['genus'],  Familia=row['family'],
+                              NombreComun=row['vernacularName'])
+        e.save()
+    root.mainloop()
+    return render(request, 'dashboard.html')

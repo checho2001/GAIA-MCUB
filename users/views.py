@@ -50,7 +50,7 @@ class Dashboard_Cur(View):
 class Dashboard(View):
         @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
-            actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
+            actions = UserAction.objects.order_by('tiempo').all()
             return render(request,"dashboard.html",{'actions': actions})
                 	
 class PerfilU(View):
@@ -130,7 +130,7 @@ def registroActividad(request):
             Descripcion = form.cleaned_data['Descripcion']
             a = Actividades(NumeroCatalogo=especimen.objects.get(id=NumeroCatalogo),TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
             a.save()
-            UserAction.objects.create(user=request.user, tarea=form.cleaned_data['TareaRealizada'],ejemplar= form.cleaned_data['NumeroCatalogo'])
+            UserAction.objects.create(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo))
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})

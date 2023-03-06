@@ -41,14 +41,14 @@
                             
                             <div class="col-xs-6">
                                 <label for="nombre"><h4 style="color: #777">Nombre</h4></label>
-                                <input type="text" class="form-control" name="nombre id="nombre" placeholder="<nombre_usuario>" disabled>
+                                <input type="text" class="form-control" name="nombre id="nombre" placeholder= {{ user.nombre }} disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             
                             <div class="col-xs-6">
                             <label for="apellido"><h4 style="color: #777">Apellido</h4></label>
-                                <input type="text" class="form-control" name="apellido" id="apellido" placeholder="<apellido_user>" disabled>
+                                <input type="text" class="form-control" name="apellido" id="apellido" placeholder= {{ user.apellido }} disabled>
                             </div>
                         </div>
             
@@ -56,21 +56,21 @@
                             
                             <div class="col-xs-6">
                                 <label for="rolMuseo"><h4 style="color: #777">Rol</h4></label>
-                                <input type="text" class="form-control" name="rolMuseo" id="rolMuseo" placeholder="<rol_usuario>" disabled>
+                                <input type="text" class="form-control" name="rolMuseo" id="rolMuseo" placeholder= {{ user.rol }} disabled>
                             </div>
                         </div>
             
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="carrera"><h4 style="color: #777">Carrera</h4></label>
-                                <input type="text" class="form-control" name="carrera" id="carrera" placeholder="<carrera_usuario>" disabled>
+                                <label for="carrera"><h4 style="color: #777">Email</h4></label>
+                                <input type="text" class="form-control" name="carrera" id="carrera" placeholder={{ user.email }} disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="correo"><h4 style="color: #777">Correo Institucional</h4></label>
-                                <input type="email" class="form-control" name="correo" id="correo" placeholder="<correo_usuario>" disabled>
+                                <label for="correo"><h4 style="color: #777">Usuario</h4></label>
+                                <input type="email" class="form-control" name="correo" id="correo" placeholder={{ user.username }} disabled>
                             </div>
                         </div>
 

@@ -20,6 +20,7 @@ from django.contrib.auth.models import Group
 import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
+from django.shortcuts import render, get_object_or_404
 
 
 class IndexView(View):
@@ -33,7 +34,8 @@ class CambioContrasenia(View):
             return render(request,"changepassword.html")
 class Galry(View):
         def get(self,request):
-            return render(request,"galery.html")
+            especimenes = especimen.objects.all()
+            return render(request,"galery.html",{'especimenes':especimenes})
         
 class Dashboard_Aux(View):
         def get(self,request):
@@ -50,7 +52,7 @@ class Dashboard_Cur(View):
 class Dashboard(View):
         @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
-            actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
+            actions = UserAction.objects.order_by('tiempo').all()
             return render(request,"dashboard.html",{'actions': actions})
                 	
 class PerfilU(View):
@@ -130,7 +132,7 @@ def registroActividad(request):
             Descripcion = form.cleaned_data['Descripcion']
             a = Actividades(NumeroCatalogo=especimen.objects.get(id=NumeroCatalogo),TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
             a.save()
-            UserAction.objects.create(user=request.user, tarea=form.cleaned_data['TareaRealizada'],ejemplar= form.cleaned_data['NumeroCatalogo'])
+            UserAction.objects.create(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo))
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})
@@ -312,3 +314,11 @@ def load_data(request):
         e.save()
     root.mainloop()
     return render(request, 'dashboard.html')
+
+
+
+
+def element_detail(request, pk):
+    element = get_object_or_404(especimen, pk=pk)
+    context = {'element': element}
+    return render(request, 'paginaejemplar.html', context)

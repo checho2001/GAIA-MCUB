@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <head>
+   
         <meta charset="utf-8">
         <title>Galeria</title>
         <link rel="stylesheet" href="../static/css/style1.css" >
@@ -70,7 +70,7 @@
         <div class="col-2" style="background-color: #008776; height: 100vh;">
             <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
                 <span class="fs-5 fw-semibold text-light">Categorias</span>
-                </a>
+                
                 <ul class="list-unstyled ps-0">
                 <li class="mb-1">
                     <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
@@ -120,101 +120,48 @@
             </div>
         </div> 
         <div class="col-10" style="height: 100vh; ">
-            {% for %}
+           
             <div class="album py-5 " style="height: 100vh; ">
                     <div class="container">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                            
-                            <div class="col">
-                                <div style="width:100%; height:20%;">
-                                    <div class="card shadow-sm" >
-                                       <button class="btn" onclick="location.href = '/ejemplar'"> <img src="../static/images/galeria-1.jpg" width="100%" height="225" alt=""></button>
-                                        <div class="card-body">
-                                            <H5 style="color: #008776;">Nombre Especimen</H5>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="card-text">{datos.especimen}</p>
-                                                <p class="card-text">{descripción.corta}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div style="width:100%; height:20%;">
-                                    <div class="card shadow-sm" >
-                                       <button class="btn" onclick="location.href = '/ejemplar'"> <img src="../static/images/galeria-2.jpg" width="100%" height="225" alt=""></button>
-                                        <div class="card-body">
-                                            <H5 style="color: #008776;">Nombre Especimen</H5>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="card-text">{datos.especimen}</p>
-                                                <p class="card-text">{descripción.corta}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div style="width:100%; height:20%;">
-                                    <div class="card shadow-sm" >
-                                       <button class="btn" onclick="location.href = '/ejemplar'"> <img src="../static/images/galeria-3.jpg" width="100%" height="225" alt=""></button>
-                                        <div class="card-body">
-                                            <H5 style="color: #008776;">Nombre Especimen</H5>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="card-text">{datos.especimen}</p>
-                                                <p class="card-text">{descripción.corta}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col">
-                                <div style="width:100%; height:20%;">
-                                    <div class="card shadow-sm" >
-                                       <button class="btn" onclick="location.href = '/ejemplar'"> <img src="../static/images/galeria-4.jpg" width="100%" height="225" alt=""></button>
-                                        <div class="card-body">
-                                            <H5 style="color: #008776;">Nombre Especimen</H5>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="card-text">{datos.especimen}</p>
-                                                <p class="card-text">{descripción.corta}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div style="width:100%; height:20%;">
-                                    <div class="card shadow-sm" >
-                                       <button class="btn" onclick="location.href = '/ejemplar'"> <img src="../static/images/galeria-5.jpg" width="100%" height="225" alt=""></button>
-                                        <div class="card-body">
-                                            <H5 style="color: #008776;">Nombre Especimen</H5>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="card-text">{datos.especimen}</p>
-                                                <p class="card-text">{descripción.corta}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div style="width:100%; height:20%;">
-                                    <div class="card shadow-sm" >
-                                       <button class="btn" onclick="location.href = '/ejemplar'"> <img src="../static/images/galeria-6.jpg" width="100%" height="225" alt=""></button>
-                                        <div class="card-body">
-                                            <H5 style="color: #008776;">Nombre Especimen</H5>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <p class="card-text">{datos.especimen}</p>
-                                                <p class="card-text">{descripción.corta}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="gallery">
+                            {% for element in especimenes %}
+                              <a href="{% url 'element_detail' element.pk %}">
+                                <img src="../static/images/galeria-1.jpg" alt="{{ element.NombreComun }}">
+                                <a style="color: #008776;"href="#">{{ element.NombreComun }}</a>
+                              </a>
+                            {% endfor %}
+                          </div>
+                       
                         </div>
-                    </div>
-            </div>
-        </div>
+                       
+        </div>   
     </div>
+
+      
+       
+    </div>
+
+    <script>
+    fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    // Iterate through each element and create an HTML element for it
+    data.forEach(element => {
+      const img = document.createElement('img');
+      img.src = element.image;
+      img.alt = element.name;
+      
+      // Add event listener to each image to redirect to information page
+      img.addEventListener('click', () => {
+        window.location.href = `information.html?id=${element.id}`;
+      });
+      
+      // Add image to gallery
+      document.querySelector('.gallery').appendChild(img);
+    });
+  });
+</script>
     </main> 
 </body>
 </html>

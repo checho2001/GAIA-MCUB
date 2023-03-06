@@ -108,7 +108,7 @@ class especimen(models.Model):
     Image = models.ImageField(upload_to="ejemplares", null=True)
 
     def __str__(self):
-        return "Ejemplar" + str(self.NumeroCatalogo)  
+        return (self.NumeroCatalogo)  
     def clean(self):
         super().clean()
 

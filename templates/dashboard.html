@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="../static/css/sidebars.css" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-MxUbVc+j1jq+2d2kbMugIViupgy9pALVKbYgDcdyJb6eO78+wjLaesOQ+QdZuJHmkB9mucO01fBGY+YmlTh/6w==" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
@@ -74,7 +76,11 @@
         height: 2.75rem;
         
       }
-
+      #btnSearch,
+      #btnClear{
+          display: inline-block;
+          vertical-align: top;
+      }
       .nav-scroller .nav {
         display: flex;
         flex-wrap: nowrap;
@@ -95,57 +101,24 @@
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
             <ul class="nav-scroller ">
-              <span class="fs-5 fw-semibold text-light">Tablon</span>
-              </a>
-              <ul class="list-unstyled ps-0">
-              <li class="mb-1">
-                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#registro-collapse" aria-expanded="true">
-                  Registro
-                  </button>
-                  <div class="collapse show" id="registro-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" onclick="location.href = '/register'" class="link-dark d-inline-flex text-decoration-none rounded text-light"> Usuario </a></li>
-
-                      <li><a href="#"  onclick="location.href = '/registerE'" class="link-dark d-inline-flex text-decoration-none rounded text-light">Especimen</a></li>
-                  </ul>
-                  </div>
-              </li>
-              <li class="mb-1">
-                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#usuarios-collapse" aria-expanded="true">
-                  Lista de usuarios
-                  </button>
-                  <div class="collapse show" id="usuarios-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Auxiliar</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Auxiliar de Curatoría</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Pasante</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Curador General del Área</a></li>
-                  </ul>
-                  </div>
-              </li>
-
-              <li class="mb-1">
-                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#registro-collapse" aria-expanded="true">
-                Modificar Usuario
-                </button>
-                <div class="collapse show" id="registro-collapse">
-     
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" onclick="location.href = '/UpdateUser'"class="link-dark d-inline-flex text-decoration-none rounded text-light">Auxiliar</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Auxiliar de Curatoría</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Pasante</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Curador General del Área</a></li>
-                  
-                </ul>
-                </div>
-            </li>
+             
               <hr>
+
+              <img src="../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
+              <br>
+
               <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
               <div class="dropdown border-top">
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../static/images/galeria-6.jpg" alt="mdo" width="200" height="200" class="rounded-circle">
                   
                 </a>
+                
+                <br>
+                <img src="../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="200" >
+
+
+
                 <br>
                
         
@@ -167,18 +140,48 @@
           <hr>
           <div class="row">
             <div class="col-sm-6 mw-100 ">
+
+              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestión Usuarios</h1></div>
+
+              <br>
+              
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                   
+                    <button class=" w-100 btn-lg border-light text-light "  style="background-color: #008776"  type="button" aria-expanded="false" >Agregar</button></div>
+                  <div class="col">
+                    <div class="dropdown">
+                      <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+                        Modificar
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Auxiliar</a></li>
+                        <li><a class="dropdown-item" href="#">Auxiliar de Curatoría</a></li>
+                        <li><a class="dropdown-item" href="#">Pasante</a></li>
+                        <li><a class="dropdown-item" href="#">Curador General del Área</a></li>
+                      </ul>
+                    </div>
+
+                    
+                </div>
+                <div class="col">
+                   
+                  <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776"  type="button" aria-expanded="false" >Desactivar</button></div>
+                
+                <div class="col">
+              </div>
+              <br> 
+              <br> 
+              <br> 
+              <br> 
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Actividades</h1></div>
               
               <br>   
+              <br>
               
-                </a>
-
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-          
-                </a>
-                <div class="table-responsive">
-                <table class="table table-sm table-striped" data-page-size="10" data-toggle="table">
+              <div class="table-responsive">
+                <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                   <thead>
                     <tr>
                       <th scope="col">Fecha</th>
@@ -205,32 +208,21 @@
                   
                
               </div>
-
-            </div>
-          
-                  <br>
-
-                
-                </div>
-                <div class="col-sm-4">
-                  <br>
-                    <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Exportar Excel</button>
-                </div>
-                <div class="col-sm-2">
-                  <br>
-                </div>
-                <div class="col-sm-4">
-                  <br>
-                    <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/informe'"  value="Register"  type="submit" style="background-color: #008776">Realizar Actividad</button>
-                </div>
-                
-                  <div class="col-sm-1">
-                    <br>
-                  </div>
+  
+              <div class="col-sm-4">
+                <br>
+                <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Excel</button>
+                  <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/informe'"  value="Register"  type="submit" style="background-color: #008776">Realizar Actividad</button>
               </div>
 
-            </div>
-          </div>
+             
+              
+               
+               
+               
+                  
+
+        
         </div>
       </div>
     </ul>

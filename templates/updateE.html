@@ -3,75 +3,79 @@
 <head>
     <meta charset="utf-8">
     <title>Register</title>
-    <link rel="stylesheet" href="../../static/css/style1.css" >
-    <link rel="stylesheet" href="../../static/fonts/linearicons/style.css" >
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../../../static/css/style1.css" >
+    <link rel="stylesheet" href="../../../static/fonts/linearicons/style.css" >
+    <link rel="stylesheet" href="../../../static/css/bootstrap.min.css" >
     <script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js"> </script>
 </head>
 
 <section class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
-  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
+  <div class=" container py-5 h-100" style="background-image:url(../../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
                 
-                  <form action= "{%url 'updateE' %}" method= POST class="  m-auto">
+                  <form action= "updateEjemplar/{{contexto.id}}" method= POST class="  m-auto">
                     {% csrf_token %}
-                    <h1 class="mb-5 fw-normal"style="color: #008776">Registro Ejemplar</h1>
+                    <h1 class="mb-5 fw-normal"style="color: #008776">Actualizar Ejemplar</h1>
                     <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group mb-2">
                         <div class="form-floating">
                           
-                          {{ form.NumeroCatalogo }}
-                          
+                          <input name="NumeroCatalogo" value="{{ contexto.numeroCatalogo }}" class = "form-control">
                           <label class="font-weight-bold">NumeroCatalogo<span class="text-danger"> *</span></label>
                           
                           <br>
                         </div>
                         <div class="form-floating">
                           
-                          {{ form.NombreDelConjuntoDatos }}
-                          
+                          <input name="NombreDelConjuntoDatos" value="{{ contexto.nombreDelConjuntoDatos }}"  class = "form-control">
                           <label class="font-weight-bold">NombreDelConjuntoDatos<span class="text-danger"> *</span></label>
                           
                           <br>
                         </div>
                         <div class="form-floating">
-                          {{ form.ComentarioRegistroBiologico }}
+
+                            <input name="ComentarioRegistroBiologico" value="{{ contexto.comentarioRegistro }}"  class = "form-control">
                             <label class="font-weight-bold">ComentarioRegistroBiologico<span class="text-danger"> *</span></label>
-                          
+
                             <br>
                         </div>
                         <div class="form-floating">
-                          {{ form.RegistradoPor }}
+                          <input name="RegistradoPor" value="{{ contexto.registrado }}" class = "form-control">
                           <label class="font-weight-bold">RegistradoPor<span class="text-danger"> *</span></label>
+
                           <br>
                         </div>
                         <div class="form-floating">
-                            {{ form.NumeroIndividuo }}
+                            <input name="NumeroIndividuo" value="{{ contexto.numeroIndividuo }}" class = "form-control" >
                             <label   class="font-weight-bold">NumeroIndividuo<span class="text-danger"> *</span></label>
+
                           
                             <br>
                         </div>
                         <div class="form-floating">
-                          {{ form.FechaEvento }}
+                          <input name="FechaEvento" value="{{ contexto.fechaEvento }}" class = "form-control">
                           <label   class="font-weight-bold">FechaEvento<span class="text-danger"> *</span></label>
+                          
+
                         
                           <br>
                         </div>
                         <div class="form-floating">
-                          {{ form.Habitad }}
-                          <label   class="font-weight-bold">Habitad<span class="text-danger"> *</span></label>
-                        
+                          <input name="Habitad" value="{{ contexto.habitad }}" class = "form-control">
+                          <label   class="font-weight-bold">Habitad<span class="text-danger"> *</span></label>                   
                           <br>
                         </div>
                         <div class="form-floating">
-                          {{ form.Departamento }}
+                          <input name="Departamento" value="{{ contexto.departamento }}" class = "form-control">
                           <label  class="font-weight-bold">Departamento<span class="text-danger"> *</span></label>
+                          
+
                         
                           <br>
                         </div>
@@ -81,57 +85,64 @@
                     <div class="col-lg-6">
                       <div class="form-group m-2">
                       <div class="form-floating">
-                        {{ form.Municipio }}
+                        <input name="Municipio" value="{{ contexto.municipio }}" class = "form-control">
                         <label class="font-weight-bold">Municipio<span class="text-danger"> *</span></label>
+                        
+
                         <br>
                       </div>
             <div class="form-floating">
-              {{ form.IdentificadoPor }}
+              <input name="IdentificadoPor" value="{{ contexto.identificadoPor }}" class = "form-control">
               <label   class="font-weight-bold">IdentificadoPor<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.FechaIdentificacion }}
-              <label   class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.IdentificacionReferencias }}
-              <label  class="font-weight-bold">IdentificacionReferencias<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.ComentarioIdentificacion }}
-              <label  class="font-weight-bold">ComentarioIdentificacion<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.NombreCientificoComentarioRegistroBiologico }}
-              <label  class="font-weight-bold">NombreCientificoComentarioRegistroBiologico<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-                                  
-              {{ form.ClaseE }}
-              <label  class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
               
+
+              <br>
+            </div>
+            <div class="form-floating">
+              <input name="FechaIdentificacion" value="{{ contexto.fechaIdentificacion }}" class = "form-control">
+              <label   class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
+              
+
+              <br>
+            </div>
+            <div class="form-floating">
+              <input name="IdentificacionReferencias" value="{{ contexto.identificacionReferencias }}" class = "form-control">
+              <label  class="font-weight-bold">IdentificacionReferencias<span class="text-danger"> *</span></label>
+              
+
+              <br>
+            </div>
+            <div class="form-floating">
+              <input name="ComentarioIdentificacion" value="{{ contexto.comentarioIdentificacion }}" class = "form-control">
+              <label  class="font-weight-bold">ComentarioIdentificacion<span class="text-danger"> *</span></label>
+              
+
+              <br>
+            </div>
+            <div class="form-floating">
+              <input name="NombreCientifico" value="{{ contexto.nombreCientifico }}" class = "form-control" >
+              <label  class="font-weight-bold">NombreCientifico<span class="text-danger"> *</span></label>
+
+              <br>
+            </div>
+            <div class="form-floating">
+              <input name="Clase" value="{{ contexto.clase }}" class = "form-control">                   
+              <label  class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
+
             </div>
             <div class="form-floating">
                                   
               {{ form.Image }}
-              <label  class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
+              <input type = "image">
+              <label  class="font-weight-bold">Imagen<span class="text-danger"> *</span></label>
               
             </div>
   <br>
   <div class="form-floating">
-    {{ form.NombreComun }}
+    <input name="NombreComun" value="{{ contexto.nombreComun }}" class = "form-control">
     <label  type="password" class="font-weight-bold">NombreComun<span class="text-danger"> *</span></label>
-  
+
+
     <br>
   </div>
 

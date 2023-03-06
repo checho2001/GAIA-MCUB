@@ -179,7 +179,36 @@ def custom_logout(request):
 
 class update_ejemplar(View):
         def get(self,request,id):
-            return render(request,"updateE.html")
+            ejemplar = especimen.objects.get(pk=id)
+            contexto = {
+                'id':ejemplar.id,
+                'numeroCatalogo': ejemplar.NumeroCatalogo,
+                'nombreDelConjuntoDatos' : ejemplar.NombreDelConjuntoDatos,
+                'comentarioRegistro': ejemplar.ComentarioRegistroBiologico,
+                'registrado': ejemplar.RegistradoPor,
+                'numeroIndividuo': ejemplar.NumeroIndividuo,
+                'fechaEvento': ejemplar.FechaEvento,
+                'habitad': ejemplar.Habitad,
+                'departamento': ejemplar.Departamento,
+                'municipio': ejemplar.Municipio,
+                'identificadoPor' : ejemplar.IdentificadoPor,
+                'fechaIdentificacion': ejemplar.FechaIdentificacion,
+                'identificacionReferencias' : ejemplar.IdentificacionReferencias,
+                'comentarioIdentificacion' : ejemplar.ComentarioIdentificacion,
+                'nombreCientifico' : ejemplar.NombreCientificoComentarioRegistroBiologico,
+                'clase' : ejemplar.ClaseE,
+                'nombreComun' : ejemplar.NombreComun,
+            }
+            
+            return render(request,"updateE.html",{'contexto':contexto})
+
+def update_record_ejemplar(request,id):
+
+    numero = request.POST['NumeroCatalogo']
+    print(id)
+    print(numero)
+    return HttpResponseRedirect(reverse('dashboardAux'))
+
 
 @login_required(login_url='redirect')
 def update_aux(request):

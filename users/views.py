@@ -20,6 +20,7 @@ from django.contrib.auth.models import Group
 import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
+from django.shortcuts import render, get_object_or_404
 
 
 class IndexView(View):
@@ -33,7 +34,8 @@ class CambioContrasenia(View):
             return render(request,"changepassword.html")
 class Galry(View):
         def get(self,request):
-            return render(request,"galery.html")
+            especimenes = especimen.objects.all()
+            return render(request,"galery.html",{'especimenes':especimenes})
         
 class Dashboard_Aux(View):
         def get(self,request):
@@ -283,3 +285,11 @@ def load_data(request):
         e.save()
     root.mainloop()
     return render(request, 'dashboard.html')
+
+
+
+
+def element_detail(request, pk):
+    element = get_object_or_404(especimen, pk=pk)
+    context = {'element': element}
+    return render(request, 'paginaejemplar.html', context)

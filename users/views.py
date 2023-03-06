@@ -357,6 +357,9 @@ def load_data(request):
 
 def element_detail(request, pk):
     element = get_object_or_404(especimen, pk=pk)
-  
-    context = {'element': element}
+    familias =  familia.objects.all()
+    ordenes =  Orden.objects.all()
+    clases =  Clase.objects.all()
+    generos =  Genero.objects.all()
+    context = {'element': element,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos}
     return render(request, 'paginaejemplar.html', context)

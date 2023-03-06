@@ -2,34 +2,230 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Perfil</title>
-<link rel="stylesheet" href="../static/css/style1.css" media="screen">
-<link rel="stylesheet" href="../static/fonts/linearicons/style.css" media="screen">
-<link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-<script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+<title>Ejemplar</title>
+<link rel="stylesheet" href="/static/css/style1.css" media="screen">
+<link rel="stylesheet" href="/static/fonts/linearicons/style.css" media="screen">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" >
+
+ <link rel="stylesheet" href="/static/fonts/linearicons/style.css" >
+
+<link rel="stylesheet" href="/static/css/sidebars.css" >
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"> </script>
+<script type="text/javascript" src="/static/js/sidebars.js"> </script>
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"> </script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+
+
+    #global {
+       
+        border: 2px solid #ddd;
+        
+        overflow-y: scroll;
+      }
+    .list-group-mine .list-group-item {
+    background-color: #f2f1f1;
+    font-size: 18px;
+    weight: 1px;
+    border-left-color: #fff;
+    border-right-color: #fff;
+
+  }
+  
+
+
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: auto;
+  }
+
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; }
+
+
+
+  .list-group-mine .list-group-item:hover {
+    background-color: gray;
+  }
+
+</style>
+
 </head>
     <body>
-        <hr>
-        <div class=" container bootstrap snippet">
+        
+        <header class="header"style="height: 75px;background-color: #008776;">
+            <div class="container" >
+              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 15px;">
+                  <li><a href="#" class="nav-link text-light">Inicio</a></li>
+                  <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Galeria</a></li>
+                  <li><a href="#" class="nav-link text-light">Registros</a></li>
+                  <li><a href="#" class="nav-link text-light">FAQs</a></li>
+                </ul>
+        
+               
+        
+                <div class="text-end" style="margin-top: 15px;">
+                  <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
+                </div>
+              </div>
+            </div>
+          </header>
+          
+          <main>
+            <div  class="row " >
+                <div class="col-2" style="background-color: #008776; height: 100vh;">
+                  
+                  <img src="/static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
+                    <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
+        
+                     
+                        
+                  
+                      
+                        <span class="fs-5 fw-semibold text-light">Categorias</span>
+                        
+                        <ul class="list-unstyled ps-0">
+                          <br>
+                        <li class="mb-1">
+        
+                          
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
+                            Familia
+                            </button>
+                            <div class="collapse show" id="reino-collapse">
+                              {% for i in familias %}
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                             
+                      
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
+                           
+                             
+                            </ul>
+                            {% endfor %}
+                               
+                            </div>
+                        </li>
+                        <br>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
+                            Genero
+                            </button>
+                            <div class="collapse" id="subgrupo-collapse">
+                              {% for i in generos %}
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
+                  
+                            </ul>
+                            {% endfor %}
+        
+                            </div>
+                        </li>
+                        <br>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
+                            Clase
+                            </button>
+                            <div class="collapse" id="filo-collapse">
+                              {% for i in clases %}
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
+                     
+                            </ul>
+                            {% endfor %}
+                            </div>
+                        </li>
+                        <br>
+                        <li class="mb-1">
+                          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
+                          Orden
+                          </button>
+                          <div class="collapse" id="orden-collapse">
+                            {% for i in ordenes %}
+                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
+                            </ul>
+                            {% endfor %}
+        
+        
+                          </div>
+                      </li>
+        
+                        <li class="border-top my-3"></li>
+                        
+                        </ul>
+        
+        
+                        <br>
+                        <img src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="200" >
+        
+        
+        
+                        <br>
+                    </div>
+                </div> 
+
+                
+        <div  class=" container bootstrap snippet">
+            
         <div class="row">
             <div class="col-sm-10" ><h1 style="color: #008776">Ejemplar  {{ element.NombreCientificoComentarioRegistroBiologico }} </h1></div>
         </div>
         <div class="row">
+           
         <div class="col-sm-3">
+             <img src="/static/images/galeria-1.jpg"  style="max-width:100%;" class="img-thumbnail">
             <div class="text-center">
-            <img src=".../static/images/galeria-1.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
-            <h6>Cambiar foto</h6>
-            <input type="file" class="text-center center-block file-upload">
+            
+            <h6> {{ element.NumeroCatalogo }}</h6>
+            
             </div>
         </hr>
     <br>
-        
-        <ul class="list-group">
-        <li class="list-group-item text-muted">Tareas Realizadas <i class="fa fa-dashboard fa-1x"></i></li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Registros</strong></span> 0</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Cambios</strong></span> 0</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Revisiones</strong></span> 0</li>
-        </ul> 
+       
             
         </div>
         <div class="col-9">
@@ -37,47 +233,111 @@
             <div class="tab-pane active" id="home">
                 <hr>
                     <form class="form" action="##" method="post" id="registrationForm">
+                        {% csrf_token %}
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="nombre"><h4 style="color: #777">Nombre</h4></label>
-                                <input type="text" class="form-control" name="nombre id="nombre" placeholder= {{ user.nombre }} disabled>
+                                <label for="nombre"><h4 style="color: #777">Nombre Comun</h4></label>
+                                <ul  class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.NombreComun }}</li>
+                                  </ul>
                             </div>
                         </div>
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                            <label for="apellido"><h4 style="color: #777">Apellido</h4></label>
-                                <input type="text" class="form-control" name="apellido" id="apellido" placeholder= {{ user.apellido }} disabled>
+                            <label for="apellido"><h4 style="color: #777">NombreDelConjuntoDatos</h4></label>
+                            <ul  class="list-group list-group-mine" >
+                                <li class="list-group-item">{{ element.NombreDelConjuntoDatos }}</li>
+                              </ul>
                             </div>
                         </div>
             
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="rolMuseo"><h4 style="color: #777">Rol</h4></label>
-                                <input type="text" class="form-control" name="rolMuseo" id="rolMuseo" placeholder= {{ user.rol }} disabled>
+                                <label for="rolMuseo"><h4 style="color: #777"> ComentarioRegistroBiologico</h4></label>
+                                <ul  class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.ComentarioRegistroBiologico }}</li>
+                                  </ul>
                             </div>
                         </div>
             
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="carrera"><h4 style="color: #777">Email</h4></label>
-                                <input type="text" class="form-control" name="carrera" id="carrera" placeholder={{ user.email }} disabled>
+                                <label for="carrera"><h4 style="color: #777">Registrado Por</h4></label>
+                                <ul  class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.RegistradoPor }}</li>
+                                  </ul>
                             </div>
                         </div>
                         <div class="form-group">
-                            
-                            <div class="col-xs-6">
-                                <label for="correo"><h4 style="color: #777">Usuario</h4></label>
-                                <input type="email" class="form-control" name="correo" id="correo" placeholder={{ user.username }} disabled>
-                            </div>
-                        </div>
 
+                            <div class="col-xs-6">
+                                <label for="correo"><h4 style="color: #777">NumeroIndividuo</h4></label>
+
+                                <ul class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.NumeroIndividuo }}</li>
+                                  </ul>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="carrera"><h4 style="color: #777">Nombre Cientifico </h4></label>
+                                <ul  class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.NombreCientificoComentarioRegistroBiologico }}</li>
+                                  </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="correo"><h4 style="color: #777">Clase</h4></label>
+
+                                <ul class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.ClaseE }}</li>
+                                  </ul>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="correo"><h4 style="color: #777">Orden</h4></label>
+
+                                <ul class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.Orden }}</li>
+                                  </ul>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="correo"><h4 style="color: #777">Familia</h4></label>
+
+                                <ul class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.Familia }}</li>
+                                  </ul>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="correo"><h4 style="color: #777">Genero</h4></label>
+
+                                <ul class="list-group list-group-mine" >
+                                    <li class="list-group-item">{{ element.Genero }}</li>
+                                  </ul>
+                               
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                    <button class="btn-lg text-light border-light pull-right" type="submit" style="background-color: #008776;"><i class="glyphicon glyphicon-ok-sign"></i>Cambios</button>
+                                    <button class="btn-lg text-light border-light pull-right"  onclick="location.href = '/galery'" style="background-color: #008776;"><i class="glyphicon glyphicon-ok-sign"></i>Volver</button>
                             </div>
                         </div>
                     </form>
@@ -88,5 +348,5 @@
             </div>
         </div>
     </div>
-                                                        
-    </body>
+</main>                                           
+    </body></html>

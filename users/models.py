@@ -35,7 +35,7 @@ class Genero(models.Model):
     def __str__(self):
         return self.nombreGenero     
     
-class Familia(models.Model):
+class familia(models.Model):
     id = models.AutoField(primary_key=True)
     nombreFamilia = models.CharField(max_length=50)
     genero= models.ForeignKey(Genero,on_delete=models.CASCADE)
@@ -45,7 +45,7 @@ class Familia(models.Model):
 class Orden(models.Model):
     id = models.AutoField(primary_key=True)
     nombreOrden = models.CharField(max_length=50)
-    familia= models.ForeignKey(Familia,on_delete=models.CASCADE)
+    familia= models.ForeignKey(familia,on_delete=models.CASCADE)
     
     def __str__(self):
         return self.nombreOrden

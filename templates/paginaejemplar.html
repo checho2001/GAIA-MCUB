@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+   
         <meta charset="utf-8">
-        <title>Ejemplar</title>
+        <title>Galeria</title>
         <link rel="stylesheet" href="../static/css/style1.css" >
         <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
         <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
@@ -62,47 +63,81 @@
       }
     </style>
   </head>
-  <body>
+<body>
+    
     <main>
-        <div class="row ">
-           
-                <H1> {{ element.NombreComun }} </H1>
-                <hr>
-                <div class="col-6 text-center">
-                  <img src="../static/images/galeria-4.jpg" class="avatar img-circle img-thumbnail" alt="avatar" style="height: 600px; width: 600px;">
-                  <p>Tomada por: {{ element.RegistradoPor }} </p>
-                </div>
-                <div class="col-5 ">
-                  <h3 style="color: #008776;">{Nombre.Cientifico}</h3>
-                  <hr>
-                  <p class="lnr-text-align-justify"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum."
-                  </p>
-                  <br>
-                  <h6 style="color: #008776;"> Identificado por: <p style="color: #111;">{Identificado}</p></h6>
-                  <br>
-                  <h6 style="color: #008776;"> Categorias:</h6>
-
-                  <div class="row">
-                      <div class="col-3">
-                        <a style="color: #008776;"href="#"> {Filo}</a>
-                      </div>
-                      <div class="col-3">
-                        <a style="color: #008776;" href="#"> {Especie} </a>
-                      </div>
-                      <div class="col-3">
-                        <a style="color: #008776;"href="#"> {Grupo}</a>
-                      </div>
-                      <div class="col-3">
-                        <a style="color: #008776;"href="#"> {Genero} </a>
-                      </div>
-                  </div>
-                </div>
-              </div>    
-              </div>
+    <div class="row ">
+        <div class="col-2" style="background-color: #008776; height: 100vh;">
+            <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
+                <span class="fs-5 fw-semibold text-light">Categorias</span>
+                
+                <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
+                    Reino
+                    </button>
+                    <div class="collapse show" id="reino-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Animalia</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Plantae</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Fungi</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Protista</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Monera</a></li>
+                    </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
+                    Subgrupo
+                    </button>
+                    <div class="collapse" id="subgrupo-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Vertebrados</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Invertebrados</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Moluscos</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Anélidos</a></li>
+                    </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
+                    Filo
+                    </button>
+                    <div class="collapse" id="filo-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Porifera</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Cnidaria</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Ctenophora</a></li>
+                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">Placozoa</a></li>
+                    </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
+                <form class="d-flex" role="search">
+                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+                </form>
+                </ul>
             </div>
         </div> 
-    </main>
-  </body>
+        <div class="col-10" style="height: 100vh; ">
+           
+            <div class="album py-5 " style="height: 100vh; ">
+                    <div class="container">
+
+                        <div class="gallery">
+                           
+                          </div>
+                       
+                        </div>
+                       
+        </div>   
+    </div>
+
+      
+       
+    </div>
+
+   
+    </main> 
+</body>
+</html>

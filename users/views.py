@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -35,7 +35,11 @@ class CambioContrasenia(View):
 class Galry(View):
         def get(self,request):
             especimenes = especimen.objects.all()
-            return render(request,"galery.html",{'especimenes':especimenes})
+            familias =  familia.objects.all()
+            ordenes =  Orden.objects.all()
+            clases =  Clase.objects.all()
+            generos =  Genero.objects.all()
+            return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos})
         
 class Dashboard_Aux(View):
         def get(self,request):
@@ -207,8 +211,41 @@ class update_ejemplar(View):
 def update_record_ejemplar(request,id):
 
     numero = request.POST['NumeroCatalogo']
-    print(id)
-    print(numero)
+    nombredeDatos = request.POST['NombreDelConjuntoDatos']
+    comentarioRegistro = request.POST['ComentarioRegistroBiologico']
+    registradoPor = request.POST['RegistradoPor']
+    numeroIndividuo = request.POST['NumeroIndividuo']
+    #fechaEvento = request.POST['FechaEvento']
+    habitad = request.POST['Habitad']
+    departamento = request.POST['Departamento']
+    municipio = request.POST['Municipio']
+    identificadoPor = request.POST['IdentificadoPor']
+    #fechaIdentificacion = request.POST['FechaIdentificacion']
+    idetificacionReferencias = request.POST['IdentificacionReferencias']
+    comentarioIdentificacion = request.POST['ComentarioIdentificacion']
+    nombreCientifico = request.POST['NombreCientifico']
+    clase = request.POST['Clase']
+    nombreComun = request.POST['NombreComun']
+    ejemplar = especimen.objects.get(pk=id)
+    ejemplar.NumeroCatalogo = numero
+    ejemplar.NombreDelConjuntoDatos = nombredeDatos
+    ejemplar.ComentarioRegistroBiologico = comentarioRegistro
+    ejemplar.RegistradoPor = registradoPor
+    ejemplar.NumeroIndividuo = numeroIndividuo
+    #ejemplar.FechaEvento = fechaEvento
+    ejemplar.Habitad = habitad
+    ejemplar.Departamento = departamento
+    ejemplar.Municipio = municipio
+    ejemplar.IdentificadoPor = identificadoPor
+    #ejemplar.FechaIdentificacion = fechaIdentificacion
+    ejemplar.IdentificacionReferencias = idetificacionReferencias
+    ejemplar.ComentarioIdentificacion = comentarioIdentificacion
+    ejemplar.NombreCientificoComentarioRegistroBiologico = nombreCientifico
+    ejemplar.ClaseE = clase
+    ejemplar.NombreComun = nombreComun
+    ejemplar.save()
+
+
     return HttpResponseRedirect(reverse('dashboardAux'))
 
 
@@ -320,5 +357,6 @@ def load_data(request):
 
 def element_detail(request, pk):
     element = get_object_or_404(especimen, pk=pk)
+  
     context = {'element': element}
     return render(request, 'paginaejemplar.html', context)

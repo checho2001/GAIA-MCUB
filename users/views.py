@@ -207,8 +207,41 @@ class update_ejemplar(View):
 def update_record_ejemplar(request,id):
 
     numero = request.POST['NumeroCatalogo']
-    print(id)
-    print(numero)
+    nombredeDatos = request.POST['NombreDelConjuntoDatos']
+    comentarioRegistro = request.POST['ComentarioRegistroBiologico']
+    registradoPor = request.POST['RegistradoPor']
+    numeroIndividuo = request.POST['NumeroIndividuo']
+    #fechaEvento = request.POST['FechaEvento']
+    habitad = request.POST['Habitad']
+    departamento = request.POST['Departamento']
+    municipio = request.POST['Municipio']
+    identificadoPor = request.POST['IdentificadoPor']
+    #fechaIdentificacion = request.POST['FechaIdentificacion']
+    idetificacionReferencias = request.POST['IdentificacionReferencias']
+    comentarioIdentificacion = request.POST['ComentarioIdentificacion']
+    nombreCientifico = request.POST['NombreCientifico']
+    clase = request.POST['Clase']
+    nombreComun = request.POST['NombreComun']
+    ejemplar = especimen.objects.get(pk=id)
+    ejemplar.NumeroCatalogo = numero
+    ejemplar.NombreDelConjuntoDatos = nombredeDatos
+    ejemplar.ComentarioRegistroBiologico = comentarioRegistro
+    ejemplar.RegistradoPor = registradoPor
+    ejemplar.NumeroIndividuo = numeroIndividuo
+    #ejemplar.FechaEvento = fechaEvento
+    ejemplar.Habitad = habitad
+    ejemplar.Departamento = departamento
+    ejemplar.Municipio = municipio
+    ejemplar.IdentificadoPor = identificadoPor
+    #ejemplar.FechaIdentificacion = fechaIdentificacion
+    ejemplar.IdentificacionReferencias = idetificacionReferencias
+    ejemplar.ComentarioIdentificacion = comentarioIdentificacion
+    ejemplar.NombreCientificoComentarioRegistroBiologico = nombreCientifico
+    ejemplar.ClaseE = clase
+    ejemplar.NombreComun = nombreComun
+    ejemplar.save()
+
+
     return HttpResponseRedirect(reverse('dashboardAux'))
 
 

@@ -18,8 +18,10 @@
           <div class="card-body p-0">
             <div class="row g-0">
                 <div class="p-5">
-                  <form action= "{%url 'register' %}" method= POST class=" w-100 m-auto">
+                  <form id="miform"  action="{%url 'register' %}" method= POST class=" w-100 m-auto">
                     {% csrf_token %}
+                    <h1 class="mb-5 fw-normal"style="color: #008776">Registro Usuario</h1>
+                    <div class="row">
                     <div class="form-group mb-2">
                       <div class="form-floating">
                         {{ form.username }}
@@ -47,6 +49,7 @@
                         <label class="font-weight-bold">Correo<span class="text-danger"> *</span></label>
                        
                     </div>
+                    <br>
                     <div class="form-floating">
                       {{ form.password }}
                       <label  type="password" class="font-weight-bold">Contraseña<span class="text-danger"> *</span></label>
@@ -60,8 +63,11 @@
                       
                     </div>
                     <br>
+        
+
                     <button  onclick="location.href = '/dash'" class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
                     <br>
+                    <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/dash'"  style="background-color: #008776"  type="button" aria-expanded="false" >Volver</button></div>
                     <br> 
 
 
@@ -82,6 +88,8 @@
               
                    
                   </form>
+
+                  
                 </div>
               </div>
             </div>

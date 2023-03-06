@@ -59,6 +59,10 @@
         fill: currentColor;
       }
 
+      .table-responsive {
+        max-height: 450px; 
+        overflow-y: scroll;
+      }
       .nav-scroller {
         position: relative;
         z-index: 2;
@@ -127,7 +131,8 @@
           <div class="row">
             <div class="col-sm-6 mw-100 ">
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Tareas</h1></div>
-              <table>
+              <div   class="table-responsive">
+                <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
                 <thead>
                   <tr>
                     <th>Fecha</th>
@@ -148,13 +153,14 @@
                   {% endfor %}
                 </tbody>
               </table>
-              
+            </div>
               </div>
 
             </div>
             <div class="col-sm-6 mw-100">
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tareas Realizadas</h1></div>
-              <table>
+              <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Tareas Realizadas</h1></div>
+              <div   class="table-responsive">
+              <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -178,6 +184,7 @@
                   {% endfor %}
                 </tbody>
               </table>
+            </div>
               <div class="row">
                 <div class="col-sm-4">
                   <br>

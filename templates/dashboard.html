@@ -16,6 +16,12 @@
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
     <style>
+      #global {
+       
+        border: 2px solid #ddd;
+        
+        overflow-y: scroll;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -97,7 +103,7 @@
     <nav>
     <main>
     
-      <div class="row mw-100 overflow-auto" >
+      <div  class="row mw-100 overflow-auto" >
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
             <ul class="nav-scroller ">
@@ -114,7 +120,10 @@
                   
                 </a>
                 
-                <br>
+                
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light">Hora :    <span id="current-time"></span></p>
+                <br><br><br>
                 <img src="../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="200" >
 
 
@@ -134,7 +143,7 @@
                       </ul>
           </div>
       </div> 
-        <div class="col-sm-10 mw-100" style="background-color: #eee;">
+        <div  id="global" class="col-sm-10 mw-100" style="background-color: #eee;">
          
           <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           <hr>
@@ -149,10 +158,10 @@
                 <div class="row">
                   <div class="col">
                    
-                    <button class=" w-100 btn-lg border-light text-light "  style="background-color: #008776"  type="button" aria-expanded="false" >Agregar</button></div>
+                    <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/register'"  style="background-color: #008776"  type="button" aria-expanded="false" >Agregar</button></div>
                   <div class="col">
                     <div class="dropdown">
-                      <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
+                      <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/UpdateUser'"  style="background-color: #008776" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
                         Modificar
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -169,7 +178,7 @@
                    
                   <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776"  type="button" aria-expanded="false" >Desactivar</button></div>
                 
-                <div class="col">
+                <div class="col-sm-4 mw-100">
               </div>
               <br> 
               <br> 
@@ -208,17 +217,66 @@
                   
                
               </div>
-  
-              <div class="col-sm-4">
-                <br>
-                <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Excel</button>
-                  <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/informe'"  value="Register"  type="submit" style="background-color: #008776">Realizar Actividad</button>
-              </div>
+              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion ejemplares</h1></div>
+              
 
-             
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                     
+                      <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Excel</button>
+                    </div>
+                      <div class="col">
+                    
+                        <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/informe'"  value="Register"  type="submit" style="background-color: #008776">Realizar Actividad</button>
+                          
+                        
+                       
+                      
+  
+                      
+                  </div>
+                  <div class="col">
+                     
+                    <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/registerE'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Agregar especimen</button>
+                  
+                 
+                </div>
+                <div class="col">
+                    
+                  <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/Update'"  value="Register"  type="submit" style="background-color: #008776">Modificar Especimen</button>
+                    
+                  
+                 
+                
+
+                
+            </div>
+                <br>
+              
               
                
+              </div>
+             
+                <br>
+                
+              
                
+             
+              </div>
+
+            </div>
+              
+               
+              <script>
+                function updateTime() {
+                    var now = new Date();
+                    var timeElement = document.getElementById("current-time");
+                    timeElement.innerHTML = now.toLocaleTimeString();
+                }
+                setInterval(updateTime, 1000); // update every second
+            </script>
                
                   
 

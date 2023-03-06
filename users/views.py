@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -35,7 +35,11 @@ class CambioContrasenia(View):
 class Galry(View):
         def get(self,request):
             especimenes = especimen.objects.all()
-            return render(request,"galery.html",{'especimenes':especimenes})
+            familias =  familia.objects.all()
+            ordenes =  Orden.objects.all()
+            clases =  Clase.objects.all()
+            generos =  Genero.objects.all()
+            return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos})
         
 class Dashboard_Aux(View):
         def get(self,request):
@@ -353,5 +357,6 @@ def load_data(request):
 
 def element_detail(request, pk):
     element = get_object_or_404(especimen, pk=pk)
+  
     context = {'element': element}
     return render(request, 'paginaejemplar.html', context)

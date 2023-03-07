@@ -57,7 +57,7 @@
       }
 
       .b-example-vr {
-        flex-shrink: 0;
+        flex-shrink: 1;
         width: 1.5rem;
         height: 100vh;
       }
@@ -134,23 +134,19 @@
         <div class="col-2" style="background-color: #008776; height: 100vh;">
           
           <img src="../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
-            <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
+            <div class="flex-shrink-0 p-3 " style="width: 50%; height:100%">
 
              
-                
-          
-              
                 <span class="fs-5 fw-semibold text-light">Categorias</span>
                 
                 <ul class="list-unstyled ps-0">
                   <br>
                 <li class="mb-1">
 
-                  
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="false">
                     Familia
                     </button>
-                    <div class="collapse show" id="reino-collapse">
+                    <div class="collapse" id="reino-collapse">
                       {% for i in familias %}
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                      

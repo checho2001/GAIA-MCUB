@@ -96,7 +96,7 @@ class especimen(models.Model):
     Departamento = models.CharField(max_length=500)
     Municipio= models.CharField(max_length=500)
     IdentificadoPor= models.CharField(max_length=500)
-    FechaIdentificacion = models.DateField(max_length=500)
+    FechaIdentificacion = models.DateField(max_length=500,blank=True,null=True)
     IdentificacionReferencias = models.CharField(max_length=500)
     ComentarioIdentificacion = models.CharField(max_length=500)
     NombreCientificoComentarioRegistroBiologico = models.CharField(max_length=500)

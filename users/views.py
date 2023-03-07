@@ -56,8 +56,9 @@ class Dashboard_Cur(View):
 class Dashboard(View):
         @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
+            especimenes = especimen.objects.all()
             actions = UserAction.objects.order_by('tiempo').all()
-            return render(request,"dashboard.html",{'actions': actions})
+            return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions})
                 	
 class PerfilU(View):
         def get(self,request):

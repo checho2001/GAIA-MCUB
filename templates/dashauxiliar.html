@@ -104,14 +104,15 @@
               </li>
 
               <hr>
-              <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola Auxiliar</p>
+              <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
               <div class="dropdown border-top">
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../static/images/galeria-6.jpg" alt="mdo" width="200" height="200" class="rounded-circle">
                   
                 </a>
                 <br>
-               
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light">Hora :    <span id="current-time"></span></p>
         
                 
                 <ul class="dropdown-menu text-small shadow">
@@ -158,7 +159,7 @@
 
             </div>
             <div class="col-sm-6 mw-100">
-              <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Tareas Realizadas</h1></div>
+              <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares</h1></div>
               <div   class="table-responsive">
               <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
                 <thead>
@@ -199,7 +200,14 @@
                     <br>
                   </div>
               </div>
-
+              <script>
+                function updateTime() {
+                    var now = new Date();
+                    var timeElement = document.getElementById("current-time");
+                    timeElement.innerHTML = now.toLocaleTimeString();
+                }
+                setInterval(updateTime, 1000);
+            </script>
             </div>
           </div>
         </div>

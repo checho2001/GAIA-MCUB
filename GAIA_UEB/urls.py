@@ -12,6 +12,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', IndexView.as_view(),name='home'),
     path('index/', IndexView.as_view(),name='home'),
     path('login/', views.login, name='login'),
     path('galery/', Galry.as_view(),name="galery"),
@@ -27,7 +28,7 @@ urlpatterns = [
     path('informe/',  views.registroActividad,name="registroActividad"),
     path('ejemplar/',  EjemplarP.as_view(),name="Ejemplar"),
     path('dashAux/updateE/<int:id>', update_ejemplar.as_view(), name='updateE'),
-    path('dashAux/updateE/updateEjemplar/<int:id>',views.update_record_ejemplar, name="updateEjemplar"),
+    path('dash/updateE/<int:id>',views.update_record_ejemplar, name="updateEjemplar"),
     path("UpdateUser/", views.update_aux_curatoria, name="UpdateU"),
     path('logout', views.custom_logout, name='logout'),
     path('load_data/', load_data, name='load_data'),

@@ -100,7 +100,7 @@
               </li>
 
               <hr>
-              <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola Curador</p>
+              <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
               <div class="dropdown border-top">
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../static/images/galeria-6.jpg" alt="mdo" width="200" height="200" class="rounded-circle">
@@ -108,7 +108,8 @@
                 </a>
                 <br>
                
-        
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light">Hora :    <span id="current-time"></span></p>
                 
                 <ul class="dropdown-menu text-small shadow">
                   <li><a class="dropdown-item" onclick="location.href = '/perfilU'" href="#">Perfil</a></li>
@@ -188,15 +189,12 @@
               <table>
                 <thead>
                   <tr>
-                    <th>Fecha</th>
-                    <th>Tarea</th>
-                    <th>Descripcion</th>
-                    <th>Ejemplar</th>
+                   
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <h6>Aqui van las cosas del for</h6>
+                    <h6></h6>
                   </tr>
                 </tbody>
               </table>
@@ -214,7 +212,14 @@
                     <br>
                   </div>
               </div>
-
+              <script>
+                function updateTime() {
+                    var now = new Date();
+                    var timeElement = document.getElementById("current-time");
+                    timeElement.innerHTML = now.toLocaleTimeString();
+                }
+                setInterval(updateTime, 1000);
+            </script>
             </div>
           </div>
         </div>

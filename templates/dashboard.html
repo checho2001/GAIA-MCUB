@@ -19,7 +19,7 @@
       #global {
        
         border: 2px solid #ddd;
-        
+        height: 1000px;
         overflow-y: scroll;
       }
       .bd-placeholder-img {
@@ -145,7 +145,7 @@
       </div> 
         <div  id="global" class="col-sm-10 mw-100" style="background-color: #eee;">
          
-          <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
+          <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           <hr>
           <div class="row">
             <div class="col-sm-6 mw-100 ">
@@ -245,9 +245,34 @@
                 </div>
                 <div class="col">
                     
-                  <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/Update'"  value="Register"  type="submit" style="background-color: #008776">Modificar Especimen</button>
                     
-                  
+                  <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares</h1></div>
+                  <div   class="table-responsive">
+                  <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Cientifico</th>
+                        <th>Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for esp in especimenes %}
+                      <tr>
+                        
+                        <td>{{ esp.id }}</td>
+                        <td>{{ esp.NombreComun }}</td>
+                        <td>{{ esp.FechaIdentificacion }}</td>
+                        <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
+                        <td><a href="updateE/{{esp.id}}">Edit Specimen</a></td>
+    
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
                  
                 
 
@@ -275,7 +300,7 @@
                     var timeElement = document.getElementById("current-time");
                     timeElement.innerHTML = now.toLocaleTimeString();
                 }
-                setInterval(updateTime, 1000); // update every second
+                setInterval(updateTime, 1000);
             </script>
                
                   

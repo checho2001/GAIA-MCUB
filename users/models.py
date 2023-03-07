@@ -91,7 +91,7 @@ class especimen(models.Model):
     ComentarioRegistroBiologico = models.CharField(max_length=500)
     RegistradoPor = models.CharField(max_length=500)
     NumeroIndividuo = models.CharField(max_length=500)
-    FechaEvento = models.DateField(blank=True,null=True,max_length=500)
+    FechaEvento = models.DateField(max_length=500,blank=True,null=True,)
     Habitad= models.CharField(max_length=500)
     Departamento = models.CharField(max_length=500)
     Municipio= models.CharField(max_length=500)
@@ -109,11 +109,7 @@ class especimen(models.Model):
 
     def __str__(self):
         return (self.NumeroCatalogo)  
-    def clean(self):
-        super().clean()
-
-        if not self.FechaEvento:
-            return
+    
 class UserAction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tarea = models.CharField(max_length=100)

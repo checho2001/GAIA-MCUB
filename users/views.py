@@ -346,10 +346,53 @@ def load_data(request):
                                                 'vernacularName'])
     
     for _, row in data.iterrows():
-        e = especimen(NumeroCatalogo=row['catalogNumber'], NombreDelConjuntoDatos=row['datasetName'], ComentarioRegistroBiologico=row['occurrenceRemarks'], RegistradoPor=row['recordedBy'], 
-                              NumeroIndividuo=row['individualCount'], FechaEvento=row['eventDate'], Habitad=row['habitat'], Departamento=row['stateProvince'], Municipio=row['county'], IdentificadoPor=row['identifiedBy'], 
-                              FechaIdentificacion=row['dateIdentified'], IdentificacionReferencias=row['identificationReferences'], ComentarioIdentificacion=row['identificationRemarks'], NombreCientificoComentarioRegistroBiologico=row['scientificName'],
-                              ClaseE=row['class'],  Orden=row['order'],  Genero=row['genus'],  Familia=row['family'],NombreComun=row['vernacularName'])
+        # Check if eventDate column is not null
+        if not pd.isnull(row['eventDate']):
+            try:
+                # Convert the eventDate string to a datetime object
+                event_date_obj = datetime.datetime.fromisoformat(row['eventDate'])
+            except ValueError as e:
+                # Log the error message or take other appropriate action
+                print(f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}")
+                event_date_obj = None
+        else:
+            event_date_obj = None
+
+       
+        if not pd.isnull(row['dateIdentified']):
+
+            try:
+                # Convert the eventDate string to a datetime object
+                date_identified_obj = pd.to_datetime(row['dateIdentified'])
+            except ValueError as e:
+                # Log the error message or take other appropriate action
+                print(f"Error converting dateIdentified '{row['dateIdentified']}' to datetime object: {e}")
+                date_identified_obj = None
+        else:
+            date_identified_obj = None
+          
+
+        e = especimen(
+            NumeroCatalogo=row['catalogNumber'],
+            NombreDelConjuntoDatos=row['datasetName'],
+            ComentarioRegistroBiologico=row['occurrenceRemarks'],
+            RegistradoPor=row['recordedBy'],
+            NumeroIndividuo=row['individualCount'],
+            FechaEvento=event_date_obj, # Use the converted eventDate datetime object
+            Habitad=row['habitat'],
+            Departamento=row['stateProvince'],
+            Municipio=row['county'],
+            IdentificadoPor=row['identifiedBy'],
+            FechaIdentificacion=date_identified_obj, # Use the converted dateIdentified datetime object
+            IdentificacionReferencias=row['identificationReferences'],
+            ComentarioIdentificacion=row['identificationRemarks'],
+            NombreCientificoComentarioRegistroBiologico=row['scientificName'],
+            ClaseE=row['class'],
+            Orden=row['order'],
+            Genero=row['genus'],
+            Familia=row['family'],
+            NombreComun=row['vernacularName']
+        )
         e.save()
     root.mainloop()
     return render(request, 'dashboard.html')

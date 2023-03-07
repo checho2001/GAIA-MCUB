@@ -38,14 +38,14 @@ class Genero(models.Model):
 class familia(models.Model):
     id = models.AutoField(primary_key=True)
     nombreFamilia = models.CharField(max_length=50)
-    genero= models.ForeignKey(Genero,on_delete=models.CASCADE)
+   
     
     def __str__(self):
         return self.nombreFamilia 
 class Orden(models.Model):
     id = models.AutoField(primary_key=True)
     nombreOrden = models.CharField(max_length=50)
-    familia= models.ForeignKey(familia,on_delete=models.CASCADE)
+ 
     
     def __str__(self):
         return self.nombreOrden
@@ -53,7 +53,7 @@ class Orden(models.Model):
 class Clase(models.Model):
     id = models.AutoField(primary_key=True)
     nombreClase = models.CharField(max_length=50)
-    ordern= models.ForeignKey(Orden,on_delete=models.CASCADE)
+
    
     
     def __str__(self):

@@ -399,6 +399,40 @@ def load_data(request):
     root.mainloop()
     return render(request, 'dashboard.html')
 
+def load_data_clase(request):
+    root = tk.Tk()
+    root.withdraw()
+
+   
+    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+    
+    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'class', 'order', 'family', 'genus'
+                                                ])
+  
+    for _, row in data.iterrows():
+          
+        clase = Clase.objects.filter(nombreClase=row['class']).first()
+        if not clase:
+                clase = Clase(nombreClase=row['class'])
+                clase.save()
+
+        orden = Orden.objects.filter(nombreOrden=row['order']).first()
+        if not orden:
+            orden = Orden(nombreOrden=row['order'])
+            orden.save()
+
+        familias = familia.objects.filter(nombreFamilia=row['family']).first()
+        if not familias:
+            familias = familia(nombreFamilia=row['family'])
+            familias.save()
+
+        genero = Genero.objects.filter(nombreGenero=row['genus']).first()
+        if not genero:
+            genero = Genero(nombreGenero=row['genus'])
+            genero.save()
+    root.mainloop()
+    return render(request, 'dashboard.html')
+
 
 
 

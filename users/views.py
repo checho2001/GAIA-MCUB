@@ -21,6 +21,7 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
+import datetime
 
 
 class IndexView(View):
@@ -338,17 +339,17 @@ def load_data(request):
 
    
     file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+    
     data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=['catalogNumber', 'datasetName', 'occurrenceRemarks', 'recordedBy', 'individualCount',
                                               'eventDate', 'habitat', 'stateProvince', 'county', 'identifiedBy',  'dateIdentified',
-                                                'identificationReferences', 'identificationRemarks', 'scientificName', '0', 'order', 'family', 'genus', 
+                                                'identificationReferences', 'identificationRemarks', 'scientificName', 'class', 'order', 'family', 'genus', 
                                                 'vernacularName'])
- 
+    
     for _, row in data.iterrows():
         e = especimen(NumeroCatalogo=row['catalogNumber'], NombreDelConjuntoDatos=row['datasetName'], ComentarioRegistroBiologico=row['occurrenceRemarks'], RegistradoPor=row['recordedBy'], 
                               NumeroIndividuo=row['individualCount'], FechaEvento=row['eventDate'], Habitad=row['habitat'], Departamento=row['stateProvince'], Municipio=row['county'], IdentificadoPor=row['identifiedBy'], 
                               FechaIdentificacion=row['dateIdentified'], IdentificacionReferencias=row['identificationReferences'], ComentarioIdentificacion=row['identificationRemarks'], NombreCientificoComentarioRegistroBiologico=row['scientificName'],
-                              ClaseE=row['0'],  Orden=row['order'],  Genero=row['genus'],  Familia=row['family'],
-                              NombreComun=row['vernacularName'])
+                              ClaseE=row['class'],  Orden=row['order'],  Genero=row['genus'],  Familia=row['family'],NombreComun=row['vernacularName'])
         e.save()
     root.mainloop()
     return render(request, 'dashboard.html')

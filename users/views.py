@@ -34,12 +34,14 @@ class CambioContrasenia(View):
         def get(self,request):
             return render(request,"changepassword.html")
 class Galry(View):
-        def get(self,request):
+        def get(self,request, ):
             especimenes = especimen.objects.all()
             familias =  familia.objects.all()
             ordenes =  Orden.objects.all()
             clases =  Clase.objects.all()
             generos =  Genero.objects.all()
+           
+                
             return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos})
         
 class Dashboard_Aux(View):

@@ -31,8 +31,9 @@
         margin-bottom: 20px;
     }
     
-    .imagen img {
+    .imagen img:hoover {
         width: 100%;
+        transform (1,2);
     }
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -120,7 +121,7 @@
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+          <input id="myInput" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 
         <div class="text-end" style="margin-top: 15px;">
@@ -149,8 +150,7 @@
                     <div class="collapse" id="reino-collapse">
                       {% for i in familias %}
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                     
-              
+ 
                     <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
                    
                      
@@ -285,20 +285,24 @@
                               
                                 <div class="card">
                                   <a href="{% url 'element_detail' element.pk %}">
+                                
                                   <img 
                                   src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
                                     class="card-img-top"
-                                    alt="Waterfall" width="300" height="700"
+                                    alt="Waterfall" width="300" height="700" 
                                   />
                                   </a>
                                   <div class="card-body">
-                                    <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                                    <h5 class="card-title"> <i>{{ element.NombreCientificoComentarioRegistroBiologico }} </i></h5>
                                     <p class="card-text">
                                       {{  element.NumeroCatalogo }}
-                                     
+                                    </p>
+                            
+                                    <p class="card-text">
+                                      {{  element.ClaseE }}
                                     </p>
                                     <p class="card-text">
-                                 
+
                                       {{  element.NombreDelConjuntoDatos }}
                                     </p>
                                     <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
@@ -346,7 +350,12 @@
       document.querySelector('.gallery').appendChild(img);
     });
   });
+
+
+
+  
 </script>
+
     </main> 
 </body>
 </html>

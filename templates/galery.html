@@ -31,9 +31,8 @@
         margin-bottom: 20px;
     }
     
-    .imagen img:hoover {
+    .imagen img {
         width: 100%;
-        transform (1,2);
     }
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -58,7 +57,7 @@
       }
 
       .b-example-vr {
-        flex-shrink: 1;
+        flex-shrink: 0;
         width: 1.5rem;
         height: 100vh;
       }
@@ -121,7 +120,7 @@
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
-          <input id="myInput" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 
         <div class="text-end" style="margin-top: 15px;">
@@ -135,22 +134,27 @@
         <div class="col-2" style="background-color: #008776; height: 100vh;">
           
           <img src="../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
-            <div class="flex-shrink-0 p-3 " style="width: 50%; height:100%">
+            <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
 
              
+                
+          
+              
                 <span class="fs-5 fw-semibold text-light">Categorias</span>
                 
                 <ul class="list-unstyled ps-0">
                   <br>
                 <li class="mb-1">
 
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="false">
+                  
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
                     Familia
                     </button>
-                    <div class="collapse" id="reino-collapse">
+                    <div class="collapse show" id="reino-collapse">
                       {% for i in familias %}
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
- 
+                     
+              
                     <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
                    
                      
@@ -285,24 +289,20 @@
                               
                                 <div class="card">
                                   <a href="{% url 'element_detail' element.pk %}">
-                                
                                   <img 
                                   src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
                                     class="card-img-top"
-                                    alt="Waterfall" width="300" height="700" 
+                                    alt="Waterfall" width="300" height="700"
                                   />
                                   </a>
                                   <div class="card-body">
-                                    <h5 class="card-title"> <i>{{ element.NombreCientificoComentarioRegistroBiologico }} </i></h5>
+                                    <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
                                     <p class="card-text">
                                       {{  element.NumeroCatalogo }}
-                                    </p>
-                            
-                                    <p class="card-text">
-                                      {{  element.ClaseE }}
+                                     
                                     </p>
                                     <p class="card-text">
-
+                                 
                                       {{  element.NombreDelConjuntoDatos }}
                                     </p>
                                     <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
@@ -350,12 +350,7 @@
       document.querySelector('.gallery').appendChild(img);
     });
   });
-
-
-
-  
 </script>
-
     </main> 
 </body>
 </html>

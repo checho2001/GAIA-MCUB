@@ -107,9 +107,6 @@
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
             <ul class="nav-scroller ">
-             
-              <hr>
-
               <img src="../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
               <br>
 
@@ -157,8 +154,8 @@
               <div class="container">
                 <div class="row">
                   <div class="col">
-                   
-                    <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/register'"  style="background-color: #008776"  type="button" aria-expanded="false" >Agregar</button></div>
+                    <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/register'"  style="background-color: #008776"  type="button" aria-expanded="false" >Agregar</button>
+                  </div>
                   <div class="col">
                     <div class="dropdown">
                       <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/UpdateUser'"  style="background-color: #008776" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
@@ -171,55 +168,54 @@
                         <li><a class="dropdown-item" href="#">Curador General del Área</a></li>
                       </ul>
                     </div>
-
-                    
                 </div>
+                
                 <div class="col">
                    
-                  <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776"  type="button" aria-expanded="false" >Desactivar</button></div>
+                  <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776"  type="button" aria-expanded="false" >Desactivar</button>
+                </div>
                 
-                <div class="col-sm-4 mw-100">
+              <div class="col-sm-4 mw-100">
               </div>
               <br> 
-              <br> 
-              <br> 
+              <br>
               <br> 
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Actividades</h1></div>
-              
               <br>   
               <br>
               
-              <div class="table-responsive">
-                <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Fecha</th>
-                      <th scope="col">Tarea Realizada</th>
-                      <th scope="col">Usuario</th>
-                      <th scope="col">Ejemplar</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for action in actions %}
-                    <tr>
-                      <td>{{ action.tiempo }}</td>
-                      <td>{{ action.tarea }}</td>
-                      <td>{{ action.user }}</td>
-                      <td>{{ action.ejemplar }}</td>
-                      
-                   
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-               
+                <div class="table-responsive">
+                  <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tarea Realizada</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Ejemplar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for action in actions %}
+                      <tr>
+                        <td>{{ action.tiempo }}</td>
+                        <td>{{ action.tarea }}</td>
+                        <td>{{ action.user }}</td>
+                        <td>{{ action.ejemplar }}</td>
+                        
+                    
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                
+                </div>
+              </div></div>  
               </div>
-                  
-               
-              </div>
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion ejemplares</h1></div>
-              
 
+              <div class="col-sm-6 mw-100 ">
+              
+              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion ejemplares</h1></div>
+              <br>
 
                 <div class="container">
                   <div class="row">
@@ -244,7 +240,7 @@
                  
                 </div>
                 <div class="col">
-                    
+                <br>
                     
                   <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares</h1></div>
                   <div   class="table-responsive">
@@ -289,9 +285,9 @@
               
                
              
+                </div>
               </div>
-
-            </div>
+              </div>
               
                
               <script>

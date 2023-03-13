@@ -114,6 +114,7 @@ class especimen(models.Model):
     Genero =   models.CharField(max_length=500)
     Familia =   models.CharField(max_length=500)
     NombreComun = models.CharField(max_length=500)
+    estado = models.BooleanField(default=True)
     Image = models.ImageField(upload_to="ejemplares", null=True)
 
     def __str__(self):

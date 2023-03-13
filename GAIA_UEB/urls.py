@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,load_data_clase,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
@@ -12,6 +12,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
     path('', IndexView.as_view(),name='home'),
     path('index/', IndexView.as_view(),name='home'),
     path('login/', views.login, name='login'),
@@ -29,12 +30,16 @@ urlpatterns = [
     path('ejemplar/',  EjemplarP.as_view(),name="Ejemplar"),
     path('dashAux/updateE/<int:id>', update_ejemplar.as_view(), name='updateE'),
     path('dash/updateE/<int:id>',views.update_record_ejemplar, name="updateEjemplar"),
+    path('dash/dardebaja/<int:id>', views.darbaja_especimen,name="darbajaE"),
     path("UpdateUser/", views.update_aux_curatoria, name="UpdateU"),
     path('logout', views.custom_logout, name='logout'),
     path('load_data/', load_data_clase, name='load_data'),
     path('paginaejemplar/<int:pk>/', element_detail, name='element_detail'),
     path('dashCur/aprobar/<int:id>', views.aprobar_actividad, name = "aprobarA" ),
     path('galery/familia/<str:nombre>', views.galery_familia,name="galeryF"),
+    path('galery/genero/<str:nombre>', views.galery_genero,name="galeryG"),
+    path('galery/clase/<str:nombre>', views.galery_clase,name="galeryC"),
+    path('galery/orden/<str:nombre>', views.galery_orden,name="galeryO"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:

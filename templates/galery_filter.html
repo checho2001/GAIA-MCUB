@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+        <meta charset="utf-8">
+        <title>Galeria</title>
+        <link rel="stylesheet" href="../../../static/css/style1.css" >
+        <link rel="stylesheet" href="../../../static/fonts/linearicons/style.css" >
+        <link rel="stylesheet" href="../../../static/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="../../../static/css/sidebars.css" >
+        <script type="text/javascript" src="../../../static/js/bootstrap.bundle.min.js"> </script>
+        <script type="text/javascript" src="../../../static/js/sidebars.js"> </script>
+    <style>
+      #global {
+       
+        border: 2px solid #ddd;
+        
+        overflow-y: scroll;
+      }
+
+      #galeria {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .imagen {
+        float: left;
+        width: 100%;
+        margin-right: 2%;
+        margin-bottom: 20px;
+    }
+    
+    .imagen img {
+        width: 100%;
+    }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      #radio-cards label {
+  width: 100%;
+}
+
+#radio-cards .card-input-element {
+  display: none;
+}
+
+#radio-cards .card-input:hover {
+  cursor: pointer;
+  background-color: hsl(144, 60%, 95.9%);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#radio-cards .card-input-element:checked + .card-input {
+  border: 1px solid #008776;
+}
+    </style>
+  </head>
+<body>
+  <header class="header"style="height: 75px;background-color: #008776;">
+    <div class="container" >
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+       
+
+        <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 15px;">
+          <li><a type="button"  onclick="location.href = '/index'" class="nav-link text-light">Inicio</a></li>
+          <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
+          <li><a href="#" class="nav-link text-light">Registros</a></li>
+          <li><a href="#" class="nav-link text-light">FAQs</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+        </form>
+
+        <div class="text-end" style="margin-top: 15px;">
+          <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
+        </div>
+      </div>
+    </div>
+  </header>
+    <main>
+    <div  class="row " >
+        <div class="col-2" style="background-color: #008776; height: 100vh;">
+          
+          <img src="../../../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
+            <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
+
+             
+                
+          
+              
+                <span class="fs-5 fw-semibold text-light">Categorias</span>
+                
+                <ul class="list-unstyled ps-0">
+                  <br>
+                  <li><a href="../" class="link-dark d-inline-flex text-decoration-none rounded text-light">Colecciones</a></li>
+                  <br>
+                <li class="mb-1">
+
+                  
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
+                    Familia
+                    </button>
+                    <div class="collapse show" id="reino-collapse">
+                      {% for i in familias %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                     
+              
+                    <li><a href="../familia/{{i.nombreFamilia}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
+                   
+                     
+                    </ul>
+                    {% endfor %}
+                       
+                    </div>
+                </li>
+                <br>
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
+                    Genero
+                    </button>
+                    <div class="collapse" id="subgrupo-collapse">
+                      {% for i in generos %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="../genero/{{i.nombreGenero}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
+          
+                    </ul>
+                    {% endfor %}
+
+                    </div>
+                </li>
+                <br>
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
+                    Clase
+                    </button>
+                    <div class="collapse" id="filo-collapse">
+                      {% for i in clases %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="../clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
+             
+                    </ul>
+                    {% endfor %}
+                    </div>
+                </li>
+                <br>
+                <li class="mb-1">
+                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
+                  Orden
+                  </button>
+                  <div class="collapse" id="orden-collapse">
+                    {% for i in ordenes %}
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a href="../orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
+                    </ul>
+                    {% endfor %}
+
+
+                  </div>
+              </li>
+
+                <li class="border-top my-3"></li>
+                
+                </ul>
+
+
+                <br>
+                <img src="../../../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="200" >
+
+
+
+                <br>
+            </div>
+        </div> 
+        <div  id="global" class="col-10" style="height: 100vh; ">
+          <div id="radio-cards">
+            <br>
+            <div class="row gx-lg-5">
+              <div class="col-md-3 mb-4">
+                <label>
+                  <input id="radioDefault1" type="radio" name="defaultGroup" class="card-input-element" />
+          
+                  <div class="card card-input">
+                    <div class="card-body">
+                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
+                      <p class="h2 fw-bold"><img src="../../../static/images/frog.png" height="50px" width="50px"> Anfibios</p>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="col-md-3 mb-4">
+                <label>
+                  <input id="radioDefault2" type="radio" name="defaultGroup" class="card-input-element" checked />
+                  <div class="card card-input">
+                    <div class="card-body">
+                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
+                      <p class="h2 fw-bold"><img src="../../../static/images/reptiles.png" height="50px" width="50px"> Reptiles</p>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="col-md-3 mb-4">
+                <label>
+                  <input id="radioDefault3" type="radio" name="defaultGroup" class="card-input-element" />
+          
+                  <div class="card card-input">
+                    <div class="card-body">
+                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
+                      <p class="h2 fw-bold"><img src="../../../static/images/mamiferos.png" height="50px" width="50px"> Mamiferos</p>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="col-md-3 mb-4">
+                <label>
+                  <input id="radioDefault4" type="radio" name="defaultGroup" class="card-input-element" />
+                  <div class="card card-input">
+                    <div class="card-body">
+                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
+                      <p class="h2 fw-bold"><img src="../../../static/images/aves.png" height="50px" width="50px"> Aves</p>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+            <div class="album py-5 " style="height: 100vh; ">
+                    <div  class="container">
+                      <div class="card">  
+                        <div id="galeria" class="gallery">    
+                          
+                        
+                          <div class="imagen">
+                            
+                            <div class="row">
+                              {% for element in especimenes %}
+                              <div class="col-sm-6">
+                              
+                                <div class="card">
+                                  <a href="{% url 'element_detail' element.pk %}">
+                                  <img 
+                                  src="../../../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                                    class="card-img-top"
+                                    alt="Waterfall" width="300" height="700"
+                                  />
+                                  </a>
+                                  <div class="card-body">
+                                    <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                                    <p class="card-text">
+                                      {{  element.NumeroCatalogo }}
+                                     
+                                    </p>
+                                    <p class="card-text">
+                                 
+                                      {{  element.NombreDelConjuntoDatos }}
+                                    </p>
+                                    <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
+
+                                  
+                                  </div>
+
+                                </div>
+                              
+                              </div>
+
+                              {% endfor %}
+
+                            
+                            
+                                
+                            
+                          </div>
+                       
+                        </div>
+                       
+        </div>   
+    </div>
+
+      
+       
+    </div>
+
+    <script>
+    fetch('../../../data.json')
+  .then(response => response.json())
+  .then(data => {
+    // Iterate through each element and create an HTML element for it
+    data.forEach(element => {
+      const img = document.createElement('img');
+      img.src = element.image;
+      img.alt = element.name;
+      
+      // Add event listener to each image to redirect to information page
+      img.addEventListener('click', () => {
+        window.location.href = `information.html?id=${element.id}`;
+      });
+      
+      // Add image to gallery
+      document.querySelector('.gallery').appendChild(img);
+    });
+  });
+</script>
+    </main> 
+</body>
+</html>

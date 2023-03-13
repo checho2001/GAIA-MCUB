@@ -5,3 +5,4 @@ pymongo==3.12.1
 python -m pip install Pillow
 pip install pandas
 pip install --force-reinstall -v "openpyxl==3.1.0"
+pip install django-simple-captcha

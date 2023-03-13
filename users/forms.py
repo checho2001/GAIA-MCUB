@@ -1,7 +1,7 @@
 from django import forms
 from .models import User,departamento, municipio, TipoActividad,especimen
 from django.core.exceptions import ValidationError
-from .models import Rol
+from .models import Rol, Area
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 from django import forms
@@ -75,7 +75,19 @@ class CustomUser(forms.Form):
                 'default' : 1,
                 'class' : 'form-control',
                 }
-            ))    
+            ))
+    AREA = []
+    for area in Area.objects.all():
+        AREA.append((area.id, area.nombre))
+
+    area = forms.ChoiceField(
+        choices = AREA,  widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            ))
+
     def clean_correo(self):
         mail = self.cleaned_data['correo']
         if "@unbosque.edu.co" not in mail:   

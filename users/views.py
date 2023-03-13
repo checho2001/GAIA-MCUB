@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden, Area_User
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -34,7 +34,7 @@ class CambioContrasenia(View):
         def get(self,request):
             return render(request,"changepassword.html")
 class Galry(View):
-        def get(self,request, ):
+        def get(self,request):
             especimenes = especimen.objects.all()
             familias =  familia.objects.all()
             ordenes =  Orden.objects.all()
@@ -43,7 +43,12 @@ class Galry(View):
            
                 
             return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos})
-        
+def galery_familia(request,nombre):
+            especimenes = especimen.objects.filter(Familia = nombre)           
+            return render(request,"galery.html",{'especimenes':especimenes})
+            #return redirect({'especimenes':especimenes})
+     
+      
 class Dashboard_Aux(View):
         def get(self,request):
             actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
@@ -54,7 +59,14 @@ class Dashboard_Pas(View):
             return render(request,"dashpasante.html")
 class Dashboard_Cur(View):
         def get(self,request):
-            return render(request,"dashcurador.html")
+            area = Area_User.objects.get(id_user_id= request.user.id )
+            a = Area_User.objects.filter(id_area_id=area.id_area_id)
+            lista = []
+            for i in a:
+                lista.append(i.id_user_id)
+            print(lista)
+            actions = UserAction.objects.filter(user__in = lista)
+            return render(request,"dashcurador.html",{'actions': actions})
           
 class Dashboard(View):
         @method_decorator(login_required(login_url='redirect')   ) 
@@ -111,18 +123,23 @@ def register(request):
             user.is_staff = False
             user.is_active = True
             user.save()
-            if(rol == 1):
+            print(type(rol))
+            if(rol == "1"):
+                print("Auxiliar")
                 group = Group.objects.get(name='Auxiliar')
                 group.user_set.add(user)
-            elif(rol == 2):
+            elif(rol == "2"):
                 group = Group.objects.get(name='Pasante')
                 group.user_set.add(user)
-            elif(rol == 3):
+            elif(rol == "3"):
                 group = Group.objects.get(name='Curador')
                 group.user_set.add(user)
-            elif(rol == 4):
+            elif(rol == "4"):
                 group = Group.objects.get(name='Otro')
                 group.user_set.add(user)
+            area = form.cleaned_data['area']
+            area_user = Area_User(id_user = User.objects.get(id=user.id), id_area = Area.objects.get(id=area))
+            area_user.save()
     else:
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form})
@@ -140,7 +157,8 @@ def registroActividad(request):
             Descripcion = form.cleaned_data['Descripcion']
             a = Actividades(NumeroCatalogo=especimen.objects.get(id=NumeroCatalogo),TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
             a.save()
-            UserAction.objects.create(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo))
+            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo))
+            userAction.save()
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form})
@@ -444,3 +462,10 @@ def element_detail(request, pk):
     generos =  Genero.objects.all()
     context = {'element': element,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos}
     return render(request, 'paginaejemplar.html', context)
+
+
+def aprobar_actividad(request, id):
+     actividad = UserAction.objects.get(id_user_action = id)
+     actividad.estado = True
+     actividad.save()
+     return HttpResponseRedirect(reverse('dashboardCur')) 

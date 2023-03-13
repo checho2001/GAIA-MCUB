@@ -33,6 +33,8 @@ urlpatterns = [
     path('logout', views.custom_logout, name='logout'),
     path('load_data/', load_data_clase, name='load_data'),
     path('paginaejemplar/<int:pk>/', element_detail, name='element_detail'),
+    path('dashCur/aprobar/<int:id>', views.aprobar_actividad, name = "aprobarA" ),
+    path('galery/familia/<str:nombre>', views.galery_familia,name="galeryF"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:

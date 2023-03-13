@@ -2,6 +2,7 @@ from statistics import mode
 from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
 from django.core.validators import RegexValidator
+from .fields import ActionField
 class Rol(models.Model):
     id = models.AutoField(primary_key=True)
     nombrerol = models.CharField(max_length=50)
@@ -9,6 +10,9 @@ class Rol(models.Model):
     
     def __str__(self):
         return self.nombrerol
+class Area(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
 
 class User(AbstractUser):
 
@@ -28,6 +32,11 @@ class User(AbstractUser):
             grupo = Group.objects.get_or_create(name='Auxiliar')
         if(Rol.id == 2):
             grupo2 = Group.objects.get_or_create(name='Pasante')
+
+class Area_User(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_user = models.ForeignKey(User,on_delete=models.CASCADE)
+    id_area = models.ForeignKey(Area,on_delete=models.CASCADE)
 
 class Genero(models.Model):
     id = models.AutoField(primary_key=True)
@@ -86,7 +95,7 @@ class municipio(models.Model):
     municipio= models.CharField(max_length=50) 
 class especimen(models.Model):
     id = models.AutoField(primary_key=True)
-    NumeroCatalogo = models.CharField(max_length=500)
+    NumeroCatalogo = models.CharField(max_length=500, unique= True)
     NombreDelConjuntoDatos = models.CharField(max_length=500)
     ComentarioRegistroBiologico = models.CharField(max_length=500)
     RegistradoPor = models.CharField(max_length=500)
@@ -111,7 +120,9 @@ class especimen(models.Model):
         return (self.NumeroCatalogo)  
     
 class UserAction(models.Model):
+    id_user_action = ActionField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tarea = models.CharField(max_length=100)
     ejemplar = models.CharField(max_length=100)
     tiempo = models.DateTimeField(auto_now_add=True)
+    estado = models.BooleanField(default=False)

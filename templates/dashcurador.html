@@ -132,72 +132,38 @@
               <br>   
               <div class="list-group w-auto">
                 <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
+                  <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tarea Realizada</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Ejemplar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for action in actions %}
+                      {% if action.estado == False %}
+                      <tr>
+                        <td>{{ action.tiempo }}</td>
+                        <td>{{ action.tarea }}</td>
+                        <td>{{ action.user }}</td>
+                        <td>{{ action.ejemplar }}</td>
+                        <td><a href="aprobar/{{action.id_user_action}}">Aprobar</a></td>
+                      {% endif %}
+                        
+                    
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
                   
-                  <div class="d-flex gap-2 w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-0">Tarea#1</h6>
-                      <p class="mb-0 opacity-75">tarea1</p>
-                    </div>
-                    <small class="opacity-50 text-nowrap">10</small>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#2">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#2</h6>
-                        <p class="mb-0 opacity-75">tarea2</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#3">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#3</h6>
-                        <p class="mb-0 opacity-75">tarea3</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#4">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#4</h6>
-                        <p class="mb-0 opacity-75">tarea4</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#5">
-                  
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">Tarea#5</h6>
-                        <p class="mb-0 opacity-75">tarea5</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">10</small>
-                    </div>
-                  </a>
               </div>
 
             </div>
             <div class="col-sm-6 mw-100">
               <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tareas Realizadas</h1></div>
-              <table>
-                <thead>
-                  <tr>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <h6></h6>
-                  </tr>
-                </tbody>
-              </table>
+              
               <div class="row">
                 <div class="col-sm-4">
                   <br>

@@ -171,7 +171,7 @@
                     <div class="collapse" id="subgrupo-collapse">
                       {% for i in generos %}
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
+                        <li><a href="genero/{{i.nombreGenero}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
           
                     </ul>
                     {% endfor %}
@@ -186,7 +186,7 @@
                     <div class="collapse" id="filo-collapse">
                       {% for i in clases %}
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
+                        <li><a href="clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
              
                     </ul>
                     {% endfor %}
@@ -200,7 +200,7 @@
                   <div class="collapse" id="orden-collapse">
                     {% for i in ordenes %}
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
+                      <li><a href="orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
                     </ul>
                     {% endfor %}
 

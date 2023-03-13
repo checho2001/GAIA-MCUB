@@ -44,11 +44,37 @@ class Galry(View):
                 
             return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos})
 def galery_familia(request,nombre):
-            especimenes = especimen.objects.filter(Familia = nombre)           
-            return render(request,"galery.html",{'especimenes':especimenes})
-            #return redirect({'especimenes':especimenes})
-     
-      
+            especimenes = especimen.objects.filter(Familia = nombre)
+            familias =  familia.objects.filter(nombreFamilia = nombre)
+            ordenes =  Orden.objects.all()
+            clases =  Clase.objects.all()
+            generos =  Genero.objects.all()
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+
+def galery_genero(request,nombre):
+            especimenes = especimen.objects.filter(Genero = nombre)
+            familias =  familia.objects.all()
+            ordenes =  Orden.objects.all()
+            clases =  Clase.objects.all()
+            generos =  Genero.objects.filter(nombreGenero = nombre)
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+
+def galery_clase(request,nombre):
+            especimenes = especimen.objects.filter(ClaseE = nombre)
+            familias =  familia.objects.all()
+            ordenes =  Orden.objects.all()
+            clases =  Clase.objects.filter(nombreClase = nombre)
+            generos =  Genero.objects.all()
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+
+def galery_orden(request,nombre):
+            especimenes = especimen.objects.filter(Orden = nombre)
+            familias =  familia.objects.all()
+            ordenes =  Orden.objects.filter(nombreOrden = nombre)
+            clases =  Clase.objects.all()
+            generos =  Genero.objects.all()
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+ 
 class Dashboard_Aux(View):
         def get(self,request):
             actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
@@ -168,6 +194,7 @@ def registroActividad(request):
 def registerE(request):
     if request.method == 'POST':
         form = EjemplarForm(request.POST, request.FILES)
+        print("Llegue")
         if form.is_valid():
             print("is valid")
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
@@ -469,3 +496,9 @@ def aprobar_actividad(request, id):
      actividad.estado = True
      actividad.save()
      return HttpResponseRedirect(reverse('dashboardCur')) 
+
+def darbaja_especimen(request, id):
+     esp = especimen.objects.get(id=id)
+     esp.estado = False
+     esp.save()
+     return HttpResponseRedirect(reverse('dashboard')) 

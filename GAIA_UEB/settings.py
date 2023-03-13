@@ -21,7 +21,8 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'users.User'
 
 INSTALLED_APPS = [
-    'users', 
+    'users',
+    'captcha',
     'GAIA_UEB',
     'django.contrib.admin',
     'django.contrib.auth',

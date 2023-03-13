@@ -5,6 +5,7 @@ from .models import Rol, Area
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 from django import forms
+from captcha.fields import CaptchaField
 
 from datetime import date
 
@@ -132,6 +133,7 @@ class loginForm(forms.Form):
                 }
             )
         )
+    captcha = CaptchaField()
     def clean_username(self):
         mail = self.cleaned_data['username']
         if "@unbosque.edu.co" not in mail:   

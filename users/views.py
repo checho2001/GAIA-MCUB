@@ -213,6 +213,9 @@ def registerE(request):
             ComentarioIdentificacion = form.cleaned_data['ComentarioIdentificacion']
             NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
             ClaseE = form.cleaned_data['ClaseE']
+            Orden = form.cleaned_data['Orden']
+            Genero = form.cleaned_data['Genero']
+            Familia = form.cleaned_data['Familia']
             NombreComun = form.cleaned_data['NombreComun']
 
             print("Se guarda")
@@ -220,7 +223,8 @@ def registerE(request):
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),NombreComun=NombreComun)
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),Orden = Orden, Genero = Genero
+            ,Familia = Familia, NombreComun=NombreComun , Image = "")
             e.save()
     else:
         form = EjemplarForm()
@@ -293,9 +297,13 @@ def update_record_ejemplar(request,id):
     ejemplar.ClaseE = clase
     ejemplar.NombreComun = nombreComun
     ejemplar.save()
-
-
-    return HttpResponseRedirect(reverse('dashboardAux'))
+    if request.user.groups.filter(name__in=['Auxiliar']):
+        return HttpResponseRedirect(reverse('dashboardAux'))
+    if request.user.groups.filter(name__in=['Pasante']):
+        return HttpResponseRedirect(reverse('dashboardPas'))
+    if request.user.groups.filter(name__in=['Curador']):
+        return HttpResponseRedirect(reverse('dashboardCur'))
+    return HttpResponseRedirect(reverse('dashboard'))
 
 
 @login_required(login_url='redirect')

@@ -309,12 +309,27 @@ class EjemplarForm(forms.Form):
     
     ClaseE = forms.ChoiceField(
         choices = TipoClases, ) 
-    Orden = forms.ChoiceField(
-        choices = TipoClases, ) 
-    Genero = forms.ChoiceField(
-        choices = TipoClases, )
-    Familia = forms.ChoiceField(
-        choices = TipoClases, )  
+    Orden = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    Genero = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    Familia = forms.CharField(max_length=500, widget=forms.TextInput(
+            attrs= {
+                
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )) 
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 

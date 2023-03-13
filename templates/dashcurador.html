@@ -83,6 +83,7 @@
       <div class="row mw-100 overflow-auto" >
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
+            <img src="../static/images/logoblanco.png" alt="mdo" width="300" height="100">
               <span class="fs-5 fw-semibold text-light">Tablon</span>
               </a>
               <ul class="list-unstyled ps-0">
@@ -90,7 +91,7 @@
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#registro-collapse" aria-expanded="true">
                   Registro
                   </button>
-                  <div class="collapse show" id="registro-collapse">
+                  <div class="collapse " id="r  egistro-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                       <li><a href="#" onclick="location.href = '/register'" class="link-dark d-inline-flex text-decoration-none rounded text-light"> Usuario </a></li>
 
@@ -103,14 +104,15 @@
               <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
               <div class="dropdown border-top">
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="../static/images/galeria-6.jpg" alt="mdo" width="200" height="200" class="rounded-circle">
+                  <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
                   
                 </a>
                 <br>
                
                 <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
-                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light">Hora :    <span id="current-time"></span></p>
-                
+                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light"><span id="current-time"></span></p>
+                <br>
+                <img src="../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="250" >
                 <ul class="dropdown-menu text-small shadow">
                   <li><a class="dropdown-item" onclick="location.href = '/perfilU'" href="#">Perfil</a></li>
                   <li><a class="dropdown-item" href="#">Ajustes</a></li>

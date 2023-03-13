@@ -80,7 +80,7 @@
   </head>
   <body>
     <main>
-      <div class="row mw-100 overflow-auto" >
+      <div class="row overflow-auto" >
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
             <img src="../static/images/logoblanco.png" alt="mdo" width="300" height="100">
@@ -128,12 +128,10 @@
           <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           <hr>
           <div class="row">
-            <div class="col-sm-6 mw-100 ">
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Tareas</h1></div>
-              
-              <br>   
-              <div class="list-group w-auto">
-                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true" title="Descripcion Tarea#1">
+            <div class="col-6">
+              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Tareas</h1></div> 
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 " aria-current="true" title="Descripcion Tarea#1">
                   <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                     <thead>
                       <tr>
@@ -153,44 +151,50 @@
                         <td>{{ action.ejemplar }}</td>
                         <td><a href="aprobar/{{action.id_user_action}}">Aprobar</a></td>
                       {% endif %}
-                        
-                    
-                      </tr>
+
                       {% endfor %}
+                    </tr>
                     </tbody>
                   </table>
-                  
+                </a>
               </div>
 
             </div>
-            <div class="col-sm-6 mw-100">
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tareas Realizadas</h1></div>
-              
-              <div class="row">
-                <div class="col-sm-4">
-                  <br>
-                </div>
-                <div class="col-sm-4">
-                  <br>
-                    <button class=" w-100 btn-lg border-light text-light "  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Exportar Excel</button>
-                </div>
+            <div class="col-6">
+              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Tareas 2</h1></div> 
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 " aria-current="true" title="Descripcion Tarea#1">
+                  <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tarea Realizada</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Ejemplar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for action in actions %}
+                      {% if action.estado == False %}
+                      <tr>
+                        <td>{{ action.tiempo }}</td>
+                        <td>{{ action.tarea }}</td>
+                        <td>{{ action.user }}</td>
+                        <td>{{ action.ejemplar }}</td>
+                        <td><a href="aprobar/{{action.id_user_action}}">Aprobar</a></td>
+                      {% endif %}
 
-                
-                  <div class="col-sm-4">
-                    <br>
-                  </div>
+                      {% endfor %}
+                    </tr>
+                    </tbody>
+                  </table>
+                </a>
               </div>
-              <script>
-                function updateTime() {
-                    var now = new Date();
-                    var timeElement = document.getElementById("current-time");
-                    timeElement.innerHTML = now.toLocaleTimeString();
-                }
-                setInterval(updateTime, 1000);
-            </script>
+
             </div>
           </div>
         </div>
       </div>
+
     </main>
   </body>

@@ -90,7 +90,7 @@ class Dashboard_Cur(View):
             lista = []
             for i in a:
                 lista.append(i.id_user_id)
-            print(lista)
+    
             actions = UserAction.objects.filter(user__in = lista)
             return render(request,"dashcurador.html",{'actions': actions})
           
@@ -120,13 +120,13 @@ def login(request):
             if user is not  None:
                 auth.login(request, user)
                 if user.groups.filter(name__in=['Auxiliar']):
-                    print('usuario pertenece a auxiliar')
+                    
                     return HttpResponseRedirect(reverse('dashboardAux'))
                 if user.groups.filter(name__in=['Pasante']):
-                    print('usuario pertenece a pasante')
+                   
                     return HttpResponseRedirect(reverse('dashboardPas'))
                 if user.groups.filter(name__in=['Curador']):
-                    print('usuario pertenece a curador')
+                    
                     return HttpResponseRedirect(reverse('dashboardCur'))
                 return HttpResponseRedirect(reverse('dashboard'))
                    
@@ -144,14 +144,14 @@ def register(request):
             password = form.cleaned_data['password']
             rol = form.cleaned_data['rol']
             user = User(username=username,nombre= nombre, apellido = apellido , email = correo,rol=Rol.objects.get(id=rol),password=make_password(password))
-            print(user)
+           
             user.is_superuser = False
             user.is_staff = False
             user.is_active = True
             user.save()
-            print(type(rol))
+         
             if(rol == "1"):
-                print("Auxiliar")
+             
                 group = Group.objects.get(name='Auxiliar')
                 group.user_set.add(user)
             elif(rol == "2"):
@@ -194,9 +194,9 @@ def registroActividad(request):
 def registerE(request):
     if request.method == 'POST':
         form = EjemplarForm(request.POST, request.FILES)
-        print("Llegue")
+        
         if form.is_valid():
-            print("is valid")
+          
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
             NombreDelConjuntoDatos = form.cleaned_data['NombreDelConjuntoDatos']
             ComentarioRegistroBiologico = form.cleaned_data['ComentarioRegistroBiologico']
@@ -218,12 +218,10 @@ def registerE(request):
             Familia = form.cleaned_data['Familia']
             NombreComun = form.cleaned_data['NombreComun']
 
-            print("Se guarda")
-
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase.objects.get(id=ClaseE),Orden = Orden, Genero = Genero
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase,Orden = Orden, Genero = Genero
             ,Familia = Familia, NombreComun=NombreComun , Image = "")
             e.save()
     else:
@@ -268,12 +266,11 @@ def update_record_ejemplar(request,id):
     comentarioRegistro = request.POST['ComentarioRegistroBiologico']
     registradoPor = request.POST['RegistradoPor']
     numeroIndividuo = request.POST['NumeroIndividuo']
-    #fechaEvento = request.POST['FechaEvento']
+    
     habitad = request.POST['Habitad']
     departamento = request.POST['Departamento']
     municipio = request.POST['Municipio']
-    identificadoPor = request.POST['IdentificadoPor']
-    #fechaIdentificacion = request.POST['FechaIdentificacion']
+    identificadoPor = request.POST['IdentificadoPor']  
     idetificacionReferencias = request.POST['IdentificacionReferencias']
     comentarioIdentificacion = request.POST['ComentarioIdentificacion']
     nombreCientifico = request.POST['NombreCientifico']
@@ -285,12 +282,12 @@ def update_record_ejemplar(request,id):
     ejemplar.ComentarioRegistroBiologico = comentarioRegistro
     ejemplar.RegistradoPor = registradoPor
     ejemplar.NumeroIndividuo = numeroIndividuo
-    #ejemplar.FechaEvento = fechaEvento
+   
     ejemplar.Habitad = habitad
     ejemplar.Departamento = departamento
     ejemplar.Municipio = municipio
     ejemplar.IdentificadoPor = identificadoPor
-    #ejemplar.FechaIdentificacion = fechaIdentificacion
+ 
     ejemplar.IdentificacionReferencias = idetificacionReferencias
     ejemplar.ComentarioIdentificacion = comentarioIdentificacion
     ejemplar.NombreCientificoComentarioRegistroBiologico = nombreCientifico
@@ -401,13 +398,10 @@ def load_data(request):
                                                 'vernacularName'])
     
     for _, row in data.iterrows():
-        # Check if eventDate column is not null
         if not pd.isnull(row['eventDate']):
             try:
-                # Convert the eventDate string to a datetime object
                 event_date_obj = datetime.datetime.fromisoformat(row['eventDate'])
             except ValueError as e:
-                # Log the error message or take other appropriate action
                 print(f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}")
                 event_date_obj = None
         else:
@@ -417,10 +411,8 @@ def load_data(request):
         if not pd.isnull(row['dateIdentified']):
 
             try:
-                # Convert the eventDate string to a datetime object
                 date_identified_obj = pd.to_datetime(row['dateIdentified'])
             except ValueError as e:
-                # Log the error message or take other appropriate action
                 print(f"Error converting dateIdentified '{row['dateIdentified']}' to datetime object: {e}")
                 date_identified_obj = None
         else:
@@ -459,8 +451,7 @@ def load_data_clase(request):
    
     file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
     
-    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'class', 'order', 'family', 'genus'
-                                                ])
+    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'class' ])
   
     for _, row in data.iterrows():
           
@@ -468,23 +459,63 @@ def load_data_clase(request):
         if not clase:
                 clase = Clase(nombreClase=row['class'])
                 clase.save()
+    root.mainloop()
+    return render(request, 'dashboard.html')
+
+
+def load_data_familia(request):
+    root = tk.Tk()
+    root.withdraw()
+
+   
+    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+    
+    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'family' ])
+  
+    for _, row in data.iterrows():
+        familias = familia.objects.filter(nombreFamilia=row['family']).first()
+        if not familias:
+            familias = familia(nombreFamilia=row['family'])
+            familias.save()
+    root.mainloop()
+    return render(request, 'dashboard.html')
+
+
+def load_data_orden(request):
+    root = tk.Tk()
+    root.withdraw()
+
+   
+    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+    
+    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'order'])
+  
+    for _, row in data.iterrows():
+          
+   
 
         orden = Orden.objects.filter(nombreOrden=row['order']).first()
         if not orden:
             orden = Orden(nombreOrden=row['order'])
             orden.save()
 
-        familias = familia.objects.filter(nombreFamilia=row['family']).first()
-        if not familias:
-            familias = familia(nombreFamilia=row['family'])
-            familias.save()
-
+    root.mainloop()
+    return render(request, 'dashboard.html')
+def load_data_genero(request):
+    root = tk.Tk()
+    root.withdraw()
+    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+    
+    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'genus'])
+  
+    for _, row in data.iterrows():
         genero = Genero.objects.filter(nombreGenero=row['genus']).first()
         if not genero:
             genero = Genero(nombreGenero=row['genus'])
             genero.save()
     root.mainloop()
     return render(request, 'dashboard.html')
+
 
 
 

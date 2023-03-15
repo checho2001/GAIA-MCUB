@@ -1,5 +1,5 @@
 from django import forms
-from .models import User,departamento, municipio, TipoActividad,especimen
+from .models import User,departamento, municipio, TipoActividad,especimen,Clase,familia,Orden,Genero
 from django.core.exceptions import ValidationError
 from .models import Rol, Area
 from django.utils.translation import gettext_lazy as _
@@ -304,32 +304,47 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    TipoClases =[(1,"Aves")]
-    
+    CLASES = []
+    ORDENES= []
+    GENEROS= []
+    FAMILIAS= []
+    for clase in Clase.objects.all():
+        CLASES.append((clase.id,clase.nombreClase))
+    for orden in Orden.objects.all():
+        ORDENES.append((orden.id,orden.nombreOrden))
+    for genero in Genero.objects.all():
+        GENEROS.append((genero.id,genero.nombreGenero))
+    for fam in familia.objects.all():
+        FAMILIAS.append((fam.id,fam.nombreFamilia))        
     
     ClaseE = forms.ChoiceField(
-        choices = TipoClases, ) 
-    Orden = forms.CharField(max_length=500, widget=forms.TextInput(
+        choices = CLASES, widget=forms.Select(
             attrs= {
-                
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    Genero = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
-    Familia = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                
-                'required' : True,
+                'default' : 1,
                 'class' : 'form-control',
                 }
             )) 
+    Orden = forms.ChoiceField(
+        choices = ORDENES, widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            )) 
+    Genero = forms.ChoiceField(
+        choices = GENEROS,widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            ) ) 
+    Familia = forms.ChoiceField(
+        choices = FAMILIAS,widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            ) ) 
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 

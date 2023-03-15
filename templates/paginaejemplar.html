@@ -94,111 +94,31 @@
 </head>
     <body>
         
-        <header class="header"style="height: 75px;background-color: #008776;">
-            <div class="container" >
-              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 15px;">
-                  <li><a type="button"  onclick="location.href = '/index'"  class="nav-link text-light">Inicio</a></li>
-                  <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Galeria</a></li>
-                  <li><a href="#" class="nav-link text-light">Registros</a></li>
-                  <li><a href="#" class="nav-link text-light">FAQs</a></li>
-                </ul>
-        
-               
-        
-                <div class="text-end" style="margin-top: 15px;">
-                  <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
-                </div>
-              </div>
+      <header class="header"style="height: 105px;background-color: #008776;">
+        <div class="container" >
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    
+            <a class="a"onclick="location.href = '/index'" style="margin-top: 35px;" >
+              <img class="image_header-museo" src="/static/images/logo (1).png" >
+            </a>
+    
+              <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 35px;">
+              <li><a href="#" onclick="location.href = '/index'"  class="nav-link text-light">Inicio</a></li>
+              <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
+              <li><a href="#" class="nav-link text-light">Nosotros</a></li>
+              <li><a href="#" class="nav-link text-light">Contacto</a></li>
+            </ul>
+    
+           
+    
+            <div class="text-end" style="margin-top: 35px;">
+              <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
             </div>
-          </header>
+          </div>
+        </div>
+      </header>
           
-          <main>
-            <div  class="row " >
-                <div class="col-2" style="background-color: #008776; height: 100vh;">
-                  
-                  <img src="/static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
-                    <div class="flex-shrink-0 p-3 " style="width: 50%; height:100%">
-                        <span class="fs-5 fw-semibold text-light">Categorias</span>
-                        
-                        <ul class="list-unstyled ps-0">
-                          <br>
-                        <li class="mb-1">
-                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="false">
-                            Familia
-                            </button>
-                            <div class="collapse" id="reino-collapse">
-                              {% for i in familias %}
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                             
-                      
-                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
-                           
-                             
-                            </ul>
-                            {% endfor %}
-                               
-                            </div>
-                        </li>
-                        <br>
-                        <li class="mb-1">
-                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
-                            Genero
-                            </button>
-                            <div class="collapse" id="subgrupo-collapse">
-                              {% for i in generos %}
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
-                  
-                            </ul>
-                            {% endfor %}
-        
-                            </div>
-                        </li>
-                        <br>
-                        <li class="mb-1">
-                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
-                            Clase
-                            </button>
-                            <div class="collapse" id="filo-collapse">
-                              {% for i in clases %}
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
-                     
-                            </ul>
-                            {% endfor %}
-                            </div>
-                        </li>
-                        <br>
-                        <li class="mb-1">
-                          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
-                          Orden
-                          </button>
-                          <div class="collapse" id="orden-collapse">
-                            {% for i in ordenes %}
-                          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                              <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
-                            </ul>
-                            {% endfor %}
-        
-        
-                          </div>
-                      </li>
-        
-                        <li class="border-top my-3"></li>
-                        
-                        </ul>
-        
-        
-                        <br>
-                        <img src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="200" >
-        
-        
-        
-                        <br>
-                    </div>
-                </div> 
-
+         
                 
         <div  class=" container bootstrap snippet">
             

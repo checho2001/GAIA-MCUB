@@ -90,9 +90,9 @@ class Dashboard_Cur(View):
             lista = []
             for i in a:
                 lista.append(i.id_user_id)
-    
+            especimenes = especimen.objects.all()
             actions = UserAction.objects.filter(user__in = lista)
-            return render(request,"dashcurador.html",{'actions': actions})
+            return render(request,"dashcurador.html",{'actions': actions, 'especimenes':especimenes})
           
 class Dashboard(View):
         @method_decorator(login_required(login_url='redirect')   ) 
@@ -447,10 +447,7 @@ def load_data(request):
 def load_data_clase(request):
     root = tk.Tk()
     root.withdraw()
-
-   
     file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
-    
     data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'class' ])
   
     for _, row in data.iterrows():
@@ -461,13 +458,9 @@ def load_data_clase(request):
                 clase.save()
     root.mainloop()
     return render(request, 'dashboard.html')
-
-
 def load_data_familia(request):
     root = tk.Tk()
     root.withdraw()
-
-   
     file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
     
     data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'family' ])
@@ -479,21 +472,13 @@ def load_data_familia(request):
             familias.save()
     root.mainloop()
     return render(request, 'dashboard.html')
-
-
 def load_data_orden(request):
     root = tk.Tk()
     root.withdraw()
-
-   
     file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
     
     data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'order'])
-  
     for _, row in data.iterrows():
-          
-   
-
         orden = Orden.objects.filter(nombreOrden=row['order']).first()
         if not orden:
             orden = Orden(nombreOrden=row['order'])
@@ -540,5 +525,4 @@ def darbaja_especimen(request, id):
      esp = especimen.objects.get(id=id)
      esp.estado = False
      esp.save()
-     print(esp.NumeroCatalogo)
      return HttpResponseRedirect(reverse('dashboard')) 

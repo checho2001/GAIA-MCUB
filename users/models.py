@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
 from django.core.validators import RegexValidator
 from .fields import ActionField
+
 class Rol(models.Model):
     id = models.AutoField(primary_key=True)
     nombrerol = models.CharField(max_length=50)

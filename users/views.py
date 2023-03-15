@@ -21,7 +21,7 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
-import datetime
+from datetime import datetime
 
 
 class IndexView(View):
@@ -509,4 +509,5 @@ def darbaja_especimen(request, id):
      esp = especimen.objects.get(id=id)
      esp.estado = False
      esp.save()
+     print(esp.NumeroCatalogo)
      return HttpResponseRedirect(reverse('dashboard')) 

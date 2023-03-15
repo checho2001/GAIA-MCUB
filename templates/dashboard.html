@@ -257,6 +257,7 @@
                     </thead>
                     <tbody>
                       {% for esp in especimenes %}
+                      {% if esp.estado == True %}
                       <tr>
                         
                         <td>{{ esp.id }}</td>
@@ -264,9 +265,10 @@
                         <td>{{ esp.FechaIdentificacion }}</td>
                         <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
                         <td><a href="../updateE/{{esp.id}}">Edit Specimen</a></td>
-                        <td><a href="dardebaja/{{esp.id}}">Dar de baja</a></td>
+                        <td><a href="dardebaja/{{esp.id}}">Archivar</a></td>
     
                       </tr>
+                      {% endif %}
                       {% endfor %}
                     </tbody>
                   </table>

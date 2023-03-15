@@ -78,8 +78,8 @@ class CustomUser(forms.Form):
                 }
             ))
     AREA = []
-    for area in Area.objects.all():
-        AREA.append((area.id, area.nombre))
+    for clase in Clase.objects.all():
+        AREA.append((clase.id, clase.nombreClase))
 
     area = forms.ChoiceField(
         choices = AREA,  widget=forms.Select(

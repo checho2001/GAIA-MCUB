@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden, Area_User
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden, Area_User, Class_User
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -163,9 +163,9 @@ def register(request):
             elif(rol == "4"):
                 group = Group.objects.get(name='Otro')
                 group.user_set.add(user)
-            area = form.cleaned_data['area']
-            area_user = Area_User(id_user = User.objects.get(id=user.id), id_area = Area.objects.get(id=area))
-            area_user.save()
+            clase = form.cleaned_data['area']
+            area_clase = Class_User(id_user = User.objects.get(id=user.id), id_area = Area.objects.get(id=clase))
+            area_clase.save()
     else:
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form})

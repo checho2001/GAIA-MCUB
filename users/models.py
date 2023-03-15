@@ -67,6 +67,11 @@ class Clase(models.Model):
     
     def __str__(self):
         return self.nombreClase
+    
+class Class_User(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_user = models.ForeignKey(User,on_delete=models.CASCADE)
+    id_clase = models.ForeignKey(Clase,on_delete=models.CASCADE)
            
 class TipoActividad(models.Model):
     id = models.AutoField(primary_key=True)

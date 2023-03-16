@@ -149,6 +149,13 @@ class TimeInput(forms.TimeInput):
 
 
 class ActividadesForm(forms.Form):
+
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(ActividadesForm, self).__init__(*args, **kwargs)
+
+
     CATALOGO = []
     for useri in especimen.objects.all():
         CATALOGO.append((useri.id, useri.NumeroCatalogo))
@@ -192,7 +199,7 @@ class ActividadesForm(forms.Form):
                 'class' : 'form-control',
                 }
             )
-        )        
+        ) 
 class Especimen_Form(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
             attrs= {

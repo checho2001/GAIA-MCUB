@@ -23,7 +23,7 @@ AUTH_USER_MODEL = 'users.User'
 INSTALLED_APPS = [
     'users',
     'captcha',
-    'qr_code',
+    #'qr_code',
     'GAIA_UEB',
     'django.contrib.admin',
     'django.contrib.auth',

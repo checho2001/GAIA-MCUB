@@ -77,20 +77,25 @@ def galery_orden(request,nombre):
  
 class Dashboard_Aux(View):
         def get(self,request):
+            clase = Class_User.objects.get(id_user_id= request.user.id)
+            c = Clase.objects.get(id = clase.id_clase_id)
             actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
-            especimenes = especimen.objects.all()
+            especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
             return render(request,"dashauxiliar.html",{'especimenes':especimenes,'actions':actions})
 class Dashboard_Pas(View):
         def get(self,request):
             return render(request,"dashpasante.html")
 class Dashboard_Cur(View):
         def get(self,request):
-            area = Area_User.objects.get(id_user_id= request.user.id )
-            a = Area_User.objects.filter(id_area_id=area.id_area_id)
+            clase = Class_User.objects.get(id_user_id= request.user.id)
+            #Filtrar por usuarios del area
+            usuarios = Class_User.objects.filter(id_clase_id = clase.id_clase_id)
             lista = []
-            for i in a:
+            for i in usuarios:
                 lista.append(i.id_user_id)
-            especimenes = especimen.objects.all()
+            c = Clase.objects.get(id = clase.id_clase_id)
+            print(c.nombreClase)
+            especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
             actions = UserAction.objects.filter(user__in = lista)
             return render(request,"dashcurador.html",{'actions': actions, 'especimenes':especimenes})
           
@@ -164,7 +169,7 @@ def register(request):
                 group = Group.objects.get(name='Otro')
                 group.user_set.add(user)
             clase = form.cleaned_data['area']
-            area_clase = Class_User(id_user = User.objects.get(id=user.id), id_area = Area.objects.get(id=clase))
+            area_clase = Class_User(id_user = User.objects.get(id=user.id), id_clase = Clase.objects.get(id=clase))
             area_clase.save()
     else:
         form = CustomUser()
@@ -224,6 +229,16 @@ def registerE(request):
             NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase,Orden = Orden, Genero = Genero
             ,Familia = Familia, NombreComun=NombreComun , Image = "")
             e.save()
+
+            NumeroCatalogo = e.NumeroCatalogo
+            TareaRealizada = 4
+            Hora = datetime.now().time()
+            Fecha = datetime.now().date()
+            Descripcion = 'Se agrego el ejemplar ' + NumeroCatalogo
+            a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
+            a.save()
+            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= NumeroCatalogo)
+            userAction.save()
     else:
         form = EjemplarForm()
     return render(request, 'registerE.html', {'form':form}) 
@@ -517,12 +532,43 @@ def element_detail(request, pk):
 
 def aprobar_actividad(request, id):
      actividad = UserAction.objects.get(id_user_action = id)
-     actividad.estado = True
-     actividad.save()
+     if actividad.tarea == 'Archivar un ejemplar':
+          print("Entre")
+          print(actividad.ejemplar)
+          ejemplar = especimen.objects.get(NumeroCatalogo=actividad.ejemplar)
+          ejemplar.estado = False
+          ejemplar.save()
+          actividad.estado = True
+          actividad.save()
+     else:
+          actividad.estado = True
+          actividad.save()
      return HttpResponseRedirect(reverse('dashboardCur')) 
 
 def darbaja_especimen(request, id):
-     esp = especimen.objects.get(id=id)
-     esp.estado = False
-     esp.save()
-     return HttpResponseRedirect(reverse('dashboard')) 
+    esp = especimen.objects.get(id=id)
+    if request.user.groups.filter(name__in=['Auxiliar']):
+            NumeroCatalogo = esp.NumeroCatalogo
+            TareaRealizada = 8
+            Hora = datetime.now().time()
+            Fecha = datetime.now().date()
+            Descripcion = 'Se Archivo el ejemplar ' + NumeroCatalogo
+            a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
+            a.save()
+            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= NumeroCatalogo)
+            userAction.save()
+            return HttpResponseRedirect(reverse('dashboardAux'))
+    if request.user.groups.filter(name__in=['Pasante']):
+        esp = especimen.objects.get(id=id)
+        esp.estado = False
+        esp.save()                   
+        return HttpResponseRedirect(reverse('dashboardPas'))
+    if request.user.groups.filter(name__in=['Curador']):
+        esp = especimen.objects.get(id=id)
+        esp.estado = False
+        esp.save()            
+        return HttpResponseRedirect(reverse('dashboardCur'))
+    esp = especimen.objects.get(id=id)
+    esp.estado = False
+    esp.save()
+    return HttpResponseRedirect(reverse('dashboard')) 

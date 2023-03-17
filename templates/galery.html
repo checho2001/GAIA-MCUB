@@ -233,26 +233,84 @@
         <div  id="global" class="col-10" style="height: 100vh; ">
 
 
-
+          <div   class="text-center" ><h1 style="color: #404827; text-align: center;">Filtrar Por</h1></div>
           <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-quinto-tab" data-bs-toggle="pill" data-bs-target="#pills-quinto" type="button" role="tab" aria-controls="pills-quinto" aria-selected="false"><img  src="../static/images/685107.png" height="150px" width="150px" /></button>
+              <div   class="text-center" ><h3 style="color: #404827; text-align: center;">Todos</h3></div>
+            </li>
+
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <img  src="../static/images/frog.png" height="150px" width="150px" /></button>
+              <div   class="text-center" ><h3 style="color: #404827; text-align: center;">Anfibios</h3></div>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><img  src="../static/images/347401.png" height="150px" width="150px" /></button>
+              <div   class="text-center" ><h3 style="color: #404827; text-align: center;">Mamiferos</h3></div>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><img  src="../static/images/3196018.png" height="150px" width="150px" /></button>
+              <div   class="text-center" ><h3 style="color: #404827; text-align: center;">Reptiles</h3></div>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-cuarto-tab" data-bs-toggle="pill" data-bs-target="#pills-cuarto" type="button" role="tab" aria-controls="pills-cuarto" aria-selected="false"><img  src="../static/images/3069114.png" height="150px" width="150px" /></button>
+              <div   class="text-center" ><h3 style="color: #404827; text-align: center;">Aves</h3></div>
             </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-quinto-tab" data-bs-toggle="pill" data-bs-target="#pills-quinto" type="button" role="tab" aria-controls="pills-quinto" aria-selected="false"><img  src="../static/images/685107.png" height="150px" width="150px" /></button>
-            </li>
+           
           </ul>
           <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">1
+
+
+            <div class="tab-pane fade show active" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">5
+
+              <div  class="container">
+                <div class="card">  
+                  <div id="galeria" class="gallery">    
+                    
+                  
+                    <div class="imagen">
+                      
+                      <div class="row">
+                        {% for element in especimenes %}
+                        <div class="col-sm-6">
+                        
+                          <div class="card">
+                            <a href="{% url 'element_detail' element.pk %}">
+                            <img 
+                            src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                              class="card-img-top"
+                              alt="Waterfall" height="600px" width="500px"
+                            />
+                            </a>
+                            <div class="card-body">
+                              <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                              <p class="card-text">
+                                {{  element.NumeroCatalogo }}
+                               
+                              </p>
+                              <p class="card-text">
+                           
+                                {{  element.NombreDelConjuntoDatos }}
+                              </p>
+                              <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
+
+                            
+                            </div>
+
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  </div>   
+                </div>
+                </div>
+
+              5</div>
+
+            <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">1
 
               <div  class="container">
                 <div class="card">  
@@ -448,53 +506,7 @@
                 </div>
 
               4</div>
-              <div class="tab-pane fade" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">5
-
-                <div  class="container">
-                  <div class="card">  
-                    <div id="galeria" class="gallery">    
-                      
-                    
-                      <div class="imagen">
-                        
-                        <div class="row">
-                          {% for element in especimenes %}
-                          <div class="col-sm-6">
-                          
-                            <div class="card">
-                              <a href="{% url 'element_detail' element.pk %}">
-                              <img 
-                              src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                                class="card-img-top"
-                                alt="Waterfall" height="600px" width="500px"
-                              />
-                              </a>
-                              <div class="card-body">
-                                <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
-                                <p class="card-text">
-                                  {{  element.NumeroCatalogo }}
-                                 
-                                </p>
-                                <p class="card-text">
-                             
-                                  {{  element.NombreDelConjuntoDatos }}
-                                </p>
-                                <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
-  
-                              
-                              </div>
-  
-                            </div>
-                          </div>
-                          {% endfor %}
-                      </div>
-                    </div>
-                    </div>   
-                  </div>
-                  </div>
-  
-                5</div>
-
+            
           </div>
         </div> 
     </main> 

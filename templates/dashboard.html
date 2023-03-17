@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <meta charset="utf-8">
         <title>DashBoard</title>
         <link rel="stylesheet" href="../static/css/style1.css" >
@@ -16,6 +17,9 @@
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
     <style>
+      body {
+        font-size: 16px;
+      }
       #global {
        
         border: 2px solid #ddd;
@@ -40,7 +44,8 @@
         padding: 10px 7px 5px;
     }
     .table-responsive {
-      max-height: 450px; 
+      max-height: 500px; 
+      
       overflow-y: scroll;
     }
     .DivWithScroll{
@@ -86,6 +91,7 @@
       #btnClear{
           display: inline-block;
           vertical-align: top;
+          border: 2px solid rgba(108, 89, 179, 0.75);
       }
       .nav-scroller .nav {
         display: flex;
@@ -97,21 +103,61 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+      .nav-link {
+        color: #404827;
+        font-size: 150%;
+        }
+        .nav-link:hover {
+          color:  #008776;
+          }
+          .container {
+            width: 90%; /* 90% of the parent container */
+            max-width: 1200px; /* maximum width of 1200 pixels */
+            margin: 0 auto; /* center the container horizontally */
+          }
+          @media only screen and (max-width: 600px) {
+            body {
+              font-size: 14px;
+            }
+          }
+          .html {
+            height: 100%;
+          }
+          .body {
+            box-sizing: border-box;
+            height: 100%;
+         
+         
+          }
+          
+          .container {
+            height: 100%;
+    
+        
+          }
+         
+          
+
     </style>
   </head>
   <body >
     <nav>
     <main>
     
-      <div  class="row mw-100 overflow-auto" >
+      <div  class="row" >
       <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
             
-              <img src="../static/images/logoblanco.png" alt="mdo" width="300" height="100">
-              <br>
+              <img src="../static/images/logoblanco.png" alt="mdo" width="200" height="70">
+              
+
+
 
               <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
+
+
               <div class="dropdown border-top">
+
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
                   
@@ -121,120 +167,171 @@
                 <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
                 
                 <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light"> <span id="current-time"></span></p>
-                <br><br><br>
-                <img src="../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="250" >
+                <img src="../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="100" height="150" >
 
-
-
-                <br>
-               
-        
-                
                 <ul class="dropdown-menu text-small shadow">
                   <li><a class="dropdown-item" onclick="location.href = '/perfilU'" href="#">Perfil</a></li>
-                  <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                  <li><a class="dropdown-item" href="#">Registros Personales</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item"  href="#" onclick="location.href = '/index'">Ir al inicio</a></li>
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
                 </ul>
+
               </div>
-                      </ul>
           </div>
       </div> 
-        <div  id="global" class="col-sm-10 mw-100" style="background-color: #eee;">
+
+
+
+
+      
+        <div  id="global" class="col" style="background-color: #eee;">
          
           <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
-          <hr>
+          
           <div class="row">
-            <div class="col-sm-6 mw-100 ">
+            <div class="col-sm-8 mw-100 ">
 
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestión Usuarios</h1></div>
 
-              <br>
+
+
+
+
+
+
+
+
               
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/register'"  style="background-color: #008776"  type="button" aria-expanded="false" >Agregar</button>
-                  </div>
-                  <div class="col">
-                    <div class="dropdown">
-                      <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/UpdateUser'"  style="background-color: #008776" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" >
-                        Modificar
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Auxiliar</a></li>
-                        <li><a class="dropdown-item" href="#">Auxiliar de Curatoría</a></li>
-                        <li><a class="dropdown-item" href="#">Pasante</a></li>
-                        <li><a class="dropdown-item" href="#">Curador General del Área</a></li>
-                      </ul>
-                    </div>
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Especimenes</button>
+                  <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Sistema</button>
                 </div>
-                
-                <div class="col">
-                   
-                  <button class=" w-100 btn-lg border-light text-light "   style="background-color: #008776"  type="button" aria-expanded="false" >Desactivar</button>
-                </div>
-                
-              <div class="col-sm-4 mw-100">
-              </div>
-              <br> 
-              <br>
-              <br> 
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Actividades</h1></div>
-              <br>   
-              <br>
-              
-                <div class="table-responsive">
-                  <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Tarea Realizada</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Ejemplar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for action in actions %}
-                      <tr>
-                        <td>{{ action.tiempo }}</td>
-                        <td>{{ action.tarea }}</td>
-                        <td>{{ action.user }}</td>
-                        <td>{{ action.ejemplar }}</td>
-                        
-                    
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                
-                </div>
-              </div></div>  
-              </div>
 
-              <div class="col-sm-6 mw-100 ">
-              
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion ejemplares</h1></div>
-              <br>
+              </nav>
 
-                <div class="container">
+
+
+
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                <br>
+
+                  <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestión Usuarios</h2></div>
+                  <br>
+                  
                   <div class="row">
+                    <br>
+                     <br>
+                     
+                    <div class="col">
+                      <a class="a" onclick="location.href = '/register'" style="height:200px; width:200px;" >
+                        <img class="image_header-museo" src="/static/images/4175032.png" >
+                      </a>
+              
+                    
+                     
+                      <div class="text-center" ><h4 style="color: #008776; text-align: center;">Agregar Usuarios</h4></div>
+                    
+                    </div>
+
+
+                    <div class="col">
+                      <a class="a" onclick="location.href = '/UpdateUser'" style="height:200px; width:200px;" >
+                        <img class="image_header-museo" src="/static/images/5436090.png" >
+                      </a>
+                      <div class="text-center" ><h4 style="color: #008776; text-align: center;">Modificar Usuarios</h4></div>
+                    
+                     
+               
+                 
+                    </div>
+                  
+                  <div class="col">
+                     
+                        
+                    <a class="a" onclick="location.href = '/UpdateUser'" style="height:200px; width:200px;">
+                      <img class="image_header-museo" src="/static/images/747386.png" >
+                    </a>
+                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Desactivar Usuarios</h4></div>
+                  
+                   
+                  </div>
+                  </div>
+                  
+                    
+                  <br> <br>
+                    
+                    <div class="text-center" ><h2 style="color: #404827; text-align: center;">Registro Actividades</h2></div>
+                   
+                    
+                    <br>
+                      <div class="table-responsive">
+                        <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                          <thead>
+                            <tr style="background-color: #404827;color:white;">
+                              <th scope="col">Fecha</th>
+                              <th scope="col">Tarea Realizada</th>
+                              <th scope="col">Usuario</th>
+                              <th scope="col">Ejemplar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for action in actions %}
+                            <tr>
+                              <td style="color: #404827;">{{ action.tiempo }}</td>
+                              <td style="color: #404827;">{{ action.tarea }}</td>
+                              <td style="color: #404827;">{{ action.user }}</td>
+                              <td style="color: #404827;"> {{ action.ejemplar }}</td>
+                              
+                          
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      
+                      </div>
+                    
+                  
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+                
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+ <br>
+  
+                  <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestion ejemplares</h2></div>
+                  <br>
+               
+                  <div class="row">
+                    <br> <br>
                     <div class="col">
                         <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Ejemplares </button>
                     </div>
+
                     <div class="col">
                         <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/informe'"  value="Register"  type="submit" style="background-color: #008776">Realizar Actividad</button>
                     </div>
+
                     <div class="col">
                       
                       <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/registerE'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Agregar especimen</button>
-                    
-                  
+          
                     </div>
-                <div class="col">
-                <br>
-                    
+
+                  </div>
+
                   <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares</h1></div>
                   <div   class="table-responsive">
                   <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
@@ -265,46 +362,58 @@
                     </tbody>
                   </table>
                 </div>
-                 
-                
+             
 
-                
-            </div>
-                <br>
               
-              
-               
-              </div>
-             
-                <br>
-                
-              
-               
-             
-                </div>
-              </div>
-              </div>
-          <div class="container">
-            <div class="row">
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion Sistema</h1></div>
-              <br>
-              <div class="col">
-                  <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Clase</button>
-              </div>
-              <div class="col">
-                  <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Familia</button>
-              </div>
-              <div class="col">
-                <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Genero</button>
-              </div>
-              <div class="col">
-                <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Orden</button>
-              </div>
-              <div class="col-3">
-                <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Agregar Manualmente</button>
-              </div>
-            </div>
           </div>
+
+
+
+
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                  <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion Sistema</h1></div>
+                  <div class="container">
+                    <div class="row">
+                     
+                   
+                      <div class="col">
+                          <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Clase</button>
+                      </div>
+                      <div class="col">
+                          <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Familia</button>
+                      </div>
+                      <div class="col">
+                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Genero</button>
+                      </div>
+                      <div class="col">
+                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Orden</button>
+                      </div>
+                      <div class="col-3">
+                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Agregar Manualmente</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+            
+
+          
+
+            
+
+       
                
               <script>
                 function updateTime() {
@@ -320,7 +429,7 @@
         
         </div>
       </div>
-    </ul>
+    </div>
     </main>
   </nav>
   </body>

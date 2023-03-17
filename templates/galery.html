@@ -103,14 +103,15 @@
 #radio-cards .card-input-element:checked + .card-input {
   border: 1px solid #008776;
 }
-
-.nav-link.active {
-  color: #404827;
+.nav-pills .nav-link.active {
+  background-color:#404827;;
+  color: white;
 }
+
     </style>
   </head>
 <body>
-  <header class="header"style="height: 75px;background-color: #008776;">
+  <header class="header"style="height: 75px;background-color:#404827;">
     <div class="container" >
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
@@ -135,7 +136,7 @@
   </header>
     <main>
     <div  class="row " >
-        <div class="col-2" style="background-color: #008776; height: 100vh;">
+        <div class="col-2" style="background-color: #404827; height: 100vh;">
           
           <img src="../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
             <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
@@ -247,7 +248,7 @@
               <button class="nav-link" id="pills-cuarto-tab" data-bs-toggle="pill" data-bs-target="#pills-cuarto" type="button" role="tab" aria-controls="pills-cuarto" aria-selected="false"><img  src="../static/images/3069114.png" height="150px" width="150px" /></button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-cuarto-tab" data-bs-toggle="pill" data-bs-target="#pills-cuarto" type="button" role="tab" aria-controls="pills-cuarto" aria-selected="false"><img  src="../static/images/685107.png" height="150px" width="150px" /></button>
+              <button class="nav-link" id="pills-quinto-tab" data-bs-toggle="pill" data-bs-target="#pills-quinto" type="button" role="tab" aria-controls="pills-quinto" aria-selected="false"><img  src="../static/images/685107.png" height="150px" width="150px" /></button>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
@@ -318,7 +319,7 @@
                           <div class="card">
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
-                            src="../static/images/Rana-venenosa-de-fresa.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                            src="../static/images/que_son_los_mamiferos_24388_0_600.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
                               class="card-img-top"
                               alt="Waterfall" height="600px" width="500px"
                             />
@@ -447,6 +448,53 @@
                 </div>
 
               4</div>
+              <div class="tab-pane fade" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">5
+
+                <div  class="container">
+                  <div class="card">  
+                    <div id="galeria" class="gallery">    
+                      
+                    
+                      <div class="imagen">
+                        
+                        <div class="row">
+                          {% for element in especimenes %}
+                          <div class="col-sm-6">
+                          
+                            <div class="card">
+                              <a href="{% url 'element_detail' element.pk %}">
+                              <img 
+                              src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                                class="card-img-top"
+                                alt="Waterfall" height="600px" width="500px"
+                              />
+                              </a>
+                              <div class="card-body">
+                                <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                                <p class="card-text">
+                                  {{  element.NumeroCatalogo }}
+                                 
+                                </p>
+                                <p class="card-text">
+                             
+                                  {{  element.NombreDelConjuntoDatos }}
+                                </p>
+                                <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
+  
+                              
+                              </div>
+  
+                            </div>
+                          </div>
+                          {% endfor %}
+                      </div>
+                    </div>
+                    </div>   
+                  </div>
+                  </div>
+  
+                5</div>
+
           </div>
         </div> 
     </main> 

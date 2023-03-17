@@ -98,7 +98,7 @@
         flex-wrap: nowrap;
         padding-bottom: 1rem;
         margin-top: -1px;
-        overflow-x: auto;
+        overflow-y: auto;
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -111,9 +111,9 @@
           color:  #008776;
           }
           .container {
-            width: 90%; /* 90% of the parent container */
-            max-width: 1200px; /* maximum width of 1200 pixels */
-            margin: 0 auto; /* center the container horizontally */
+            width: 90%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
           }
           @media only screen and (max-width: 600px) {
             body {
@@ -188,7 +188,7 @@
           <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           
           <div class="row">
-            <div class="col-sm-8 mw-100 ">
+            <div class="col ">
 
 
 
@@ -203,7 +203,7 @@
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
-                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Especimenes</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ejemplares</button>
                   <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Sistema</button>
                 </div>
 
@@ -225,8 +225,8 @@
                      <br>
                      
                     <div class="col">
-                      <a class="a" onclick="location.href = '/register'" style="height:200px; width:200px;" >
-                        <img class="image_header-museo" src="/static/images/4175032.png" >
+                      <a class="a" onclick="location.href = '/register'" >
+                        <img class="image_header-museo" src="/static/images/4175032.png"  style="height:150px; width:150px;" >
                       </a>
               
                     
@@ -237,8 +237,8 @@
 
 
                     <div class="col">
-                      <a class="a" onclick="location.href = '/UpdateUser'" style="height:200px; width:200px;" >
-                        <img class="image_header-museo" src="/static/images/5436090.png" >
+                      <a class="a" onclick="location.href = '/UpdateUser'"  >
+                        <img class="image_header-museo" src="/static/images/5436090.png"   style="height:150px; width:150px;">
                       </a>
                       <div class="text-center" ><h4 style="color: #008776; text-align: center;">Modificar Usuarios</h4></div>
                     
@@ -250,8 +250,8 @@
                   <div class="col">
                      
                         
-                    <a class="a" onclick="location.href = '/UpdateUser'" style="height:200px; width:200px;">
-                      <img class="image_header-museo" src="/static/images/747386.png" >
+                    <a class="a" onclick="location.href = '/UpdateUser'">
+                      <img class="image_header-museo" src="/static/images/747386.png"   style="height:150px; width:150px;">
                     </a>
                     <div class="text-center" ><h4 style="color: #008776; text-align: center;">Desactivar Usuarios</h4></div>
                   
@@ -309,19 +309,33 @@
 
                 
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
- <br>
+                      <br>
   
-                  <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestion ejemplares</h2></div>
+                  <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestion Ejemplares</h2></div>
                   <br>
                
                   <div class="row">
                     <br> <br>
                     <div class="col">
-                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/load_data'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Ejemplares </button>
-                    </div>
+
+                    <a class="a" onclick="location.href = '/load_data'" >
+                      <img class="image_header-museo" src="/static/images/7191951.png" style="height:130px; width:150px;" >
+                    </a>
+                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Importar Ejemplares</h4></div>
+                  
+                   
+                  </div>
+                      
+                    
 
                     <div class="col">
-                        <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '/informe'"  value="Register"  type="submit" style="background-color: #008776">Realizar Actividad</button>
+                      
+                    <a class="a"  onclick="location.href = '/informe'">
+                      <img class="image_header-museo" src="/static/images/1001371.png"  style="height:130px; width:120px;">
+                    </a>
+                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Registrar Actividad</h4></div>
+                  
+                    
                     </div>
 
                     <div class="col">
@@ -331,17 +345,18 @@
                     </div>
 
                   </div>
-
-                  <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares</h1></div>
-                  <div   class="table-responsive">
+                  <br> <br>
+                  <div   class="text-center" ><h2 style="color: #404827; text-align: center;">Ejemplares</h2></div>
+                  <br>
+                  <div   class="table-responsive" >
                   <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
                     <thead>
-                      <tr>
+                      <tr style="background-color: #404827;color:white;">
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Fecha</th>
                         <th>Cientifico</th>
-                        <th>Editar</th>
+                        <th>Editar</th><th>Archivar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -353,8 +368,14 @@
                         <td>{{ esp.NombreComun }}</td>
                         <td>{{ esp.FechaIdentificacion }}</td>
                         <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
-                        <td><a href="../updateE/{{esp.id}}">Edit Specimen</a></td>
-                        <td><a href="dardebaja/{{esp.id}}">Archivar</a></td>
+                        <td style="color: #404827;"> <a class="a" href="../updateE/{{esp.id}}"  >
+                          <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
+                        </a>     </td>
+                        <td style="color: #404827;">
+                          <a class="a" href="dardebaja/{{esp.id}}"  >
+                            <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
+                          </a>  
+                        </td>
     
                       </tr>
                       {% endif %}
@@ -371,26 +392,46 @@
 
 
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-
-                  <div class="text-center" ><h1 style="color: #008776; text-align: center;">Gestion Sistema</h1></div>
+                  <br>
+                  <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestión Clasificaciones</h2></div>
                   <div class="container">
                     <div class="row">
                      
                    
                       <div class="col">
-                          <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Clase</button>
+
+
+                        <form method="post" action="{% url 'elegir' %}">
+                          {% csrf_token %}
+                         
+                          <br><br>
+                          
+                          <select name="option" id="option" class="form-select">
+            
+                            <option selected value="option1">Clase</option>
+                            <option value="option2">Orden</option>
+                            <option value="option3">Familia</option>
+                            <option value="option4">Genero</option>
+                          </select>
+                          <br><br>
+                          
+                          <button type="submit" style="border:none;" >
+                            <img class="image_header-museo" src="/static/images/1248845.png" style="height:150px; width:150px;">
+                            <div class="text-center" ><h4 style="color: #008776; text-align: center;">Agregar clasificación</h4></div>
+                        </button>
+                       
+                        </form>
                       </div>
-                      <div class="col">
-                          <button class="w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Familia</button>
-                      </div>
-                      <div class="col">
-                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Genero</button>
-                      </div>
-                      <div class="col">
-                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Importar Orden</button>
-                      </div>
+                      <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestión Tipo de Actividades</h2></div>
+                        
+                      
                       <div class="col-3">
-                        <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '#'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Agregar Manualmente</button>
+                        <br><br>
+                        <form method="POST"  action="{% url 'AgregarActividad' %}">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <button type="submit">Submit</button>
+                      </form>
                       </div>
                     </div>
                   </div>
@@ -398,16 +439,6 @@
 
                 </div>
 
-
-
-
-
-
-
-
-
-
-            
 
           
 
@@ -425,7 +456,14 @@
             </script>
                
                   
-
+            {% if messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
         
         </div>
       </div>

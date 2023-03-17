@@ -76,11 +76,13 @@ class Class_User(models.Model):
            
 class TipoActividad(models.Model):
     id = models.AutoField(primary_key=True)
-    nombreactividad = models.CharField(max_length=50)
+    nombreactividad = models.CharField(max_length=500)
    
-    
     def __str__(self):
         return self.nombreactividad
+    
+
+    
 class Actividades(models.Model):
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=50)

@@ -22,7 +22,7 @@ import tkinter as tk
 from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
-
+from django.http import HttpResponse
 
 class IndexView(View):
         def get(self,request):
@@ -35,6 +35,10 @@ class CambioContrasenia(View):
             return render(request,"changepassword.html")
 class Galry(View):
         def get(self,request):
+            anfibios = especimen.objects.filter(NombreDelConjuntoDatos='Colección de Exhibición de Anfibios')
+            aves = especimen.objects.filter(NombreDelConjuntoDatos='Colección de Exhibición de Aves')
+            reptiles = especimen.objects.filter(NombreDelConjuntoDatos='Colección de exhibición de Reptiles')
+            mamiferos = especimen.objects.filter(NombreDelConjuntoDatos='Colección de exhibición de Mammalia')
             especimenes = especimen.objects.all()
             familias =  familia.objects.all()
             ordenes =  Orden.objects.all()
@@ -42,7 +46,7 @@ class Galry(View):
             generos =  Genero.objects.all()
            
                 
-            return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos})
+            return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos,'anfibios':anfibios,'aves':aves,'mamiferos':mamiferos,'reptiles':reptiles})
 def galery_familia(request,nombre):
             especimenes = especimen.objects.filter(Familia = nombre)
             familias =  familia.objects.filter(nombreFamilia = nombre)
@@ -458,65 +462,104 @@ def load_data(request):
         e.save()
     root.mainloop()
     return render(request, 'dashboard.html')
-
+def elegir(request):
+    if request.method == 'POST':
+        if request.POST.get('option') == 'option1':
+           
+            return load_data_clase(request)
+        elif request.POST.get('option') == 'option2':
+         
+            return load_data_orden(request)
+        elif request.POST.get('option') == 'option3':
+            return load_data_familia(request)
+        elif request.POST.get('option') == 'option4':
+            return load_data_genero(request)
+        else:
+            return HttpResponse('Invalid option')
+    else:
+        return redirect('dashboard.html')
 def load_data_clase(request):
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
-    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'class' ])
-  
-    for _, row in data.iterrows():
-          
-        clase = Clase.objects.filter(nombreClase=row['class']).first()
-        if not clase:
+    try:
+        root = tk.Tk()
+        root.withdraw()
+        file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+        if not file_path: 
+            messages.error(request, 'Error: No se seleccionó un archivo')
+            return redirect('dashboard')
+        
+        data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1], usecols=['class'])
+        for _, row in data.iterrows():
+            clase = Clase.objects.filter(nombreClase=row['class']).first()
+            if not clase:
                 clase = Clase(nombreClase=row['class'])
                 clase.save()
-    root.mainloop()
-    return render(request, 'dashboard.html')
+        root.mainloop()
+        return render(request, 'dashboard.html')
+    except FileNotFoundError:
+        return redirect('dashboard')
+    
 def load_data_familia(request):
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
-    
-    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'family' ])
-  
-    for _, row in data.iterrows():
-        familias = familia.objects.filter(nombreFamilia=row['family']).first()
-        if not familias:
-            familias = familia(nombreFamilia=row['family'])
-            familias.save()
-    root.mainloop()
-    return render(request, 'dashboard.html')
+    try:
+        root = tk.Tk()
+        root.withdraw()
+        file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+        if not file_path: 
+            messages.error(request, 'Error: No se seleccionó un archivo')
+            return redirect('dashboard')
+        
+        data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1], usecols=['family'])
+        for _, row in data.iterrows():
+            fam = familia.objects.filter(nombreFamilia=row['family']).first()
+            if not fam:
+                fam = familia(nombreFamilia=row['family'])
+                fam.save()
+        root.mainloop()
+        return render(request, 'dashboard.html')
+    except FileNotFoundError:
+        return redirect('dashboard')
+   
+
+
+
+
 def load_data_orden(request):
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
-    
-    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'order'])
-    for _, row in data.iterrows():
-        orden = Orden.objects.filter(nombreOrden=row['order']).first()
-        if not orden:
-            orden = Orden(nombreOrden=row['order'])
-            orden.save()
-
-    root.mainloop()
-    return render(request, 'dashboard.html')
+    try:
+        root = tk.Tk()
+        root.withdraw()
+        file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+        if not file_path: 
+            messages.error(request, 'Error: No se seleccionó un archivo')
+            return redirect('dashboard')
+        
+        data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1], usecols=['order'])
+        for _, row in data.iterrows():
+            orden = Orden.objects.filter(nombreOrden=row['order']).first()
+            if not orden:
+                orden = Orden(nombreOrden=row['order'])
+                orden.save()
+        root.mainloop()
+        return render(request, 'dashboard.html')
+    except FileNotFoundError:
+        return redirect('dashboard')
 def load_data_genero(request):
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
-    
-    data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=[ 'genus'])
-  
-    for _, row in data.iterrows():
-        genero = Genero.objects.filter(nombreGenero=row['genus']).first()
-        if not genero:
-            genero = Genero(nombreGenero=row['genus'])
-            genero.save()
-    root.mainloop()
-    return render(request, 'dashboard.html')
-
-
+    try:
+        root = tk.Tk()
+        root.withdraw()
+        file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+        if not file_path: 
+            messages.error(request, 'Error: No se seleccionó un archivo')
+            return redirect('dashboard')
+        
+        data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1], usecols=['genus'])
+        for _, row in data.iterrows():
+            genero = Genero.objects.filter(nombreGenero=row['genus']).first()
+            if not genero:
+                genero = Genero(nombreGenero=row['genus'])
+                genero.save()
+        root.mainloop()
+        return render(request, 'dashboard.html')
+    except FileNotFoundError:
+        return redirect('dashboard')
 
 
 
@@ -572,3 +615,11 @@ def darbaja_especimen(request, id):
     esp.estado = False
     esp.save()
     return HttpResponseRedirect(reverse('dashboard')) 
+def AgregarActividad(request):
+    form = TipoActividadForm()
+    if request.method == 'POST':
+        form = TipoActividadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard.html')
+    return render(request, 'agregar_actividad.html', {'form': form})

@@ -447,3 +447,9 @@ class Update(forms.Form):
                     raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
             return apel
     
+
+
+class TipoActividadForm(forms.ModelForm):
+    class Meta:
+        model = TipoActividad
+        fields = ['nombreactividad']

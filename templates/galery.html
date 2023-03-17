@@ -103,6 +103,10 @@
 #radio-cards .card-input-element:checked + .card-input {
   border: 1px solid #008776;
 }
+
+.nav-link.active {
+  color: #404827;
+}
     </style>
   </head>
 <body>
@@ -116,7 +120,7 @@
           <li><a type="button"  onclick="location.href = '/index'" class="nav-link text-light">Inicio</a></li>
           <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
           <li><a href="#" class="nav-link text-light">Registros</a></li>
-          <li><a href="#" class="nav-link text-light">FAQs</a></li>
+          <li><a href="#" class="nav-link text-light">FAQs</a></li> 
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
@@ -220,135 +224,231 @@
 
                 <br>
             </div>
+
         </div> 
+
+
+
         <div  id="global" class="col-10" style="height: 100vh; ">
-          <div id="radio-cards">
-            <br>
-            <div class="row gx-lg-5">
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault1" type="radio" name="defaultGroup" class="card-input-element" />
-          
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../static/images/frog.png" height="50px" width="50px"> Anfibios</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault2" type="radio" name="defaultGroup" class="card-input-element" checked />
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../static/images/reptiles.png" height="50px" width="50px"> Reptiles</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault3" type="radio" name="defaultGroup" class="card-input-element" />
-          
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../static/images/mamiferos.png" height="50px" width="50px"> Mamiferos</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault4" type="radio" name="defaultGroup" class="card-input-element" />
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../static/images/aves.png" height="50px" width="50px"> Aves</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-            </div>
-          </div>
-            <div class="album py-5 " style="height: 100vh; ">
-                    <div  class="container">
-                      <div class="card">  
-                        <div id="galeria" class="gallery">    
-                          
+
+
+
+          <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> <img  src="../static/images/frog.png" height="150px" width="150px" /></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><img  src="../static/images/347401.png" height="150px" width="150px" /></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><img  src="../static/images/3196018.png" height="150px" width="150px" /></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-cuarto-tab" data-bs-toggle="pill" data-bs-target="#pills-cuarto" type="button" role="tab" aria-controls="pills-cuarto" aria-selected="false"><img  src="../static/images/3069114.png" height="150px" width="150px" /></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-cuarto-tab" data-bs-toggle="pill" data-bs-target="#pills-cuarto" type="button" role="tab" aria-controls="pills-cuarto" aria-selected="false"><img  src="../static/images/685107.png" height="150px" width="150px" /></button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">1
+
+              <div  class="container">
+                <div class="card">  
+                  <div id="galeria" class="gallery">    
+                    
+                  
+                    <div class="imagen">
+                      
+                      <div class="row">
+                        {% for element in anfibios %}
+                        <div class="col-sm-6">
                         
-                          <div class="imagen">
-                            
-                            <div class="row">
-                              {% for element in especimenes %}
-                              <div class="col-sm-6">
-                              
-                                <div class="card">
-                                  <a href="{% url 'element_detail' element.pk %}">
-                                  <img 
-                                  src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                                    class="card-img-top"
-                                    alt="Waterfall" width="300" height="700"
-                                  />
-                                  </a>
-                                  <div class="card-body">
-                                    <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
-                                    <p class="card-text">
-                                      {{  element.NumeroCatalogo }}
-                                     
-                                    </p>
-                                    <p class="card-text">
-                                 
-                                      {{  element.NombreDelConjuntoDatos }}
-                                    </p>
-                                    <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
-
-                                  
-                                  </div>
-
-                                </div>
-                              
-                              </div>
-
-                              {% endfor %}
+                          <div class="card">
+                            <a href="{% url 'element_detail' element.pk %}">
+                            <img 
+                            src="../static/images/Rana-venenosa-de-fresa.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                              class="card-img-top"
+                              alt="Waterfall" height="600px" width="500px"
+                            />
+                            </a>
+                            <div class="card-body">
+                              <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                              <p class="card-text">
+                                {{  element.NumeroCatalogo }}
+                               
+                              </p>
+                              <p class="card-text">
+                           
+                                {{  element.NombreDelConjuntoDatos }}
+                              </p>
+                              <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
 
                             
-                            
-                                
-                            
+                            </div>
+
                           </div>
-                       
                         </div>
-                       
-        </div>   
-    </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  </div>   
+                </div>
+                </div>
 
-      
-       
-    </div>
 
-    <script>
-    fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
-    // Iterate through each element and create an HTML element for it
-    data.forEach(element => {
-      const img = document.createElement('img');
-      img.src = element.image;
-      img.alt = element.name;
-      
-      // Add event listener to each image to redirect to information page
-      img.addEventListener('click', () => {
-        window.location.href = `information.html?id=${element.id}`;
-      });
-      
-      // Add image to gallery
-      document.querySelector('.gallery').appendChild(img);
-    });
-  });
-</script>
+                          1</div>
+
+
+
+
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">2
+
+              <div  class="container">
+                <div class="card">  
+                  <div id="galeria" class="gallery">    
+                    
+                  
+                    <div class="imagen">
+                      
+                      <div class="row">
+                        {% for element in mamiferos %}
+                        <div class="col-sm-6">
+                        
+                          <div class="card">
+                            <a href="{% url 'element_detail' element.pk %}">
+                            <img 
+                            src="../static/images/Rana-venenosa-de-fresa.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                              class="card-img-top"
+                              alt="Waterfall" height="600px" width="500px"
+                            />
+                            </a>
+                            <div class="card-body">
+                              <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                              <p class="card-text">
+                                {{  element.NumeroCatalogo }}
+                               
+                              </p>
+                              <p class="card-text">
+                           
+                                {{  element.NombreDelConjuntoDatos }}
+                              </p>
+                              <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
+
+                            
+                            </div>
+
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  </div>   
+                </div>
+                </div>
+
+
+            
+
+              2</div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">3
+
+
+
+              <div  class="container">
+                <div class="card">  
+                  <div id="galeria" class="gallery">    
+                    
+                  
+                    <div class="imagen">
+                      
+                      <div class="row">
+                        {% for element in reptiles %}
+                        <div class="col-sm-6">
+                        
+                          <div class="card">
+                            <a href="{% url 'element_detail' element.pk %}">
+                            <img 
+                            src="../static/images/Rana-venenosa-de-fresa.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                              class="card-img-top"
+                              alt="Waterfall" height="600px" width="500px"
+                            />
+                            </a>
+                            <div class="card-body">
+                              <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                              <p class="card-text">
+                                {{  element.NumeroCatalogo }}
+                               
+                              </p>
+                              <p class="card-text">
+                           
+                                {{  element.NombreDelConjuntoDatos }}
+                              </p>
+                              <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
+
+                            
+                            </div>
+
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  </div>   
+                </div>
+                </div>
+
+
+
+              3</div>
+            <div class="tab-pane fade" id="pills-cuarto" role="tabpanel" aria-labelledby="pills-cuarto-tab">4
+
+              <div  class="container">
+                <div class="card">  
+                  <div id="galeria" class="gallery">    
+                    
+                  
+                    <div class="imagen">
+                      
+                      <div class="row">
+                        {% for element in aves %}
+                        <div class="col-sm-6">
+                        
+                          <div class="card">
+                            <a href="{% url 'element_detail' element.pk %}">
+                            <img 
+                            src="../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                              class="card-img-top"
+                              alt="Waterfall" height="600px" width="500px"
+                            />
+                            </a>
+                            <div class="card-body">
+                              <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
+                              <p class="card-text">
+                                {{  element.NumeroCatalogo }}
+                               
+                              </p>
+                              <p class="card-text">
+                           
+                                {{  element.NombreDelConjuntoDatos }}
+                              </p>
+                              <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary">Ver más</a>
+
+                            
+                            </div>
+
+                          </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  </div>   
+                </div>
+                </div>
+
+              4</div>
+          </div>
+        </div> 
     </main> 
 </body>
 </html>

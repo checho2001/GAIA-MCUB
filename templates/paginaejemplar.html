@@ -31,7 +31,32 @@
   }
   
 
-
+  @font-face {
+    font-family: 'Lato-Black';
+    src: url('fonts/Lato-Black.ttf') format('truetype');
+  }
+  
+  .h1 {
+    font-family: 'Lato-Black', sans-serif;
+    text-decoration-line: underline;
+    text-underline-offset: 12px; 
+    text-decoration-color: #81bb26;
+  }
+  .h2 {
+    font-family: 'Lato-Black', sans-serif;
+    color: #81bb26;
+  }
+  .h3 {
+    font-family: 'Acherus Grotesque', sans-serif;
+  }
+  .h4 {
+    font-family: 'Lato-Black', sans-serif;
+    
+  }
+  .h5 {
+    font-family: 'Lato-Black', sans-serif;
+   
+  }
 
   .bd-placeholder-img {
     font-size: 1.125rem;
@@ -98,13 +123,13 @@
   
   .btn-custom:hover {
     transform: scale(1.2);
-    color: #404827; 
+    color: black; 
   }
   .btn-custom {
     color: white;
     background-color: #404827; 
     padding: 10px 20px;
-    border-radius: 5px;
+    
     transition: transform 0.3s ease;
    
   }
@@ -117,12 +142,15 @@
         <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
           <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
         </a>
+        <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+          <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+        </a>
         
         <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
-            <button class="btn btn-custom btn-fade btn-lg " type="button">Quienes Somos</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
           
             <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
     
@@ -131,6 +159,13 @@
             <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
             <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
           {% endif %}
+    
+           
+    
+            <div class="text-end" >
+              <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
+            </div>
+         
           </div>
         </div>
       </nav>
@@ -144,7 +179,7 @@
       
             
         <div class="row">
-            <div class="text-center" ><h1 style="color: #008776">Ejemplar  <i> {{ element.NombreCientificoComentarioRegistroBiologico }} </i> </h1></div>
+            <div class="text-center" ><h1 style="color: #404827">Ejemplar  <i> {{ element.NombreCientificoComentarioRegistroBiologico }} </i> </h1></div>
         </div>
         <div class="row">
            
@@ -156,7 +191,12 @@
             <div class="text-center">
             
             <h3> {{ element.NumeroCatalogo }}</h3>
-            
+
+            <a class="a" onclick="location.href = '/galery'"  >
+              <img class="image_header-museo" src="/static/images/back-button.png"  style="height:100px; width:100px;" >
+            </a>
+    
+          
             </div>
          
     <br>
@@ -272,7 +312,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                    <button class="btn-lg text-light border-light pull-right" type="button"  onclick="location.href = '/galery'" style="background-color: #008776;"><i class="glyphicon glyphicon-ok-sign"></i>Volver</button>
+                                 
                             </div>
                         </div>
                     </form>

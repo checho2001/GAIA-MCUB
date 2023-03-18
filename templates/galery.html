@@ -108,38 +108,72 @@
   background-color:#404827;;
   color: white;
 }
+.navbar {
+  background-color: #404827;
+}
+.navbar-custom {
+  background-color: #404827; 
+}
+
+
+.btn-custom:hover {
+  transform: scale(1.2);
+  color: black; 
+}
+.btn-custom {
+  color: white;
+  background-color: #404827; 
+  padding: 10px 20px;
+  
+  transition: transform 0.3s ease;
+ 
+}
+.my-input {
+  border: none;
+  
+}
 
     </style>
   </head>
 <body>
-  <header class="header"style="height: 75px;background-color:#404827;">
-    <div class="container" >
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
 
-       
 
-        <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 15px;">
-          <li><a type="button"  onclick="location.href = '/index'" class="nav-link text-light">Inicio</a></li>
-          <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
-          <li><a href="#" class="nav-link text-light">Registros</a></li>
-          <li><a href="#" class="nav-link text-light">FAQs</a></li> 
-        </ul>
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+      {% endif %}
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
           <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 
-        <div class="text-end" style="margin-top: 15px;">
-          <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
-        </div>
+
+      <form  class="my-input" role="search" >
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+      </form>
       </div>
     </div>
-  </header>
+  </nav>
+
+      
     <main>
-    <div  class="row " >
+    <div  class="row flex" >
         <div class="col-2" style="background-color: #404827; height: 100vh;">
           
-          <img src="../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
+         
             <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
 
              
@@ -266,12 +300,12 @@
 
             <div class="tab-pane fade show active" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">5
 
-              <div  class="container">
-                <div class="card">  
+              <div  class="container ">
+                <div class="card flex">  
                   <div id="galeria" class="gallery">    
                     
                   
-                    <div class="imagen">
+                    <div class="imagen flex">
                       
                       <div class="row">
                         {% for element in especimenes %}

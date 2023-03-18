@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar
-from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
+from users.views import IndexView,Quienessomos,Galry,update_text,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
 from users import views
 from django.conf import settings
@@ -35,7 +35,8 @@ urlpatterns = [
     path("UpdateUser/", views.update_aux_curatoria, name="UpdateU"),
     path('logout', views.custom_logout, name='logout'),
     path('elegir', views.elegir, name='elegir'),
-    path('AgregarActividad', views.AgregarActividad, name='AgregarActividad'),
+    path('AgregarActividad/', views.AgregarActividad, name='AgregarActividad'),
+    path('update_text/', views.update_text, name='update_text'),
     path('load_data/', load_data, name='load_data'),
     path('paginaejemplar/<int:pk>/', element_detail, name='element_detail'),
     path('dashCur/aprobar/<int:id>', views.aprobar_actividad, name = "aprobarA" ),

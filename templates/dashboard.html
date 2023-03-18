@@ -26,14 +26,9 @@
         border: 2px solid #ddd;
         height: 1000px;
         overflow-y: scroll;
+        overflow-x: hidden;
       }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+      
       .h1 {
         font-family: 'Lato-Black', sans-serif;
        
@@ -54,76 +49,21 @@
         font-family: 'Lato-Black', sans-serif;
        
       }
-      .DivToScroll{   
-        background-color: #F5F5F5;
-        border: 1px solid #DDDDDD;
-        border-radius: 4px 0 4px 0;
-        color: #3B3C3E;
-        font-size: 12px;
-        font-weight: bold;
-        left: -1px;
-        padding: 10px 7px 5px;
-    }
+  
     .table-responsive {
       max-height: 500px; 
       
       overflow-y: scroll;
     }
-    .DivWithScroll{
-        height:120px;
-        overflow:scroll;
-        overflow-x:hidden;
-    }
+    
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
 
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-      .sidebar {
-        width: 20%;
-        float: left;
-      }
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        
-      }
-      #btnSearch,
-      #btnClear{
-          display: inline-block;
-          vertical-align: top;
-          border: 2px solid rgba(108, 89, 179, 0.75);
-      }
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-y: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
+    
+      
       .nav-link {
         color: #404827;
         font-size: 150%;
@@ -141,9 +81,7 @@
               font-size: 14px;
             }
           }
-          .html {
-            height: 100%;
-          }
+         
           .body {
             box-sizing: border-box;
             height: 100%;
@@ -189,12 +127,35 @@
             font-family:'Lato-Black', sans-serif;
           }
           
+          html::-webkit-scrollbar {
+            display: none;
+            height: 0;
+        }
+        html::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+          -webkit-appearance: none;
+        }
+        html {
+          overflow-x: hidden;
+        }
+        .btn-customizedlogin {
+          color: white;
+          border:none;
+          transition: transform 0.3s ease;
+          
+        }
+        .btn-customizedlogin :hover {
+          transform: scale(1.2);
+          color: #404827; 
+          border: none;
+        }
 
     </style>
   </head>
-  <body >
-    <nav>
-    <main>
+  <body id="global">
+   
+    
       <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
         <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
           <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
@@ -216,7 +177,7 @@
         </div>
       </nav>
       <div  class="row" >
-      <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
+      <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 1000px;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
             
            
@@ -297,22 +258,19 @@
                      <br>
                      
                     <div class="col">
-                      <a class="a" onclick="location.href = '/register'" >
-                        <img class="image_header-museo" src="/static/images/4175032.png"  style="height:150px; width:150px;" >
-                      </a>
-              
+                      <button class="btn-customizedlogin "  onclick="location.href = '/register'" type="button"><img class="image_header-museo" src="/static/images/4175032.png"  style="height:150px; width:150px;" ></button>
+                   
                     
                      
-                      <div class="text-center" ><h4 style="color: #008776; text-align: center;">Agregar Usuarios</h4></div>
+                      <div class="text" ><h4 style="color: #008776; ">Agregar Usuarios</h4></div>
                     
                     </div>
 
 
                     <div class="col">
-                      <a class="a" onclick="location.href = '/UpdateUser'"  >
-                        <img class="image_header-museo" src="/static/images/5436090.png"   style="height:150px; width:150px;">
-                      </a>
-                      <div class="text-center" ><h4 style="color: #008776; text-align: center;">Modificar Usuarios</h4></div>
+                      <button class="btn-customizedlogin "  onclick="location.href = '/UpdateUser'"  type="button"><img class="image_header-museo" src="/static/images/5436090.png"  style="height:150px; width:150px;" ></button>
+                   
+                      <div class="text" ><h4 style="color: #008776; ">Modificar Usuarios</h4></div>
                     
                      
                
@@ -321,11 +279,9 @@
                   
                   <div class="col">
                      
-                        
-                    <a class="a" onclick="location.href = '/UpdateUser'">
-                      <img class="image_header-museo" src="/static/images/747386.png"   style="height:150px; width:150px;">
-                    </a>
-                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Desactivar Usuarios</h4></div>
+                    <button class="btn-customizedlogin "  onclick="location.href = '/UpdateUser'"type="button"><img class="image_header-museo" src="/static/images/747386.png"  style="height:150px; width:150px;" ></button>
+                 
+                    <div class="text" ><h4 style="color: #008776; ">Desactivar Usuarios</h4></div>
                   
                    
                   </div>
@@ -368,7 +324,7 @@
                       
                       </div>
                     
-                  
+                      <br><br><br><br><br><br><br>
 
 
 
@@ -393,11 +349,9 @@
                   <div class="row">
                     <br> <br>
                     <div class="col">
+                      <button class="btn-customizedlogin "  onclick="location.href = '/load_data'" type="button"><img class="image_header-museo" src="/static/images/7191951.png"  style="height:150px; width:150px;" ></button>
 
-                    <a class="a" onclick="location.href = '/load_data'" >
-                      <img class="image_header-museo" src="/static/images/7191951.png" style="height:130px; width:150px;" >
-                    </a>
-                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Importar Ejemplares</h4></div>
+                    <div class="text" ><h4 style="color: #008776;">Importar Ejemplares</h4></div>
                   
                    
                   </div>
@@ -405,18 +359,18 @@
                     
 
                     <div class="col">
-                      
-                    <a class="a"  onclick="location.href = '/informe'">
-                      <img class="image_header-museo" src="/static/images/1001371.png"  style="height:130px; width:120px;">
-                    </a>
-                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Registrar Actividad</h4></div>
+                      <button class="btn-customizedlogin "   onclick="location.href = '/informe'" type="button"><img class="image_header-museo"  src="/static/images/1001371.png"  style="height:150px; width:150px;" ></button>
+                   
+                    <div class="text" ><h4 style="color: #008776; ">Registrar Actividad</h4></div>
                   
                     
                     </div>
 
                     <div class="col">
-                      
-                      <button class=" w-100 btn-lg border-light text-light "   onclick="location.href = '/registerE'"  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Agregar especimen</button>
+                      <button class="btn-customizedlogin "   onclick="location.href = '/registerE'" type="button"><img class="image_header-museo" src="/static/images/3729028.png" style="height:150px; width:150px;" ></button>
+                    
+                      <div class="text" ><h4 style="color: #008776;">Registrar Ejemplar</h4></div>
+                  
           
                     </div>
 
@@ -461,9 +415,9 @@
                     </tbody>
                   </table>
                 </div>
-             
+                <br><br>
 
-              
+           
           </div>
 
 
@@ -483,7 +437,7 @@
                           {% csrf_token %}
                          
                           <br><br>
-                          
+                          <div class="text" ><h4 style="color: Black;">Seleccione que clasificacion agregar</h4></div>
                           <select name="option" id="option" class="form-select">
             
                             <option selected value="option1">Clase</option>
@@ -492,23 +446,46 @@
                             <option value="option4">Genero</option>
                           </select>
                           <br><br>
-                          
-                          <button type="submit" style="border:none;" >
+                          <div>
+                          <button  class="btn-customizedlogin " type="submit" style="border:none;" >
                             <img class="image_header-museo" src="/static/images/1248845.png" style="height:150px; width:150px;">
-                            <div class="text-center" ><h4 style="color: #008776; text-align: center;">Agregar clasificación</h4></div>
+                            
                         </button>
-                       
+                       <div class="text" ><h4 style="color: #008776;">Agregar clasificación por excel</h4></div>
+                      </div >
                         </form>
                       </div>
                       <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestión Tipo de Actividades</h2></div>
                         
                       
-                      <div class="col-3">
+                      <div class="col-6">
                         <br><br>
-                        <form method="POST"  action="{% url 'AgregarActividad' %}">
+                        <form method="post" action="{% url 'AgregarActividad' %}">
                           {% csrf_token %}
-                          {{ form.as_p }}
-                          <button type="submit">Submit</button>
+                          <div class="row">
+                            <div class="col-sm-8">
+                              <div class="text-center" ><h4 style="color: #008776; text-align: center;">Agregar tipo de Actividad</h4></div>
+                            </div>
+                            <div class="col-sm-8">
+                              <input class="form-control" type="text" id="name" name="name" required>
+                            </div>
+                            <div class="col">
+                              <button class="btn-customizedlogin " type="submit"><img class="image_header-museo" src="/static/images/1004759.png" style="height:50px; width:50px;"></button>
+                            </div>
+                          </div>
+
+
+                        </form>
+
+
+
+
+                        <form method="post">
+                          {% csrf_token %}
+                          <label for="new_content">New content:</label>
+                          <input type="text" id="new_content" name="new_content" required>
+                          <br>
+                          <button type="submit">Update</button>
                       </form>
                       </div>
                     </div>
@@ -519,10 +496,6 @@
 
 
           
-
-            
-
-       
                
               <script>
                 function updateTime() {
@@ -546,8 +519,8 @@
         </div>
       </div>
     </div>
-    </main>
-  </nav>
+
+  
   <script>
   $(document).ready(function(){
     $("#filtro").on("keyup", function() {
@@ -568,4 +541,5 @@
   });
   </script>
   </body>
+  
   </html>

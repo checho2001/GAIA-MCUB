@@ -23,7 +23,9 @@
   font-family: 'Lato-Black';
   src: url('fonts/Lato-Black.ttf') format('truetype');
 }
-
+p {
+  font-family: 'Lato-Black', sans-serif;
+}
 .h1 {
   font-family: 'Lato-Black', sans-serif;
   text-decoration-line: underline;
@@ -199,9 +201,7 @@ footer {
           
           <h2 class="h2" style=" color: #f08013;"> Noticias Sobre El Museo</h2>
           <br>
-          <h5 class="h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper, ligula ut rutrum porttitor, diam urna facilisis ipsum, vel bibendum lectus quam mattis velit. Vestibulum aliquet neque at sodales consectetur. Vivamus lacinia congue dolor. Sed viverra est et tempor convallis. Morbi scelerisque enim ex, at laoreet quam pharetra rhoncus. Ut efficitur massa vitae tellus luctus, vitae fermentum lectus ultricies. Vestibulum dictum justo odio, ac sagittis mauris convallis ac. Pellentesque feugiat erat nec facilisis placerat. Nunc a sem vel justo lobortis mollis.
-
-            Nam mattis egestas lectus, nec euismod sapien pretium at. Aenean condimentum purus et eros ultricies, eleifend lacinia erat iaculis. Cras volutpat eu velit non laoreet. Proin maximus neque ligula, in finibus purus scelerisque eu. Ut ut dapibus arcu. Vivamus sodales luctus tempor. Cras sed leo ut lectus imperdiet efficitur id sed nibh. Pellentesque et arcu vehicula, congue odio non, ultrices odio. Phasellus interdum sapien sed urna ultrices eleifend. Vestibulum vel varius justo. Aliquam justo dolor, consequat et faucibus et, vestibulum a elit. Praesent sit amet sollicitudin neque.</h5>
+          <p>{{ text.content }}</p>
 
         </div>
 

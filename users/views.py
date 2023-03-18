@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from  users.forms import loginForm
 from django.urls import reverse
-from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden, Area_User, Class_User
+from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden, Area_User, Class_User , Text
 from .forms import loginForm
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate
@@ -23,10 +23,15 @@ from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 from django.http import HttpResponse
+from django.db.models import Max
+from .models import Text
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import  user_passes_test
 
 class IndexView(View):
         def get(self,request):
-            return render(request,"index.html")
+            text = Text.objects.first()
+            return render(request,"index.html",{'text': text})
             
 class Quienessomos(View):
         def get(self,request):
@@ -84,7 +89,10 @@ def galery_orden(request,nombre):
             return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
  
 class Dashboard_Aux(View):
+        
+        @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
+            
             clase = Class_User.objects.get(id_user_id= request.user.id)
             c = Clase.objects.get(id = clase.id_clase_id)
             actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
@@ -93,7 +101,9 @@ class Dashboard_Aux(View):
 class Dashboard_Pas(View):
         def get(self,request):
             return render(request,"dashpasante.html")
+        
 class Dashboard_Cur(View):
+        @user_passes_test(lambda user: user.groups.filter(name='Curador').exists())
         def get(self,request):
             clase = Class_User.objects.get(id_user_id= request.user.id)
             #Filtrar por usuarios del area
@@ -254,7 +264,7 @@ def registerE(request):
 @login_required(login_url='redirect')
 def custom_logout(request):
     logout(request)
-    messages.info(request, "Logged out successfully!")
+    
     return redirect("home")
 
 class update_ejemplar(View):
@@ -620,10 +630,36 @@ def darbaja_especimen(request, id):
     esp.save()
     return HttpResponseRedirect(reverse('dashboard')) 
 def AgregarActividad(request):
-    form = TipoActividadForm()
     if request.method == 'POST':
         form = TipoActividadForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard.html')
-    return render(request, 'agregar_actividad.html', {'form': form})
+        
+        nombreactividad =  request.POST.get('name')
+        max_id = TipoActividad.objects.all().aggregate(Max('id'))['id__max']
+        a = TipoActividad(id=max_id + 1, nombreactividad=nombreactividad) 
+        a.save()
+        return redirect('dashboard') 
+    else:
+        form = TipoActividadForm()
+    return render(request, 'dashboard.html', {'form': form})
+
+
+def update_text(request):
+    if request.method == 'POST':
+        new_content = request.POST.get('new_content', None)
+        if new_content:
+            queryset = Text.objects.all()
+            if queryset.count() == 1:
+                instance = queryset.first()
+                instance.content = new_content
+                instance.save()
+                return render(request, 'dashboard.html', {'success': True})
+            elif queryset.count() == 0:
+                instance = Text(content=new_content)
+                instance.save()
+                return render(request, 'dashboard.html', {'success': True})
+            else:
+                return render(request, 'dashboard.html', {'error': 'There must be exactly one Text instance in the database.'})
+        else:
+            return render(request, 'dashboard.html', {'error': 'New content cannot be empty.'})
+    else:
+        return render(request, 'dashboard.html')

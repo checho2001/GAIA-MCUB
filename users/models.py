@@ -135,3 +135,9 @@ class UserAction(models.Model):
     ejemplar = models.CharField(max_length=100)
     tiempo = models.DateTimeField(auto_now_add=True)
     estado = models.BooleanField(default=False)
+
+class Text(models.Model):
+    content = models.TextField()
+
+    def __str__(self):
+        return self.content    

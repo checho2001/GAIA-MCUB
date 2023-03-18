@@ -19,83 +19,130 @@
   font-size: 16px;
   color: #f6f6f6;
 }
-
-footer h3 {
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 25px;
+@font-face {
+  font-family: 'Lato-Black';
+  src: url('fonts/Lato-Black.ttf') format('truetype');
 }
 
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.h1 {
+  font-family: 'Lato-Black', sans-serif;
+  text-decoration-line: underline;
+  text-underline-offset: 12px; 
+  text-decoration-color: #81bb26;
 }
+.h2 {
+  font-family: 'Lato-Black', sans-serif;
 
-footer ul li {
-  margin-bottom: 10px;
+  color: #81bb26;
 }
-
-footer ul li i {
-  margin-right: 10px;
-  color: #999;
+.h3 {
+  font-family: 'Acherus Grotesque', sans-serif;
 }
-
-footer ul li a {
-  color: #555;
-  text-decoration: none;
+.h4 {
+  font-family: 'Lato-Black', sans-serif;
+  
 }
-
+.h5 {
+  font-family: 'Lato-Black', sans-serif;
+ 
+}
 .social {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-.social li {
-  display: inline-block;
-  margin-right: 10px;
+footer {
+  background-color: #81bb26;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+ 
+  bottom: 0;
+  width: 100%;
+}
+.nav-pills .nav-link.active {
+  background-color:#404827;;
+  color: white;
+}
+.navbar {
+  background-color: #81bb26;
+  
+}
+.navbar-custom {
+  background-color: #81bb26; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  
 }
 
-.social li a {
-  color: #555;
-  font-size: 24px;
-  text-decoration: none;
-  transition: color 0.2
+
+.btn-custom:hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
+.btn-custom {
+  color: white;
+  background-color: #81bb26; 
+  padding: 10px 20px;
+  border: none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
 }
   </style>
 </head>
 <body>
-<header class="header"style="height: 105px;">
-    <div class="container" >
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+     
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
 
-        <a class="a" href="index.html" style="margin-top: 35px;" >
-          <img class="image_header-museo" src="../static/images/logo (1).png" >
-        </a>
 
-          <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 35px;">
-          <li><a href="#" class="nav-link text-light">Inicio</a></li>
-          <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
-          <li><a href="#" class="nav-link text-light">Nosotros</a></li>
-          <li><a href="#" class="nav-link text-light">Contacto</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 35px;">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
-        </form>
-
-        <div class="text-end" style="margin-top: 35px;">
-          <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
-        </div>
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+      {% endif %}
       </div>
     </div>
-  </header>
+  </nav>
   <br>
-      <div class="container">
-        <h1 class="h1">Bienvenido al Museo de Ciencias de la Univesidad El Bosque</h1>
-        
 
+
+  <main>
+    <br>
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+       
+
+      </div>
+ <br>
+ <br>
+ <br>
+ <br>
+ 
+        
+                     
+ <h1 class="h1"> Bienvenido al Museo de Ciencias de la Univesidad El Bosque</h1>
+ <br>
+ <br>
+ <br>
+ 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -104,13 +151,25 @@ footer ul li a {
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="../static/images/carousel-1.png" class="d-block w-100" alt="car1" width="900" height="500">
+              <img src="../static/images/carousel-1.png" class="d-block w-100" alt="car1" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>...</h5>
+                <p>...</p>
+              </div>
             </div>
             <div class="carousel-item">
-              <img src="../static/images/carousel-2.jpg" class="d-block w-100" alt="car2" width="900" height="500">
+              <img src="../static/images/carousel-2.jpg" class="d-block w-100" alt="car2" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>...</h5>
+                <p>...</p>
+              </div>
             </div>
             <div class="carousel-item">
-              <img src="../static/images/carousel-3.png" class="d-block w-100" alt="car3" width="900" height="500">
+              <img src="../static/images/carousel-3.png" class="d-block w-100" alt="car3" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>...</h5>
+                <p>...</p>
+              </div>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -122,143 +181,106 @@ footer ul li a {
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        <br>
-        <div>
-          <div class="row">
-        <div class="col-lg-6">
        
-        <p class="p" style=" text-align: justify; text-justify: inter-word;"> El Museo surge en el 2003 como un espacio para la enseñanza de las ciencias naturales con un componente preponderante de diferentes alternativas y estrategias educativas de dimensión ambiental que permitiera generar sinergias en la sociedad para confrontar las problemáticas que afectan la biodiversidad del país.
-          Por esto las prioridades del Museo de Ciencias de la Universidad El Bosque, al realizar proyectos, actividades o trabajos necesariamente tendrán que cumplir con la educación.
-          Servicios: 1. Servicios de consulta científica, curatoria de ejemplares y determinación taxonómica.
-         </p>
-       <br>
-      </div>
-      
-        <div class="col-lg-6">
-      
-              <img src="/static/images/logo-museo-de-ciencias-naturales.png" alt="mdo" height="200px" width="150px" >
+  
+
+</div>
+
+<br>
+                     <br>
+              
+                  
+                    
+
+<div class="container">
+  <h2 class="h2"> Algunas Colecciones</h2>
+  <br><br>
+  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+
    
-    </div>
-  </div>
-
-
-          <h2 class="h2"> Colecciones</h2>
-          <div>
-            <div class="row">
-              <div class="col-lg-6">
-        
-                <img src="../static/images/aves.png" alt="mdo"  height="200px" width="200px" >
-     
-      </div>
-          <div class="col-lg-6">
-            <h2 class="h2">Aves</h2>
-          <p class="p" style=" text-align: justify; text-justify: inter-word;"> El Museo surge en el 2003 como un espacio para la enseñanza de las ciencias naturales con un componente preponderante de diferentes alternativas y estrategias educativas de dimensión ambiental que permitiera generar sinergias en la sociedad para confrontar las problemáticas que afectan la biodiversidad del país.
-            Por esto las prioridades del Museo de Ciencias de la Universidad El Bosque, al realizar proyectos, actividades o trabajos necesariamente tendrán que cumplir con la educación.
-            </p>
-         <br>
-        </div>
-        
-          
-    </div>
-
-
-
-    <div>
+    <div class="container">
+      
       <div class="row">
-        <div class="col-lg-6">
-  
-          <img src="../static/images/reptiles.png" alt="mdo"  height="200px" width="200px" >
+        <div class="col">
+          <img   src="../static/images/frog.png" alt="..." class="image">
+        </div>
+        <div class="col">
+          <h3 class="h3">h2. Bootstrap heading</h3>
+          <h5 class="h5">h4. Bootstrap heading</h5>
 
-</div>
-    <div class="col-lg-6">
-      <h2 class="h2">Reptiles</h2>
-    <p class="p" style=" text-align: justify; text-justify: inter-word;"> El Museo surge en el 2003 como un espacio para la enseñanza de las ciencias naturales con un componente preponderante de diferentes alternativas y estrategias educativas de dimensión ambiental que permitiera generar sinergias en la sociedad para confrontar las problemáticas que afectan la biodiversidad del país.
-      Por esto las prioridades del Museo de Ciencias de la Universidad El Bosque, al realizar proyectos, actividades o trabajos necesariamente tendrán que cumplir con la educación.
-     </p>
-   <br>
-  </div>
-  
-    
-</div>
+        </div>
+        <br><br>
 
 
-
-
-
-<div>
-  <div class="row">
-    <div class="col-lg-6">
-    
-      <img src="../static/images/frog.png" alt="mdo"  height="200px" width="200px" >
-
-</div>
-<div class="col-lg-6">
-  <h2 class="h2">Anfibios</h2>
-<p class="p" style=" text-align: justify; text-justify: inter-word;"> El Museo surge en el 2003 como un espacio para la enseñanza de las ciencias naturales con un componente preponderante de diferentes alternativas y estrategias educativas de dimensión ambiental que permitiera generar sinergias en la sociedad para confrontar las problemáticas que afectan la biodiversidad del país.
-  Por esto las prioridades del Museo de Ciencias de la Universidad El Bosque, al realizar proyectos, actividades o trabajos necesariamente tendrán que cumplir con la educación.
- </p>
-<br>
-</div>
-
-
-</div>
+        <div class="w-100"></div>
+        <br><br>
+        <div class="col">  <h3 class="h3">h2. Bootstrap heading</h3>
+          <h5 class="h5">h4. Bootstrap heading</h5></div>
+        <div class="col">  <img   src="../static/images/347401.png" alt="..." class="image"></div>
 
 
 
-
-<div>
-  <div class="row">
-    <div class="col-lg-6">
-
-      <img src="../static/images/mamiferos.png" alt="mdo" height="200px" width="200px"  >
-
-</div>
-<div class="col-lg-6">
-  <h2 class="h2">Mamiferos</h2>
-<p class="p" style=" text-align: justify; text-justify: inter-word;"> El Museo surge en el 2003 como un espacio para la enseñanza de las ciencias naturales con un componente preponderante de diferentes alternativas y estrategias educativas de dimensión ambiental que permitiera generar sinergias en la sociedad para confrontar las problemáticas que afectan la biodiversidad del país.
-  Por esto las prioridades del Museo de Ciencias de la Universidad El Bosque, al realizar proyectos, actividades o trabajos necesariamente tendrán que cumplir con la educación.
- </p>
-<br>
-</div>
+        <div class="w-100"></div>
+        <br><br>
+        <div class="col">  <img   src="../static/images/3196018.png" alt="..." class="image"></div>
+        <div class="col">   <h3 class="h3">h2. Bootstrap heading</h3>
+          <h5 class="h5">h4. Bootstrap heading</h5></div>
 
 
-</div>
-</div>
-</body>
 
-<footer class="header mh-100"> 
-  <div class="footer-container">
-    <div class="row">
-      <h2 class="h2 text-light centered"style="text-light" >Museo De Ciencias de La Universidad El Bosque</h2>
-      <div class="col-md-4">
-        <h3>Contacto</h3>
-        <ul>
-          <li><i class="text-light fa fa-map-marker"></i> Dirección: Av. Cra. 9 No. 131 A - 02, Bogotá, Colombia</li>
-          <li><i class="text-light fa fa-phone"></i> Teléfono: 018000 113033</li>
-          <li><i class="text-light fa fa-envelope"></i> Email: info@unbosque.edu.co</li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3>Enlaces</h3>
-        <ul>
-          <li><a class="h6 text-light" href="#">Inicio</a></li>
-          <li><a class="h6 text-light" href="#">Programas Académicos</a></li>
-          <li><a class="h6 text-light" href="#">Investigación</a></li>
-          <li><a class="h6 text-light" href="#">Admisiones</a></li>
-          <li><a class="h6 text-light" href="#">Campus Virtual</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3>Síguenos</h3>
-        <ul class="social">
-          <li><a href="#"><i class="fa fa-facebook"><img src="/static/images/Iconos individuales blanco-09.png" alt=""style="height:100px; width:100px;"></i></a></li>
-          <li><a href="#"><i class="fa fa-twitter"><img src="/static/images/Iconos individuales blanco-12.png" alt=""style="height:100px; width:100px;"></i></a></li>
-          <li><a href="#"><i class="fa fa-instagram"><img src="/static/images/Iconos individuales blanco-08.png" alt="" style="height:100px; width:100px;"></i></a></li>
-        </ul>
+        <div class="w-100"></div>
+        <br><br>
+        <div class="col">   <h3 class="h3">h2. Bootstrap heading</h3>
+          <h5 class="h5">h4. Bootstrap heading</h5></div>
+        <div class="col">  <img   src="../static/images/3069114.png" alt="..." class="image"></div>
       </div>
     </div>
-  </div>
+
+</div>
+</div>
+
+</div>
+</main>
+</body>
+<br><br>
+<footer>
+  <div class="row">
+    <div class="col">
+      
+      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+        Línea gratuita:
+        018000 113033
+        
+        PBX:
+        (601) 648 9000</h6>
+ 
+    </div>
+    <div class="col">
+      <ul class="social">
+      <li><a href="#"><i class="fa fa-facebook"><img src="/static/images/Iconos individuales blanco-09.png" alt=""style="height:100px; width:100px;"></i></a></li>
+     
+    </ul>
+    </div>
+    <div class="col">
+      <ul class="social">
+      
+      <li><a href="#"><i class="fa fa-twitter"><img src="/static/images/Iconos individuales blanco-12.png" alt=""style="height:100px; width:100px;"></i></a></li>
+
+    </ul>
+    </div>
+    <div class="col">
+      <ul class="social">
+     
+      <li><a href="#"><i class="fa fa-instagram"><img src="/static/images/Iconos individuales blanco-08.png" alt="" style="height:100px; width:100px;"></i></a></li>
+    </ul>
+    </div>
+    <br><br>
+
 </footer>
+
 
 
 </html>

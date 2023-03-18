@@ -88,53 +88,77 @@
   .list-group-mine .list-group-item:hover {
     background-color: gray;
   }
-
+  .navbar {
+    background-color: #404827;
+  }
+  .navbar-custom {
+    background-color: #404827; 
+  }
+  
+  
+  .btn-custom:hover {
+    transform: scale(1.2);
+    color: #404827; 
+  }
+  .btn-custom {
+    color: white;
+    background-color: #404827; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+   
+  }
 </style>
 
 </head>
     <body>
         
-      <header class="header"style="height: 105px;background-color: #008776;">
-        <div class="container" >
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+        <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
+          <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+        </a>
+        
+        <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+            <button class="btn btn-custom btn-fade btn-lg " type="button">Quienes Somos</button>
+          
+            <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
     
-            <a class="a"onclick="location.href = '/index'" style="margin-top: 35px;" >
-              <img class="image_header-museo" src="/static/images/logo (1).png" >
-            </a>
     
-              <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 35px;">
-              <li><a href="#" onclick="location.href = '/index'"  class="nav-link text-light">Inicio</a></li>
-              <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
-              <li><a href="#" class="nav-link text-light">Nosotros</a></li>
-              <li><a href="#" class="nav-link text-light">Contacto</a></li>
-            </ul>
-    
-           
-    
-            <div class="text-end" style="margin-top: 35px;">
-              <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
-            </div>
+            {% if  user.is_authenticated  %}
+            <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+            <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+          {% endif %}
           </div>
         </div>
-      </header>
+      </nav>
+    
           
-         
+    <main>   
                 
-        <div  class=" container bootstrap snippet">
+      
+
+
+      
             
         <div class="row">
-            <div class="col-sm-10" ><h1 style="color: #008776">Ejemplar  <i> {{ element.NombreCientificoComentarioRegistroBiologico }} </i> </h1></div>
+            <div class="text-center" ><h1 style="color: #008776">Ejemplar  <i> {{ element.NombreCientificoComentarioRegistroBiologico }} </i> </h1></div>
         </div>
         <div class="row">
            
         <div class="col-sm-3">
-             <img src="/static/images/galeria-1.jpg"  style="max-width:100%;" class="img-thumbnail">
+          <div class="text-center">
+             <img src="/static/images/galeria-1.jpg"  class="img-fluid img-thumbnail"  alt="Responsive image">
+             
+            </div>
             <div class="text-center">
             
-            <h6> {{ element.NumeroCatalogo }}</h6>
+            <h3> {{ element.NumeroCatalogo }}</h3>
             
             </div>
-        </hr>
+         
     <br>
        
             
@@ -258,6 +282,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> </div>
 </main>                                           
     </body></html>

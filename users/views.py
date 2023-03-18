@@ -87,43 +87,81 @@ def galery_orden(request,nombre):
             clases =  Clase.objects.all()
             generos =  Genero.objects.all()
             return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
- 
+
 class Dashboard_Aux(View):
         
         @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
-            
-            clase = Class_User.objects.get(id_user_id= request.user.id)
-            c = Clase.objects.get(id = clase.id_clase_id)
-            actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
-            especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
-            return render(request,"dashauxiliar.html",{'especimenes':especimenes,'actions':actions})
-class Dashboard_Pas(View):
-        def get(self,request):
-            return render(request,"dashpasante.html")
-        
-class Dashboard_Cur(View):
-        @user_passes_test(lambda user: user.groups.filter(name='Curador').exists())
-        def get(self,request):
-            clase = Class_User.objects.get(id_user_id= request.user.id)
-            #Filtrar por usuarios del area
-            usuarios = Class_User.objects.filter(id_clase_id = clase.id_clase_id)
-            lista = []
-            for i in usuarios:
-                lista.append(i.id_user_id)
-            c = Clase.objects.get(id = clase.id_clase_id)
-            print(c.nombreClase)
-            especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
-            actions = UserAction.objects.filter(user__in = lista)
-            return render(request,"dashcurador.html",{'actions': actions, 'especimenes':especimenes})
+            user = request.user 
+            if user.is_authenticated:
+                if Rol.objects.filter(user=user, id=1):
+  
+
+                    clase = Class_User.objects.get(id_user_id= request.user.id)
+                    c = Clase.objects.get(id = clase.id_clase_id)
+                    actions = UserAction.objects.filter(user=request.user).order_by('tiempo')
+                    especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
+                    return render(request,"dashauxiliar.html",{'especimenes':especimenes,'actions':actions})
+                else:
+                      return HttpResponseRedirect(reverse('redirect'))
+
+            else:
           
-class Dashboard(View):
+                return HttpResponseRedirect(reverse('redirect'))
+class Dashboard_Pas(View):
         @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
-            especimenes = especimen.objects.all()
-            actions = UserAction.objects.order_by('tiempo').all()
-            return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions})
-                	
+            user = request.user 
+            if user.is_authenticated:
+                if Rol.objects.filter(user=user, id=2):
+  
+                    return render(request,"dashpasante.html")
+                else:
+                    return HttpResponseRedirect(reverse('redirect'))
+
+            else:
+        
+                return HttpResponseRedirect(reverse('redirect'))
+class Dashboard_Cur(View):
+        def get(self,request):
+            user = request.user 
+            if user.is_authenticated:
+                if Rol.objects.filter(user=user, id=3):
+                    clase = Class_User.objects.get(id_user_id= request.user.id)
+                    #Filtrar por usuarios del area
+                    usuarios = Class_User.objects.filter(id_clase_id = clase.id_clase_id)
+                    lista = []
+                    for i in usuarios:
+                        lista.append(i.id_user_id)
+                    c = Clase.objects.get(id = clase.id_clase_id)
+                    print(c.nombreClase)
+                    especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
+                    actions = UserAction.objects.filter(user__in = lista)
+                    return render(request,"dashcurador.html",{'actions': actions, 'especimenes':especimenes})
+                else:
+                    return HttpResponseRedirect(reverse('redirect'))
+
+            else:
+        
+                return HttpResponseRedirect(reverse('redirect'))
+class Dashboard(View):
+        
+        def get(self,request):
+            print("1")
+            user = request.user 
+            if user.is_authenticated:
+                print("2")
+                if Rol.objects.filter(user=user, id=4):
+                    print("3")
+                    especimenes = especimen.objects.all()
+                    actions = UserAction.objects.order_by('tiempo').all()
+                    return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions})
+                else:
+                    return HttpResponseRedirect(reverse('redirect'))
+
+            else:
+        
+                return HttpResponseRedirect(reverse('redirect'))
 class PerfilU(View):
         def get(self,request):
             return render(request,"profile.html")		            		

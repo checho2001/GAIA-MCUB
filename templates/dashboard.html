@@ -339,7 +339,9 @@
                     
                     <br>
                       <div class="table-responsive">
-                        <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                        <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
+                        <br>
+                        <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
                               <th scope="col">Fecha</th>
@@ -350,6 +352,7 @@
                           </thead>
                           <tbody>
                             {% for action in actions %}
+                            {% if action.estado == True%}
                             <tr>
                               <td style="color: #404827;">{{ action.tiempo }}</td>
                               <td style="color: #404827;">{{ action.tarea }}</td>
@@ -358,6 +361,7 @@
                               
                           
                             </tr>
+                            {% endif %}
                             {% endfor %}
                           </tbody>
                         </table>
@@ -421,7 +425,9 @@
                   <div   class="text-center" ><h2 style="color: #404827; text-align: center;">Ejemplares</h2></div>
                   <br>
                   <div   class="table-responsive" >
-                  <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
+                  <input id="filtro1" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
+                  <br>
+                  <table id="tabla1" class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
                     <thead>
                       <tr style="background-color: #404827;color:white;">
                         <th>ID</th>
@@ -444,7 +450,7 @@
                           <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
                         </a>     </td>
                         <td style="color: #404827;">
-                          <a class="a" href="dardebaja/{{esp.id}}"  >
+                          <a class="a" href="../dardebaja/{{esp.id}}"  >
                             <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
                           </a>  
                         </td>
@@ -542,5 +548,24 @@
     </div>
     </main>
   </nav>
+  <script>
+  $(document).ready(function(){
+    $("#filtro").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#tabla tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+  $(document).ready(function(){
+    $("#filtro1").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#tabla1 tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
   </body>
   </html>

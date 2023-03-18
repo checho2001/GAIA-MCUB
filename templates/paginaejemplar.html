@@ -15,12 +15,7 @@
 <style>
 
 
-    #global {
-       
-        border: 2px solid #ddd;
-        
-        overflow-y: scroll;
-      }
+    
     .list-group-mine .list-group-item {
     background-color: #f2f1f1;
     font-size: 18px;
@@ -58,13 +53,7 @@
    
   }
 
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+  
 
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
@@ -72,25 +61,7 @@
     }
   }
 
-  .b-example-divider {
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-  }
-
-  .b-example-vr {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 100vh;
-  }
-
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
-
+  
   .nav-scroller {
     position: relative;
     z-index: 2;
@@ -138,38 +109,34 @@
 </head>
     <body>
         
-      <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
-        <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
-          <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
-        </a>
-        <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-          <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
-        </a>
-        
-        <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
           
-            <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
     
-    
-            {% if  user.is_authenticated  %}
-            <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-            <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
-          {% endif %}
-    
-           
-    
-            <div class="text-end" >
-              <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
-            </div>
-         
-          </div>
-        </div>
-      </nav>
-    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
+
+
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+      {% endif %}
+      <div class="text-end" >
+        <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
+      </div>
+      </div>
+    </div>
+  </nav>
           
     <main>   
                 

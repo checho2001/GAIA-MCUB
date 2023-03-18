@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar
-from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
+from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
 from users import views
 from django.conf import settings
@@ -15,6 +15,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('', IndexView.as_view(),name='home'),
     path('index/', IndexView.as_view(),name='home'),
+    path('nosotros/', Quienessomos.as_view(),name='quienessomos'),
     path('login/', views.login, name='login'),
     path('galery/', Galry.as_view(),name="galery"),
     path('redirect/', Not_Logged.as_view(),name="redirect"),

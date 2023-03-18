@@ -27,6 +27,10 @@ from django.http import HttpResponse
 class IndexView(View):
         def get(self,request):
             return render(request,"index.html")
+            
+class Quienessomos(View):
+        def get(self,request):
+            return render(request,"quienessomos.html")
 class Not_Logged(View):
         def get(self,request):
             return render(request,"notloged.html")            

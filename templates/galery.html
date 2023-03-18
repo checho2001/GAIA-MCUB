@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../static/css/sidebars.css" >
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
       #global {
        
@@ -125,7 +126,7 @@
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+          <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 
         <div class="text-end" style="margin-top: 15px;">
@@ -353,10 +354,10 @@
                   </div>
                   </div>   
                 </div>
-                </div>
+              </div>
 
 
-                          1</div>
+            </div>
 
 
 
@@ -470,9 +471,9 @@
                     <div class="imagen">
                       
                       <div class="row">
-                        {% for element in aves %}
-                        <div class="col-sm-6">
                         
+                        <div class="col-sm-6">
+                        {% for element in aves %}
                           <div class="card">
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
@@ -505,10 +506,20 @@
                 </div>
                 </div>
 
-              4</div>
+              </div>
             
           </div>
         </div> 
-    </main> 
+    </main>
+    <script>
+    $(document).ready(function(){
+      $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".card").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
 </body>
 </html>

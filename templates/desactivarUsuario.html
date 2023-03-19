@@ -61,10 +61,33 @@
                     </div>
                     <div class="tab-content" id="nav-tabContent">
                       <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <p> Usuarios Desactivos <p>
+                        <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                          <thead>
+                            <tr style="background-color: #404827;color:white;">
+                              <th scope="col">Usuario</th>
+                              <th scope="col">Correo</th>
+                              <th scope="col">Desactivar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for usuario in usuarios %}
+                            {% if usuario.is_active == False%}
+                            <tr>
+                              <td style="color: #404827;">{{ usuario.username }}</td>
+                              <td style="color: #404827;">{{ usuario.email }}</td>
+                              <td style="color: #404827;">
+                                <a class="a" href="../activarU/{{usuario.id}}"  >
+                                  <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
+                                </a>  
+                              </td>                                                   
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                          </tbody>
+                        </table>
                       </div>
                     </div>
-                    
+
                      
               
                    

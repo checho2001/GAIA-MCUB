@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../static/css/style1.css" >
+    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+</head>
+
+<body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
+
+  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-5">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+                <div class="p-5">
+                    {% csrf_token %}
+                    <div class="table-responsive">
+                        <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
+                        <br>
+                        <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                          <thead>
+                            <tr style="background-color: #404827;color:white;">
+                              <th>ID</th>
+                              <th>Nombre</th>
+                              <th>Fecha</th>
+                              <th>Cientifico</th>
+                              <th>Activar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for especimen in especimenes %}
+                            {% if especimen.estado == False%}
+                            <tr>
+                              <td>{{ especimen.NumeroCatalogo }}</td>
+                              <td>{{ especimen.NombreComun }}</td>
+                              <td>{{ especimen.FechaIdentificacion }}</td>
+                              <td>{{ especimen.NombreCientificoComentarioRegistroBiologico }}</td>
+                              <td style="color: #404827;">
+                              <a class="a" href="../activar/{{especimen.id}}">
+                                <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
+                              </a>  
+                              </td>                                               
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    
+                    
+
+                            
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</body>
+  

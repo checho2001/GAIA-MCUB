@@ -206,10 +206,10 @@ def registroActividad(request):
 @login_required(login_url='redirect')
 def registerE(request):
     if request.method == 'POST':
-        form = EjemplarForm(request.POST, request.FILES)
+        form = EjemplarForm(request.POST)
         
         if form.is_valid():
-          
+            print('emtre')
             NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
             NombreDelConjuntoDatos = form.cleaned_data['NombreDelConjuntoDatos']
             ComentarioRegistroBiologico = form.cleaned_data['ComentarioRegistroBiologico']
@@ -230,12 +230,15 @@ def registerE(request):
             Genero = form.cleaned_data['Genero']
             Familia = form.cleaned_data['Familia']
             NombreComun = form.cleaned_data['NombreComun']
+            #Imagen = form.changed_data['Image']
 
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
             NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase,Orden = Orden, Genero = Genero
-            ,Familia = Familia, NombreComun=NombreComun , Image = "")
+            ,Familia = Familia, NombreComun=NombreComun, Image = "")
+            e.Image = request.FILES.get('imagen')
+            print(e.Image)
             e.save()
 
             NumeroCatalogo = e.NumeroCatalogo
@@ -627,3 +630,15 @@ def AgregarActividad(request):
             form.save()
             return redirect('dashboard.html')
     return render(request, 'agregar_actividad.html', {'form': form})
+
+def estado_usuarios(request):
+    usuarios = User.objects.all()
+    return render(request, 'desactivarUsuario.html', {'usuarios': usuarios})
+
+
+def desactivar_usuario(request,id):
+     usuario = User.objects.get(id=id)
+     print(usuario.id)
+     usuario.is_active = False
+     usuario.save()
+     return HttpResponseRedirect(reverse('dashboard')) 

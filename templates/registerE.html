@@ -18,7 +18,7 @@
           <div class="card-body p-0">
             <div class="row g-0">
                 
-                  <form action= "{%url 'registerE' %}" method= POST class="  m-auto">
+                  <form action= "{%url 'registerE' %}" method= POST class="  m-auto" enctype="multipart/form-data">
                     {% csrf_token %}
                     <h1 class="mb-5 fw-normal"style="color: #008776">Registro Ejemplar</h1>
                     <div class="row">
@@ -151,7 +151,7 @@
             <br>
             <div class="form-floating">
                                   
-              {{ form.Image }}
+              <input type="file" name="imagen" id="imagen">
               <label  class="font-weight-bold">Imagen<span class="text-danger"> *</span></label>
               
             </div>

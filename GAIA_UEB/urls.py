@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar
+from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario
 from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
 from users import views
@@ -33,6 +33,8 @@ urlpatterns = [
     path('updateE/updateEjemplar/<int:id>',views.update_record_ejemplar, name="updateEjemplar"),
     path('dardebaja/<int:id>', views.darbaja_especimen,name="darbajaE"),
     path("UpdateUser/", views.update_aux_curatoria, name="UpdateU"),
+    path("DesactivarUser/", views.estado_usuarios, name="DesactivarUser"),
+    path("desactivarU/<int:id>", views.desactivar_usuario, name="DesactivarU"),
     path('logout', views.custom_logout, name='logout'),
     path('elegir', views.elegir, name='elegir'),
     path('AgregarActividad', views.AgregarActividad, name='AgregarActividad'),

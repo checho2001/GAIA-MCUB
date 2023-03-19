@@ -24,7 +24,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     rol= models.ForeignKey(Rol,on_delete=models.CASCADE)
     password = models.CharField(max_length=50)
-    estado = models.BooleanField(default=False)
+    estado = models.BooleanField(default=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
 
@@ -63,8 +63,8 @@ class Orden(models.Model):
 class Clase(models.Model):
     id = models.AutoField(primary_key=True)
     nombreClase = models.CharField(max_length=50)
+    estado = models.BooleanField(default=True)
 
-   
     
     def __str__(self):
         return self.nombreClase
@@ -77,6 +77,7 @@ class Class_User(models.Model):
 class TipoActividad(models.Model):
     id = models.AutoField(primary_key=True)
     nombreactividad = models.CharField(max_length=500)
+    estado = models.BooleanField(default=True)
    
     def __str__(self):
         return self.nombreactividad
@@ -123,7 +124,7 @@ class especimen(models.Model):
     Familia =   models.CharField(max_length=500)
     NombreComun = models.CharField(max_length=500)
     estado = models.BooleanField(default=True)
-    Image = models.ImageField(upload_to="ejemplares", null=True)
+    Image = models.ImageField(upload_to='media/')
 
     def __str__(self):
         return (self.NumeroCatalogo)  
@@ -135,3 +136,6 @@ class UserAction(models.Model):
     ejemplar = models.CharField(max_length=100)
     tiempo = models.DateTimeField(auto_now_add=True)
     estado = models.BooleanField(default=False)
+
+class Imagenes(models.Model):
+    image = models.ImageField(upload_to='media/')

@@ -447,7 +447,21 @@ class Update(forms.Form):
                     raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
             return apel
     
+class desactivarUsuario(forms.Form):
 
+    USUARIOS = []
+    u = User.objects.filter(estado = True)
+    for useri in User.objects.all():
+        USUARIOS.append((useri.id, useri.username))
+    username = forms.ChoiceField(
+        choices = USUARIOS,
+        widget=forms.Select(
+            attrs= {
+                'default' : 1,
+                'class' : 'form-control',
+                }
+            )
+        )
 
 class TipoActividadForm(forms.ModelForm):
     class Meta:

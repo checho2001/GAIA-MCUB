@@ -463,7 +463,24 @@ class desactivarUsuario(forms.Form):
             )
         )
 
-class TipoActividadForm(forms.ModelForm):
-    class Meta:
-        model = TipoActividad
-        fields = ['nombreactividad']
+class TipoActividadForm(forms.Form):
+
+       
+        nombreactividad = forms.CharField(
+        error_messages={'required':'Por favor ingresa un apellido valido'},
+        widget=forms.TextInput(
+            attrs= {
+                
+                'required' : True,
+                'class' : 'form-control',
+                }
+            )
+        )
+
+
+class TextForm(forms.Form):
+
+       
+       content = forms.CharField(label='New Text', max_length=255)
+        
+    

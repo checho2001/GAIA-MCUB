@@ -3,14 +3,54 @@
   <head>
     
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>DashBoard</title>
+    
+  
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+      
         <link rel="stylesheet" href="../static/css/style1.css" >
         <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
-        <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+       
         <link rel="stylesheet" href="../static/css/sidebars.css" >
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-MxUbVc+j1jq+2d2kbMugIViupgy9pALVKbYgDcdyJb6eO78+wjLaesOQ+QdZuJHmkB9mucO01fBGY+YmlTh/6w==" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
+
+      
     <style>
+
+      #global {
+       
+        border: 2px solid #ddd;
+        height: 1000px;
+        overflow-y: scroll;
+      }
+      .h1 {
+        font-family: 'Lato-Black', sans-serif;
+       
+      }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+      
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+      }
+      .h4 {
+        font-family: 'Lato-Black', sans-serif;
+        
+      }
+      .h5 {
+        font-family: 'Lato-Black', sans-serif;
+       
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -28,7 +68,10 @@
         left: -1px;
         padding: 10px 7px 5px;
     }
-    
+    .table-responsive {
+      max-height: 350px; 
+      overflow-y: scroll;
+    }
     .DivWithScroll{
         height:120px;
         overflow:scroll;
@@ -39,7 +82,11 @@
           font-size: 3.5rem;
         }
       }
-
+      .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
       .b-example-divider {
         height: 3rem;
         background-color: rgba(0, 0, 0, .1);
@@ -53,23 +100,33 @@
         width: 1.5rem;
         height: 100vh;
       }
-
+      .sidebar {
+        width: 100%;
+        max-width: 280px;
+        float: none;
+      }
+      @media (min-width: 768px) {
+        .sidebar {
+          width: 20%;
+          float: left;
+        }
+      }
       .bi {
         vertical-align: -.125em;
         fill: currentColor;
       }
 
-      .table-responsive {
-        max-height: 450px; 
-        overflow-y: scroll;
-      }
       .nav-scroller {
         position: relative;
         z-index: 2;
         height: 2.75rem;
-        overflow-y: hidden;
+        
       }
-
+      #btnSearch,
+      #btnClear{
+          display: inline-block;
+          vertical-align: top;
+      }
       .nav-scroller .nav {
         display: flex;
         flex-wrap: nowrap;
@@ -80,154 +137,325 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+      .nav-link {
+        color: #404827;
+        font-size: 150%;
+        }
+        .nav-link:hover {
+          color:  #008776;
+          }
+          .nav-pills .nav-link.active {
+            background-color:#404827;;
+            color: white;
+          }
+          .navbar {
+            background-color: #008776;
+            
+          }
+          .navbar-custom {
+            background-color: #008776; 
+           
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            
+          }
+          html::-webkit-scrollbar {
+            height: 0;
+            width: 0;
+            -webkit-appearance: none;
+          }
+          html {
+            overflow-x: hidden;
+          }
+          
+              
+          .btn-custom:hover {
+            transform: scale(1.2);
+            color: #404827; 
+            border: none;
+          }
+          .btn-custom {
+            color: white;
+            background-color: #008776; 
+            padding: 10px 20px;
+            border: none;
+            transition: transform 0.3s ease;
+            font-family:'Lato-Black', sans-serif;
+          }
+          
+          html::-webkit-scrollbar {
+            display: none;
+            height: 0;
+        }
+        html::-webkit-scrollbar {
+          display: none;
+          height: 0;
+      }
+        html::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+          -webkit-appearance: none;
+        }
+        html {
+          overflow-x: hidden;
+        }
+        .btn-customizedlogin {
+          color: white;
+          border:none;
+          transition: transform 0.3s ease;
+          
+        }
+        .btn-customizedlogin :hover {
+          transform: scale(1.2);
+          color: #404827; 
+          border: none;
+        }
     </style>
   </head>
+  
   <body>
-    <header class="header"style="height: 75px;background-color: #008776;">
-      <div class="container" >
+ 
+    
+      <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+        <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+          <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+        </a>
+        <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+          <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+        </a>
         
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-  
-         
-  
-          <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 15px;">
-            
-            <li><a type="button"  onclick="location.href = '/index'" class="nav-link text-light">Inicio</a></li>
-            <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
-            <li><a href="#" class="nav-link text-light">Registros</a></li>
-            <li><a href="#" class="nav-link text-light">FAQs</a></li>
-          </ul>
-  
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
-            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
-          </form>
-  
-          <div class="text-end" style="margin-top: 15px;">
-            <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
+        <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+            <button class="btn btn-custom btn-fade btn-lg " type="button">Quienes Somos</button>
+          
+            <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
+    
+    
           </div>
         </div>
-      </div>
-    </header>
-    <main>
-      <div class="row mw-100 overflow-auto" >
-      <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
-        <img src="../static/images/logoblanco.png" alt="mdo" width="300" height="100">
-          <div class="flex-shrink-0 p-3 " style="width: 280px;">
-            
-              <span  class="h2 link-dark d-inline-flex text-decoration-none rounded text-light">Tablon</span>
-              </a>
-              <ul class="list-unstyled ps-0">
-              <li class="mb-1">
-                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#registro-collapse" aria-expanded="true">
-                  Registro
-                  </button>
-                  <div class="collapse show" id="registro-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" onclick="location.href = '/informe'" class="link-dark d-inline-flex text-decoration-none rounded text-light"> Actividades </a></li>
-
-                      <li><a href="#"  onclick="location.href = '/registerE'" class="link-dark d-inline-flex text-decoration-none rounded text-light">Especimen</a></li>
-                  </ul>
-                  </div>
-              </li>
-
-              <hr>
-              <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
-              <div class="dropdown border-top">
-                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
-                  
-                </a>
-                <br>
-                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
-                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light">Hora :    <span id="current-time"></span></p>
-                <img src="../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="250" >
+      </nav>
+      <div  class="row" >
+        <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 100vh;">
+            <div class="flex-shrink-0 p-3 " style="width: 280px;">
+              
+             
                 
-                <ul class="dropdown-menu text-small shadow">
-                  <li><a class="dropdown-item" onclick="location.href = '/perfilU'" href="#">Perfil</a></li>
-                  <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                  <li><a class="dropdown-item" href="#">Registros Personales</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
-                </ul>
-              </div>
-                      </ul>
-          </div>
-      </div> 
-      
-        <div class="col-sm-10 mw-100" style="background-color: #eee;">
-          <div class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo Auxiliar</h1></div>
+  
+  
+  
+                <p class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
+  
+  
+                <div class="dropdown border-top">
+  
+                  <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
+                    
+                  </a>
+                  
+                  
+                  <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
+                  <br>
+                  
+                  <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light"> <span id="current-time"></span></p>
+                 
+  
+                  <ul class="dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item" onclick="location.href = '/perfilU'" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item"  href="#" onclick="location.href = '/index'">Ir al inicio</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                  </ul>
+                
+                </div>
+            </div>
+        </div> 
+  
+  
+        <div  class="col" style="background-color: #eee;">
+         
+          <div   class="text-center" ><h1 class="h1"  style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           <hr>
           <div class="row">
-            <div class="col-sm-6 mw-100 ">
-              <div class="text-center" ><h1 style="color: #008776; text-align: center;">Registro Tareas</h1></div>
-              <div   class="table-responsive">
-                <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Tarea</th>
-                    <th>Usuario</th>
-                    <th>Ejemplar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for action in actions %}
-                  <tr>
-                    
-                    <td>{{ action.tiempo }}</td>
-                    <td>{{ action.tarea }}</td>
-                    <td>{{ action.user }}</td>
-                    <td>{{ action.ejemplar }}</td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-              </div>
-
-            </div>
-            <div class="col-sm-6 mw-100">
-              <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares</h1></div>
-              <div   class="table-responsive">
-              <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Cientifico</th>
-                    <th>Editar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for esp in especimenes %}
-                  <tr>
-                    
-                    <td>{{ esp.NumeroCatalogo }}</td>
-                    <td>{{ esp.NombreComun }}</td>
-                    <td>{{ esp.FechaIdentificacion }}</td>
-                    <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
-                    <td><a href="../updateE/{{esp.id}}">Edit Specimen</a></td>  
-                    <td><a href="../dardebaja/{{esp.id}}">Archivar</a></td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-              <div class="row">
-                <div class="col-sm-4">
-                  <br>
-                </div>
-                <div class="col-sm-4">
-                  <br>
-                    <button class=" w-100 btn-lg border-light text-light "  value="Register"  type="submit" style="background-color: #008776" title="Permite exportar los reportes a excel">Exportar Excel</button>
+            
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Actividades</button>
+                  <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ejemplares</button>
                 </div>
 
+              </nav>
+
+
+
+
+
+
+
+              <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <br>
+                <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
+                <br>  <br>
+                <a class="btn-customizedlogin"  onclick="location.href = '/informe'">
+                  <img class="img" src="/static/images/1001371.png"  style="height:130px; width:120px;">
                 
-                  <div class="col-sm-4">
-                    <br>
-                  </div>
-              </div>
+                </a>
+                <br>
+                <br>  <br>
+          
+          <div class="col">
+                      
+          
+            <br>
+
+            <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Actividades realizadas</h2></div>
+          <div class="list-group">
+          <div   class="table-responsive">
+            <br>
+                  
+            <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+              <thead>
+                <tr style="background-color: #404827;color:white;">
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Tarea Realizada</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Ejemplar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for action in actions %}
+                {% if action.estado == True %}
+                <tr>
+                  <td>{{ action.tiempo }}</td>
+                  <td>{{ action.tarea }}</td>
+                  <td>{{ action.user }}</td>
+                  <td>{{ action.ejemplar }}</td>
+                {% endif %}
+
+                {% endfor %}
+              </tr>
+              </tbody>
+            </table>
+         
+        </div>
+          
+          </div>
+
+          
+        </div>
+
+    </div>
+
+   
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <br>
+      <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
+        
+      <button class="btn-customizedlogin "   onclick="location.href = '/registerE'" type="button"><img class="image_header-museo" src="/static/images/3729028.png" style="height:150px; width:150px;" ></button>
+    
+      
+    
+
+        
+      <div class="col">
+       
+      
+
+       
+          
+        <div   class="text-center" ><h2 class ="h2" style="color: #008776; text-align: center;">Ejemplares en Exhibicion</h2></div>
+        <br> 
+        <div   class="table-responsive">
+        
+
+        <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
+          <thead>
+            <tr style="background-color: #404827;color:white;">
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th> Nombre Cientifico</th>
+              <th>Editar</th>
+              <th>Archivar  </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for esp in especimenes %}
+            {% if esp.estado == True %}
+            <tr>
+              
+              <td>{{ esp.NumeroCatalogo }}</td>
+              <td>{{ esp.NombreComun }}</td>
+              <td>{{ esp.FechaIdentificacion }}</td>
+              <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
+              <td> <a class="a" href="../updateE/{{esp.id}}"  >
+                <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
+              </a>  </td>
+              <td><a class="a" href="../dardebaja/{{esp.id}}"  >
+                <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
+              </a>  </td>
+
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      
+      </div>
+      
+    </div>
+      
+    <br> <br>
+  
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              
+
+            
+            
+              <div class="col-sm-6 mw-100 ">
+              
+             
               <script>
                 function updateTime() {
                     var now = new Date();
@@ -236,9 +464,15 @@
                 }
                 setInterval(updateTime, 1000);
             </script>
-            </div>
-          </div>
+               
+                  
+
+        
         </div>
       </div>
-    </main>
+    </ul>
+    
   </body>
+
+</body>
+</html>

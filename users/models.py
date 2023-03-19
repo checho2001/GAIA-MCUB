@@ -139,3 +139,8 @@ class UserAction(models.Model):
 
 class Imagenes(models.Model):
     image = models.ImageField(upload_to='media/')
+class Text(models.Model):
+    content = models.TextField()
+
+    def __str__(self):
+        return self.content    

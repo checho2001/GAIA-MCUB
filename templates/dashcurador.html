@@ -31,6 +31,26 @@
         height: 1000px;
         overflow-y: scroll;
       }
+      .h1 {
+        font-family: 'Lato-Black', sans-serif;
+       
+      }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+      
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+      }
+      .h4 {
+        font-family: 'Lato-Black', sans-serif;
+        
+      }
+      .h5 {
+        font-family: 'Lato-Black', sans-serif;
+       
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -141,8 +161,16 @@
             z-index: 999;
             
           }
+          html::-webkit-scrollbar {
+            height: 0;
+            width: 0;
+            -webkit-appearance: none;
+          }
+          html {
+            overflow-x: hidden;
+          }
           
-          
+              
           .btn-custom:hover {
             transform: scale(1.2);
             color: #404827; 
@@ -156,12 +184,40 @@
             transition: transform 0.3s ease;
             font-family:'Lato-Black', sans-serif;
           }
+          
+          html::-webkit-scrollbar {
+            display: none;
+            height: 0;
+        }
+        html::-webkit-scrollbar {
+          display: none;
+          height: 0;
+      }
+        html::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+          -webkit-appearance: none;
+        }
+        html {
+          overflow-x: hidden;
+        }
+        .btn-customizedlogin {
+          color: white;
+          border:none;
+          transition: transform 0.3s ease;
+          
+        }
+        .btn-customizedlogin :hover {
+          transform: scale(1.2);
+          color: #404827; 
+          border: none;
+        }
     </style>
   </head>
   
   <body>
-    <nav>
-    <main>
+ 
+    
       <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
         <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
           <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
@@ -221,7 +277,7 @@
   
         <div  class="col" style="background-color: #eee;">
          
-          <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
+          <div   class="text-center" ><h1 class="h1"  style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           <hr>
           <div class="row">
             
@@ -242,8 +298,16 @@
               <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <br>
-                  
-            <div class="text-center" ><h2 style="color: #008776; text-align: center;">Actividades por Aprobar</h2></div> 
+                <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
+                <br>  <br>
+                <a class="btn-customizedlogin"  onclick="location.href = '/informe'">
+                  <img class="img" src="/static/images/1001371.png"  style="height:130px; width:120px;">
+                
+                </a>
+                <br>
+                <br>  <br>
+              
+            <div class="text-center" ><h2  class="h2" style="color: #008776; text-align: center;">Actividades por Aprobar</h2></div> 
             <div class="list-group">
               <div   class="table-responsive">
                 <br>
@@ -284,20 +348,13 @@
 
           <br>
                   
-          <div class="text-center" ><h2 style="color: #008776; text-align: center;">Registrar Actividades</h2></div>
-          <br>  <br>
-          <a class="a"  onclick="location.href = '/informe'">
-            <img class="img" src="/static/images/1001371.png"  style="height:130px; width:120px;">
-          
-          </a>
-          <br>
-        
+         
           <div class="col">
                       
           
             <br>
 
-            <div class="text-center" ><h2 style="color: #008776; text-align: center;">Actividades realizadas</h2></div>
+            <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Actividades realizadas</h2></div>
           <div class="list-group">
           <div   class="table-responsive">
             <br>
@@ -338,25 +395,34 @@
    
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <br>
-
+      <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
+        
+      <button class="btn-customizedlogin "   onclick="location.href = '/registerE'" type="button"><img class="image_header-museo" src="/static/images/3729028.png" style="height:150px; width:150px;" ></button>
+    
+      
     
 
         
       <div class="col">
+       
       
+
+       
           
-        <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares en Exhibicion</h1></div>
+        <div   class="text-center" ><h2 class ="h2" style="color: #008776; text-align: center;">Ejemplares en Exhibicion</h2></div>
+        <br> 
         <div   class="table-responsive">
-          <a href="#" class="list-group-item list-group-item-action d-flex gap-3 " aria-current="true" >
+        
 
         <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
           <thead>
-            <tr>
+            <tr style="background-color: #404827;color:white;">
               <th>ID</th>
               <th>Nombre</th>
               <th>Fecha</th>
-              <th>Cientifico</th>
+              <th> Nombre Cientifico</th>
               <th>Editar</th>
+              <th>Archivar  </th>
             </tr>
           </thead>
           <tbody>
@@ -368,32 +434,38 @@
               <td>{{ esp.NombreComun }}</td>
               <td>{{ esp.FechaIdentificacion }}</td>
               <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
-              <td><a href="../updateE/{{esp.id}}">Editar Specimen</a></td>
-              <td><a href="dardebaja/{{esp.id}}">Archivar</a></td>
+              <td> <a class="a" href="../updateE/{{esp.id}}"  >
+                <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
+              </a>  </td>
+              <td><a class="a" href="../dardebaja/{{esp.id}}"  >
+                <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
+              </a>  </td>
 
             </tr>
             {% endif %}
             {% endfor %}
           </tbody>
         </table>
-      </a>
+      
       </div>
       
     </div>
       
-
-    <div   class="text-center" ><h1 style="color: #008776; text-align: center;">Ejemplares Archivados</h1></div>
+    <br> <br>
+    <div   class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Ejemplares Archivados</h2></div>
+    <br>
     <div   class="table-responsive">
-      <a href="#" class="list-group-item list-group-item-action d-flex gap-3 " aria-current="true" >
+     
 
     <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
       <thead>
-        <tr>
+        <tr style="background-color: #404827;color:white;">
           <th>ID</th>
           <th>Nombre</th>
           <th>Fecha</th>
-          <th>Cientifico</th>
+          <th>Nombre Cientifico</th>
           <th>Editar</th>
+          <th>Desarchivar</th>
         </tr>
       </thead>
       <tbody>
@@ -405,15 +477,19 @@
           <td>{{ esp.NombreComun }}</td>
           <td>{{ esp.FechaIdentificacion }}</td>
           <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
-          <td><a href="../updateE/{{esp.id}}">Editar Specimen</a></td>
-          <td><a href="dardebaja/{{esp.id}}">Desarchivar</a></td>
+          <td><a class="a" href="../updateE/{{esp.id}}"  >
+            <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
+          </a> </td>
+          <td><a class="a" href="../dardebaja/{{esp.id}}"  >
+            <img class="image_header-museo" src="/static/images/8299989.png" style="height:50px; width:50px;" >
+          </a> </td>
 
         </tr>
         {% endif %}
         {% endfor %}
       </tbody>
     </table>
-  </a>
+  
   </div>
 </div>
   
@@ -479,8 +555,8 @@
         </div>
       </div>
     </ul>
-    </main>
+    
   </body>
-</nav>
+
 </body>
 </html>

@@ -8,10 +8,138 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
+<style>
+  footer {
+background-color: #f6f6f6;
+padding: 50px 0;
+font-family: 'Lato', sans-serif;
+font-size: 16px;
+color: #f6f6f6;
+}
+@font-face {
+font-family: 'Lato-Black';
+src: url('fonts/Lato-Black.ttf') format('truetype');
+}
+p {
+font-family: 'Lato-Black', sans-serif;
+}
+.h1 {
+font-family: 'Lato-Black', sans-serif;
 
+}
+.h2 {
+font-family: 'Lato-Black', sans-serif;
+color: #81bb26;
+}
+.h3 {
+font-family: 'Acherus Grotesque', sans-serif;
+}
+.h4 {
+font-family: 'Lato-Black', sans-serif;
+
+}
+.h5 {
+font-family: 'Lato-Black', sans-serif;
+
+}
+.social {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+footer {
+background-color: #81bb26;
+color: #666;
+text-align: center;
+padding: 20px;
+
+bottom: 0;
+width: 100%;
+}
+.nav-pills .nav-link.active {
+background-color:#404827;;
+color: white;
+}
+.navbar {
+background-color: #008776;
+
+}
+.navbar-custom {
+background-color: #008776; 
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 999;
+
+}
+
+body {
+background-image: url('../static/images/fondo.png');
+background-size: cover;
+}
+
+.btn-custom:hover {
+transform: scale(1.2);
+color: #008776; 
+border: none;
+}
+.btn-custom {
+color: white;
+background-color: #008776; 
+padding: 10px 20px;
+border: none;
+transition: transform 0.3s ease;
+font-family:'Lato-Black', sans-serif;
+}
+.btn-customizedlogin {
+color: white;
+        background-color: #008776; 
+      
+        padding: 12px 24px;
+        font-size: 20px;
+        border-radius: 22px;
+        border: 2px solid;
+        transition: transform 0.3s ease;
+        font-family:'Lato-Black', sans-serif;
+
+}
+.btn-customizedlogin :hover {
+transform: scale(1.2);
+color: #008776; 
+border: none;
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+  <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+    <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+  </a>
+  <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+  </a>
+  
+  <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
+    
+      <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
+
+
+      {% if  user.is_authenticated  %}
+      <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+      <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+    {% endif %}
+    <div class="text-end" >
+      <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
+    </div>
+    </div>
+  </div>
+</nav>
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
-  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
+  <div class=" container py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-5">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
@@ -20,7 +148,7 @@
                 <div class="p-5">
                   <form action= "{%url 'UpdateU' %}" method= POST class=" w-100 m-auto">
                     {% csrf_token %}
-                    <h1 class="mb-5 fw-normal"style="color: #008776">Modificar Usuario</h1>
+                    <h1 class="h1">Modificar Usuario</h1>
                     <div class="form-group mb-2">
                       <div class="form-floating">
                         {{ form.username }}
@@ -57,9 +185,9 @@
                       
                     </div>
                     <br>
-                    <button  onclick="location.href = '/dash'" class="btn-login w-100 btn-lg border-light text-light "  value="Register"  type="submit">Ingresar</button>
+                    <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Ingresar</button>
                     <br>
-                    <button class=" w-100 btn-lg border-light text-light "  onclick="location.href = '/dash'"  style="background-color: #008776"  type="button" aria-expanded="false" >Volver</button></div>
+                    <button class="btn-customizedlogin "  onclick="location.href = '/dash'"  style="background-color: #008776 ;border-radius: 22px;"   type="button" aria-expanded="false" >Volver</button></div>
                     <br> 
 
 

@@ -31,11 +31,20 @@ from django.contrib.auth.decorators import  user_passes_test
 class IndexView(View):
         def get(self,request):
             text = Text.objects.first()
-            return render(request,"index.html",{'text': text})
+            user = request.user 
+            rol =0
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            contex ={'text': text,'rol': rol }
+            return render(request,"index.html",contex)
             
 class Quienessomos(View):
         def get(self,request):
-            return render(request,"quienessomos.html")
+            rol =0
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"quienessomos.html",{'rol': rol })
 class Not_Logged(View):
         def get(self,request):
             return render(request,"notloged.html")            
@@ -44,6 +53,7 @@ class CambioContrasenia(View):
             return render(request,"changepassword.html")
 class Galry(View):
         def get(self,request):
+            rol =0
             anfibios = especimen.objects.filter(NombreDelConjuntoDatos='Colección de Exhibición de Anfibios')
             aves = especimen.objects.filter(NombreDelConjuntoDatos='Colección de Exhibición de Aves')
             reptiles = especimen.objects.filter(NombreDelConjuntoDatos='Colección de exhibición de Reptiles')
@@ -53,45 +63,64 @@ class Galry(View):
             ordenes =  Orden.objects.all()
             clases =  Clase.objects.all()
             generos =  Genero.objects.all()
-           
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
                 
-            return render(request,"galery.html",{'especimenes':especimenes,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos,'anfibios':anfibios,'aves':aves,'mamiferos':mamiferos,'reptiles':reptiles})
+            return render(request,"galery.html",{'especimenes':especimenes,'rol': rol ,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos,'anfibios':anfibios,'aves':aves,'mamiferos':mamiferos,'reptiles':reptiles})
 def galery_familia(request,nombre):
+            rol =0
             especimenes = especimen.objects.filter(Familia = nombre)
             familias =  familia.objects.filter(nombreFamilia = nombre)
             ordenes =  Orden.objects.all()
             clases =  Clase.objects.all()
             generos =  Genero.objects.all()
-            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'rol': rol,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
 
 def galery_genero(request,nombre):
+            rol =0
             especimenes = especimen.objects.filter(Genero = nombre)
             familias =  familia.objects.all()
             ordenes =  Orden.objects.all()
             clases =  Clase.objects.all()
             generos =  Genero.objects.filter(nombreGenero = nombre)
-            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'rol': rol,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
 
 def galery_clase(request,nombre):
+            rol =0
             especimenes = especimen.objects.filter(ClaseE = nombre)
             familias =  familia.objects.all()
             ordenes =  Orden.objects.all()
             clases =  Clase.objects.filter(nombreClase = nombre)
             generos =  Genero.objects.all()
-            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'rol': rol,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
 
 def galery_orden(request,nombre):
+            rol =0
             especimenes = especimen.objects.filter(Orden = nombre)
             familias =  familia.objects.all()
             ordenes =  Orden.objects.filter(nombreOrden = nombre)
             clases =  Clase.objects.all()
             generos =  Genero.objects.all()
-            return render(request,"galery_filter.html",{'especimenes':especimenes,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"galery_filter.html",{'especimenes':especimenes,'rol': rol,'ordenes':ordenes,'clases':clases,'generos':generos,'familias':familias})
 
 class Dashboard_Aux(View):
         
         @method_decorator(login_required(login_url='redirect')   ) 
         def get(self,request):
+
             user = request.user 
             if user.is_authenticated:
                 if Rol.objects.filter(user=user, id=1):
@@ -147,12 +176,12 @@ class Dashboard_Cur(View):
 class Dashboard(View):
         
         def get(self,request):
-            print("1")
+            
             user = request.user 
             if user.is_authenticated:
-                print("2")
+                
                 if Rol.objects.filter(user=user, id=4):
-                    print("3")
+                  
                     especimenes = especimen.objects.all()
                     actions = UserAction.objects.order_by('tiempo').all()
                     return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions})
@@ -164,10 +193,18 @@ class Dashboard(View):
                 return HttpResponseRedirect(reverse('redirect'))
 class PerfilU(View):
         def get(self,request):
-            return render(request,"profile.html")		            		
+
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"profile.html",{'rol': rol })		            		
 class EjemplarP(View):
         def get(self,request):
-            return render(request,"paginaejemplar.html")		            		
+            rol =0
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
+            return render(request,"paginaejemplar.html",{'rol': rol })		            		
 
 
 def login(request):
@@ -196,6 +233,9 @@ def login(request):
      
 @login_required(login_url='redirect')
 def register(request):
+    user1 = request.user 
+    if user1.is_authenticated:
+            rol = Rol.objects.get(user=user1)
     if request.method == 'POST':
         form = CustomUser(request.POST)
         if form.is_valid():
@@ -228,9 +268,10 @@ def register(request):
             clase = form.cleaned_data['area']
             area_clase = Class_User(id_user = User.objects.get(id=user.id), id_clase = Clase.objects.get(id=clase))
             area_clase.save()
+            
     else:
         form = CustomUser()
-    return render(request, 'registerUser.html', {'form':form})
+    return render(request, 'registerUser.html', {'form':form,'rol': rol })
 
 @login_required(login_url='redirect')
 def registroActividad(request):
@@ -264,6 +305,9 @@ def registroActividad(request):
 
 @login_required(login_url='redirect')
 def registerE(request):
+    user = request.user 
+    if user.is_authenticated:
+           rol = Rol.objects.get(user=user)
     if request.method == 'POST':
         form = EjemplarForm(request.POST)
         
@@ -311,7 +355,7 @@ def registerE(request):
             userAction.save()
     else:
         form = EjemplarForm()
-    return render(request, 'registerE.html', {'form':form}) 
+    return render(request, 'registerE.html', {'form':form,'rol': rol}) 
    
 @login_required(login_url='redirect')
 def custom_logout(request):
@@ -320,7 +364,12 @@ def custom_logout(request):
     return redirect("home")
 
 class update_ejemplar(View):
+        
         def get(self,request,id):
+            rol =0
+            user = request.user 
+            if user.is_authenticated:
+                rol = Rol.objects.get(user=user)
             ejemplar = especimen.objects.get(pk=id)
             contexto = {
                 'id':ejemplar.id,
@@ -342,10 +391,12 @@ class update_ejemplar(View):
                 'nombreComun' : ejemplar.NombreComun,
             }
             
-            return render(request,"updateE.html",{'contexto':contexto})
+            return render(request,"updateE.html",{'contexto':contexto,'rol': rol})
 
 def update_record_ejemplar(request,id):
-
+    user = request.user 
+    if user.is_authenticated:
+           rol = Rol.objects.get(user=user)
     numero = request.POST['NumeroCatalogo']
     nombredeDatos = request.POST['NombreDelConjuntoDatos']
     comentarioRegistro = request.POST['ComentarioRegistroBiologico']
@@ -410,7 +461,7 @@ def update_aux(request):
             
     else:
         form = Update()
-    return render(request, 'UpdateUser.html', {'form':form})
+    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})
 @login_required(login_url='redirect')
 def update_aux_curatoria(request):
     if request.method == 'POST':
@@ -430,7 +481,7 @@ def update_aux_curatoria(request):
             
     else:
         form = Update()
-    return render(request, 'UpdateUser.html', {'form':form})    
+    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
 @login_required(login_url='redirect')
 def update_pasante(request):
     if request.method == 'POST':
@@ -450,7 +501,7 @@ def update_pasante(request):
             
     else:
         form = Update()
-    return render(request, 'UpdateUser.html', {'form':form})    
+    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
 @login_required(login_url='redirect')
 def update_curador(request):
     if request.method == 'POST':
@@ -470,7 +521,7 @@ def update_curador(request):
             
     else:
         form = Update()
-    return render(request, 'UpdateUser.html', {'form':form})    
+    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
 def load_data(request):
     root = tk.Tk()
     root.withdraw()
@@ -685,11 +736,14 @@ def darbaja_especimen(request, id):
 def AgregarActividad(request):
     if request.method == 'POST':
         form = TipoActividadForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard.html')
-    return render(request, 'agregar_actividad.html', {'form': form})
-
+        nombreactividad =  request.POST.get('name')
+        max_id = TipoActividad.objects.all().aggregate(Max('id'))['id__max']
+        a = TipoActividad(id=max_id + 1, nombreactividad=nombreactividad) 
+        a.save()
+        return redirect('dashboard') 
+    else:
+        form = TipoActividadForm()
+    return render(request, 'dashboard.html', {'form': form})
 def estado_usuarios(request):
     usuarios = User.objects.all()
     return render(request, 'desactivarUsuario.html', {'usuarios': usuarios})
@@ -713,22 +767,10 @@ def activar_usuario(request,id):
 
 def update_text(request):
     if request.method == 'POST':
-        new_content = request.POST.get('new_content', None)
-        if new_content:
-            queryset = Text.objects.all()
-            if queryset.count() == 1:
-                instance = queryset.first()
-                instance.content = new_content
-                instance.save()
-                return render(request, 'dashboard.html', {'success': True})
-            elif queryset.count() == 0:
-                instance = Text(content=new_content)
-                instance.save()
-                return render(request, 'dashboard.html', {'success': True})
-            else:
-                return render(request, 'dashboard.html', {'error': 'There must be exactly one Text instance in the database.'})
-        else:
-            return render(request, 'dashboard.html', {'error': 'New content cannot be empty.'})
+        text =Text.objects.get(pk=2)
+        text.content = request.POST['texto'] 
+        text.save() 
+        return redirect('dashboard') 
     else:
         return render(request, 'dashboard.html')
 
@@ -744,3 +786,58 @@ def activar_especimen(request,id):
      esp.estado = True
      esp.save()
      return HttpResponseRedirect(reverse('dashboard')) 
+   
+def elegir_texto(request):
+    if request.method == 'POST':
+        if request.POST.get('optiontexto') == 'option1':
+            text =Text.objects.get(pk=2)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard') 
+
+        elif request.POST.get('optiontexto') == 'option2':
+            text =Text.objects.get(pk=3)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard') 
+       
+        elif request.POST.get('optiontexto') == 'option3':
+            text =Text.objects.get(pk=4)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard') 
+        elif request.POST.get('optiontexto') == 'option4':
+            text =Text.objects.get(pk=5)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard')
+        elif request.POST.get('optiontexto') == 'option5':
+            text =Text.objects.get(pk=6)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard') 
+        elif request.POST.get('optiontexto') == 'option6':
+            text =Text.objects.get(pk=7)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard') 
+        elif request.POST.get('optiontexto') == 'option7':
+            text =Text.objects.get(pk=8)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard') 
+        elif request.POST.get('optiontexto') == 'option8':
+            text =Text.objects.get(pk=9)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard')  
+        elif request.POST.get('optiontexto') == 'option9':
+            text =Text.objects.get(pk=10)
+            text.content = request.POST['texto'] 
+            text.save() 
+            return redirect('dashboard')
+       
+        else:
+            return HttpResponse('Invalid option')
+    else:
+        return redirect('dashboard.html')    

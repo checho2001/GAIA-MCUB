@@ -93,6 +93,17 @@ footer {
   transition: transform 0.3s ease;
   font-family:'Lato-Black', sans-serif;
 }
+.btn-customizedlogin {
+  color: white;
+  border:none;
+  transition: transform 0.3s ease;
+  
+}
+.btn-customizedlogin :hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
   </style>
 </head>
 <body>
@@ -116,7 +127,23 @@ footer {
 
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-        <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+
+        {% if rol.id == 4 %}
+        
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 1 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 2 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 3 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+    {% endif %}
+
+
+       
       {% endif %}
       <div class="text-end" >
         <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
@@ -227,7 +254,7 @@ footer {
           <img   src="../static/images/frog.png" alt="..." class="image">
         </div>
         <div class="col">
-          <h3 class="h3">h2. Bootstrap heading</h3>
+          <h3 class="h3">{{ text.content }}</h3>
           <h5 class="h5">h4. Bootstrap heading</h5>
 
         </div>
@@ -281,21 +308,36 @@ footer {
     </div>
     <div class="col">
       <ul class="social">
-      <li><a href="#"><i class="fa fa-facebook"><img src="/static/images/Iconos individuales blanco-09.png" alt=""style="height:100px; width:100px;"></i></a></li>
      
+      <a class="btn-customizedlogin"onClick="
+      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+
+      </a>
+    
     </ul>
     </div>
     <div class="col">
       <ul class="social">
+        <a class="btn-customizedlogin"  onClick="
+      parent.location='https://www.unbosque.edu.co'">
+          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
+  
+        </a>
       
-      <li><a href="#"><i class="fa fa-twitter"><img src="/static/images/Iconos individuales blanco-12.png" alt=""style="height:100px; width:100px;"></i></a></li>
+     
 
     </ul>
     </div>
     <div class="col">
       <ul class="social">
-     
-      <li><a href="#"><i class="fa fa-instagram"><img src="/static/images/Iconos individuales blanco-08.png" alt="" style="height:100px; width:100px;"></i></a></li>
+        <a class="btn-customizedlogin" onClick="
+        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+      
     </ul>
     </div>
     <br><br>

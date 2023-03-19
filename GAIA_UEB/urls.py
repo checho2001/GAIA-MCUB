@@ -42,6 +42,7 @@ urlpatterns = [
     path('elegir', views.elegir, name='elegir'),
     path('AgregarActividad/', views.AgregarActividad, name='AgregarActividad'),
     path('update_text/', views.update_text, name='update_text'),
+    path('elegirtexto', views.elegir_texto, name='elegirtexto'),
     path('load_data/', load_data, name='load_data'),
     path('paginaejemplar/<int:pk>/', element_detail, name='element_detail'),
     path('dashCur/aprobar/<int:id>', views.aprobar_actividad, name = "aprobarA" ),

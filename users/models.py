@@ -140,6 +140,7 @@ class UserAction(models.Model):
 class Imagenes(models.Model):
     image = models.ImageField(upload_to='media/')
 class Text(models.Model):
+    id =  models.AutoField(primary_key=True)
     content = models.TextField()
 
     def __str__(self):

@@ -127,9 +127,26 @@ border: none;
       <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
 
 
+    
       {% if  user.is_authenticated  %}
       <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-      <button class="btn btn-custom btn-fade btn-lg " type="button">Volver al DashBoard</button>
+
+      {% if rol.id == 4 %}
+      
+      <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+  {% elif rol.id == 1 %}
+     
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 2 %}
+     
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 3 %}
+     
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+  {% endif %}
+
+
+     
     {% endif %}
     <div class="text-end" >
       <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>

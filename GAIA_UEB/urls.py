@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario
-from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
+from users.views import IndexView,Quienessomos,Galry,Dashboard,elegir_texto,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
 from users import views
 from django.conf import settings
@@ -39,6 +39,7 @@ urlpatterns = [
     path('elegir', views.elegir, name='elegir'),
     path('AgregarActividad/', views.AgregarActividad, name='AgregarActividad'),
     path('update_text/', views.update_text, name='update_text'),
+    path('elegirtexto', views.elegir_texto, name='elegirtexto'),
     path('load_data/', load_data, name='load_data'),
     path('paginaejemplar/<int:pk>/', element_detail, name='element_detail'),
     path('dashCur/aprobar/<int:id>', views.aprobar_actividad, name = "aprobarA" ),

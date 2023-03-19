@@ -8,28 +8,168 @@
 <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
 <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
+<style>
+    footer {
+  background-color: #f6f6f6;
+  padding: 50px 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #f6f6f6;
+}
+@font-face {
+  font-family: 'Lato-Black';
+  src: url('fonts/Lato-Black.ttf') format('truetype');
+}
+p {
+  font-family: 'Lato-Black', sans-serif;
+}
+.h1 {
+  font-family: 'Lato-Black', sans-serif;
+ 
+}
+.h2 {
+  font-family: 'Lato-Black', sans-serif;
+  color: #81bb26;
+}
+.h3 {
+  font-family: 'Acherus Grotesque', sans-serif;
+}
+.h4 {
+  font-family: 'Lato-Black', sans-serif;
+  
+}
+.h5 {
+  font-family: 'Lato-Black', sans-serif;
+ 
+}
+.social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+body {
+    background-image: url('../static/images/fondo.png');
+    background-size: cover;
+  }
+footer {
+  background-color: #81bb26;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+ 
+  bottom: 0;
+  width: 100%;
+}
+.nav-pills .nav-link.active {
+  background-color:#404827;;
+  color: white;
+}
+.navbar {
+  background-color: #008776;
+  
+}
+.navbar-custom {
+  background-color: #008776; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  
+}
+
+
+.btn-custom:hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
+.btn-custom {
+  color: white;
+  background-color: #008776; 
+  padding: 10px 20px;
+  border: none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+}
+.btn-customizedlogin {
+  color: white;
+  font-size: 20px;
+  border:none;
+  transition: transform 0.3s ease;
+  background-color: #008776; 
+}
+.btn-customizedlogin:hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
+  </style>
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
+
+
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+
+        {% if rol.id == 4 %}
+        
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 1 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 2 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 3 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+    {% endif %}
+
+
+       
+      {% endif %}
+  
+      </div>
+    </div>
+  </nav>
     <body>
+
+        <br>
+        <br> <br>
         <hr>
         <div class=" container bootstrap snippet">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
         <div class="row">
-            <div class="col-sm-10" ><h1 style="color: #008776">Perfil Personal</h1></div>
+            <div class="h1" ><h1 style="color: #008776">Perfil Personal</h1></div>
         </div>
+        <br> 
         <div class="row">
         <div class="col-sm-3">
             <div class="text-center">
-            <img src="../static/images/galeria-6.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
-            <h6>Cambiar foto</h6>
+                
+            <img src="../static/images/17004.png" class="avatar img-circle img-thumbnail" alt="avatar">
+            <br>  <br> 
+            <h3 class="h3">Cambiar foto</h6>
             <input type="file" class="text-center center-block file-upload">
             </div>
         </hr>
     <br>
-        
-        <ul class="list-group">
-        <li class="list-group-item text-muted">Tareas Realizadas <i class="fa fa-dashboard fa-1x"></i></li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Registros</strong></span> 0</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Cambios</strong></span> 0</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Revisiones</strong></span> 0</li>
-        </ul> 
+    <br>
+      
             
         </div>
         <div class="col-9">
@@ -37,17 +177,18 @@
             <div class="tab-pane active" id="home">
                 <hr>
                     <form class="form" action="##" method="post" id="registrationForm">
+                        {% csrf_token %}
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="nombre"><h4 style="color: #777">Nombre</h4></label>
-                                <input type="text" class="form-control" name="nombre id="nombre" placeholder= {{ user.nombre }} disabled>
+                                <label for="nombre"><h4 class ="h4" style="color: #777">Nombre</h4></label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder= {{ user.nombre }} disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                            <label for="apellido"><h4 style="color: #777">Apellido</h4></label>
+                            <label for="apellido"><h4 class ="h4"style="color: #777">Apellido</h4></label>
                                 <input type="text" class="form-control" name="apellido" id="apellido" placeholder= {{ user.apellido }} disabled>
                             </div>
                         </div>
@@ -55,21 +196,21 @@
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="rolMuseo"><h4 style="color: #777">Rol</h4></label>
+                                <label for="rolMuseo"><h4 class ="h4" style="color: #777">Rol</h4></label>
                                 <input type="text" class="form-control" name="rolMuseo" id="rolMuseo" placeholder= {{ user.rol }} disabled>
                             </div>
                         </div>
             
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="carrera"><h4 style="color: #777">Email</h4></label>
+                                <label for="carrera"><h4 class ="h4" style="color: #777">Email</h4></label>
                                 <input type="text" class="form-control" name="carrera" id="carrera" placeholder={{ user.email }} disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="correo"><h4 style="color: #777">Usuario</h4></label>
+                                <label for="correo"><h4 class ="h4" style="color: #777">Usuario</h4></label>
                                 <input type="email" class="form-control" name="correo" id="correo" placeholder={{ user.username }} disabled>
                             </div>
                         </div>
@@ -77,7 +218,32 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                    <button class="btn-lg text-light border-light pull-right" type="submit" style="background-color: #008776;"><i class="glyphicon glyphicon-ok-sign"></i>Cambios</button>
+
+
+
+                                {% if  user.is_authenticated  %}
+                                
+                        
+                                {% if rol.id == 4 %}
+                                
+                                <button class="btn-customizedlogin "    href="#" onclick="location.href = '/dash'"     style="background-color: #008776 ;border-radius: 22px;"   type="button">Volver </button>
+                            {% elif rol.id == 1 %}
+                               
+                                <button class="btn-customizedlogin "  href="#" onclick="location.href = '/dashAux'"   style="background-color: #008776 ;border-radius: 22px;"   type="button">Volver </button>
+                              {% elif rol.id == 2 %}
+                               
+                                <button class="btn-customizedlogin "  href="#" onclick="location.href = '/dashPas'"   style="background-color: #008776 ;border-radius: 22px;"   type="button">Volver </button>
+                              {% elif rol.id == 3 %}
+                               
+                                <button class="btn-customizedlogin " href="#" onclick="location.href = '/dashCur'"   style="background-color: #008776 ;border-radius: 22px;"    type="button">Volver </button>
+                            {% endif %}
+                        
+                        
+                               
+                              {% endif %}
+
+
+                                    
                             </div>
                         </div>
                     </form>
@@ -88,5 +254,5 @@
             </div>
         </div>
     </div>
-                                                        
+</div>                                         
     </body>

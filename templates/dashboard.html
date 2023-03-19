@@ -284,14 +284,11 @@
                   <div class="col">
                      
                         
-                    <a class="a" onclick="location.href = '/DesactivarUser'">
-                      <img class="image_header-museo" src="/static/images/747386.png"   style="height:150px; width:150px;">
-                    </a>
-                    <div class="text-center" ><h4 style="color: #008776; text-align: center;">Estado Usuarios</h4></div>
-                    <button class="btn-customizedlogin "  onclick="location.href = '/UpdateUser'"type="button"><img class="image_header-museo" src="/static/images/747386.png"  style="height:150px; width:150px;" ></button>
+                    <button class="btn-customizedlogin "  onclick="location.href = '/DesactivarUser'"type="button"><img class="image_header-museo" src="/static/images/747386.png"  style="height:150px; width:150px;" ></button>
+                    <div class="text" ><h4 style="color: #008776; ">Estado Usuarios</h4></div>
+                    
                  
-                    <div class="text" ><h4 style="color: #008776; ">Desactivar Usuarios</h4></div>
-                  
+                
                    
                   </div>
                   </div>
@@ -476,26 +473,36 @@
                               <div class="text-center" ><h4 style="color: #008776; text-align: center;">Agregar tipo de Actividad</h4></div>
                             </div>
                             <div class="col-sm-8">
-                              <input class="form-control" type="text" id="name" name="name" required>
+                              
+                              <input class="form-control" type="text" id="name" name="name" >
                             </div>
                             <div class="col">
                               <button class="btn-customizedlogin " type="submit"><img class="image_header-museo" src="/static/images/1004759.png" style="height:50px; width:50px;"></button>
                             </div>
                           </div>
-
-
                         </form>
-
-
-
-
-                        <form method="post">
+                        <form method="post" action="{% url 'elegirtexto' %}">
                           {% csrf_token %}
-                          <label for="new_content">New content:</label>
-                          <input type="text" id="new_content" name="new_content" required>
-                          <br>
+                          <label for="new_content">Modificar texto </label>
+                          <div class="col-sm-8">
+
+                            <select name="optiontexto" id="optiontexto" class="form-select">
+                              <option selected value="option1">Noticias</option>
+                              <option value="option2">Titulo anfibios</option>
+                              <option value="option3">Texto anfibios</option>
+                              <option value="option4">Titulo Mamiferos</option>
+                              <option value="option5">Texto Mamiferos</option>
+                              <option value="option6">Titulo Reptiles</option>
+                              <option value="option7">Texto Reptiles</option>
+                              <option value="option8">Titulo aves</option>
+                              <option value="option9">Texto aves</option>
+                            </select>
+
+
+                            <textarea style="line-height: 1.5;" class="form-control" type="text" id="texto" name="texto">Ingrese su texto aquí</textarea>
+                          </div>
                           <button type="submit">Update</button>
-                      </form>
+                       </form>
                       </div>
                     </div>
                   </div>

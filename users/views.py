@@ -179,17 +179,18 @@ def login(request):
             user = authenticate(username=username, password=password)
    
             if user is not  None:
-                auth.login(request, user)
-                if user.groups.filter(name__in=['Auxiliar']):
+                if user.is_active == True:
+                    auth.login(request, user)
+                    if user.groups.filter(name__in=['Auxiliar']):
+                        
+                        return HttpResponseRedirect(reverse('dashboardAux'))
+                    if user.groups.filter(name__in=['Pasante']):
                     
-                    return HttpResponseRedirect(reverse('dashboardAux'))
-                if user.groups.filter(name__in=['Pasante']):
-                   
-                    return HttpResponseRedirect(reverse('dashboardPas'))
-                if user.groups.filter(name__in=['Curador']):
-                    
-                    return HttpResponseRedirect(reverse('dashboardCur'))
-                return HttpResponseRedirect(reverse('dashboard'))
+                        return HttpResponseRedirect(reverse('dashboardPas'))
+                    if user.groups.filter(name__in=['Curador']):
+                        
+                        return HttpResponseRedirect(reverse('dashboardCur'))
+                    return HttpResponseRedirect(reverse('dashboard'))
                    
     return render(request, 'login.html', {'form':form})
      
@@ -222,7 +223,7 @@ def register(request):
                 group = Group.objects.get(name='Curador')
                 group.user_set.add(user)
             elif(rol == "4"):
-                group = Group.objects.get(name='Otro')
+                group = Group.objects.get(name='Director')
                 group.user_set.add(user)
             clase = form.cleaned_data['area']
             area_clase = Class_User(id_user = User.objects.get(id=user.id), id_clase = Clase.objects.get(id=clase))
@@ -233,6 +234,16 @@ def register(request):
 
 @login_required(login_url='redirect')
 def registroActividad(request):
+    a = request.user.rol    
+    if a.id == 4:
+        print('entre')
+        especimenes = especimen.objects.all()
+    else:
+        clase = Class_User.objects.get(id_user_id= request.user.id)
+        clas = Clase.objects.get(id = clase.id_clase_id)
+        especimenes = especimen.objects.filter(ClaseE = clas.nombreClase )
+
+
     form = ActividadesForm(request.POST)
     if request.method == 'POST':
      
@@ -248,7 +259,7 @@ def registroActividad(request):
             userAction.save()
     else:
         form = ActividadesForm()
-    return render(request, 'informe1.html', {'form':form})
+    return render(request, 'informe1.html', {'form':form, 'especimenes': especimenes})
 
 
 @login_required(login_url='redirect')
@@ -368,6 +379,7 @@ def update_record_ejemplar(request,id):
     ejemplar.ClaseE = clase
     ejemplar.NombreComun = nombreComun
     ejemplar.save()
+    
     if request.user.groups.filter(name__in=['Auxiliar']):
         return HttpResponseRedirect(reverse('dashboardAux'))
     if request.user.groups.filter(name__in=['Pasante']):
@@ -685,8 +697,16 @@ def estado_usuarios(request):
 
 def desactivar_usuario(request,id):
      usuario = User.objects.get(id=id)
-     print(usuario.id)
+     #print(usuario.id)
      usuario.is_active = False
+     usuario.save()
+     return HttpResponseRedirect(reverse('dashboard'))
+
+
+def activar_usuario(request,id):
+     usuario = User.objects.get(id=id)
+     #print(usuario.id)
+     usuario.is_active = True
      usuario.save()
      return HttpResponseRedirect(reverse('dashboard')) 
         
@@ -711,3 +731,16 @@ def update_text(request):
             return render(request, 'dashboard.html', {'error': 'New content cannot be empty.'})
     else:
         return render(request, 'dashboard.html')
+
+
+def estado_especimenes(request):
+    esp = especimen.objects.all()
+    return render(request, 'activarEspecimenes.html', {'especimenes': esp})
+
+
+def activar_especimen(request,id):
+     esp = especimen.objects.get(id=id)
+     #print(usuario.id)
+     esp.estado = True
+     esp.save()
+     return HttpResponseRedirect(reverse('dashboard')) 

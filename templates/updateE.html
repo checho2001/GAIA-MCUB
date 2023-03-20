@@ -173,7 +173,7 @@ border: none;
                       <div class="form-group m-2">
                         <div class="form-floating">
                           
-                          <input name="NumeroCatalogo" value="{{ contexto.numeroCatalogo }}" class = "form-control">
+                          <input name="NumeroCatalogo" value="{{ contexto.numeroCatalogo }}" class = "form-control" disabled>
                           <label class="font-weight-bold">NumeroCatalogo<span class="text-danger"> *</span></label>
                           
                           <br>
@@ -203,7 +203,7 @@ border: none;
                             <br>
                         </div>
                         <div class="form-floating">
-                          <input name="FechaEvento" value="{{ contexto.fechaEvento }}" class = "form-control">
+                          <input name="FechaEvento" value="{{ contexto.fechaEvento }}" class = "form-control" disabled>
                           <label class="font-weight-bold">FechaEvento<span class="text-danger"> *</span></label>
                         
                           <br>
@@ -230,9 +230,9 @@ border: none;
                           <input name="Municipio" value="{{ contexto.municipio }}" class = "form-control">
                           <label class="font-weight-bold">Municipio<span class="text-danger"> *</span></label>
                           <br>
-                        </div>
+                        </div>                        
                       </div>
-                    </div>
+                    </div>                   
                     <div class="col-lg-6">
                       <div class="form-group m-2">
 
@@ -243,7 +243,7 @@ border: none;
               <br>
             </div>
             <div class="form-floating">
-              <input name="FechaIdentificacion" value="{{ contexto.fechaIdentificacion }}" class = "form-control">
+              <input name="FechaIdentificacion" value="{{ contexto.fechaIdentificacion }}" class = "form-control" disabled>
               <label   class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
             
               <br>
@@ -306,6 +306,7 @@ border: none;
 
                       <br>
                       <button class=" w-100 btn-lg border-light text-light "  value="Register"  type="submit" style="background-color:#008776 ;">Ingresar</button>
+                    
 
                     
                     </div>

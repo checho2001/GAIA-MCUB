@@ -300,7 +300,7 @@ def registroActividad(request):
     if request.method == 'POST':
      
         if form.is_valid():
-            NumeroCatalogo = form.cleaned_data['NumeroCatalogo']
+            NumeroCatalogo = request.POST['NumeroCatalogo']
             TareaRealizada = form.cleaned_data['TareaRealizada']
             Hora = form.cleaned_data['Hora']
             Fecha = form.cleaned_data['Fecha']
@@ -877,4 +877,4 @@ def elegir_texto(request):
         else:
             return HttpResponse('Invalid option')
     else:
-        return redirect('dashboard.html')    
+        return redirect('dashboard.html')

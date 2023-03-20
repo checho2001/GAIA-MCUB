@@ -283,7 +283,10 @@ def register(request):
 
 @login_required(login_url='redirect')
 def registroActividad(request):
-    a = request.user.rol    
+    a = request.user.rol
+    user1 = request.user 
+    if user1.is_authenticated:
+            rol = Rol.objects.get(user=user1)    
     if a.id == 4:
         print('entre')
         especimenes = especimen.objects.all()
@@ -308,7 +311,7 @@ def registroActividad(request):
             userAction.save()
     else:
         form = ActividadesForm()
-    return render(request, 'informe1.html', {'form':form, 'especimenes': especimenes})
+    return render(request, 'informe1.html', {'form':form, 'especimenes': especimenes,'rol': rol})
 
 
 @login_required(login_url='redirect')
@@ -485,6 +488,10 @@ def update_aux(request):
     return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})
 @login_required(login_url='redirect')
 def update_aux_curatoria(request):
+    rol =0
+    user = request.user 
+    if user.is_authenticated:
+        rol = Rol.objects.get(user=user)
     if request.method == 'POST':
         form = Update(request.POST)
         if form.is_valid():

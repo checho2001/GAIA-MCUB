@@ -170,7 +170,11 @@ border: none;
                     <div class="form-group mb-2">
                       <div class="form-floating">
                         
-                        {{ form.NumeroCatalogo }}
+                        <select name="NumeroCatalogo" class="form-control" id="id_NumeroCatalogo">
+                          {% for esp in especimenes%}
+                          <option value="{{esp.id}}">{{esp.NumeroCatalogo}}</option>   
+                          {% endfor%}                   
+                        </select>
                         <label class="font-weight-bold">Numero Catalogo<span class="text-danger"> *</span></label>
                         <br>
                     </div>

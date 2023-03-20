@@ -124,7 +124,7 @@ class especimen(models.Model):
     Familia =   models.CharField(max_length=500)
     NombreComun = models.CharField(max_length=500)
     estado = models.BooleanField(default=True)
-    Image = models.ImageField(upload_to='media/')
+    Image = models.ImageField(upload_to='media/', default='media/en_construccion.png')
 
     def __str__(self):
         return (self.NumeroCatalogo)  

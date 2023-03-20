@@ -154,18 +154,6 @@ class ActividadesForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super(ActividadesForm, self).__init__(*args, **kwargs)
-
-
-    CATALOGO = []
-    for useri in especimen.objects.all():
-        CATALOGO.append((useri.id, useri.NumeroCatalogo))
-    NumeroCatalogo = forms.ChoiceField(
-        choices = CATALOGO,  widget=forms.Select(
-            attrs= {
-                'default' : 1,
-                'class' : 'form-control',
-                }
-            ))  
     TAREAS = []
     
     for tarea in TipoActividad.objects.all():

@@ -309,7 +309,7 @@ def registerE(request):
     if user.is_authenticated:
            rol = Rol.objects.get(user=user)
     if request.method == 'POST':
-        form = EjemplarForm(request.POST)
+        form = EjemplarForm(request.POST, files=request.FILES)
         
         if form.is_valid():
             print('emtre')
@@ -338,8 +338,8 @@ def registerE(request):
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=Clase,Orden = Orden, Genero = Genero
-            ,Familia = Familia, NombreComun=NombreComun, Image = "")
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=ClaseE,Orden = Orden, Genero = Genero
+            ,Familia = Familia, NombreComun=NombreComun)
             e.Image = request.FILES.get('imagen')
             print(e.Image)
             e.save()
@@ -429,6 +429,8 @@ def update_record_ejemplar(request,id):
     ejemplar.NombreCientificoComentarioRegistroBiologico = nombreCientifico
     ejemplar.ClaseE = clase
     ejemplar.NombreComun = nombreComun
+    ejemplar.Image = request.FILES.get('imagen')
+    
     ejemplar.save()
     
     if request.user.groups.filter(name__in=['Auxiliar']):

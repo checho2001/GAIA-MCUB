@@ -208,10 +208,30 @@ border: none;
                   </div>
                 
                     <br>
-
+                  
+                 
+            
+                    {% if rol.id == 4 %}
+                    
+                    <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver </button>
                     <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
+                {% elif rol.id == 1 %}
+                   
+                    <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver</button>
+                    <button  onclick="location.href = '/dashAux'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
+                  {% elif rol.id == 2 %}
+                   
+                    <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver </button>
+                    <button  onclick="location.href = '/dashPas'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
+                  {% elif rol.id == 3 %}
+                   
+                    <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver a</button>
+                    <button  onclick="location.href = '/dashCur'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
+                {% endif %}
+            
+            
+                 
                     <br>
-                    <button class="btn-customizedlogin "  onclick="location.href = '/dash'"  style="background-color: #008776 ;border-radius: 22px;"   type="button" aria-expanded="false" >Volver</button></div>
                     <br> 
 
                   </form>

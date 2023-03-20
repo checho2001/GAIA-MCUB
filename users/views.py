@@ -399,6 +399,9 @@ class update_ejemplar(View):
                 'comentarioIdentificacion' : ejemplar.ComentarioIdentificacion,
                 'nombreCientifico' : ejemplar.NombreCientificoComentarioRegistroBiologico,
                 'clase' : ejemplar.ClaseE,
+                'orden' : ejemplar.Orden,
+                'genero' : ejemplar.Genero,
+                'familia' : ejemplar.Familia,
                 'nombreComun' : ejemplar.NombreComun,
             }
             
@@ -422,6 +425,9 @@ def update_record_ejemplar(request,id):
     comentarioIdentificacion = request.POST['ComentarioIdentificacion']
     nombreCientifico = request.POST['NombreCientifico']
     clase = request.POST['Clase']
+    orden = request.POST['Orden']
+    genero = request.POST['Genero']
+    familia = request.POST['Familia']
     nombreComun = request.POST['NombreComun']
     ejemplar = especimen.objects.get(pk=id)
     ejemplar.NumeroCatalogo = numero
@@ -439,6 +445,9 @@ def update_record_ejemplar(request,id):
     ejemplar.ComentarioIdentificacion = comentarioIdentificacion
     ejemplar.NombreCientificoComentarioRegistroBiologico = nombreCientifico
     ejemplar.ClaseE = clase
+    ejemplar.Orden = orden
+    ejemplar.Genero = genero
+    ejemplar.Familia = familia
     ejemplar.NombreComun = nombreComun
     ejemplar.Image = request.FILES.get('imagen')
     

@@ -11,7 +11,7 @@
         <script type="text/javascript" src="../../../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../../../static/js/sidebars.js"> </script>
     <style>
-      #global {
+     #global {
        
         border: 2px solid #ddd;
         
@@ -103,37 +103,92 @@
 #radio-cards .card-input-element:checked + .card-input {
   border: 1px solid #008776;
 }
+.nav-pills .nav-link.active {
+  background-color:#404827;;
+  color: white;
+}
+.navbar {
+  background-color: #404827;
+}
+.navbar-custom {
+  background-color: #404827; 
+}
+
+
+.btn-custom:hover {
+  transform: scale(1.2);
+  color: black; 
+}
+.btn-custom {
+  color: white;
+  background-color: #404827; 
+  padding: 10px 20px;
+  
+  transition: transform 0.3s ease;
+ 
+}
+.my-input {
+  border: none;
+  
+}
     </style>
   </head>
 <body>
-  <header class="header"style="height: 75px;background-color: #008776;">
-    <div class="container" >
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contactenos</button>
+
+
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+
+        {% if rol.id == 4 %}
+        
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 1 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 2 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 3 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+    {% endif %}
+
 
        
-
-        <ul class="nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-top: 15px;">
-          <li><a type="button"  onclick="location.href = '/index'" class="nav-link text-light">Inicio</a></li>
-          <li><a href="#" onclick="location.href = '/galery'" class="nav-link text-light">Colecciones</a></li>
-          <li><a href="#" class="nav-link text-light">Registros</a></li>
-          <li><a href="#" class="nav-link text-light">FAQs</a></li>
-        </ul>
+      {% endif %}
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
+          <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 
-        <div class="text-end" style="margin-top: 15px;">
-          <button type="button"  onclick="location.href = '/login'" class="btn btn-outline-light me-2">Login</button>
+        <div class="text-end" >
+          <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
         </div>
+     
       </div>
     </div>
-  </header>
+  </nav>
+
+
     <main>
-    <div  class="row " >
-        <div class="col-2" style="background-color: #008776; height: 100vh;">
+    <div  class="row flex " >
+        <div class="col-2" style="background-color: #404827; height: 100vh;">
           
-          <img src="../../../static/images/logoblanco.png" alt="mdo" width="250" height="100" class="w3-round">
             <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
 
              
@@ -216,7 +271,6 @@
 
 
                 <br>
-                <img src="../../../static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="mdo" width="200" height="200" >
 
 
 
@@ -227,53 +281,7 @@
           <div id="radio-cards">
             <br>
             <div class="row gx-lg-5">
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault1" type="radio" name="defaultGroup" class="card-input-element" />
-          
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../../../static/images/frog.png" height="50px" width="50px"> Anfibios</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault2" type="radio" name="defaultGroup" class="card-input-element" checked />
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../../../static/images/reptiles.png" height="50px" width="50px"> Reptiles</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault3" type="radio" name="defaultGroup" class="card-input-element" />
-          
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../../../static/images/mamiferos.png" height="50px" width="50px"> Mamiferos</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div class="col-md-3 mb-4">
-                <label>
-                  <input id="radioDefault4" type="radio" name="defaultGroup" class="card-input-element" />
-                  <div class="card card-input">
-                    <div class="card-body">
-                      <p class="text-uppercase fw-bold text-muted">Filtrar por</p>
-                      <p class="h2 fw-bold"><img src="../../../static/images/aves.png" height="50px" width="50px"> Aves</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-            </div>
+              <h1 style="color: #404827; text-align: center"> Ejemplares</h1>
           </div>
             <div class="album py-5 " style="height: 100vh; ">
                     <div  class="container">
@@ -290,7 +298,7 @@
                                 <div class="card">
                                   <a href="{% url 'element_detail' element.pk %}">
                                   <img 
-                                  src="../../../static/images/galeria-1.jpg"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
+                                  src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
                                     class="card-img-top"
                                     alt="Waterfall" width="300" height="700"
                                   />
@@ -350,6 +358,15 @@
       document.querySelector('.gallery').appendChild(img);
     });
   });
+
+  $(document).ready(function(){
+      $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".card").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
 </script>
     </main> 
 </body>

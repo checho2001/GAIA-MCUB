@@ -30,7 +30,7 @@ from django.contrib.auth.decorators import  user_passes_test
 
 class IndexView(View):
         def get(self,request):
-            text = Text.objects.first()
+            text = Text.objects.first
             user = request.user 
             rol =0
             if user.is_authenticated:

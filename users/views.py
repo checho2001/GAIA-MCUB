@@ -402,6 +402,7 @@ class update_ejemplar(View):
                 'orden' : ejemplar.Orden,
                 'genero' : ejemplar.Genero,
                 'familia' : ejemplar.Familia,
+                'image' : ejemplar.Image,
                 'nombreComun' : ejemplar.NombreComun,
             }
             

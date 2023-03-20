@@ -813,8 +813,11 @@ def update_text(request):
 
 
 def estado_especimenes(request):
+    user1 = request.user 
+    if user1.is_authenticated:
+            rol = Rol.objects.get(user=user1)
     esp = especimen.objects.all()
-    return render(request, 'activarEspecimenes.html', {'especimenes': esp})
+    return render(request, 'activarEspecimenes.html', {'especimenes': esp,'rol': rol})
 
 
 def activar_especimen(request,id):

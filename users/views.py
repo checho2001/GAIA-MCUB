@@ -30,12 +30,20 @@ from django.contrib.auth.decorators import  user_passes_test
 
 class IndexView(View):
         def get(self,request):
-            text = Text.objects.first()
+            texto ={'text1': Text.objects.get(id=2),
+                    'text2': Text.objects.get(id=3),
+                    'text3': Text.objects.get(id=4),
+                    'text4': Text.objects.get(id=5),
+                    'text5': Text.objects.get(id=6),
+                    'text6': Text.objects.get(id=7),
+                    'text7': Text.objects.get(id=8),
+                    'text8': Text.objects.get(id=9),
+                    'text9': Text.objects.get(id=10)}
             user = request.user 
             rol =0
             if user.is_authenticated:
                 rol = Rol.objects.get(user=user)
-            contex ={'text': text,'rol': rol }
+            contex ={'text': texto,'rol': rol }
             return render(request,"index.html",contex)
             
 class Quienessomos(View):
@@ -432,6 +440,17 @@ def update_record_ejemplar(request,id):
     ejemplar.Image = request.FILES.get('imagen')
     
     ejemplar.save()
+
+    NumeroCatalogo = ejemplar.NumeroCatalogo
+    TareaRealizada = 4
+    Hora = datetime.now().time()
+    Fecha = datetime.now().date()
+    Descripcion = 'Se actualizo información de  ' + NumeroCatalogo
+    a = Actividades(NumeroCatalogo=NumeroCatalogo,TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
+    a.save()
+    userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= NumeroCatalogo)
+    userAction.save()
+
     
     if request.user.groups.filter(name__in=['Auxiliar']):
         return HttpResponseRedirect(reverse('dashboardAux'))

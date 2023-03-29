@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario, activar_usuario,estado_especimenes,activar_especimen
+from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario, activar_usuario,estado_especimenes,activar_especimen,qr_code,qr_code1
 from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
 from users import views
@@ -50,6 +50,8 @@ urlpatterns = [
     path('galery/genero/<str:nombre>', views.galery_genero,name="galeryG"),
     path('galery/clase/<str:nombre>', views.galery_clase,name="galeryC"),
     path('galery/orden/<str:nombre>', views.galery_orden,name="galeryO"),
+    path('qr_code/<str:data>/', views.qr_code, name='qr_code'),
+    path('qr_code/', views.qr_code1, name="qr_code1"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:

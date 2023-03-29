@@ -27,6 +27,11 @@ from django.db.models import Max
 from .models import Text
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import  user_passes_test
+import qrcode
+import io
+from io import BytesIO
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 class IndexView(View):
         def get(self,request):
@@ -725,7 +730,9 @@ def element_detail(request, pk):
     ordenes =  Orden.objects.all()
     clases =  Clase.objects.all()
     generos =  Genero.objects.all()
-    context = {'element': element,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos}
+    a = request.path
+    print("Este es ", a)
+    context = {'element': element,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos, 'a':a}
     return render(request, 'paginaejemplar.html', context)
 
 
@@ -882,3 +889,56 @@ def elegir_texto(request):
             return HttpResponse('Invalid option')
     else:
         return redirect('dashboard.html')
+    
+
+@csrf_exempt
+def qr_code(request,data):
+    # Crear el objeto QRCode
+    qr = qrcode.QRCode(
+        version=1,
+        box_size=10,
+        border=5
+    )
+    # Añadir los datos al código QR
+    data = request.path
+    print(data)
+    qr.add_data('https://aulavirtual.unbosque.edu.co/')
+    qr.make(fit=True)
+    # Crear una imagen del código QR
+    img = qr.make_image(fill_color='black', back_color='white')
+    # Guardar la imagen en un buffer
+    buffer = io.BytesIO()
+    img.save(buffer)
+    # Devolver la imagen como respuesta HTTP
+    response = HttpResponse(buffer.getvalue(), content_type='image/png')
+    response['Content-Disposition'] = 'attachment; filename="qrcode.png"'
+    return response
+
+
+def qr_code1(request):
+    # Obtener la URL actual
+    current_url = request.build_absolute_uri()
+    print(current_url)
+    
+    # Crear el objeto QRCode
+    qr = qrcode.QRCode(
+        version=1,
+        box_size=10,
+        border=5
+    )
+    # Añadir los datos al código QR
+    data = request.path
+    print(data)
+    qr.add_data(current_url)
+    qr.make(fit=True)
+    # Crear una imagen del código QR
+    img = qr.make_image(fill_color='black', back_color='white')
+    # Guardar la imagen en un buffer
+    buffer = io.BytesIO()
+    img.save(buffer)
+    # Devolver la imagen como respuesta HTTP
+    response = HttpResponse(buffer.getvalue(), content_type='image/png')
+    response['Content-Disposition'] = 'attachment; filename="qrcode.png"'
+    return response
+
+

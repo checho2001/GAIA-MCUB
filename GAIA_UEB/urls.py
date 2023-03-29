@@ -51,7 +51,7 @@ urlpatterns = [
     path('galery/clase/<str:nombre>', views.galery_clase,name="galeryC"),
     path('galery/orden/<str:nombre>', views.galery_orden,name="galeryO"),
     path('qr_code/<str:data>/', views.qr_code, name='qr_code'),
-    path('qr_code/', views.qr_code1, name="qr_code1"),
+    path('paginaejemplar/<int:pk>/qr_code/', views.qr_code1, name="qr_code1"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:

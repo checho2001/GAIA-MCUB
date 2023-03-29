@@ -915,10 +915,11 @@ def qr_code(request,data):
     return response
 
 
-def qr_code1(request):
+def qr_code1(request,pk):
     # Obtener la URL actual
     current_url = request.build_absolute_uri()
-    print(current_url)
+    #print(current_url)
+    #print(current_url[:-8])
     
     # Crear el objeto QRCode
     qr = qrcode.QRCode(
@@ -929,7 +930,7 @@ def qr_code1(request):
     # Añadir los datos al código QR
     data = request.path
     print(data)
-    qr.add_data(current_url)
+    qr.add_data(current_url[:-8])
     qr.make(fit=True)
     # Crear una imagen del código QR
     img = qr.make_image(fill_color='black', back_color='white')

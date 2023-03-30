@@ -19,7 +19,7 @@
     <style>
       body {
         font-size: 16px;
-        font-family: 'Lato', sans-serif;
+        font-family: 'Lato-Black', sans-serif;
       }
       #global {
        
@@ -189,7 +189,7 @@
 
 
 
-              <p class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
+              <h2 class="h2" style="color : white" > Hola {{ user.nombre }}</h2>
 
 
               <div class="dropdown border-top">
@@ -200,10 +200,10 @@
                 </a>
                 
                 
-                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Rol {{ user.rol }}</p>
+                <p href="#" class="h2"  style="color : white"  > Rol {{ user.rol }}</p>
                 <br>
                 
-                <p href="#" class="h2 link-dark d-inline-flex text-decoration-none rounded text-light"> <span id="current-time"></span></p>
+                <p href="#" class="h3"  style="color : white"  > <span id="current-time"></span></p>
                
 
                 <ul class="dropdown-menu text-small shadow">
@@ -254,7 +254,7 @@
 
                 <br>
 
-                  <div class="text-center" ><h2 style="color: #008776; text-align: center;">Gestión Usuarios</h2></div>
+                  <div class="text-center" ><h2  class="h2" style="color: #008776; text-align: center;">Gestión Usuarios</h2></div>
                   <br>
                   
                   <div class="row">
@@ -296,7 +296,7 @@
                     
                   <br> <br>
                     
-                    <div class="text-center" ><h2 style="color: #404827; text-align: center;">Registro Actividades</h2></div>
+                    <div class="text-center" ><h2 class= "h2" style="color: #404827; text-align: center;">Registro Actividades</h2></div>
                    
                     
                     <br>
@@ -306,20 +306,20 @@
                         <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
-                              <th scope="col">Fecha</th>
-                              <th scope="col">Tarea Realizada</th>
-                              <th scope="col">Usuario</th>
-                              <th scope="col">Ejemplar</th>
+                              <th scope="col" style=" font-family: 'Lato-Black', sans-serif;">Fecha</th>
+                              <th scope="col" style=" font-family: 'Lato-Black', sans-serif;">Tarea Realizada</th>
+                              <th scope="col" style=" font-family: 'Lato-Black', sans-serif;">Usuario</th>
+                              <th scope="col" style=" font-family: 'Lato-Black', sans-serif;">Ejemplar</th>
                             </tr>
                           </thead>
                           <tbody>
                             {% for action in actions %}
                             {% if action.estado == True%}
                             <tr>
-                              <td style="color: #404827;">{{ action.tiempo }}</td>
-                              <td style="color: #404827;">{{ action.tarea }}</td>
-                              <td style="color: #404827;">{{ action.user }}</td>
-                              <td style="color: #404827;"> {{ action.ejemplar }}</td>
+                              <td style="color: #404827; font-family: 'Lato-Black', sans-serif;">{{ action.tiempo }}</td>
+                              <td style="color: #404827; font-family: 'Lato-Black', sans-serif;">{{ action.tarea }}</td>
+                              <td style="color: #404827; font-family: 'Lato-Black', sans-serif;">{{ action.user }}</td>
+                              <td style="color: #404827; font-family: 'Lato-Black', sans-serif;"> {{ action.ejemplar }}</td>
                               
                           
                             </tr>
@@ -400,7 +400,7 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Fecha</th>
-                        <th>Cientifico</th>
+                        <th>Científico</th>
                         <th>Editar</th><th>Archivar</th>
                       </tr>
                     </thead>

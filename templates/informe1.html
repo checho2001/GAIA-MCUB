@@ -81,8 +81,7 @@ background-size: cover;
 
 .btn-custom:hover {
 transform: scale(1.2);
-color: #008776; 
-border: none;
+color: #404827; border: none;
 }
 .btn-custom {
 color: white;
@@ -106,8 +105,7 @@ color: white;
 }
 .btn-customizedlogin :hover {
 transform: scale(1.2);
-color: #008776; 
-border: none;
+color: #404827; border: none;
 }
 </style>
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
@@ -149,7 +147,7 @@ border: none;
      
     {% endif %}
     <div class="text-end" >
-      <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
+ 
     </div>
     </div>
   </div>
@@ -207,25 +205,21 @@ border: none;
                       <br>
                   </div>
                 
-                    <br>
+                 
                   
                  
             
                     {% if rol.id == 4 %}
                     
-                    <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver </button>
                     <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
                 {% elif rol.id == 1 %}
                    
-                    <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver</button>
                     <button  onclick="location.href = '/dashAux'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
                   {% elif rol.id == 2 %}
                    
-                    <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver </button>
                     <button  onclick="location.href = '/dashPas'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
                   {% elif rol.id == 3 %}
                    
-                    <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver a</button>
                     <button  onclick="location.href = '/dashCur'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
                 {% endif %}
             

@@ -418,8 +418,6 @@ class Update(forms.Form):
         mail = self.cleaned_data['correo']
         if "@unbosque.edu.co" not in mail:   
             raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
-        if User.objects.filter(email=mail).count():
-            raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
         return mail      
     def clean_nombre(self):
             nomb = self.cleaned_data['nombre']

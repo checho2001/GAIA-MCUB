@@ -55,11 +55,7 @@
         transition: transform 0.3s ease;
         font-family:'Lato-Black', sans-serif;
       }
-      .table-responsive {
-        max-height: 500px; 
-        
-        overflow-y: scroll;
-      }
+     
       .btn-customizedlogin {
         color: white;
         background-color: #81bb26; 
@@ -200,16 +196,17 @@
                 <div class="p-5">
                     {% csrf_token %}
                     <div class="table-responsive">
+                      
                         <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
                         <br>
-                        <br>
+                 
                         <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
                               <th>ID</th>
                               <th>Nombre</th>
                               <th>Fecha</th>
-                              <th>Cientifico</th>
+                              <th>Nombre Científico</th>
                               <th>Activar</th>
                             </tr>
                           </thead>

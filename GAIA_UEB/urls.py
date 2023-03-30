@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario, activar_usuario,estado_especimenes,activar_especimen,qr_code,qr_code1
-from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
+from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,update_aux_curatoria,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
 
 from users import views
 from django.conf import settings

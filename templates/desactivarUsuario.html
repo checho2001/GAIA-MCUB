@@ -8,10 +8,192 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
+<style>
+    
+  .h1 {
+    font-family: 'Lato-Black', sans-serif;
+   
+  }
+      .nav-pills .nav-link.active {
+        background-color:#404827;;
+        color: white;
+      }
+      .navbar {
+        background-color: #008776;
+        
+      }
+      .navbar-custom {
+        background-color: #81bb26; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        
+      }
+      
+      .social {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .btn-customizedlogin :hover {
+        transform: scale(1.2);
+        color: #404827; 
+        border: none;
+      }
+      .btn-custom:hover {
+        transform: scale(1.2);
+        color: #404827; 
+        border: none;
+      }
+      .btn-custom {
+        color: white;
+        background-color: #81bb26; 
+        padding: 10px 20px;
+        border: none;
+        transition: transform 0.3s ease;
+        font-family:'Lato-Black', sans-serif;
+      }
+      .btn-customizedlogin {
+        color: white;
+        background-color: #81bb26; 
+      
+        padding: 12px 24px;
+        font-size: 20px;
+        border-radius: 22px;
+        border: 2px solid;
+        transition: transform 0.3s ease;
+        font-family:'Lato-Black', sans-serif;
+      }
+      
+      body {
+        background-image: url('../static/images/fondo.png');
+        background-size: cover;
+      }
 
+
+      footer {
+        background-color: #81bb26;
+        padding: 50px 0;
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        color: #f6f6f6;
+      }
+      .nav-pills .nav-link.active {
+        background-color:#404827;;
+        color: white;
+      }
+      .navbar {
+        background-color: #008776;
+        
+      }
+      .navbar-custom {
+        background-color: #008776; 
+       
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        
+      }
+      .nav-link {
+        color: #404827;
+        font-size: 150%;
+        }
+        .nav-link:hover {
+          color:  #008776;
+          }
+            
+          
+          .btn-custom:hover {
+            transform: scale(1.2);
+            color: #404827; 
+            border: none;
+          }
+          .btn-custom {
+            color: white;
+            background-color: #008776; 
+            padding: 10px 20px;
+            border: none;
+            transition: transform 0.3s ease;
+            font-family:'Lato-Black', sans-serif;
+          }
+          
+          html::-webkit-scrollbar {
+            display: none;
+            height: 0;
+        }
+        html::-webkit-scrollbar {
+          display: none;
+          height: 0;
+      }
+        html::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+          -webkit-appearance: none;
+        }
+        html {
+          overflow-x: hidden;
+        }
+        .btn-customizedlogin {
+          color: white;
+          border:none;
+          transition: transform 0.3s ease;
+          
+        }
+        .btn-customizedlogin :hover {
+          transform: scale(1.2);
+          color: #404827; 
+          border: none;
+        }
+
+</style>
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
 
-  <div class=" container py-5 h-100" style="background-image:url(../static/images/bg-singnin.jpeg);background-repeat: no-repeat;background-size: cover;">
+
+       
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+
+        {% if rol.id == 4 %}
+        
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 1 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 2 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 3 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+    {% endif %}
+
+
+       
+      {% endif %}
+      <div class="text-end" >
+      </div>
+      </div>
+    </div>
+  </nav>
+  <div class=" container py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-5">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
@@ -21,14 +203,24 @@
                   <form action= "{%url 'DesactivarUser' %}" method= POST class=" w-100 m-auto">
                     {% csrf_token %}
                     <nav>
+
+
+
                       <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios Activos</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Usuarios Desactivos</button>
                       </div>
                     </nav>
+
+
+
+
                     <div class="tab-content" id="nav-tabContent">
                       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div class="table-responsive">
+                          <br>
+                          <br>
+
                         <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
                         <br>
                         <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
@@ -56,11 +248,15 @@
                           </tbody>
                         </table>
                         </div>
+                      
                       </div>
-                      </div>
-                    </div>
-                    <div class="tab-content" id="nav-tabContent">
-                      <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-home-tab">
+                    
+
+        
+                      <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <br>
+                        <br>
+
                         <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
@@ -88,7 +284,7 @@
                       </div>
                     </div>
 
-                     
+                  </div>
               
                    
                   </form>

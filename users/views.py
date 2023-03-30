@@ -281,13 +281,14 @@ def register(request):
             clase = form.cleaned_data['area']
             area_clase = Class_User(id_user = User.objects.get(id=user.id), id_clase = Clase.objects.get(id=clase))
             area_clase.save()
-            
+            return redirect('dashboard')
     else:
         form = CustomUser()
     return render(request, 'registerUser.html', {'form':form,'rol': rol })
 
 @login_required(login_url='redirect')
 def registroActividad(request):
+    
     a = request.user.rol
     user1 = request.user 
     if user1.is_authenticated:
@@ -314,6 +315,19 @@ def registroActividad(request):
             a.save()
             userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo))
             userAction.save()
+            
+            rol_id = request.user.rol.id
+
+            if rol_id == 4:
+                return redirect('dashboard')
+            elif rol_id == 1:
+                return redirect('dashboardAux')
+            elif rol_id == 2:
+                return redirect('dashboardPas')
+            elif rol_id == 3:
+                return redirect('dashboardCur')
+       
+
     else:
         form = ActividadesForm()
     return render(request, 'informe1.html', {'form':form, 'especimenes': especimenes,'rol': rol})
@@ -369,6 +383,18 @@ def registerE(request):
             a.save()
             userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= NumeroCatalogo)
             userAction.save()
+            
+            rol_id = request.user.rol.id
+
+            if rol_id == 4:
+                return redirect('dashboard')
+            elif rol_id == 1:
+                return redirect('dashboardAux')
+            elif rol_id == 2:
+                return redirect('dashboardPas')
+            elif rol_id == 3:
+                return redirect('dashboardCur')
+
     else:
         form = EjemplarForm()
     return render(request, 'registerE.html', {'form':form,'rol': rol}) 
@@ -521,7 +547,17 @@ def update_aux_curatoria(request):
             user.email=correo
             user.rol=Rol.objects.get(id=rol)
             user.save()
-            
+             
+            rol_id = request.user.rol.id
+
+            if rol_id == 4:
+                return redirect('dashboard')
+            elif rol_id == 1:
+                return redirect('dashboardAux')
+            elif rol_id == 2:
+                return redirect('dashboardPas')
+            elif rol_id == 3:
+                return redirect('dashboardCur')
     else:
         form = Update()
     return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
@@ -561,7 +597,17 @@ def update_curador(request):
             user.email=correo
             user.rol=Rol.objects.get(id=rol)
             user.save()
-            
+             
+            rol_id = request.user.rol.id
+
+            if rol_id == 4:
+                return redirect('dashboard')
+            elif rol_id == 1:
+                return redirect('dashboardAux')
+            elif rol_id == 2:
+                return redirect('dashboardPas')
+            elif rol_id == 3:
+                return redirect('dashboardCur')
     else:
         form = Update()
     return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
@@ -790,8 +836,11 @@ def AgregarActividad(request):
         form = TipoActividadForm()
     return render(request, 'dashboard.html', {'form': form})
 def estado_usuarios(request):
+    user = request.user 
+    if user.is_authenticated:
+            rol = Rol.objects.get(user=user)
     usuarios = User.objects.all()
-    return render(request, 'desactivarUsuario.html', {'usuarios': usuarios})
+    return render(request, 'desactivarUsuario.html', {'usuarios': usuarios,'rol': rol})
 
 
 def desactivar_usuario(request,id):

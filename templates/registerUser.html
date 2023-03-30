@@ -80,7 +80,7 @@
   
   .btn-custom:hover {
     transform: scale(1.2);
-    color: #008776; 
+    color: #404827; 
     border: none;
   }
   .btn-custom {
@@ -93,14 +93,14 @@
   }
   .btn-customizedlogin {
     color: white;
-            background-color: #008776; 
-          
-            padding: 12px 24px;
-            font-size: 20px;
-            border-radius: 22px;
-            border: 2px solid;
-            transition: transform 0.3s ease;
-            font-family:'Lato-Black', sans-serif;
+    background-color: #008776; 
+
+    padding: 12px 24px;
+    font-size: 20px;
+    border-radius: 22px;
+    border: 2px solid;
+    transition: transform 0.3s ease;
+    font-family:'Lato-Black', sans-serif;
     
   }
   .btn-customizedlogin :hover {
@@ -149,7 +149,6 @@
      
     {% endif %}
     <div class="text-end" >
-      <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
     </div>
     </div>
   </div>
@@ -222,10 +221,7 @@
 
                     <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Ingresar</button>
                     <br>
-                    <button class="btn-customizedlogin "  onclick="location.href = '/dash'"  style="background-color: #008776 ;border-radius: 22px;"   type="button" aria-expanded="false" >Volver</button></div>
-                    <br> 
-
-
+              
                    
                       {% for field in form %}
                       {% if field.errors %}
@@ -233,9 +229,7 @@
                           <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                {{ field.errors }}
 
-                          </div>
-                          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+                       
                       {% endif %}
                     
                   {% endfor %}

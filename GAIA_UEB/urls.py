@@ -2,13 +2,15 @@ from django.contrib import admin
 from django.urls import path, include
 from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario, activar_usuario,estado_especimenes,activar_especimen,qr_code,qr_code1
 from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,update_aux_curatoria,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail
-
+from django.views.defaults import page_not_found
 from users import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static 
+from django.conf.urls import handler404
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -52,8 +54,10 @@ urlpatterns = [
     path('galery/orden/<str:nombre>', views.galery_orden,name="galeryO"),
     path('qr_code/<str:data>/', views.qr_code, name='qr_code'),
     path('paginaejemplar/<int:pk>/qr_code/', views.qr_code1, name="qr_code1"),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+handler404 = 'users.views.error_404'

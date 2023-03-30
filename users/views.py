@@ -33,6 +33,9 @@ from io import BytesIO
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
+
+
+
 class IndexView(View):
         def get(self,request):
             texto ={'text1': Text.objects.get(id=2),
@@ -58,6 +61,7 @@ class Quienessomos(View):
             if user.is_authenticated:
                 rol = Rol.objects.get(user=user)
             return render(request,"quienessomos.html",{'rol': rol })
+
 class Not_Logged(View):
         def get(self,request):
             return render(request,"notloged.html")            
@@ -991,4 +995,5 @@ def qr_code1(request,pk):
     response['Content-Disposition'] = 'attachment; filename="qrcode.png"'
     return response
 
-
+def error_404(request, exception):
+    return render(request, '404.html', {})

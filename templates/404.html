@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="../static/css/style1.css" media="screen">
+    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" media="screen">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+  <style>
+    footer {
+  background-color: #f6f6f6;
+  padding: 50px 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #f6f6f6;
+}
+@font-face {
+  font-family: 'Lato-Black';
+  src: url('fonts/Lato-Black.ttf') format('truetype');
+}
+p {
+  font-family: 'Lato-Black', sans-serif;
+}
+.h1 {
+  font-family: 'Lato-Black', sans-serif;
+  text-decoration-line: underline;
+  text-underline-offset: 12px; 
+  text-decoration-color: #81bb26;
+}
+.h2 {
+  font-family: 'Lato-Black', sans-serif;
+  color: #81bb26;
+}
+.h3 {
+  font-family: 'Acherus Grotesque', sans-serif;
+}
+.h4 {
+  font-family: 'Lato-Black', sans-serif;
+  
+}
+.h5 {
+  font-family: 'Lato-Black', sans-serif;
+ 
+}
+.social {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+footer {
+  background-color: #81bb26;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+ 
+  bottom: 0;
+  width: 100%;
+}
+.nav-pills .nav-link.active {
+  background-color:#404827;;
+  color: white;
+}
+.navbar {
+  background-color: #81bb26;
+  
+}
+.navbar-custom {
+  background-color: #81bb26; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  
+}
+
+
+.btn-custom:hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
+.btn-custom {
+  color: white;
+  background-color: #81bb26; 
+  padding: 10px 20px;
+  border: none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+}
+.btn-customizedlogin {
+  color: white;
+  border:none;
+  transition: transform 0.3s ease;
+  
+}
+.btn-customizedlogin :hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
+  </style>
+</head>
+<body>
+     
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+    </a>
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
+      
+        <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
+
+
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+
+        {% if rol.id == 4 %}
+        
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+    {% elif rol.id == 1 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 2 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+      {% elif rol.id == 3 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+    {% endif %}
+
+
+       
+      {% endif %}
+      <div class="text-end" >
+        <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
+      </div>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+
+  <main>
+    
+  
+    <br>
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+       
+
+      </div>
+ <br>
+ <br>
+ <br>
+ <br>
+ 
+        
+                     
+ <h1 class="h1"> Bienvenido al Museo de Ciencias de la Universidad El Bosque</h1>
+ <br>
+ <br>
+ <br>
+ 
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../static/images/ladybugs-1593406_1280.jpg"   class="d-block w-100" alt="car1" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="h5" style="color:white">Las actividades de responsabilidad social del museo</h5>
+                <p>han llegado a mas de 25 instituciones de 15 municipios en 6 departamentos</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="../static/images/parrots-3427188_1280.jpg" class="d-block w-100" alt="car2" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="h5" style="color:white">...</h5>
+                <p>...</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="../static/images/chameleon-540655_1280.jpg" class="d-block w-100" alt="car3" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="h5" style="color:white">...</h5>
+                <p>...</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="../static/images/frog-2525994_1280.jpg" class="d-block w-100" alt="car4" width="900" height="700">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>...</h5>
+                <p>...</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <br>
+        <br><br>
+        
+        <div class="col">
+
+          
+          <h2 class="h2" style=" color: #f08013;"> Noticias Sobre El Museo</h2>
+          <br>
+          <p style=" font-family: 'Lato-Black', sans-serif;">{{ text.text1.content }}</p>
+
+        </div>
+
+</div>
+
+<br>
+                     <br>
+              
+                  
+                    
+
+<div class="container">
+  <h2 class="h2"> Algunas Colecciones</h2>
+  <br><br>
+  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+
+   
+    <div class="container">
+      
+      <div class="row">
+        <div class="col">
+          <img   src="../static/images/frog.png" alt="..." class="image">
+        </div>
+        <div class="col">
+          <h3 class="h3"  style=" font-family: 'Lato-Black', sans-serif;">{{ text.text2.content }}</h3>
+          <h5 class="h5"  style=" font-family: 'Lato-Black', sans-serif;">{{ text.text3.content }}</h5>
+
+        </div>
+        <br><br>
+
+
+        <div class="w-100"></div>
+        <br><br>
+        <div class="col">  <h3 class="h3">{{ text.text4.content }}</h3>
+          <h5 class="h5"  style=" font-family: 'Lato-Black', sans-serif;">{{ text.text5.content }}</h5></div>
+        <div class="col">  <img   src="../static/images/347401.png" alt="..." class="image"></div>
+
+
+
+        <div class="w-100"></div>
+        <br><br>
+        <div class="col">  <img   src="../static/images/3196018.png" alt="..." class="image"></div>
+        <div class="col">   <h3 class="h3">{{ text.text6.content }}</h3>
+          <h5 class="h5"  style=" font-family: 'Lato-Black', sans-serif;">{{ text.text7.content }}</h5></div>
+
+
+
+        <div class="w-100"></div>
+        <br><br>
+        <div class="col">   <h3 class="h3">{{ text.text8.content }}</h3>
+          <h5 class="h5"  style=" font-family: 'Lato-Black', sans-serif;">{{ text.text9.content }}</h5></div>
+        <div class="col">  <img   src="../static/images/3069114.png" alt="..." class="image"></div>
+      </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+        
+                     
+ 
+</main>
+</body>
+<br><br>
+<footer>
+  <div class="row">
+    <div class="col">
+      
+      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+        Línea gratuita:
+        018000 113033
+        
+        PBX:
+        (601) 648 9000</h6>
+ 
+    </div>
+    <div class="col">
+      <ul class="social">
+     
+      <a class="btn-customizedlogin"onClick="
+      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+
+      </a>
+    
+    </ul>
+    </div>
+    <div class="col">
+      <ul class="social">
+        <a class="btn-customizedlogin"  onClick="
+      parent.location='https://www.unbosque.edu.co'">
+          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+     
+
+    </ul>
+    </div>
+    <div class="col">
+      <ul class="social">
+        <a class="btn-customizedlogin" onClick="
+        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+      
+    </ul>
+    </div>
+    <br><br>
+
+</footer>
+
+
+
+</html>

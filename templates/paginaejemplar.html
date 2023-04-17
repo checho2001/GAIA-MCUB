@@ -170,7 +170,22 @@
         <div class="col-sm-3">
           <div class="text-center">
              <img src="/media/{{element.Image}}"  class="img-fluid img-thumbnail"  alt="Responsive image">
-             <button class="btn btn-custom btn-fade btn-lg "  onclick="location.href = 'qr_code/'"  type="button">Generar codigo QR </button>
+             <button class="btn btn-custom btn-fade btn-lg "  onclick="location.href = 'qr_code/'"  type="button" style=" 
+             font-family: 'Latoblack', sans-serif;
+             background: #404827;
+             color: #fff;
+             border: none;
+             padding: 10px 20px;
+             border-radius: 50px;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 16px;
+             margin: 5px;
+             cursor: pointer;
+             -webkit-transition-duration: 0.4s;
+             transition-duration: 0.4s;
+             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Generar código QR </button>
              
             </div>
             <div class="text-center">
@@ -197,7 +212,7 @@
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                                <label for="nombre"><h4 style="color: #777">Nombre Comun</h4></label>
+                                <label for="nombre"><h4 style="color: #777">Nombre Común</h4></label>
                                 <ul  class="list-group list-group-mine" >
                                     <li class="list-group-item">{{ element.NombreComun }}</li>
                                   </ul>

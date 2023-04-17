@@ -210,12 +210,18 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    NombreDelConjuntoDatos = forms.CharField(max_length=500,  widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
+    CONJUNTODEDATOS = [    "Colección de Exhibición de Anfibios",    "Colección de Exhibición de Aves",    "Colección de exhibición de Reptiles",    "Colección de exhibición de Mammalia",    "Colección de exhibición de Myriapoda",    "Colección de referencia de Arachnida"]
+
+    NombreDelConjuntoDatos = forms.ChoiceField(
+        choices=[(i, i) for i in CONJUNTODEDATOS],
+        widget=forms.Select(
+            attrs={
+                'class': 'form-control',
+            }
+        )
+    )
+
+
     ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 'required' : True,

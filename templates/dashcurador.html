@@ -299,13 +299,13 @@
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <br>
                 <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
-                <br>  <br>
+                <br> 
                 <a class="btn-customizedlogin"  onclick="location.href = '/informe'">
-                  <img class="img" src="/static/images/1001371.png"  style="height:130px; width:120px;">
+                  <img class="img" src="/static/images/a.png"  style="height:130px; width:120px;">
                 
                 </a>
                 <br>
-                <br>  <br>
+            
               
             <div class="text-center" ><h2  class="h2" style="color: #008776; text-align: center;">Actividades por Aprobar</h2></div> 
             <div class="list-group">
@@ -354,12 +354,13 @@
           
             <br>
 
-            <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Actividades realizadas</h2></div>
+            <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Actividades Realizadas</h2></div>
           <div class="list-group">
           <div   class="table-responsive">
             <br>
-                  
+            <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
             <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+              
               <thead>
                 <tr style="background-color: #404827;color:white;">
                   <th scope="col">Fecha</th>
@@ -395,11 +396,17 @@
    
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <br>
-      <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
-        
-      <button class="btn-customizedlogin "   onclick="location.href = '/registerE'" type="button"><img class="image_header-museo" src="/static/images/3729028.png" style="height:150px; width:150px;" ></button>
-    
+      <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Ejemplares</h2></div>
+      <br>
+
+      <a class="btn-customizedlogin"  onclick="location.href = '/registerE'">
+        <img class="img" src="/static/images/3729028.png"  style="height:130px; width:120px;">
       
+      </a>
+    
+    
+      <br>
+
     
 
         
@@ -409,7 +416,7 @@
 
        
           
-        <div   class="text-center" ><h2 class ="h2" style="color: #008776; text-align: center;">Ejemplares en Exhibicion</h2></div>
+        <div   class="text-center" ><h2 class ="h2" style="color: #008776; text-align: center;">Ejemplares en Exhibición</h2></div>
         <br> 
         <div   class="table-responsive">
         
@@ -492,54 +499,10 @@
   
   </div>
 </div>
-  
-
-  
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-
-            
-            
+</div>   
               <div class="col-sm-6 mw-100 ">
-              
-             
+    
               <script>
                 function updateTime() {
                     var now = new Date();
@@ -549,14 +512,32 @@
                 setInterval(updateTime, 1000);
             </script>
                
-                  
+            <script>
+              $(document).ready(function(){
+                $("#filtro").on("keyup", function() {
+                  var value = $(this).val().toLowerCase();
+                  $("#tabla tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                  });
+                });
+              });
+            
+              $(document).ready(function(){
+                $("#filtro1").on("keyup", function() {
+                  var value = $(this).val().toLowerCase();
+                  $("#tabla1 tbody tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                  });
+                });
+              });
+              </script>
 
         
         </div>
       </div>
     </ul>
     
-  </body>
-
+ 
+  
 </body>
 </html>

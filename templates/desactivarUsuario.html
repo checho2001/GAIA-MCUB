@@ -9,7 +9,10 @@
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
 <style>
-    
+#vertical-line {
+  border-left: 1px solid white;
+  height: 50px;
+}
   .h1 {
     font-family: 'Lato-Black', sans-serif;
    
@@ -154,6 +157,7 @@
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
     </a>
+    <div id="vertical-line"></div>
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
     </a>
@@ -161,16 +165,18 @@
     <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <div id="vertical-line"></div>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <div id="vertical-line"></div>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
-      
+        <div id="vertical-line"></div>
         <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
-
+        <div id="vertical-line"></div>
 
        
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-
+        <div id="vertical-line"></div>
         {% if rol.id == 4 %}
         
         <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
@@ -184,7 +190,7 @@
        
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
     {% endif %}
-
+        
 
        
       {% endif %}

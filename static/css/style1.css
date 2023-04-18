@@ -1,6 +1,10 @@
 *{
   zoom: 0.96;
 }
+#vertical-line {
+  border-left: 1px solid white;
+  height: 50px;
+}
 .h1,.h2,.h3,.h4,.h5,.h6,.a,.span,.p{
     font-family: 'lato-Black', sans-serif;
     font-size: 20;
@@ -235,6 +239,7 @@ nav-link{
 .btn.btn-verde-claro.rounded:hover {
   background-color: #7dcf5a;
 }
+
 #btnGalery.btn-verde-oscuro.rounded {
   background: #404827;
   color: #fff;

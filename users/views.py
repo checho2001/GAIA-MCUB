@@ -298,7 +298,7 @@ def registroActividad(request):
     if user1.is_authenticated:
             rol = Rol.objects.get(user=user1)    
     if a.id == 4:
-        print('entre')
+       
         especimenes = especimen.objects.all()
     else:
         clase = Class_User.objects.get(id_user_id= request.user.id)
@@ -317,7 +317,13 @@ def registroActividad(request):
             Descripcion = form.cleaned_data['Descripcion']
             a = Actividades(NumeroCatalogo=especimen.objects.get(id=NumeroCatalogo),TareaRealizada= TipoActividad.objects.get(id=TareaRealizada), Hora = Hora , Fecha = Fecha,Descripcion=Descripcion)   
             a.save()
-            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo))
+            rol_id = request.user.rol.id
+            if  rol_id  == 4 or rol_id == 3:
+                estado = True
+            else:
+                estado = False
+
+            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo), estado = estado)
             userAction.save()
             
             rol_id = request.user.rol.id
@@ -363,21 +369,25 @@ def registerE(request):
             ComentarioIdentificacion = form.cleaned_data['ComentarioIdentificacion']
             NombreCientificoComentarioRegistroBiologico = form.cleaned_data['NombreCientificoComentarioRegistroBiologico']
             ClaseE = form.cleaned_data['ClaseE']
-            Orden = form.cleaned_data['Orden']
-            Genero = form.cleaned_data['Genero']
-            Familia = form.cleaned_data['Familia']
+            orden = form.cleaned_data['Orden']
+            genero = form.cleaned_data['Genero']
+            ffamilia = form.cleaned_data['Familia']
             NombreComun = form.cleaned_data['NombreComun']
             #Imagen = form.changed_data['Image']
-
+            nombreclase= Clase.objects.get(id=ClaseE)
+            nombreorder= Orden.objects.get(id=orden)
+            nombregenero= Genero.objects.get(id=genero)
+            nombrefamilia= familia.objects.get(id=ffamilia)
             e = especimen(NumeroCatalogo=NumeroCatalogo,NombreDelConjuntoDatos= NombreDelConjuntoDatos, ComentarioRegistroBiologico = ComentarioRegistroBiologico 
             , RegistradoPor = RegistradoPor,NumeroIndividuo=NumeroIndividuo,FechaEvento=FechaEvento,Habitad=Habitad,Departamento=departamento.objects.get(id=Departamento),Municipio=municipio.objects.get(id=Municipio)
             ,IdentificadoPor=IdentificadoPor,FechaIdentificacion=FechaIdentificacion,IdentificacionReferencias=IdentificacionReferencias,ComentarioIdentificacion=ComentarioIdentificacion,
-            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=ClaseE,Orden = Orden, Genero = Genero
-            ,Familia = Familia, NombreComun=NombreComun)
+            NombreCientificoComentarioRegistroBiologico=NombreCientificoComentarioRegistroBiologico,ClaseE=nombreclase.nombreClase,Orden = nombreorder.nombreOrden, Genero = nombregenero.nombreGenero
+            ,Familia = nombrefamilia.nombreFamilia, NombreComun=NombreComun)
             e.Image = request.FILES.get('imagen')
             print(e.Image)
+            
             e.save()
-
+            print(nombreclase.nombreClase)
             NumeroCatalogo = e.NumeroCatalogo
             TareaRealizada = 4
             Hora = datetime.now().time()

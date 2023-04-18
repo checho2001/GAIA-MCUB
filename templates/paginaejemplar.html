@@ -18,7 +18,14 @@
         border-left: 1px solid white;
         height: 50px;
       }
-    
+      #global {
+       
+        border: 2px solid #ddd;
+        height: 1000px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+      
     .list-group-mine .list-group-item {
     background-color: #f2f1f1;
     font-size: 18px;
@@ -106,11 +113,26 @@
     
     transition: transform 0.3s ease;
    
-  }
+  } html::-webkit-scrollbar {
+    display: none;
+    height: 0;
+}
+html::-webkit-scrollbar {
+  display: none;
+  height: 0;
+}
+html::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  -webkit-appearance: none;
+}
+html {
+  overflow-x: hidden;
+}
 </style>
 
 </head>
-    <body>
+    <body  id="global">
         
           
   <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">

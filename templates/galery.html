@@ -19,13 +19,38 @@
       #global {
        
         border: 2px solid #ddd;
-        
+        overflow-x: hidden;
         overflow-y: scroll;
       }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
         
        
+      }
+      html::-webkit-scrollbar {
+        display: none;
+        height: 0;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+      height: 0;
+  }
+    html::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+      -webkit-appearance: none;
+    }
+    html {
+      overflow-x: hidden;
+    }
+      .container {
+        max-width: 2000px;
+      }
+      .card {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      
+        object-fit: cover; 
       }
       .h2 {
         font-family: 'Lato-Black', sans-serif;
@@ -359,7 +384,7 @@
                             <a href="{% url 'element_detail' element.pk %}">
                             <img  
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                            class="img-fluid"
+                             class="card-img-top"
                               alt="Waterfall" height="600px" width="500px"
                             />
                             </a>
@@ -421,7 +446,7 @@
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                            class="img-fluid"
+                            class="card-img-top"
                               alt="Waterfall" height="600px" width="500px"
                             />
                             </a>
@@ -487,7 +512,7 @@
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                            class="img-fluid"
+                            class="card-img-top"
                               alt="Waterfall" height="600px" width="500px"
                             />
                             </a>
@@ -553,7 +578,7 @@
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                            class="img-fluid"
+                            class="card-img-top"
                               alt="Waterfall" height="600px" width="500px"
                             />
                             </a>
@@ -601,7 +626,7 @@
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                              class="img-fluid"
+                            class="card-img-top"
                               alt="Waterfall" height="600px" width="500px"
                             />
                             </a>

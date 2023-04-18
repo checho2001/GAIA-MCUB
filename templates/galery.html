@@ -202,7 +202,7 @@
         <div id="vertical-line"></div>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
         <div id="vertical-line"></div>
-        <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
+        <button class="btn btn-custom btn-fade btn-lg navbar-spa" type="button">Contáctenos </button>
         <div id="vertical-line"></div>
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
@@ -225,7 +225,7 @@
        
       {% endif %}
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 10px; margin-left: 20px;" >
           <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 

@@ -12,6 +12,10 @@
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
+      #vertical-line {
+        border-left: 1px solid white;
+        height: 50px;
+      }
       #global {
        
         border: 2px solid #ddd;
@@ -185,6 +189,7 @@
     <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
     </a>
+    <div id="vertical-line"></div>
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
     </a>
@@ -192,15 +197,16 @@
     <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
+        <div id="vertical-line"></div>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
+        <div id="vertical-line"></div>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
-      
-        <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
-
-
+        <div id="vertical-line"></div>
+        <button class="btn btn-custom btn-fade btn-lg navbar-spa" type="button">Contáctenos </button>
+        <div id="vertical-line"></div>
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-
+        <div id="vertical-line"></div>
         {% if rol.id == 4 %}
         
         <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
@@ -219,7 +225,7 @@
        
       {% endif %}
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 10px; margin-left: 20px;" >
           <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
         </form>
 

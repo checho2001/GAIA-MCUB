@@ -27,12 +27,17 @@
       }
       #global {
        
-        border: 2px solid #ddd;
         height: 1000px;
         overflow-y: scroll;
         overflow-x: hidden;
       }
-      
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh; /* adjust the height as needed */
+      }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
        
@@ -168,20 +173,17 @@
         <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
           <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
         </a>
-        <div id="vertical-line"></div>
-        <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      
+        <a class="navbar-nav " href="#" onclick="location.href = '/index'"  >
           <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
         </a>
         
         <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
-            <div id="vertical-line"></div>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
-            <div id="vertical-line"></div>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
-            <div id="vertical-line"></div>
-            <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button" style="border-right: 1px solid white;">Colecciones</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"  style="border-right: 1px solid white;" >Quiénes Somos</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  type="button">Contáctenos</button>
     
     
           </div>
@@ -231,7 +233,7 @@
          
           <div   class="text-center" ><h1  class="h1" style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           
-          <div class="row">
+          <div  class="row justify-content-center">
             <div class="col ">
 
 
@@ -264,11 +266,11 @@
                   <div class="text-center" ><h2  class="h2" style="color: #008776; text-align: center;">Gestión Usuarios</h2></div>
                   <br>
                   
-                  <div class="row">
+                  <div class="row" class="center">
                     <br>
                      <br>
                      
-                    <div class="col">
+                    <div class="col" >
                       <button class="btn-customizedlogin "  onclick="location.href = '/register'" type="button"><img class="image_header-museo" src="/static/images/4175032.png"  style="height:150px; width:150px;" ></button>
                    
                     

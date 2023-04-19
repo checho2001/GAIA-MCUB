@@ -16,7 +16,8 @@
   <style>
     #vertical-line {
   border-left: 1px solid white;
-  height: 50px;
+  height: 60px;
+  margin-left: -90px
 }
     footer {
   background-color: #f6f6f6;
@@ -122,35 +123,35 @@ footer {
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
     </a>
     
-    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px solid white;" >
       <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
     </a>
-    
+   
     <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
-        <div id="vertical-line"></div>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
-        <div id="vertical-line"></div>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
-        <div id="vertical-line"></div>
-        <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
-        <div id="vertical-line"></div>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
+        
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button" style="border-right: 1px solid white;">Colecciones</button>
+     
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button" style="border-right: 1px solid white;">Quiénes Somos</button>
+       
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'" type="button" style="border-right: 1px solid white;">Contáctenos</button>
+       
         {% if  user.is_authenticated  %}
-        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;"> Hola {{ user.nombre }}</button>
 
         {% if rol.id == 4 %}
         
-        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
     {% elif rol.id == 1 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
       {% elif rol.id == 2 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
       {% elif rol.id == 3 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
     {% endif %}
 
 
@@ -305,7 +306,7 @@ footer {
 <br><br>
 <footer>
   <div class="row">
-    <div class="col">
+    <div class="col" style="border-right: 1px solid white;">
       
       <h5 class="h5" style="color: white">Universidad El Bosque</h5>
       <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
@@ -317,7 +318,7 @@ footer {
         (601) 648 9000</h6>
  
     </div>
-    <div class="col">
+    <div class="col" style="border-right: 1px solid white;">
       <ul class="social">
      
       <a class="btn-customizedlogin"onClick="
@@ -328,7 +329,7 @@ footer {
     
     </ul>
     </div>
-    <div class="col">
+    <div class="col" style="border-right: 1px solid white;">
       <ul class="social">
         <a class="btn-customizedlogin"  onClick="
       parent.location='https://www.unbosque.edu.co'">
@@ -340,7 +341,7 @@ footer {
 
     </ul>
     </div>
-    <div class="col">
+    <div class="col" >
       <ul class="social">
         <a class="btn-customizedlogin" onClick="
         parent.location='https://www.instagram.com/museocienciasub/?hl=es'">

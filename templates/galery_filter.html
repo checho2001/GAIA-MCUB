@@ -11,12 +11,40 @@
         <script type="text/javascript" src="../../../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../../../static/js/sidebars.js"> </script>
     <style>
-      #global {
-       
-        border: 2px solid #ddd;
-        overflow-x: hidden;
-        overflow-y: scroll;
+      #vertical-line {
+        border-left: 1px solid white;
+        height: 50px;
       }
+      main {
+        overflow-x: hidden;
+
+        overflow-y: auto;
+      }
+      #global {
+        overflow-x: auto;
+        overflow-y: auto;
+        height: 1000px;
+      }
+      .h1 {
+        font-family: 'Lato-Black', sans-serif;
+      }
+      html::-webkit-scrollbar {
+        display: none;
+        height: 0;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+      height: 0;
+  }
+    html::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+      -webkit-appearance: none;
+    }
+    html {
+      overflow-x: auto;
+      overflow-y: auto;
+    }
       .container {
         max-width: 2000px;
       }
@@ -26,37 +54,34 @@
       
         object-fit: cover; 
       }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+      }
+      .h4 {
+        font-family: 'Lato-Black', sans-serif;
+        
+      }
+      .h5 {
+        font-family: 'Lato-Black', sans-serif;
+       
+      }
       #galeria {
         width: 80%;
         margin: 0 auto;
         text-align: center;
     }
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden;
-  }
+    
     .imagen {
         float: left;
         width: 100%;
         margin-right: 2%;
         margin-bottom: 20px;
     }
-    html::-webkit-scrollbar {
-      display: none;
-      height: 0;
-  }
-  html::-webkit-scrollbar {
-    display: none;
-    height: 0;
-}
-  html::-webkit-scrollbar {
-    height: 0;
-    width: 0;
-    -webkit-appearance: none;
-  }
-  html {
-    overflow-x: hidden;
-  }
+    
     .imagen img {
         width: 100%;
     }
@@ -159,49 +184,44 @@
 }
     </style>
   </head>
-<body id="global">
-  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+  <body  id="global">
+      
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0 ">
     <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
     </a>
+    
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
     </a>
     
     <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button">Quienes Somos</button>
-      
-        <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
-
-
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button" style="border-right: 1px solid white;">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button" style="border-right: 1px solid white;">Quiénes Somos</button>
+        <button class="btn btn-custom btn-fade btn-lg navbar-spa" href="#" onclick="location.href = '/enviarcorreo'"  type="button" style="border-right: 1px solid white;" >Contáctenos </button>
         {% if  user.is_authenticated  %}
-        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled style="border-right: 1px solid white;"> Hola {{ user.nombre }}</button>
         {% if rol.id == 4 %}
         
-        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
     {% elif rol.id == 1 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
       {% elif rol.id == 2 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
       {% elif rol.id == 3 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button style="border-right: 1px solid white;"">Volver al DashBoard</button>
     {% endif %}
 
 
        
       {% endif %}
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 15px;">
-          <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search">
-        </form>
-
+       
         <div class="text-end" >
           <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
         </div>
@@ -211,99 +231,101 @@
   </nav>
 
 
-    <main>
-    <div  class="row flex " >
+    <main style=" height: 1000px; ">
+    <div  class="row flex " style=" height: 1000px; "  >
         <div class="col-sm-2" style="background-color: #404827; height: 100vh;">
           
-            <div class="flex-shrink-0 p-3 " style="width: 100%; height:100vh">
+          <div class="flex-shrink-0 p-3 " style="width: 80%; height:200%">
 
              
                 
           
               
-                <span class="fs-5 fw-semibold text-light">Categorías</span>
-                
-                <ul class="list-unstyled ps-0">
-                  <br>
-                  <li><a href="../" class="link-dark d-inline-flex text-decoration-none rounded text-light">Colecciones</a></li>
-                  <br>
-                <li class="mb-1">
+            <span class="fs-5 fw-semibold text-light">Categorías </span>
+            
+            <ul class="list-unstyled ps-0">
+              <br>
+            <li class="mb-1" style="border-bottom: 1px solid white;">
 
-                  
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true">
-                    Familia
-                    </button>
-                    <div class="collapse show" id="reino-collapse">
-                      {% for i in familias %}
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                     
               
-                    <li><a href="../familia/{{i.nombreFamilia}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
-                   
-                     
-                    </ul>
-                    {% endfor %}
-                       
-                    </div>
-                </li>
-                <br>
-                <li class="mb-1">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
-                    Genero
-                    </button>
-                    <div class="collapse" id="subgrupo-collapse">
-                      {% for i in generos %}
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="../genero/{{i.nombreGenero}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true"  >
+                Familia
+                </button>
+                <div class="collapse " id="reino-collapse">
+                  {% for i in familias %}
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                 
           
-                    </ul>
-                    {% endfor %}
-
-                    </div>
-                </li>
-                <br>
-                <li class="mb-1">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
-                    Clase
-                    </button>
-                    <div class="collapse" id="filo-collapse">
-                      {% for i in clases %}
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="../clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
-             
-                    </ul>
-                    {% endfor %}
-                    </div>
-                </li>
-                <br>
-                <li class="mb-1">
-                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
-                  Orden
-                  </button>
-                  <div class="collapse" id="orden-collapse">
-                    {% for i in ordenes %}
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="../orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
-                    </ul>
-                    {% endfor %}
-
-
-                  </div>
-              </li>
-
-                <li class="border-top my-3"></li>
-                
+                <li><a href="familia/{{i.nombreFamilia}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
+               
+                 
                 </ul>
+                {% endfor %}
+                   
+                </div>
+            </li>
+            <br>
+            <li class="mb-1" style="border-bottom: 1px solid white;">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
+                Genero
+                </button>
+                <div class="collapse" id="subgrupo-collapse">
+                  {% for i in generos %}
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="genero/{{i.nombreGenero}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
+      
+                </ul>
+                {% endfor %}
+
+                </div>
+            </li>
+            <br>
+            <li class="mb-1" style="border-bottom: 1px solid white;">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
+                Clase
+                </button>
+                <div class="collapse" id="filo-collapse">
+                  {% for i in clases %}
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
+         
+                </ul>
+                {% endfor %}
+                </div>
+            </li>
+            <br>
+            <li class="mb-1">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
+              Orden
+              </button>
+              <div class="collapse" id="orden-collapse">
+                {% for i in ordenes %}
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a href="orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
+                </ul>
+                {% endfor %}
 
 
-                <br>
+              </div>
+          </li>
+
+            <li class="border-top my-3"></li>
+            
+            </ul>
+
+
+            <br>
+           
 
 
 
-                <br>
-            </div>
-        </div> 
-        <div  id="global" class="col-10" style="height: 100vh; ">
+            <br>
+        </div>
+
+    </div> 
+
+
+        <div   class="col-10" style="height: 100vh; ">
           
           <div id="radio-cards">
             <br>
@@ -408,6 +430,16 @@
       });
     });
 </script>
+<script>
+  $(document).ready(function(){
+    $("#search").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $(".card").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
     </main> 
 </body>
 </html>

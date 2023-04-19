@@ -91,36 +91,11 @@
             font-size: 16px;
             color: #f6f6f6;
           }
-          .btn-custom:hover {
-            transform: scale(1.2);
-            color: #404827; 
-            border: none;
-          }
-          .btn-custom {
-            color: white;
-            background-color: #81bb26; 
-            padding: 10px 20px;
-            border: none;
-            transition: transform 0.3s ease;
-            font-family:'Lato-Black', sans-serif;
-          }
-          .btn-customizedlogin {
-            color: white;
-            border:none;
-            transition: transform 0.3s ease;
-            
-          }
-          .btn-customizedlogin :hover {
-            transform: scale(1.2);
-            color: #404827; 
-            border: none;
-          }
     </style>
   </head>
 
 
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center"  >
-     
   <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
@@ -159,37 +134,32 @@
             <div class="row g-0">
                 <div class="p-5">
                   
-                  <form  action="{% url 'login' %}" method= POST class=" w-100 m-auto">
+                  <form action="{% url 'enviar_correo' %}" method="post">
                     {% csrf_token %}
                     
-                    <h1 class="h1"style="color: #81bb26" style="  font-family:'Lato-Black', sans-serif;">Inicio de Sesión</h1>
-                    <br>
-                    <br>
                     <div class="form-floating">
-                      {{ form.username }}
-                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Usuario<span class="text-danger"> *</span></label>
+                      {{ form.nombre }}
+                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Nombre<span class="text-danger"> *</span></label>
                       
                       <br>
                     </div>
-                    <br>
-                
-                    <div class="form-floating">
-                      {{ form.password }}
-                      <label   class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;"  name="password" for="floatingPassword">Contraseña <span class="text-danger"> *</span></label>
-                      <br>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="form-floating">
-                      {{ form.captcha }}
-                      <br>
-                    </div>
-                    <br>
-                    <br>
                     
-                    <button class="btn-customizedlogin  " style=" border-radius: 50px;"  value="Login" type="submit">Ingresar</button>
-
-                  </form>
+                    <div class="form-floating">
+                      {{ form.nombre }}
+                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Correo<span class="text-danger"> *</span></label>
+                      
+                      <br>
+                    </div>
+                    
+                    <div class="form-floating">
+                      {{ form.nombre }}
+                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Mensaje<span class="text-danger"> *</span></label>
+                      
+                      <br>
+                    </div>
+                    
+                    <button class="btn-customizedlogin  " style=" border-radius: 50px;"  value="Login" type="submit">Enviar</button>
+                </form>
                 </div>
               </div>
             </div>
@@ -201,6 +171,7 @@
   </div>
 </main>
 </body>
+
 
 <footer>
   <div class="row">
@@ -253,6 +224,7 @@
     <br><br>
 
 </footer>
+
 
 
 </html>

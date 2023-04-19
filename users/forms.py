@@ -459,7 +459,7 @@ class TipoActividadForm(forms.Form):
 
        
         nombreactividad = forms.CharField(
-        error_messages={'required':'Por favor ingresa un apellido valido'},
+        error_messages={'required':'Por favor ingresa una actividad valida'},
         widget=forms.TextInput(
             attrs= {
                 
@@ -475,4 +475,29 @@ class TextForm(forms.Form):
        
        content = forms.CharField(label='New Text', max_length=255)
         
-    
+class ContactForm(forms.Form):
+    nombre = forms.CharField(error_messages={'required':'Por favor ingresa un nombre valido'},
+        widget=forms.TextInput(
+            attrs= {
+                'placeholder':'Digite su Nombre',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            ))
+    correo = forms.EmailField(widget=forms.EmailInput( 
+        attrs= {
+                'placeholder':'Digite su correo',
+                'required' : True,
+                'class' : 'form-control',
+                }
+            
+            ))
+    mensaje = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Digite su Mensaje',
+            'class': 'form-control',
+            'rows': 5,
+            'required': True,
+        }),
+        error_messages={'required': 'Por favor ingresa un mensaje válido'}
+    )

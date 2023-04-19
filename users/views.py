@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from users.forms import *
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from  users.forms import loginForm
+from  users.forms import loginForm, ContactForm
 from django.urls import reverse
 from .models import User, Actividades, TipoActividad,Clase,especimen,UserAction, departamento, municipio,familia,Genero,Orden, Area_User, Class_User , Text
 from .forms import loginForm
@@ -32,6 +32,9 @@ import io
 from io import BytesIO
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+
+
+from django.core.mail import send_mail
 
 
 
@@ -1007,3 +1010,26 @@ def qr_code1(request,pk):
 
 def error_404(request, exception):
     return render(request, '404.html', {})
+
+
+def enviar_correo(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            correo = form.cleaned_data['correo']
+            mensaje = form.cleaned_data['mensaje']
+            
+            send_mail(
+                'Asunto del correo',  
+                f'{nombre} ({correo}) dice: {mensaje}',  
+                correo,  # Correo electrónico del remitente
+                ['mvlopezl@unbosque.edu.co'], 
+                fail_silently=False,  
+            )
+            
+            return render(request, 'contactenos.html')
+    else:
+        form = ContactForm()
+    
+    return render(request, 'contactenos.html',  {'form':form})

@@ -220,7 +220,7 @@ class EjemplarForm(forms.Form):
             }
         )
     )
-
+    
 
     ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {

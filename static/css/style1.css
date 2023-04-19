@@ -38,6 +38,7 @@ nav-link{
     background-image: url(../static/images/bg-singnin.jpeg);
     height: fit-content;
     width: fit-content;
+    
   }
   .forms-login {
     max-width: 500px;

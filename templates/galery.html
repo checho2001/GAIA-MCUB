@@ -16,16 +16,16 @@
         border-left: 1px solid white;
         height: 50px;
       }
-      #global {
-       
-        border: 2px solid #ddd;
+      main {
         overflow-x: hidden;
-        overflow-y: scroll;
+        
+      }
+      #global {
+        overflow-x: auto;
+        overflow-y: auto;
       }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
-        
-       
       }
       html::-webkit-scrollbar {
         display: none;
@@ -41,7 +41,8 @@
       -webkit-appearance: none;
     }
     html {
-      overflow-x: hidden;
+      overflow-x: auto;
+      overflow-y: auto;
     }
       .container {
         max-width: 2000px;

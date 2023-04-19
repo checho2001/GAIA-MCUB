@@ -11,26 +11,52 @@
         <script type="text/javascript" src="../../../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../../../static/js/sidebars.js"> </script>
     <style>
-     #global {
+      #global {
        
         border: 2px solid #ddd;
-        
+        overflow-x: hidden;
         overflow-y: scroll;
       }
-
+      .container {
+        max-width: 2000px;
+      }
+      .card {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      
+        object-fit: cover; 
+      }
       #galeria {
         width: 80%;
         margin: 0 auto;
         text-align: center;
     }
-    
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+  }
     .imagen {
         float: left;
         width: 100%;
         margin-right: 2%;
         margin-bottom: 20px;
     }
-    
+    html::-webkit-scrollbar {
+      display: none;
+      height: 0;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+    height: 0;
+}
+  html::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    -webkit-appearance: none;
+  }
+  html {
+    overflow-x: hidden;
+  }
     .imagen img {
         width: 100%;
     }
@@ -133,7 +159,7 @@
 }
     </style>
   </head>
-<body>
+<body id="global">
   <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
     <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
@@ -300,7 +326,7 @@
                                   <a href="{% url 'element_detail' element.pk %}">
                                   <img 
                                   src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                                  class="img-fluid"
+                                  class="card-img-top"
                                     alt="Waterfall" width="300" height="700"
                                   />
                                   </a>

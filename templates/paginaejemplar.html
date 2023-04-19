@@ -25,7 +25,10 @@
         overflow-y: scroll;
         overflow-x: hidden;
       }
-      
+      main {
+        overflow-x: hidden;
+        height: 100vh;
+      }
     .list-group-mine .list-group-item {
     background-color: #f2f1f1;
     font-size: 18px;
@@ -128,6 +131,9 @@ html::-webkit-scrollbar {
 }
 html {
   overflow-x: hidden;
+}
+.row.flex {
+  height: 100vh;
 }
 </style>
 
@@ -242,7 +248,7 @@ html {
                         <div class="form-group">
                             
                             <div class="col-xs-6">
-                            <label for="apellido"><h4 style="color: #777">NombreDelConjuntoDatos</h4></label>
+                            <label for="apellido"><h4 style="color: #777">Nombre Del Conjunto De Datos</h4></label>
                             <ul  class="list-group list-group-mine" >
                                 <li class="list-group-item">{{ element.NombreDelConjuntoDatos }}</li>
                               </ul>
@@ -252,7 +258,7 @@ html {
                         <div class="form-group">
                             
                             <div class="col-lg-12">
-                                <label for="rolMuseo"><h4 style="color: #777"> ComentarioRegistroBiologico</h4></label>
+                                <label for="rolMuseo"><h4 style="color: #777"> Comentario Registro Biologico</h4></label>
                                 <ul  class="list-group list-group-mine" >
                                     <li class="list-group-item">{{ element.ComentarioRegistroBiologico }}</li>
                                   </ul>
@@ -270,7 +276,7 @@ html {
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                                <label for="correo"><h4 style="color: #777">NumeroIndividuo</h4></label>
+                                <label for="correo"><h4 style="color: #777">Numero Individuo</h4></label>
 
                                 <ul class="list-group list-group-mine" >
                                     <li class="list-group-item">{{ element.NumeroIndividuo }}</li>
@@ -280,7 +286,7 @@ html {
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="carrera"><h4 style="color: #777">Nombre Cientifico </h4></label>
+                                <label for="carrera"><h4 style="color: #777">Nombre Científico </h4></label>
                                 <ul  class="list-group list-group-mine" >
                                     <li class="list-group-item"> <i>{{ element.NombreCientificoComentarioRegistroBiologico }} </i></li>
                                   </ul>
@@ -322,7 +328,7 @@ html {
                         <div class="form-group">
 
                             <div class="col-xs-6">
-                                <label for="correo"><h4 style="color: #777">Genero</h4></label>
+                                <label for="correo"><h4 style="color: #777">Género</h4></label>
 
                                 <ul class="list-group list-group-mine" >
                                     <li class="list-group-item">{{ element.Genero }}</li>

@@ -373,6 +373,7 @@ class EjemplarForm(forms.Form):
         required=False,
         error_messages={'required':'Seleccione la imagen del ejemplar ', 'invalid':'El formato es erroneo'},
     )
+
 class Update(forms.Form):
     USUARIOS = []
 

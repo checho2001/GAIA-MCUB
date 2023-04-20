@@ -232,7 +232,20 @@ color: #404827; border: none;
                  
                     <br>
                     <br> 
+  
+                  
+                    {% for field in form %}
+                    {% if field.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                             {{ field.errors }}
 
+                     
+                    {% endif %}
+                  
+                {% endfor %}
+            
+                 
                   </form>
                 </div>
               </div>

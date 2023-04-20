@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.validators import RegexValidator
 from django import forms
 from captcha.fields import CaptchaField
+import datetime
 
 from datetime import date
 
@@ -117,7 +118,7 @@ class loginForm(forms.Form):
         strip = True,
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su nombre',
+                'placeholder':'Digite su correo',
                 'required' : True,
                 'class' : 'form-control',
                 }
@@ -178,7 +179,7 @@ class ActividadesForm(forms.Form):
         attrs={'class': 'form-control',})
         )
     Descripcion = forms.CharField(
-        error_messages={'required':'Por favor ingresa un nombre valido'},
+        error_messages={'required':'Por favor ingresa una descripción valida'},
         strip = True,
         widget=forms.TextInput(
             attrs= {
@@ -188,6 +189,20 @@ class ActividadesForm(forms.Form):
                 }
             )
         ) 
+    def clean_fecha(self):
+        fecha = self.cleaned_data['Fecha']
+        if fecha.year < 2000:
+            raise ValidationError('La fecha es demasiado antigua')
+        if fecha > datetime.date.today():
+            raise ValidationError('La fecha no puede ser en el futuro')
+        return fecha
+    def clean(self):
+        cleaned_data = super().clean()
+        try:
+            self.clean_fecha()
+        except ValidationError as e:
+            self.add_error('Fecha', e)
+        return cleaned_data
 class Especimen_Form(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
             attrs= {
@@ -356,7 +371,7 @@ class EjemplarForm(forms.Form):
     
     Image = forms.ImageField(
         required=False,
-        error_messages={'required':'Please select the image of the cover', 'invalid':'The format of your image is invalid, please try again'},
+        error_messages={'required':'Seleccione la imagen del ejemplar ', 'invalid':'El formato es erroneo'},
     )
 class Update(forms.Form):
     USUARIOS = []

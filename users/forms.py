@@ -210,7 +210,7 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    CONJUNTODEDATOS = [    "Colección de Exhibición de Anfibios",    "Colección de Exhibición de Aves",    "Colección de exhibición de Reptiles",    "Colección de exhibición de Mammalia",    "Colección de exhibición de Myriapoda",    "Colección de referencia de Arachnida"]
+    CONJUNTODEDATOS = [    "Colección de Exhibición de Anfibios",    "Colección de Exhibición de Aves",    "Colección de exhibición de Reptiles",    "Colección de exhibición de Mammalia",    "Colección de exhibición de Myriapoda",    "Colección de referencia de Arachnida","Colección de exhibición de Mollusca"]
 
     NombreDelConjuntoDatos = forms.ChoiceField(
         choices=[(i, i) for i in CONJUNTODEDATOS],

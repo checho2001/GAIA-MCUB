@@ -22,6 +22,7 @@ import tkinter as tk
 from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
+
 from django.http import HttpResponse
 from django.db.models import Max
 from .models import Text
@@ -643,7 +644,7 @@ def load_data(request):
     for _, row in data.iterrows():
         if not pd.isnull(row['eventDate']):
             try:
-                event_date_obj = datetime.datetime.fromisoformat(row['eventDate'])
+                event_date_obj = pd.to_datetime(row['eventDate'])
             except ValueError as e:
                 print(f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}")
                 event_date_obj = None

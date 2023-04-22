@@ -23,7 +23,24 @@
       }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
-       
+        font-size: 70px;
+      }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+        font-size: 60px;
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 50px;
+      }
+      .h4 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 40px;
+      }
+      .h5 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 30px;
       }
           .nav-pills .nav-link.active {
             background-color:#404827;;
@@ -52,11 +69,13 @@
             transform: scale(1.2);
             color: #404827; 
             border: none;
+            font-size: 30px;
           }
           .btn-custom:hover {
             transform: scale(1.2);
             color: #404827; 
             border: none;
+            font-size: 30px;
           }
           .btn-custom {
             color: white;
@@ -65,10 +84,12 @@
             border: none;
             transition: transform 0.3s ease;
             font-family:'Lato-Black', sans-serif;
+            font-size: 30px;
           }
           .btn-customizedlogin {
             color: white;
             background-color: #81bb26; 
+            font-size: 30px;
           
             padding: 12px 24px;
             font-size: 20px;
@@ -77,10 +98,15 @@
             transition: transform 0.3s ease;
             font-family:'Lato-Black', sans-serif;
           }
-          
+          .form-floating label {
+            font-size: 30px;
+         
+            font-family: 'Lato', sans-serif;
+          }
           body {
             background-image: url('../static/images/fondo.png');
             background-size: cover;
+            overflow-x: hidden;
           }
 
 
@@ -95,6 +121,7 @@
             transform: scale(1.2);
             color: #404827; 
             border: none;
+            font-size: 30px;
           }
           .btn-custom {
             color: white;
@@ -103,17 +130,21 @@
             border: none;
             transition: transform 0.3s ease;
             font-family:'Lato-Black', sans-serif;
+            font-size: 30px;
           }
+          
           .btn-customizedlogin {
             color: white;
             border:none;
             transition: transform 0.3s ease;
+            font-size: 30px;
             
           }
           .btn-customizedlogin :hover {
             transform: scale(1.2);
             color: #404827; 
             border: none;
+            font-size: 30px;
           }
     </style>
   </head>
@@ -167,7 +198,7 @@
                     <br>
                     <div class="form-floating">
                       {{ form.username }}
-                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Usuario<span class="text-danger"> *</span></label>
+                      <label class="h3" >Correo<span class="text-danger"> *</span></label>
                       
                       <br>
                     </div>
@@ -175,12 +206,12 @@
                 
                     <div class="form-floating">
                       {{ form.password }}
-                      <label   class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;"  name="password" for="floatingPassword">Contraseña <span class="text-danger"> *</span></label>
+                      <label   class="h3"   name="password" for="floatingPassword">Contraseña <span class="text-danger"> *</span></label>
                       <br>
                     </div>
                     <br>
                     <br>
-                    <div class="form-floating">
+                    <div class="form-floating" >
                       {{ form.captcha }}
                       <br>
                     </div>

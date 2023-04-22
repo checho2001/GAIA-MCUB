@@ -7,21 +7,42 @@
 
         <title>DashBoard</title>
     
-  
-        <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-      
-        <link rel="stylesheet" href="../static/css/style1.css" >
-        <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
-       
-        <link rel="stylesheet" href="../static/css/sidebars.css" >
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    
+        <link rel="stylesheet" href="../static/css/style1.css">
+        <link rel="stylesheet" href="../static/fonts/linearicons/style.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/css/sidebars.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-MxUbVc+j1jq+2d2kbMugIViupgy9pALVKbYgDcdyJb6eO78+wjLaesOQ+QdZuJHmkB9mucO01fBGY+YmlTh/6w==" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
-        <script type="text/javascript" src="../static/js/sidebars.js"> </script>
-
+        <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="../static/js/sidebars.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        
+        <script>
+          $(document).ready(function() {
+            $('#myTable').DataTable({
+              "paging": true,
+              "pageLength": 5
+            });
+            
+            $('#tabla2').DataTable({
+              "paging": true,
+              "pageLength": 5
+            });
+            $('#tabla3').DataTable({
+              "paging": true,
+              "pageLength": 5
+            });
+            $('#tabla4').DataTable({
+              "paging": true,
+              "pageLength": 5
+            });
+            
+            
+          });
+        </script>
       
     <style>
             #vertical-line {
@@ -72,7 +93,7 @@
         padding: 10px 7px 5px;
     }
     .table-responsive {
-      max-height: 350px; 
+      max-height: 450px; 
       overflow-y: scroll;
     }
     .DivWithScroll{
@@ -315,7 +336,7 @@
               <div   class="table-responsive">
                 <br>
                   
-                <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                <table   id="myTable"  class="table table-sm table-striped"data-toggle="table">
                   
                   <thead>
                     <tr style="background-color: #404827;color:white;">
@@ -361,8 +382,8 @@
           <div class="list-group">
           <div   class="table-responsive">
             <br>
-            <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
-            <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+          
+            <table  id="tabla2"  class="table table-sm table-striped"  data-toggle="table">
               
               <thead>
                 <tr style="background-color: #404827;color:white;">
@@ -424,7 +445,7 @@
         <div   class="table-responsive">
         
 
-        <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
+        <table id="tabla3"  class="table table-sm table-striped"   data-toggle="table">
           <thead>
             <tr style="background-color: #404827;color:white;">
               <th>ID</th>
@@ -467,7 +488,7 @@
     <div   class="table-responsive">
      
 
-    <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
+    <table id="tabla4"  class="table table-sm table-striped" data-toggle="table">
       <thead>
         <tr style="background-color: #404827;color:white;">
           <th>ID</th>

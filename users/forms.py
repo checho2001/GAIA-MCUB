@@ -74,7 +74,8 @@ class CustomUser(forms.Form):
     rol = forms.ChoiceField(
         choices = ROLES,  widget=forms.Select(
             attrs= {
-                'default' : 1,
+               'style': 'height: 70px;',
+                
                 'class' : 'form-control',
                 }
             ))
@@ -85,7 +86,7 @@ class CustomUser(forms.Form):
     area = forms.ChoiceField(
         choices = AREA,  widget=forms.Select(
             attrs= {
-                'default' : 1,
+                'style': 'height: 70px;',
                 'class' : 'form-control',
                 }
             ))

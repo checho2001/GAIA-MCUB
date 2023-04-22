@@ -19,6 +19,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost',  '52.4.94.183','127.0.0.1']
 # Application definition
 AUTH_USER_MODEL = 'users.User'
+CAPTCHA_IMAGE_SIZE = (200, 50)
+CAPTCHA_FONT_SIZE = 50
 
 INSTALLED_APPS = [
     'users',

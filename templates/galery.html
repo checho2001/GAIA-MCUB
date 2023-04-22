@@ -4,7 +4,7 @@
    
         <meta charset="utf-8">
         <title>Galeria</title>
-        <meta name="viewport" content="width=device-width, initial-scale=2.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="../static/css/style1.css" >
 
@@ -29,6 +29,12 @@
         border-left: 1px solid white;
         height: 50px;
       }
+      @media (max-width: 767px) {
+        .col-sm-2 {
+          width: 100%;
+          /* otros estilos */
+        }
+      }
       main {
         overflow-x: hidden;
         
@@ -44,6 +50,11 @@
       html::-webkit-scrollbar {
         display: none;
         height: 0;
+    }
+    .container {
+      border: none;
+      /* o */
+      border: 0;
     }
     html::-webkit-scrollbar {
       display: none;
@@ -248,9 +259,9 @@
   </nav>
 
       
-    <main id="global" style=" height: 1000px; ">
+  <main id="global" >
     <div  class="row flex" style=" height: 1000px; " >
-      <div class="col-sm-2" style="background-color: #404827; height: 10000px;  ">
+      <div class="col-sm-2" style="background-color: #404827;  ">
           
          
             <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
@@ -380,7 +391,7 @@
             <div class="tab-pane fade show active" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">
 
               <div  class="container  " style="border: none !important;">
-                <div class="card flex">  
+                <div class="card flex" style="border: none ;border: 0;">  
                   <div id="galeria" class="gallery">    
                     
                   
@@ -395,7 +406,7 @@
                             <img  
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
                              class="card-img-top"
-                              alt="Waterfall" height="600px" width="500px"
+                              alt="Waterfall" height="800px" width="500px"
                             />
                             </a>
                             <div class="card-body">

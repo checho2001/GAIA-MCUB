@@ -23,7 +23,111 @@
 
 </script>
 <style>
+  #Library {
+    background-image: url('/static/images/casa.png');
+    background-position: left 90px center;
+    width: 140px; 
+    height:60px;
+    background-size: 25%;
+    background-repeat: no-repeat;
+    text-align: left;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px
+ }
+ 
+ #Library:hover {
+    background-image: url('/static/images/home (2).png');
+ }
+ #colecciones {
+  background-image: url('/static/images/llamablanca.png');
+  background-position: left 170px center;
+  width: 240px; 
+  height:60px;
+  background-size: 20%;
+  background-repeat: no-repeat;
+  text-align: left;
+  font-family: 'Lato-Black', sans-serif;
+  font-size:26px
+  
 
+}
+
+#colecciones:hover {
+  background-image: url('/static/images/llamaverde.png');
+}
+#nosotros {
+background-image: url('/static/images/equipo.png');
+background-position: left 130px center;
+width: 190px; 
+background-size: 25%;
+text-align: left;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px;
+
+height:60px;
+background-repeat: no-repeat;
+
+
+}
+
+#nosotros:hover {
+background-image: url('/static/images/equipo (3).png');
+}
+#contacto {
+background-image: url('/static/images/informacion.png');
+background-position: left 140px center;
+width: 190px; 
+background-size: 20%;
+text-align: left;
+
+height:60px;
+background-repeat: no-repeat;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px
+
+}
+
+#contacto:hover {
+background-image: url('/static/images/informacion (2).png');
+}
+#dashboard {
+background-image: url('/static/images/pizarron.png');
+background-position: left 160px center;
+width: 210px; 
+background-size: 20%;
+text-align: left;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px;
+height:60px;
+background-repeat: no-repeat;
+
+
+}
+
+#dashboard:hover {
+background-image: url('/static/images/pizarron (2).png');
+}
+#login {
+  background-image: url('/static/images/login.png');
+  background-position: left 90px center;
+  width: 200px; 
+  background-size: 25%;
+  text-align: left;
+  
+  height:60px;
+  background-repeat: no-repeat;
+  
+  font-family: 'Lato-Black', sans-serif;
+  font-size:26px;
+  }
+  
+  #login:hover {
+  background-image: url('/static/images/login (2).png');
+  }
+    #vertical-line {
+      border-left: 1px solid white;
+      height: 50px;
+    }
     #vertical-line {
         border-left: 1px solid white;
         height: 50px;
@@ -35,6 +139,7 @@
       }
       main {
         flex: 1;
+        overflow-y:auto;
       }      
       #global {
        
@@ -48,11 +153,13 @@
       }
     .list-group-mine .list-group-item {
     background-color: #f2f1f1;
-    font-size: 18px;
+    font-size: 28px;
     weight: 1px;
     border-left-color: #fff;
     border-right-color: #fff;
-
+    border-bottom-color:#a7c27e;
+    border-bottom-width: 6px;
+    border-top:none;
   }
   
   @media screen and (max-width: 767px) {
@@ -60,29 +167,33 @@
       overflow-y: auto;
     }
   }
-  
-  
+ 
+  .list-group-item:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* ajusta el valor de background-color para reducir la oscuridad */
+    transition: background-color 0.2s ease-in-out; /* agrega una transición suave */
+  }
   .h1 {
     font-family: 'Lato-Black', sans-serif;
-    text-decoration-line: underline;
-    text-underline-offset: 12px; 
-    text-decoration-color: #81bb26;
+    font-size: 60px;
   }
   .h2 {
     font-family: 'Lato-Black', sans-serif;
+    font-size: 60px;
     color: #81bb26;
   }
   .h3 {
     font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 50px;
   }
   .h4 {
-    font-family: 'Lato-Black', sans-serif;
-    
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 40px;
   }
   .h5 {
-    font-family: 'Lato-Black', sans-serif;
-   
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 30px;
   }
+
 
   
 
@@ -114,6 +225,7 @@
 
   .list-group-mine .list-group-item:hover {
     background-color: gray;
+    font-size:25;
   }
   .navbar {
     background-color: #404827;
@@ -125,7 +237,7 @@
   
   .btn-custom:hover {
     transform: scale(1.2);
-    color: black; 
+    color: #81bb26; 
   }
   .btn-custom {
     color: white;
@@ -142,12 +254,13 @@
 
 </head>
     <body  id="global">
-      <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
-        <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
-          <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
-        </a>
-        <div id="vertical-line"></div>
+      <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
         <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+          <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+          " >
+        </a>
+        
+        <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
           <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,73 +268,105 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button" style="border-right: 1px solid white;">Colecciones</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button" style="border-right: 1px solid white;">Quiénes Somos</button>
-            <button class="btn btn-custom btn-fade btn-lg navbar-spa" type="button" style="border-right: 1px solid white;" >Contáctenos </button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
+                <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
+                <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
+                <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
+           
             {% if  user.is_authenticated  %}
-            <button class="btn btn-custom btn-fade btn-lg" type="button" disabled style="border-right: 1px solid white;"> Hola {{ user.nombre }}</button>
+            <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
+    
             {% if rol.id == 4 %}
             
-            <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+            <button class="btn btn-custom btn-fade btn-lg "  id="dashboard"  href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
         {% elif rol.id == 1 %}
            
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+            <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
           {% elif rol.id == 2 %}
            
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+            <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
           {% elif rol.id == 3 %}
            
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button style="border-right: 1px solid white;"">Volver al DashBoard</button>
+            <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashCur'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
         {% endif %}
     
     
            
           {% endif %}
-    
-       
-            <div class="text-end" >
-              <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
-            </div>
-         
+          <div class="text-end" >
+            <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
+          </div>
           </div>
         </div>
       </nav>
     
           
-<main>       
+<main>       <br>   <br>  
         <div class="row">
-            <div class="text-center" ><h1 style="color: #404827">Ejemplar  <i> {{ element.NombreCientificoComentarioRegistroBiologico }} </i> </h1></div>
+          
+            <div class="text-center" ><h1 class= "h1 " style="color: #404827">Ejemplar  <i> {{ element.NombreCientificoComentarioRegistroBiologico }} </i> </h1></div>
         </div>
+
+        <br>   <br>
         <div class="row">
-           
+          <br>
         <div class="col-sm-3">
           <div class="text-center">
              <img src="/media/{{element.Image}}"  class="img-fluid img-thumbnail"  alt="Responsive image">
-             <button class="btn btn-custom btn-fade btn-lg "  onclick="location.href = 'qr_code/'"  type="button" style=" 
-             font-family: 'Latoblack', sans-serif;
-             background: #404827;
-             color: #fff;
-             border: none;
-             padding: 10px 20px;
-             border-radius: 50px;
-             text-align: center;
-             text-decoration: none;
-             display: inline-block;
-             font-size: 16px;
-             margin: 5px;
-             cursor: pointer;
-             -webkit-transition-duration: 0.4s;
-             transition-duration: 0.4s;
-             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Generar código QR </button>
+            
              
             </div>
             <div class="text-center">
-            
-            <h3> {{ element.NumeroCatalogo }}</h3>
+              <br>
+            <h3 class="h4" > {{ element.NumeroCatalogo }}</h3>
 
+
+            {% if  user.is_authenticated  %}
+            {% if rol.id == 4 %}
+            
+            <button class="btn btn-custom btn-fade btn-lg "  onclick="location.href = 'qr_code/'"  type="button" style=" 
+            font-family: 'Latoblack', sans-serif;
+            background: #404827;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 26px;
+            margin: 5px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Generar código QR </button>
+       
+          {% elif rol.id == 3 %}
+           
+          <button class="btn btn-custom btn-fade btn-lg "  onclick="location.href = 'qr_code/'"  type="button" style=" 
+          font-family: 'Latoblack', sans-serif;
+          background: #404827;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 50px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 26px;
+          margin: 5px;
+          cursor: pointer;
+          -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Generar código QR </button>
+        {% endif %}
+    
+    
+           
+          {% endif %}
+           
             <a class="a" onclick="location.href = '/galery'"  >
-              <img class="image_header-museo" src="/static/images/back-button.png"  style="height:100px; width:100px;" >
+              <img class="image_header-museo" src="/static/images/back-button.png"  style="height:80px; width:80px;" >
             </a>
     
           
@@ -240,73 +385,81 @@
                   <div class="row">
                       <div class="col-lg-6 col-md-12">
                           <div class="form-group">
-                              <label for="nombre"><h4 style="color: #777">Nombre Común</h4></label>
+                              <label for="nombre"><h4 class= "h4 " style="color: #777">Nombre Común</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.NombreComun }}</li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                              <label for="apellido"><h4 style="color: #777">Nombre Del Conjunto De Datos</h4></label>
+                              <label for="apellido"><h4 class= "h4 "style="color: #777">Nombre Del Conjunto De Datos</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.NombreDelConjuntoDatos }}</li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                              <label for="rolMuseo"><h4 style="color: #777">Comentario Registro Biologico</h4></label>
+                              <label for="rolMuseo"><h4  class= "h4 " style="color: #777">Comentario del Registro Biologico</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.ComentarioRegistroBiologico }}</li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                              <label for="carrera"><h4 style="color: #777">Registrado Por</h4></label>
+                              <label for="carrera"><h4  class= "h4 " style="color: #777">Registrado Por</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.RegistradoPor }}</li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                            <label for="correo"><h4 style="color: #777">Numero Individuo</h4></label>
+                            <label for="correo"><h4 class= "h4 " style="color: #777">Numero de Individuo</h4></label>
                             <ul class="list-group list-group-mine">
                                 <li class="list-group-item">{{ element.NumeroIndividuo }}</li>
                             </ul>
                         </div>
                       </div>
+                      <br>   
                       <div class="col-lg-6 col-md-12">
                          
                           <div class="form-group">
-                              <label for="carrera"><h4 style="color: #777">Nombre Científico</h4></label>
+                              <label for="carrera"><h4 class= "h4 " style="color: #777">Nombre Científico</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item"><i>{{ element.NombreCientificoComentarioRegistroBiologico }}</i></li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                              <label for="correo"><h4 style="color: #777">Clase</h4></label>
+                              <label for="correo"><h4 class= "h4 " style="color: #777">Clase</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.ClaseE }}</li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                              <label for="correo"><h4 style="color: #777">Orden</h4></label>
+                              <label for="correo"><h4 class= "h4 " style="color: #777">Orden</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.Orden }}</li>
                               </ul>
                           </div>
+                          <br>   
                           <div class="form-group">
-                              <label for="correo"><h4 style="color: #777">Familia</h4></label>
+                              <label for="correo"><h4 class= "h4 " style="color: #777">Familia</h4></label>
                               <ul class="list-group list-group-mine">
                                   <li class="list-group-item">{{ element.Familia }}</li>
                               </ul>
                           </div>
                                   
-    
+                          <br>   
                       
 
                           <div class="form-group">
-                            <label for="correo"><h4 style="color: #777">Genero</h4></label>
+                            <label for="correo"><h4 class= "h4 " style="color: #777">Género</h4></label>
                             <ul class="list-group list-group-mine">
                                 <li class="list-group-item">{{ element.Genero }}</li>
                             </ul>
                         </div>
-                                
+                        <br>   
                         </div>
                     
                     </form>

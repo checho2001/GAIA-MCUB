@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Register</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
@@ -25,7 +27,7 @@
     background-image: url('/static/images/casa (1).png');
  }
  #colecciones {
-  background-image: url('/static/images/crab (2).png');
+  background-image: url('/static/images/llamablanca.png');
   background-position: left 170px center;
   width: 240px; 
   height:60px;
@@ -39,7 +41,7 @@
 }
 
 #colecciones:hover {
-  background-image: url('/static/images/crab (3).png');
+  background-image: url('/static/images/llamaroble.png');
 }
 #nosotros {
 background-image: url('/static/images/equipo.png');
@@ -114,6 +116,16 @@ background-image: url('/static/images/pizarron (1).png');
   border-left: 1px solid white;
   height: 50px;
 }
+.form-floating select {
+  font-size: 30px;
+}
+select {
+  font-size: 30px;  }
+.form-floating label {
+  font-size: 30px;
+  font-family: 'Lato', sans-serif;
+}
+
   footer {
 background-color: #f6f6f6;
 padding: 50px 0;
@@ -121,31 +133,30 @@ font-family: 'Lato', sans-serif;
 font-size: 16px;
 color: #f6f6f6;
 }
-@font-face {
-font-family: 'Lato-Black';
-src: url('fonts/Lato-Black.ttf') format('truetype');
-}
+
 p {
 font-family: 'Lato-Black', sans-serif;
 }
 .h1 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Lato-Black', sans-serif;
+  font-size: 70px;
 }
 .h2 {
-font-family: 'Lato-Black', sans-serif;
-color: #81bb26;
+  font-family: 'Lato-Black', sans-serif;
+  font-size: 60px;
+  color: #81bb26;
 }
 .h3 {
-font-family: 'Acherus Grotesque', sans-serif;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 50px;
 }
 .h4 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 40px;
 }
 .h5 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 30px;
 }
 .social {
 list-style: none;
@@ -269,29 +280,29 @@ color: #404827; border: none;
                 <div class="p-5">
                   <h1 class="h1" >Informe de la actividad</h1>
                   <form action= "{%url 'registroActividad' %}" method= POST class=" w-100 m-auto">
-                   
+                    <br> 
                     {% csrf_token %}
                     <div class="form-group mb-2">
                       <div class="form-floating">
                         
                         <select name="NumeroCatalogo" class="form-control" id="id_NumeroCatalogo">
                           {% for esp in especimenes%}
-                          <option value="{{esp.id}}">{{esp.NumeroCatalogo}}</option>   
+                          <option  value="{{esp.id}}">{{esp.NumeroCatalogo}}</option>   
                           {% endfor%}                   
                         </select>
-                        <label class="font-weight-bold">Número Catalogo<span class="text-danger"> *</span></label>
+                        <label class="h3" >Número Catalogo<span class="text-danger"> *</span></label>
                         <br>
                     </div>
                       
                       <div class="form-floating">
                         {{ form.Hora }}
-                        <label class="font-weight-bold">Hora<span class="text-danger"> *</span></label>
+                        <label  class="h3">Hora<span class="text-danger"> *</span></label>
                          
                           <br>
                       </div>
                       <div class="form-floating">
                         {{ form.Fecha }}
-                        <label class="font-weight-bold">Fecha<span class="text-danger"> *</span></label>
+                        <label class="h3">Fecha<span class="text-danger"> *</span></label>
 
                         
                         
@@ -299,7 +310,7 @@ color: #404827; border: none;
                     </div>
                     <div class="form-floating">
                       {{ form.Descripcion }}
-                      <label class="font-weight-bold">Descripción<span class="text-danger"> *</span></label>
+                      <label class="h3">Descripción<span class="text-danger"> *</span></label>
 
                      
                       <br>

@@ -166,7 +166,7 @@ class ActividadesForm(forms.Form):
     TareaRealizada = forms.ChoiceField(
         choices = TAREAS,  widget=forms.Select(
             attrs= {
-                'default' : 1,
+                'style': 'height: 70px;',
                 'class' : 'form-control',
                 }
             ))

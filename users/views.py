@@ -795,6 +795,8 @@ def element_detail(request, pk):
     clases =  Clase.objects.all()
     generos =  Genero.objects.all()
     a = request.path
+    rol =0
+
     user = request.user 
     if user.is_authenticated:
             rol = Rol.objects.get(user=user)

@@ -175,6 +175,7 @@
       body {
         font-size: 20px;
         font-family: 'Lato-Black', sans-serif;
+        
       }
       #global {
        
@@ -188,6 +189,10 @@
         align-items: center;
         width: 100%;
         height: 100vh; /* adjust the height as needed */
+      }
+      .col {
+        height: 100%;
+       
       }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
@@ -210,7 +215,10 @@
         font-family: 'Acherus Grotesque', sans-serif;
         font-size: 30px;
       }
-  
+      .h6 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 20px;
+      }
     .table-responsive {
       max-height: 500px; 
       
@@ -247,14 +255,20 @@
           }
          
           .body {
-            box-sizing: border-box;
+          
             height: 100%;
          
          
           }
+          .container-fluid {
+            width: 100%;
+            height: 100%;
+          }
+          
           .row {
             height: 100%;
           }
+
           .container {
             height: 100%;
     
@@ -299,7 +313,11 @@
             font-family:'Lato-Black', sans-serif;
             font-size: 30px;
           }
+          .tab-pane {
           
+            display: flex; 
+            flex: 1;
+          }
           html::-webkit-scrollbar {
             display: none;
             height: 0;
@@ -313,6 +331,10 @@
           width: 0;
           -webkit-appearance: none;
         }
+        html, body {
+          height: 100%;
+        }
+        
         html {
           overflow-x: hidden;
         }
@@ -329,7 +351,15 @@
           border: none;
           font-size: 30px;
         }
-        
+        footer {
+          background-color: #008776;
+          color: #666;
+          text-align: center;
+          padding: 20px;
+         
+          bottom: 0;
+          width: 100%;
+        }
     
         
     </style>
@@ -360,7 +390,7 @@
       </div>
     </nav>
       <div  class="row" >
-      <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1000px;">
+      <div class="col-sm-2 mw-100 " style="background-color: #006C5E ;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
               <h2 class="h3" style="color : white" style="text-align: center;" > Hola {{ user.nombre }}</h2>
 
@@ -393,11 +423,11 @@
 
 
       
-        <div  id="global" class="col" style="background-color: #eee;">
+        <div class="col" style="background-color: #eee;">
          
           <div   class="text-center" ><h1  class="h1" style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           
-          <div  class="row justify-content-center">
+          <div  class="row ">
             <div class="col ">
               
               <nav>
@@ -752,5 +782,55 @@
   
   
   </body>
+  <footer>
+    <div class="row">
+      <div class="col" style="border-right: 1px solid white;">
+        
+        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+        <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+          Línea gratuita:
+          018000 113033
+          
+          PBX:
+          (601) 648 9000</h6>
+   
+      </div>
+      <div class="col" style="border-right: 1px solid white;">
+        <ul class="social">
+       
+        <a class="btn-customizedlogin"onClick="
+        parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+          <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
   
+        </a>
+      
+      </ul>
+      </div>
+      <div class="col" style="border-right: 1px solid white;">
+        <ul class="social">
+          <a class="btn-customizedlogin"  onClick="
+        parent.location='https://www.unbosque.edu.co'">
+            <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
+    
+          </a>
+        
+       
+  
+      </ul>
+      </div>
+      <div class="col" >
+        <ul class="social">
+          <a class="btn-customizedlogin" onClick="
+          parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+            <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+    
+          </a>
+        
+        
+      </ul>
+      </div>
+      <br><br>
+  
+  </footer>
   </html>

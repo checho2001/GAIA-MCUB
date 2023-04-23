@@ -142,11 +142,33 @@
       }
       #global {
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
         height: 1000px;
       }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
+        font-size: 70px;
+      }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+        font-size: 60px;
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 50px;
+      }
+      .h4 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 40px;
+      }
+      .h5 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 30px;
+      }
+      .h6 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 20px;
       }
       html::-webkit-scrollbar {
         display: none;
@@ -166,9 +188,10 @@
       width: 0;
       -webkit-appearance: none;
     }
+  
     html {
       overflow-x: auto;
-      overflow-y: auto;
+      overflow-y: scroll;
     }
       .container {
         max-width: 2000px;
@@ -267,7 +290,9 @@
 #radio-cards .card-input-element {
   display: none;
 }
-
+li {
+  font-size: 20px; 
+}
 #radio-cards .card-input:hover {
   cursor: pointer;
   background-color: hsl(144, 60%, 95.9%);
@@ -290,7 +315,13 @@
   background-color: #404827; 
 }
 
-
+footer {
+  background-color: #404827;
+  padding: 50px 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #f6f6f6;
+}
 .btn-custom:hover {
   transform: scale(1.2);
   color: #81bb26; 
@@ -365,27 +396,56 @@
 
       
   <main id="global" >
-    <div  class="row flex" style=" height: 1000px; " >
-      <div class="col-sm-2" style="background-color: #404827;  ">
+    <div  class="row "  >
+      <div class="col-sm-2 mw-100" style="background-color: #404827;  ">
           
          
-            <div class="flex-shrink-0 p-3 " style="width: 80%; height:100%">
+            <div class="flex-shrink-0 p-3 " >
 
              
                 
           
               
-                <span class="fs-5 fw-semibold text-light">Categorías </span>
+                <span class="h4" style="color:white">Categorías </span>
                 
                 <ul class="list-unstyled ps-0">
                   <br>
+                  <li class="mb-1" style="border-bottom: 1px solid white;">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false"  style="font-size: 30px;">
+                    Clase
+                    </button>
+                    <div class="collapse" id="filo-collapse">
+                      {% for i in clases %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
+             
+                    </ul>
+                    {% endfor %}
+                    </div>
+                </li>
+                <br>
+                <li class="mb-1" style="border-bottom: 1px solid white;">
+                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false"  style="font-size: 30px;">
+                  Orden
+                  </button>
+                  <div class="collapse" id="orden-collapse">
+                    {% for i in ordenes %}
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a href="orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
+                    </ul>
+                    {% endfor %}
+
+
+                  </div>
+              </li>
+              <br>
                 <li class="mb-1" style="border-bottom: 1px solid white;">
 
                   
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true"  >
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true" style="font-size: 30px;" >
                     Familia
                     </button>
-                    <div class="collapse " id="reino-collapse">
+                    <div class="collapse " id="reino-collapse"  style="font-size: 25px;">
                       {% for i in familias %}
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                      
@@ -400,7 +460,7 @@
                 </li>
                 <br>
                 <li class="mb-1" style="border-bottom: 1px solid white;">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false"  style="font-size: 30px;">
                     Genero
                     </button>
                     <div class="collapse" id="subgrupo-collapse">
@@ -414,36 +474,11 @@
                     </div>
                 </li>
                 <br>
-                <li class="mb-1" style="border-bottom: 1px solid white;">
-                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
-                    Clase
-                    </button>
-                    <div class="collapse" id="filo-collapse">
-                      {% for i in clases %}
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
-             
-                    </ul>
-                    {% endfor %}
-                    </div>
-                </li>
+               
                 <br>
-                <li class="mb-1">
-                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
-                  Orden
-                  </button>
-                  <div class="collapse" id="orden-collapse">
-                    {% for i in ordenes %}
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
-                    </ul>
-                    {% endfor %}
+               
 
-
-                  </div>
-              </li>
-
-                <li class="border-top my-3"></li>
+              
                 
                 </ul>
 
@@ -460,12 +495,13 @@
 
 
 
-        <div  id="global" class="col-10" style=" height: 20000px; ">
+        <div   class="col-10" >
 
-
+          <br> 
           <div   class="text-center" ><h1 class= "h1" style="color: #404827; text-align: center;">Filtrar Por</h1></div>
+          <br>
           <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
-
+         
 
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="pills-quinto-tab" data-bs-toggle="pill" data-bs-target="#pills-quinto" type="button" role="tab" aria-controls="pills-quinto" aria-selected="false"><img  src="../static/images/685107.png" height="150px" width="150px" /></button>
@@ -515,12 +551,12 @@
                             />
                             </a>
                             <div class="card-body">
-                              <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
-                              <p class="card-text">
+                              <h5 class="h4" >  <i>{{ element.NombreCientificoComentarioRegistroBiologico }}  </i></h5>
+                              <p class="h5" style="  font-family: 'Acherus Grotesque', sans-serif;">
                                 {{  element.NumeroCatalogo }}
                                
                               </p>
-                              <p class="card-text">
+                              <p class="h5" style="  font-family: 'Acherus Grotesque', sans-serif;">
                            
                                 {{  element.NombreDelConjuntoDatos }}
                               </p>
@@ -534,7 +570,7 @@
                               text-align: center;
                               text-decoration: none;
                               display: inline-block;
-                              font-size: 16px;
+                              font-size: 26px;
                               margin: 5px;
                               cursor: pointer;
                               -webkit-transition-duration: 0.4s;
@@ -787,4 +823,58 @@
     </main>
     
 </body>
+<footer>
+  <div class="row">
+    <div class="col" style="border-right: 1px solid white;">
+      
+      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+        Línea gratuita:
+        018000 113033
+        
+        PBX:
+        (601) 648 9000</h6>
+ 
+    </div>
+    <div class="col" style="border-right: 1px solid white;">
+      <ul class="social">
+     
+      <a class="btn-customizedlogin"onClick="
+      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+
+      </a>
+    
+    </ul>
+    </div>
+    <div class="col" style="border-right: 1px solid white;">
+      <ul class="social">
+        <a class="btn-customizedlogin"  onClick="
+      parent.location='https://www.unbosque.edu.co'">
+          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+     
+
+    </ul>
+    </div>
+    <div class="col" >
+      <ul class="social">
+        <a class="btn-customizedlogin" onClick="
+        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+      
+    </ul>
+    </div>
+    <br><br>
+
+</footer>
+
+
+
 </html>

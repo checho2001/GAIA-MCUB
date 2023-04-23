@@ -7,6 +7,34 @@
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+    <script type="text/javascript" src="../static/js/sidebars.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+$('#tabla').DataTable({
+  "paging": true,
+  "pageLength": 5
+});
+
+$('#tabla2').DataTable({
+  "paging": true,
+  "pageLength": 5
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+});
+
+
+
+
+</script>
 </head>
 <style>
   #Library {
@@ -117,6 +145,9 @@ background-image: url('/static/images/pizarron (1).png');
   .h1 {
     font-family: 'Lato-Black', sans-serif;
    
+  } .h5 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 30px;
   }
       .nav-pills .nav-link.active {
         background-color:#404827;;
@@ -293,9 +324,7 @@ background-image: url('/static/images/pizarron (1).png');
 
        
       {% endif %}
-      <div class="text-end" >
-        <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
-      </div>
+     
       </div>
     </div>
   </nav>
@@ -327,23 +356,22 @@ background-image: url('/static/images/pizarron (1).png');
                           <br>
                           <br>
 
-                        <input id="filtro" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar...">
-                        <br>
-                        <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                  
+                        <table id="tabla" class="table table-sm table-striped" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
-                              <th scope="col">Usuario</th>
-                              <th scope="col">Correo</th>
-                              <th scope="col">Desactivar</th>
+                              <th  class="h5"  scope="col">Usuario</th>
+                              <th class="h5"  scope="col">Correo</th>
+                              <th  class="h5"  scope="col">Desactivar</th>
                             </tr>
                           </thead>
                           <tbody>
                             {% for usuario in usuarios %}
                             {% if usuario.is_active == True%}
                             <tr>
-                              <td style="color: #404827;">{{ usuario.username }}</td>
-                              <td style="color: #404827;">{{ usuario.email }}</td>
-                              <td style="color: #404827;">
+                              <td class="h5"  style="color: #404827;">{{ usuario.username }}</td>
+                              <td class="h5"  style="color: #404827;">{{ usuario.email }}</td>
+                              <td  class="h5" style="color: #404827;">
                                 <a class="a" href="../desactivarU/{{usuario.id}}"  >
                                   <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
                                 </a>  
@@ -363,7 +391,7 @@ background-image: url('/static/images/pizarron (1).png');
                         <br>
                         <br>
 
-                        <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                        <table id="tabla2" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
                               <th scope="col">Usuario</th>

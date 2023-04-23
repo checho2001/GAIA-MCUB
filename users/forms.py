@@ -386,7 +386,7 @@ class Update(forms.Form):
         choices = USUARIOS,
         widget=forms.Select(
             attrs= {
-                'default' : 1,
+                 'style': 'height: 70px;',
                 'class' : 'form-control',
                 }
             )
@@ -435,7 +435,7 @@ class Update(forms.Form):
     rol = forms.ChoiceField(
         choices = ROLES,  widget=forms.Select(
             attrs= {
-                'default' : 1,
+                 'style': 'height: 70px;',
                 'class' : 'form-control',
                 }
             ))    

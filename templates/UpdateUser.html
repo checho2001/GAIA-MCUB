@@ -120,32 +120,42 @@ padding: 50px 0;
 font-family: 'Lato', sans-serif;
 font-size: 16px;
 color: #f6f6f6;
+}.form-floating label {
+  font-size: 30px;
+
+  font-family: 'Lato', sans-serif;
 }
-@font-face {
-font-family: 'Lato-Black';
-src: url('fonts/Lato-Black.ttf') format('truetype');
+.form-floating label {
+  font-size: 30px;
+
+  font-family: 'Lato', sans-serif;
 }
+select {
+  font-size: 30px;  }
 p {
 font-family: 'Lato-Black', sans-serif;
 }
 .h1 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Lato-Black', sans-serif;
+  font-size: 70px;
 }
 .h2 {
-font-family: 'Lato-Black', sans-serif;
-color: #81bb26;
+  font-family: 'Lato-Black', sans-serif;
+  font-size: 60px;
+  color: #81bb26;
 }
 .h3 {
-font-family: 'Acherus Grotesque', sans-serif;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 50px;
+  
 }
 .h4 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 40px;
 }
 .h5 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 30px;
 }
 .social {
 list-style: none;
@@ -277,26 +287,26 @@ border: none;
                         {{ form.username }}
                         
 
-                        <label class="font-weight-bold">Usuario<span class="text-danger"> *</span></label>
+                        <label class="h3">Usuario<span class="text-danger"> *</span></label>
                         
                         <br>
                     </div>
                       <div class="form-floating">
                         {{ form.nombre }}
                         
-                          <label class="font-weight-bold">Nombre<span class="text-danger"> *</span></label>
+                          <label class="h3">Nombre<span class="text-danger"> *</span></label>
                           
                           <br>
                       </div>
                       <div class="form-floating">
                         {{ form.apellido }}
-                          <label class="font-weight-bold">Apellido<span class="text-danger"> *</span></label>
+                          <label class="h3">Apellido<span class="text-danger"> *</span></label>
                          
                           <br>
                       </div>
                       <div class="form-floating">
                         {{ form.correo }}
-                        <label class="font-weight-bold">Correo<span class="text-danger"> *</span></label>
+                        <label class="h3">Correo<span class="text-danger"> *</span></label>
                        
                     </div>
                     

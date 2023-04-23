@@ -795,8 +795,10 @@ def element_detail(request, pk):
     clases =  Clase.objects.all()
     generos =  Genero.objects.all()
     a = request.path
-    print("Este es ", a)
-    context = {'element': element,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos, 'a':a}
+    user = request.user 
+    if user.is_authenticated:
+            rol = Rol.objects.get(user=user)
+    context = {'element': element,'familias':familias,'ordenes':ordenes,'clases':clases,'generos':generos, 'a':a,'rol': rol }
     return render(request, 'paginaejemplar.html', context)
 
 

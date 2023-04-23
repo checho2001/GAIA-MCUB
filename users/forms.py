@@ -122,6 +122,7 @@ class loginForm(forms.Form):
                 'placeholder':'Digite su correo',
                 'required' : True,
                 'class' : 'form-control',
+                'style': 'height: 70px;',
                 }
             )
         )   
@@ -132,6 +133,7 @@ class loginForm(forms.Form):
                 'required' : True,
                 'name' : 'passUser',
                 'class' : 'form-control',
+                'style': 'height: 70px;',
                 }
             )
         )

@@ -9,6 +9,107 @@
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
 <style>
+  #Library {
+    background-image: url('/static/images/casa.png');
+    background-position: left 90px center;
+    width: 140px; 
+    height:60px;
+    background-size: 25%;
+    background-repeat: no-repeat;
+    text-align: left;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px
+ }
+ 
+ #Library:hover {
+    background-image: url('/static/images/casa (1).png');
+ }
+ #colecciones {
+  background-image: url('/static/images/crab (2).png');
+  background-position: left 170px center;
+  width: 240px; 
+  height:60px;
+  background-size: 20%;
+  background-repeat: no-repeat;
+  text-align: left;
+  font-family: 'Lato-Black', sans-serif;
+  font-size:26px
+  
+
+}
+
+#colecciones:hover {
+  background-image: url('/static/images/crab (3).png');
+}
+#nosotros {
+background-image: url('/static/images/equipo.png');
+background-position: left 130px center;
+width: 190px; 
+background-size: 25%;
+text-align: left;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px;
+
+height:60px;
+background-repeat: no-repeat;
+
+
+}
+
+#nosotros:hover {
+background-image: url('/static/images/equipo (2).png');
+}
+#contacto {
+background-image: url('/static/images/informacion.png');
+background-position: left 140px center;
+width: 190px; 
+background-size: 20%;
+text-align: left;
+
+height:60px;
+background-repeat: no-repeat;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px
+
+}
+
+#contacto:hover {
+background-image: url('/static/images/informacion (1).png');
+}
+#dashboard {
+background-image: url('/static/images/pizarron.png');
+background-position: left 160px center;
+width: 210px; 
+background-size: 20%;
+text-align: left;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px;
+height:60px;
+background-repeat: no-repeat;
+
+
+}
+
+#dashboard:hover {
+background-image: url('/static/images/pizarron (1).png');
+}
+#login {
+  background-image: url('/static/images/login.png');
+  background-position: left 90px center;
+  width: 200px; 
+  background-size: 25%;
+  text-align: left;
+  
+  height:60px;
+  background-repeat: no-repeat;
+  
+  font-family: 'Lato-Black', sans-serif;
+  font-size:26px;
+  }
+  
+  #login:hover {
+  background-image: url('/static/images/login (1).png');
+  }
   #vertical-line {
   border-left: 1px solid white;
   height: 50px;
@@ -114,49 +215,47 @@ color: #404827;
 border: none;
 }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+<nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-    <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
-  </a>
-  <div id="vertical-line"></div>
-  <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+    " >
   </a>
   
+  <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
+    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button">Inicio</button>
-      <div id="vertical-line"></div>
-      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button">Colecciones</button>
-      <div id="vertical-line"></div>
-      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'"  type="button">Quienes Somos</button>
-      <div id="vertical-line"></div>
-      <button class="btn btn-custom btn-fade btn-lg " type="button">Contáctenos</button>
-      <div id="vertical-line"></div>
-
-    
+      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
+          <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
+          <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
+          <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
+     
       {% if  user.is_authenticated  %}
-      <button class="btn btn-custom btn-fade btn-lg" type="button" disabled> Hola {{ user.nombre }}</button>
-      <div id="vertical-line"></div>
+      <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
+
       {% if rol.id == 4 %}
       
-      <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button">Volver al DashBoard</button>
+      <button class="btn btn-custom btn-fade btn-lg "  id="dashboard"  href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
   {% elif rol.id == 1 %}
      
-      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button">Volver al DashBoard</button>
+      <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
     {% elif rol.id == 2 %}
      
-      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button">Volver al DashBoard</button>
+      <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
     {% elif rol.id == 3 %}
      
-      <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button">Volver al DashBoard</button>
+      <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashCur'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
   {% endif %}
-      
+
 
      
     {% endif %}
     <div class="text-end" >
-      
+      <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
     </div>
     </div>
   </div>

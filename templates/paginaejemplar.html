@@ -20,13 +20,8 @@
 <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"> 
 
 
-  $('.navbar-nav>button').on('click', function(){
-    $('.navbar-collapse').collapse('hide');
-  });
-  
 
 </script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <style>
 
     #vertical-line {
@@ -149,39 +144,50 @@
     <body  id="global">
       <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
         <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
-          <img class="image_header-museo" src="/static/images/logo (1).png" style="width: 200%; height:200%" >
+          <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
         </a>
-        <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px solid white; ">
-          <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" style="width: 30%; height:30%" >
+        <div id="vertical-line"></div>
+        <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+          <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
-            <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/galery'" type="button" style="border-right: 1px solid white;">Colecciones</button>
-            <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/nosotros'" type="button" style="border-right: 1px solid white;">Quienes Somos</button>
-            <button class="btn btn-custom btn-fade btn-lg navbar-spa" type="button" style="border-right: 1px solid white;">Contáctenos</button>
-            {% if user.is_authenticated %}
-              <button class="btn btn-custom btn-fade btn-lg" type="button" disabled>Hola {{ user.nombre }}</button>
-              {% if rol.id == 4 %}
-                <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/dash'" type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
-              {% elif rol.id == 1 %}
-                <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/dashAux'" type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
-              {% elif rol.id == 2 %}
-                <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/dashPas'" type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
-              {% elif rol.id == 3 %}
-                <button class="btn btn-custom btn-fade btn-lg" href="#" onclick="location.href = '/dashCur'" type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
-              {% endif %}
-            {% endif %}
-            <div class="text-end">
-              <button class="btn btn-custom btn-fade btn-lg" onclick="location.href = '/login'">Login</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button" style="border-right: 1px solid white;">Colecciones</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button" style="border-right: 1px solid white;">Quiénes Somos</button>
+            <button class="btn btn-custom btn-fade btn-lg navbar-spa" type="button" style="border-right: 1px solid white;" >Contáctenos </button>
+            {% if  user.is_authenticated  %}
+            <button class="btn btn-custom btn-fade btn-lg" type="button" disabled style="border-right: 1px solid white;"> Hola {{ user.nombre }}</button>
+            {% if rol.id == 4 %}
+            
+            <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+        {% elif rol.id == 1 %}
+           
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+          {% elif rol.id == 2 %}
+           
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+          {% elif rol.id == 3 %}
+           
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button style="border-right: 1px solid white;"">Volver al DashBoard</button>
+        {% endif %}
+    
+    
+           
+          {% endif %}
+    
+       
+            <div class="text-end" >
+              <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
             </div>
+         
           </div>
         </div>
       </nav>
-      
+    
           
 <main>       
         <div class="row">

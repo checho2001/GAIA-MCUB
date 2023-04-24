@@ -159,6 +159,10 @@ font-family: 'Lato-Black', sans-serif;
   font-family: 'Acherus Grotesque', sans-serif;
   font-size: 30px;
 }
+.h6 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 25px;
+}
 .social {
 list-style: none;
 padding: 0;
@@ -202,30 +206,40 @@ background-size: cover;
   border: none;
 }
 .btn-custom {
-color: white;
-background-color: #008776; 
-padding: 10px 20px;
-border: none;
-transition: transform 0.3s ease;
-font-family:'Lato-Black', sans-serif;
+  color: white;
+  background-color: #008776; 
+  padding: 10px 20px;
+  border: none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+  font-size: 30px;
 }
 .btn-customizedlogin {
-color: white;
-        background-color: #008776; 
-      
-        padding: 12px 24px;
-        font-size: 20px;
-        border-radius: 22px;
-        border: 2px solid;
-        transition: transform 0.3s ease;
-        font-family:'Lato-Black', sans-serif;
-        font-size: 30px;
+  color: white;
+  background-color: #008776; 
 
+  padding: 12px 24px;
+  font-size: 20px;
+  border:none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+  font-size: 30px;
+  
 }
 .btn-customizedlogin :hover {
-transform: scale(1.2);
-color: #404827; 
-border: none;
+  transform: scale(1.2);
+  color: #008776; 
+  border: none;
+  font-size: 30px;
+}
+footer {
+  background-color: #008776;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+ 
+  bottom: 0;
+  width: 100%;
 }
 </style>
 <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
@@ -355,4 +369,39 @@ border: none;
   </div>
   
 </body>
-  
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+        <h6 class="h6" style="color: white">
+          Av. Cra. 9 No. 131 A - 02<br>
+          Línea gratuita: 018000 113033<br>
+          PBX: (601) 648 9000
+        </h6>
+      </div>
+      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+        <ul class="social">
+          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+            <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
+          </a>
+        </ul>
+      </div>
+      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+        <ul class="social">
+          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+            <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
+          </a>
+        </ul>
+      </div>
+      <div class="col-sm-12 col-md-2">
+        <ul class="social">
+          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+            <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

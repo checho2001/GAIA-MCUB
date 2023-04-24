@@ -174,12 +174,12 @@ class ActividadesForm(forms.Form):
 
     Hora = forms.TimeField(   widget=TimeInput(
         
-        attrs={'class': 'form-control',}
+        attrs={'class': 'form-control','style': 'height: 70px;',}
     )
 
         )
     Fecha = forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control',})
+        attrs={'class': 'form-control','style': 'height: 80px;font-size: 30px;',})
         )
     Descripcion = forms.CharField(
         error_messages={'required':'Por favor ingresa una descripción valida'},
@@ -234,7 +234,7 @@ class EjemplarForm(forms.Form):
         choices=[(i, i) for i in CONJUNTODEDATOS],
         widget=forms.Select(
             attrs={
-                'class': 'form-control',
+                'class': 'form-control','style': 'height: 70px;',
             }
         )
     )
@@ -259,7 +259,7 @@ class EjemplarForm(forms.Form):
                 }
             ))
     FechaEvento =  forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control',})
+        attrs={'class': 'form-control','style': 'height: 70px;',})
         )
     Habitad= forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
@@ -277,7 +277,7 @@ class EjemplarForm(forms.Form):
         widget=forms.Select(
             attrs= {
                 'default' : 0,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 70px;',
                 }
             )
         )
@@ -291,7 +291,7 @@ class EjemplarForm(forms.Form):
         widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 70px;',
                 }
             )
         )
@@ -303,7 +303,7 @@ class EjemplarForm(forms.Form):
                 }
             ))
     FechaIdentificacion =  forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control',})
+        attrs={'class': 'form-control','style': 'height: 70px;',})
         )
     IdentificacionReferencias = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
@@ -340,28 +340,28 @@ class EjemplarForm(forms.Form):
         choices = CLASES, widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 70px;',
                 }
             )) 
     Orden = forms.ChoiceField(
         choices = ORDENES, widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 70px;',
                 }
             )) 
     Genero = forms.ChoiceField(
         choices = GENEROS,widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 70px;',
                 }
             ) ) 
     Familia = forms.ChoiceField(
         choices = FAMILIAS,widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 70px;',
                 }
             ) ) 
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(

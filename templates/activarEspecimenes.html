@@ -240,6 +240,76 @@ background-image: url('/static/images/pizarron (1).png');
       color: #404827; 
       border: none;
     }
+
+
+    .h1 {
+      font-family: 'Lato-Black', sans-serif;
+      font-size: 70px;
+    }
+    .h2 {
+      font-family: 'Lato-Black', sans-serif;
+      font-size: 60px;
+      color: #81bb26;
+    }
+    .h3 {
+      font-family: 'Acherus Grotesque', sans-serif;
+      font-size: 50px;
+    }
+    .h4 {
+      font-family: 'Acherus Grotesque', sans-serif;
+      font-size: 40px;
+    }
+    .h5 {
+      font-family: 'Acherus Grotesque', sans-serif;
+      font-size: 30px;
+    }
+    .h6 {
+      font-family: 'Acherus Grotesque', sans-serif;
+      font-size: 25px;
+    } 
+    
+.btn-custom:hover {
+  transform: scale(1.2);
+  color: #404827; 
+  border: none;
+}
+.btn-custom {
+  color: white;
+  background-color: #008776; 
+  padding: 10px 20px;
+  border: none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+  font-size: 30px;
+}
+.btn-customizedlogin {
+  color: white;
+  background-color: #008776; 
+
+  padding: 12px 24px;
+  font-size: 20px;
+  border:none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+  font-size: 30px;
+  
+}
+.btn-customizedlogin :hover {
+  transform: scale(1.2);
+  color: #008776; 
+  border: none;
+  font-size: 30px;
+}
+    footer {
+      background-color: #008776;
+      color: #666;
+      text-align: center;
+      padding: 20px;
+     
+      bottom: 0;
+      width: 100%;
+    }
+
 </style>
 
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
@@ -306,21 +376,21 @@ background-image: url('/static/images/pizarron (1).png');
                         <table id="tabla" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
                           <thead>
                             <tr style="background-color: #404827;color:white;">
-                              <th>ID</th>
-                              <th>Nombre</th>
-                              <th>Fecha</th>
-                              <th>Nombre Científico</th>
-                              <th>Activar</th>
+                              <th class="h5" style="background-color: #404827;color:white;">ID</th>
+                              <th class="h5" style="background-color: #404827;color:white;">Nombre</th>
+                              <th class="h5" style="background-color: #404827;color:white;">Fecha</th>
+                              <th class="h5" style="background-color: #404827;color:white;">Nombre Científico</th>
+                              <th class="h5" style="background-color: #404827;color:white;">Activar</th>
                             </tr>
                           </thead>
                           <tbody>
                             {% for especimen in especimenes %}
                             {% if especimen.estado == False%}
                             <tr>
-                              <td>{{ especimen.NumeroCatalogo }}</td>
-                              <td>{{ especimen.NombreComun }}</td>
-                              <td>{{ especimen.FechaIdentificacion }}</td>
-                              <td>{{ especimen.NombreCientificoComentarioRegistroBiologico }}</td>
+                              <td class="h5">{{ especimen.NumeroCatalogo }}</td>
+                              <td class="h5">{{ especimen.NombreComun }}</td>
+                              <td class="h5">{{ especimen.FechaIdentificacion }}</td>
+                              <td class="h5">{{ especimen.NombreCientificoComentarioRegistroBiologico }}</td>
                               <td style="color: #404827;">
                               <a class="a" href="../activar/{{especimen.id}}">
                                 <img class="image_header-museo" src="/static/images/215490.png" style="height:50px; width:50px;" >
@@ -347,4 +417,54 @@ background-image: url('/static/images/pizarron (1).png');
   </div>
   
 </body>
+<footer>
+  <div class="row">
+    <div class="col" style="border-right: 1px solid white;">
+      
+      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+        Línea gratuita:
+        018000 113033
+        
+        PBX:
+        (601) 648 9000</h6>
+ 
+    </div>
+    <div class="col" style="border-right: 1px solid white;">
+      <ul class="social">
+     
+      <a class="btn-customizedlogin"onClick="
+      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+
+      </a>
+    
+    </ul>
+    </div>
+    <div class="col" style="border-right: 1px solid white;">
+      <ul class="social">
+        <a class="btn-customizedlogin"  onClick="
+      parent.location='https://www.unbosque.edu.co'">
+          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
   
+        </a>
+      
+     
+
+    </ul>
+    </div>
+    <div class="col" >
+      <ul class="social">
+        <a class="btn-customizedlogin" onClick="
+        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+      
+    </ul>
+    </div>
+    <br><br>
+
+</footer>

@@ -376,6 +376,11 @@ class EjemplarForm(forms.Form):
         required=False,
         error_messages={'required':'Seleccione la imagen del ejemplar ', 'invalid':'El formato es erroneo'},
     )
+    def clean_NumeroCatalogo(self):
+        data = self.cleaned_data['NumeroCatalogo']
+        if especimen.objects.filter(NumeroCatalogo=data).exists():
+            raise forms.ValidationError('El número de catálogo ya está registrado.')
+        return data
 
 class Update(forms.Form):
     USUARIOS = []

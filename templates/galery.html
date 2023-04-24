@@ -88,7 +88,12 @@
     font-size:26px
     
     }
-    
+    @media only screen and (max-width: 767px) {
+      .col-md-6 {
+        width: 100%;
+        padding: 0;
+      }
+    }
     #contacto:hover {
     background-image: url('/static/images/informacion (2).png');
     }
@@ -461,7 +466,7 @@ footer {
                 <br>
                 <li class="mb-1" style="border-bottom: 1px solid white;">
                     <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false"  style="font-size: 30px;">
-                    Genero
+                    Género
                     </button>
                     <div class="collapse" id="subgrupo-collapse">
                       {% for i in generos %}
@@ -531,64 +536,30 @@ footer {
 
             <div class="tab-pane fade show active" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">
 
-              <div  class="container  " style="border: none !important;">
-                <div class="card flex" style="border: none ;border: 0;">  
+              <div class="container">
+                <div class="card flex" style="border: none; border: 0;">  
                   <div id="galeria" class="gallery">    
-                    
-                  
-                    <div class="imagen flex">
-                      
-                      <div class="row">
-                        {% for element in especimenes %}
-                        <div class="col-sm-6">
-                        
-                          <div class="card">
-                            <a href="{% url 'element_detail' element.pk %}">
-                            <img  
-                            src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                             class="card-img-top"
-                              alt="Waterfall" height="800px" width="500px"
-                            />
-                            </a>
-                            <div class="card-body">
-                              <h5 class="h4" >  <i>{{ element.NombreCientificoComentarioRegistroBiologico }}  </i></h5>
-                              <p class="h5" style="  font-family: 'Acherus Grotesque', sans-serif;">
-                                {{  element.NumeroCatalogo }}
-                               
-                              </p>
-                              <p class="h5" style="  font-family: 'Acherus Grotesque', sans-serif;">
-                           
-                                {{  element.NombreDelConjuntoDatos }}
-                              </p>
-                              <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary" style=" 
-                              font-family: 'Latoblack', sans-serif;
-                              background: #404827;
-                              color: #fff;
-                              border: none;
-                              padding: 10px 20px;
-                              border-radius: 50px;
-                              text-align: center;
-                              text-decoration: none;
-                              display: inline-block;
-                              font-size: 26px;
-                              margin: 5px;
-                              cursor: pointer;
-                              -webkit-transition-duration: 0.4s;
-                              transition-duration: 0.4s;
-                              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Ver más</a>
-
-                            
-                            </div>
-
+                    <div class="row">
+                      {% for element in especimenes %}
+                      <div class="col-md-6">
+                        <div class="card">
+                          <a href="{% url 'element_detail' element.pk %}">
+                            <img src="/media/{{element.Image}}" alt="{{ element.NombreCientificoComentarioRegistroBiologico }}" class="card-img-top" alt="Waterfall" height="800px" width="500px" />
+                          </a>
+                          <div class="card-body">
+                            <h5 class="h4"><i>{{ element.NombreCientificoComentarioRegistroBiologico }}</i></h5>
+                            <p class="h5" style="font-family: 'Acherus Grotesque', sans-serif;">{{ element.NumeroCatalogo }}</p>
+                            <p class="h5" style="font-family: 'Acherus Grotesque', sans-serif;">{{ element.NombreDelConjuntoDatos }}</p>
+                            <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Ver más</a>
                           </div>
                         </div>
-                        {% endfor %}
+                      </div>
+                      {% endfor %}
                     </div>
                   </div>
-                  </div>   
                 </div>
-                </div>
-
+              </div>
+              
               </div>
 
             <div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">

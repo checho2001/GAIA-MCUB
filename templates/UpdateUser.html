@@ -120,11 +120,13 @@ padding: 50px 0;
 font-family: 'Lato', sans-serif;
 font-size: 16px;
 color: #f6f6f6;
-}.form-floating label {
-  font-size: 30px;
-
-  font-family: 'Lato', sans-serif;
 }
+
+
+.form-floating select {
+  font-size: 30px;
+}
+
 .form-floating label {
   font-size: 30px;
 
@@ -217,6 +219,7 @@ color: white;
         border: 2px solid;
         transition: transform 0.3s ease;
         font-family:'Lato-Black', sans-serif;
+        font-size: 30px;
 
 }
 .btn-customizedlogin :hover {
@@ -283,7 +286,7 @@ border: none;
                     {% csrf_token %}
                     <h1 class="h1">Modificar Usuario</h1>
                     <div class="form-group mb-2">
-                      <div class="form-floating">
+                      <div class="form-floating" >
                         {{ form.username }}
                         
 
@@ -291,7 +294,7 @@ border: none;
                         
                         <br>
                     </div>
-                      <div class="form-floating">
+                      <div class="form-floating" >
                         {{ form.nombre }}
                         
                           <label class="h3">Nombre<span class="text-danger"> *</span></label>
@@ -314,7 +317,7 @@ border: none;
                     <div class="form-floating col-12 ">
                       
                       {{ form.rol }}
-                      
+                      <label class="h3">Rol<span class="text-danger"> *</span></label>
                       
                     </div>
                     <br>

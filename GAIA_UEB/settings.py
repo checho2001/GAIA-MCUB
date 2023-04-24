@@ -142,5 +142,10 @@ MEDIA_URL = '/media/'
 #MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'media')
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = 'soportemcub@gmail.com' 
+EMAIL_HOST_PASSWORD = 'SupportMCUB1234' 
+DEFAULT_FROM_EMAIL = 'soportemcub@gmail.com'

@@ -319,14 +319,14 @@ class EjemplarForm(forms.Form):
             ))
     NombreCientificoComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required': True,
+                'class': 'form-control',
                 }
             ))
     CLASES = []
-    ORDENES= []
-    GENEROS= []
-    FAMILIAS= []
+    ORDENES = []
+    GENEROS = []
+    FAMILIAS = []
     for clase in Clase.objects.all():
         CLASES.append((clase.id,clase.nombreClase))
     for orden in Orden.objects.all():
@@ -337,28 +337,28 @@ class EjemplarForm(forms.Form):
         FAMILIAS.append((fam.id,fam.nombreFamilia))        
     
     ClaseE = forms.ChoiceField(
-        choices = CLASES, widget=forms.Select(
+        choices=CLASES, widget=forms.Select(
             attrs= {
                 'default' : 1,
                 'class' : 'form-control','style': 'height: 70px;',
                 }
             )) 
     Orden = forms.ChoiceField(
-        choices = ORDENES, widget=forms.Select(
+        choices=ORDENES, widget=forms.Select(
             attrs= {
                 'default' : 1,
                 'class' : 'form-control','style': 'height: 70px;',
                 }
             )) 
     Genero = forms.ChoiceField(
-        choices = GENEROS,widget=forms.Select(
+        choices=GENEROS,widget=forms.Select(
             attrs= {
                 'default' : 1,
                 'class' : 'form-control','style': 'height: 70px;',
                 }
             ) ) 
     Familia = forms.ChoiceField(
-        choices = FAMILIAS,widget=forms.Select(
+        choices=FAMILIAS,widget=forms.Select(
             attrs= {
                 'default' : 1,
                 'class' : 'form-control','style': 'height: 70px;',

@@ -542,7 +542,7 @@ footer {
                     <div class="row">
                       {% for element in especimenes %}
                       <div class="col-md-6">
-                        <div class="card">
+                        <div class="card1">
                           <a href="{% url 'element_detail' element.pk %}">
                             <img src="/media/{{element.Image}}" alt="{{ element.NombreCientificoComentarioRegistroBiologico }}" class="card-img-top" alt="Waterfall" height="800px" width="500px" />
                           </a>
@@ -557,6 +557,10 @@ footer {
                       {% endfor %}
                     </div>
                   </div>
+                </div>
+                <div class="pagination">
+                  <button class="previous-page">Previous</button>
+                  <button class="next-page">Next</button>
                 </div>
               </div>
               
@@ -575,7 +579,7 @@ footer {
                         {% for element in anfibios %}
                         <div class="col-sm-6">
                         
-                          <div class="card">
+                          <div class="card2">
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
@@ -641,7 +645,7 @@ footer {
                         {% for element in mamiferos %}
                         <div class="col-sm-6">
                         
-                          <div class="card">
+                          <div class="card3">
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
@@ -707,7 +711,7 @@ footer {
                         {% for element in reptiles %}
                         <div class="col-sm-6">
                         
-                          <div class="card">
+                          <div class="card4">
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
@@ -755,7 +759,7 @@ footer {
                         {% for element in aves %}
                         <div class="col-sm-6">
                         
-                          <div class="card">
+                          <div class="card5">
                             <a href="{% url 'element_detail' element.pk %}">
                             <img 
                             src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
@@ -843,6 +847,42 @@ footer {
     </ul>
     </div>
     <br><br>
+    <script>
+            const cards = document.querySelectorAll('.card1');
+            const previousButton = document.querySelector('.previous-page');
+            const nextButton = document.querySelector('.next-page');
+            let currentPage = 1;
+            const cardsPerPage = 10;
+
+            showPage(currentPage);
+
+            previousButton.addEventListener('click', () => {
+              if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+              }
+            });
+
+            nextButton.addEventListener('click', () => {
+              if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+                currentPage++;
+                showPage(currentPage);
+              }
+            });
+
+            function showPage(pageNumber) {
+              for (let i = 0; i < cards.length; i++) {
+                if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+                  cards[i].style.display = 'inline-block';
+                } else {
+                  cards[i].style.display = 'none';
+                }
+              }
+            }
+          </script>
+          
+
+            
 
 </footer>
 

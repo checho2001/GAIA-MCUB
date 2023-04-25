@@ -22,7 +22,10 @@ import tkinter as tk
 from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
-
+from django.shortcuts import render, redirect
+from .forms import CustomPasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.conf import settings
 from django.http import HttpResponse
 from django.db.models import Max
 from .models import Text
@@ -36,8 +39,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 from django.core.mail import send_mail
-
-
 
 
 class IndexView(View):
@@ -722,7 +723,7 @@ def load_data_clase(request):
         return render(request, 'dashboard.html')
     except FileNotFoundError:
         return redirect('dashboard')
-    
+   
 def load_data_familia(request):
     try:
         root = tk.Tk()
@@ -742,9 +743,6 @@ def load_data_familia(request):
         return render(request, 'dashboard.html')
     except FileNotFoundError:
         return redirect('dashboard')
-   
-
-
 
 
 def load_data_orden(request):
@@ -961,7 +959,6 @@ def elegir_texto(request):
     else:
         return redirect('dashboard.html')
     
-
 @csrf_exempt
 def qr_code(request,data):
     # Crear el objeto QRCode
@@ -984,7 +981,6 @@ def qr_code(request,data):
     response = HttpResponse(buffer.getvalue(), content_type='image/png')
     response['Content-Disposition'] = 'attachment; filename="qrcode.png"'
     return response
-
 
 def qr_code1(request,pk):
     # Obtener la URL actual
@@ -1012,11 +1008,8 @@ def qr_code1(request,pk):
     response = HttpResponse(buffer.getvalue(), content_type='image/png')
     response['Content-Disposition'] = 'attachment; filename="qrcode.png"'
     return response
-
 def error_404(request, exception):
     return render(request, '404.html', {})
-
-
 def enviar_correo(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -1038,3 +1031,18 @@ def enviar_correo(request):
         form = ContactForm()
     
     return render(request, 'contactenos.html',  {'form':form})
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Tu contraseña fue actualizada con éxito.')
+            print('!!!'*20)
+            return redirect('home')
+    else:
+        form = CustomPasswordChangeForm(user=request.user)
+    return render(request, 'changepassword.html', {'form': form})
+    

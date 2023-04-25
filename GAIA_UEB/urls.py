@@ -55,6 +55,7 @@ urlpatterns = [
     path('qr_code/<str:data>/', views.qr_code, name='qr_code'),
     path('paginaejemplar/<int:pk>/qr_code/', views.qr_code1, name="qr_code1"),
     path('enviarcorreo/', views.enviar_correo, name='enviar_correo'),
+    path('changepass/', views.change_password, name='change_password'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 

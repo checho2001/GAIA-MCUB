@@ -15,7 +15,7 @@ from django.urls import reverse_lazy
 from django.conf import settings
 import datetime
 import re
-
+from django.db import DatabaseError
 from datetime import date
 
 class CustomUser(forms.Form):
@@ -398,7 +398,10 @@ class EjemplarForm(forms.Form):
     )
     def clean_NumeroCatalogo(self):
         data = self.cleaned_data['NumeroCatalogo']
-        if especimen.objects.filter(NumeroCatalogo=data).exists():
+        try:
+         if especimen.objects.filter(NumeroCatalogo=data).exists():
+             raise forms.ValidationError('El número de catálogo ya está registrado.')
+        except DatabaseError:
             raise forms.ValidationError('El número de catálogo ya está registrado.')
         return data
 

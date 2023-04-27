@@ -267,53 +267,24 @@
     </div>
   </nav>
   <br>
-
-  <main>
-
-  <div class=" container py-5 h-100" >
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-8">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-          <div class="card-body p-0">
-            <div class="row g-0">
-                <div class="p-5">
-                  
-                  <form action="{% url 'enviar_correo' %}" method="post">
-                    {% csrf_token %}
-                    
-                    <div class="form-floating">
-                      {{ form.nombre }}
-                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Nombre<span class="text-danger"> *</span></label>
+    <main>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <img src="../static/images/17004.png" class="card-img-top rounded-circle mx-auto" alt="Imagen" style="height: 300px;width: 300px;">
+                        <div class="card-body">
+                          <h1 class=" h1" style="color: #81bb26">Texto 1</h1>
+                          <p class="p">Cualquier consulta por favor comunicarse al correo del museo</p>
+                          <p class="p">correo@unbosque.edu.co</p>
+                        </div>
+                      </div>
                       
-                      <br>
-                    </div>
-                    
-                    <div class="form-floating">
-                      {{ form.nombre }}
-                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Correo<span class="text-danger"> *</span></label>
-                      
-                      <br>
-                    </div>
-                    
-                    <div class="form-floating">
-                      {{ form.nombre }}
-                      <label class="font-weight-bold" style="  font-family:'Lato-Black', sans-serif;" >Mensaje<span class="text-danger"> *</span></label>
-                      
-                      <br>
-                    </div>
-                    
-                    <button class="btn-customizedlogin  " style=" border-radius: 50px;"  value="Login" type="submit">Enviar</button>
-                </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    
-  </div>
-</main>
+
+    </main>
 </body>
 
 

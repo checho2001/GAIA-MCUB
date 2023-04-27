@@ -14,6 +14,7 @@ from django.utils.html import strip_tags
 from django.urls import reverse_lazy
 from django.conf import settings
 import datetime
+import re
 
 from datetime import date
 
@@ -119,7 +120,19 @@ class CustomUser(forms.Form):
                     raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
             return apel
     
-
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        
+        if len(password) < 8:
+            raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
+        elif len(password) > 16:
+            raise forms.ValidationError("La contraseña no debe tener más de 16 caracteres.")
+        elif not re.search("[A-Z]", password):
+            raise forms.ValidationError("La contraseña debe tener al menos una letra mayúscula.")
+        elif not re.search("[0-9]", password):
+            raise forms.ValidationError("La contraseña debe tener al menos un número.")
+        
+        return password
 class loginForm(forms.Form):
     username = forms.CharField(
         error_messages={'required':'Por favor ingresa un correo valido'},
@@ -274,7 +287,7 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    DEPARTAMENTOS = []
+    DEPARTAMENTOS= []
 
     for departamentos in departamento.objects.all():
         DEPARTAMENTOS.append((departamentos.id,departamentos.nombre))
@@ -288,7 +301,7 @@ class EjemplarForm(forms.Form):
                 }
             )
         )
-    MUNICIPIOS = []
+    MUNICIPIOS= []
 
     for municipio in municipio.objects.all():
         MUNICIPIOS.append((municipio.id, municipio.municipio))

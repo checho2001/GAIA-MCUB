@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -122,10 +122,13 @@
   .form-floating select {
     font-size: 30px;
   }
+  .form-floating  {
+    font-size: 30px;
+  }
   select {
     font-size: 30px;  }
   .form-floating label {
-    font-size: 30px;
+    font-size: 30px;  
  
     font-family: 'Lato', sans-serif;
   }
@@ -142,6 +145,7 @@
     font-size: 60px;
     color: #81bb26;
   }
+ 
   .h3 {
     font-family: 'Acherus Grotesque', sans-serif;
     font-size: 50px;
@@ -243,6 +247,16 @@
     bottom: 0;
     width: 100%;
   }
+  .form-floating input[type=text] {
+    font-size: 30px;
+  }
+  
+.form-floating input[type=email] {
+  font-size: 30px;
+}
+.alert {
+  font-size: 30px;
+}
     </style>
 </head>
 <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
@@ -288,136 +302,140 @@
     </div>
   </div>
 </nav>
-<body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
-  <div class=" container py-5 h-100" >
+<body class="m-0 vh-100 row text-center align-items-center justify-content-center">
+
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-5">
+      <div class="col-md-6">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
-                <div class="p-5">
-                  
-                  
-                  <form id="miform"  action="{%url 'register' %}" method= POST class=" w-100 m-auto">
-                    {% csrf_token %}
-                    <h1 class="h1">Registro Usuario</h1>
-                    <br>
-                    <div class="row">
-                      <br>
-                    <div class="form-group mb-2">
-                      <div class="form-floating">
-                        {{ form.username }}
-                        
+              <div class="p-5">
 
+                <form id="miform" action="{%url 'register' %}" method="POST" class="w-100 m-auto">
+                  {% csrf_token %}
+                  <h1 class="h1">Registro Usuario</h1>
+                  <br>
+                  <div class="row">
+                    <div class="form-floating">
+                     
+                        {{ form.username }}
                         <label class="h3">Usuario<span class="text-danger"> *</span></label>
-                        
                         <br>
                     </div>
-                      <div class="form-floating">
-                        {{ form.nombre }}
-                        
-                          <label class="h3">Nombre<span class="text-danger"> *</span></label>
-                          
-                          <br>
-                      </div>
-                      <div class="form-floating">
-                        {{ form.apellido }}
-                          <label class="h3">Apellido<span class="text-danger"> *</span></label>
-                         
-                          <br>
-                      </div>
-                      <div class="form-floating">
-                        {{ form.correo }}
-                        <label class="h3"  title="Introduce tu dirección de correo electrónico" >Correo<span class="text-danger"> *</span></label>
-                       
-                    </div>
-                    <br>
                     <div class="form-floating">
-                      {{ form.password }}
-                      <label  type="password" class="h3">Contraseña<span class="text-danger"> *</span></label>
                      
-                      <br>
-                  </div>
-                    <div class="form-floating col-12 " >
+                        {{ form.nombre }}
+                        <label class="h3">Nombre<span class="text-danger"> *</span></label>
+                        <br>
+                    </div>
+                    <div class="form-floating">
                       
+                        {{ form.apellido }}
+                        <label class="h3">Apellido<span class="text-danger"> *</span></label>
+                        <br>
+                    </div>
+                    <div class="form-floating">
+                      
+                        {{ form.correo }}
+                        <label title="Introduce tu dirección de correo electrónico" class="h3">Correo<span class="text-danger"> *</span></label>
+                        <br>
+                    </div>
+                    <div class="form-floating">
+                      
+                        {{ form.password }}
+                        <label type="password" class="h3">Contraseña<span class="text-danger"> *</span></label>
+                        <br>
+                    </div>
+                    <div class="form-floating">
                       {{ form.rol }}
                       <label class="h3">Rol<span class="text-danger"> *</span></label>
-                      
+                      <br>
                     </div>
-                    <br>
-
-                    <div class="form-floating col-12 ">
-                      
+                    <div class="form-floating">
                       {{ form.area }}
                       <label class="h3">Área<span class="text-danger"> *</span></label>
-                      
+                      <br>
                     </div>
-                    <br>
-        
+                  </div>
 
-                    <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Ingresar</button>
-                    <br>
-              
-                   
-                      {% for field in form %}
-                      {% if field.errors %}
-                      <div class="alert alert-danger alert-dismissible fade show">
-                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                               {{ field.errors }}
-                      {% endif %}
-                    {% endfor %}
-                     
-              
-                   
-                  </form>
+                  <button onclick="location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit">Ingresar</button>
+                  <br>
 
-                  
-                </div>
+                  {% for field in form %}
+                  {% if field.errors %}
+                  <br>
+                    <div class="alert alert-danger alert-dismissible fade show">
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                      {% for error in field.errors %}
+                        <span>{{ error }}</span><br>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+                
+                </form>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-  </div>
-  
-</body>
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
-        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-        <h6 class="h6" style="color: white">
-          Av. Cra. 9 No. 131 A - 02<br>
-          Línea gratuita: 018000 113033<br>
-          PBX: (601) 648 9000
-        </h6>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-            <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
 
+  </div>
+
+</body>
+
+<footer>
+  <div class="row">
+    <div class="col" style="border-right: 1px solid white;">
+      
+      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+        Línea gratuita:
+        018000 113033
+        
+        PBX:
+        (601) 648 9000</h6>
+ 
+    </div>
+    <div class="col" style="border-right: 1px solid white;">
+      <ul class="social">
+     
+      <a class="btn-customizedlogin"onClick="
+      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+
+      </a>
+    
+    </ul>
+    </div>
+    <div class="col" style="border-right: 1px solid white;">
+      <ul class="social">
+        <a class="btn-customizedlogin"  onClick="
+      parent.location='https://www.unbosque.edu.co'">
+          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+     
+
+    </ul>
+    </div>
+    <div class="col" >
+      <ul class="social">
+        <a class="btn-customizedlogin" onClick="
+        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+  
+        </a>
+      
+      
+    </ul>
+    </div>
+    <br><br>
+
+</footer>

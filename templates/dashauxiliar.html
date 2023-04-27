@@ -21,7 +21,47 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
-
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script>
+          $(document).ready(function() {
+            $('#myTable').DataTable({
+              "paging": true,
+              "pageLength": 5,
+              "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                "paginate": {
+                  "previous": 'Anterior',
+                  "next": 'Siguiente'
+              }
+                
+              }
+            });
+            
+            $('#tabla2').DataTable({
+              "paging": true,
+              "pageLength": 5, 
+              "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+                "paginate": {
+                  "previous": 'Anterior',
+                  "next": 'Siguiente'
+              }
+                
+              }
+            });
+            
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+          });
+        
+        
+        
+         
+        </script>
+        
       
     <style>
       .dataTables_wrapper .dataTables_paginate .paginate_button.current {
@@ -327,12 +367,17 @@
           bottom: 0;
           width: 100%;
         }
+        .table-responsive {
+          max-height: 500px; 
+          
+          overflow-y: scroll;
+        }
+        
     </style>
   </head>
   
   <body>
  
-    
     <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
         <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
@@ -433,23 +478,23 @@
           <div   class="table-responsive">
             <br>
                   
-            <table class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+            <table  id="tabla2" class="table table-sm table-striped" data-toggle="table">
               <thead>
                 <tr style="background-color: #404827;color:white;">
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Tarea Realizada</th>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Ejemplar</th>
+                  <th class="h5" scope="col">Fecha</th>
+                  <th class="h5" scope="col">Tarea Realizada</th>
+                  <th  class="h5" scope="col">Usuario</th>
+                  <th  class="h5" scope="col">Ejemplar</th>
                 </tr>
               </thead>
               <tbody>
                 {% for action in actions %}
                 {% if action.estado == True %}
                 <tr>
-                  <td>{{ action.tiempo }}</td>
-                  <td>{{ action.tarea }}</td>
-                  <td>{{ action.user }}</td>
-                  <td>{{ action.ejemplar }}</td>
+                  <td class="h5">{{ action.tiempo }}</td>
+                  <td class="h5">{{ action.tarea }}</td>
+                  <td class="h5">{{ action.user }}</td>
+                  <td class="h5">{{ action.ejemplar }}</td>
                 {% endif %}
 
                 {% endfor %}
@@ -492,15 +537,15 @@
         <div   class="table-responsive">
         
 
-        <table  class="table table-sm table-striped"  data-page-size="4" data-toggle="table">
+        <table  id="myTable" class="table table-sm table-striped"   data-toggle="table">
           <thead>
             <tr style="background-color: #404827;color:white;">
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Fecha</th>
-              <th> Nombre Cientifico</th>
-              <th>Editar</th>
-              <th>Archivar  </th>
+              <th  class="h5">ID</th>
+              <th  class="h5">Nombre</th>
+              <th  class="h5">Fecha</th>
+              <th  class="h5"> Nombre Cientifico</th>
+              <th  class="h5">Editar</th>
+              <th  class="h5">Archivar  </th>
             </tr>
           </thead>
           <tbody>
@@ -508,10 +553,10 @@
             {% if esp.estado == True %}
             <tr>
               
-              <td>{{ esp.NumeroCatalogo }}</td>
-              <td>{{ esp.NombreComun }}</td>
-              <td>{{ esp.FechaIdentificacion }}</td>
-              <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
+              <td  class="h5">{{ esp.NumeroCatalogo }}</td>
+              <td  class="h5">{{ esp.NombreComun }}</td>
+              <td  class="h5">{{ esp.FechaIdentificacion }}</td>
+              <td  class="h5">{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
               <td> <a class="a" href="../updateE/{{esp.id}}"  >
                 <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
               </a>  </td>

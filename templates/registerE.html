@@ -148,7 +148,7 @@ font-family: 'Lato-Black', sans-serif;
 .h6 {
   font-family: 'Acherus Grotesque', sans-serif;
   font-size: 25px;
-}
+} 
 .social {
 list-style: none;
 padding: 0;
@@ -445,6 +445,18 @@ footer {
                     
                     </div>
                   </div>
+                  {% for field in form %}
+                  {% if field.errors %}
+                  <br>
+                    <div class="alert alert-danger alert-dismissible fade show">
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                      {% for error in field.errors %}
+                        <span>{{ error }}</span><br>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+                
                   </form>  
                   
             </div>

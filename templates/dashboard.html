@@ -600,7 +600,11 @@
 
                     <div class="text" ><h4  class="h4" style="color: #008776;">Importar Ejemplares</h4></div>
                   
-                   
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
                   </div>
                       
                     

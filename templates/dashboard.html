@@ -12,7 +12,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../static/js/sidebars.js"> </script>
@@ -275,6 +278,9 @@
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
+        }
+        .footer-wrapper {
+          font-size: 12px;
         }
       }
 
@@ -601,10 +607,13 @@
                     <div class="text" ><h4  class="h4" style="color: #008776;">Importar Ejemplares</h4></div>
                   
                     {% if error %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ error }}
-                    </div>
-                {% endif %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
                   </div>
                       
                     
@@ -833,55 +842,43 @@
   
   
   </body>
-  <footer>
-    <div class="row">
-      <div class="col" style="border-right: 1px solid white;">
-        
-        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-        <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
-          Línea gratuita:
-          018000 113033
-          
-          PBX:
-          (601) 648 9000</h6>
-   
+  <div class="footer-wrapper d-none d-sm-block">
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+            <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+            <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+            <h6 class="h6" style="color: white">
+              Av. Cra. 9 No. 131 A - 02<br>
+              Línea gratuita: 018000 113033<br>
+              PBX: (601) 648 9000
+            </h6>
+          </div>
+          <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+            <ul class="social">
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+                <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
+              </a>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+            <ul class="social">
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+                <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
+              </a>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <ul class="social">
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+                <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
+              </a>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col" style="border-right: 1px solid white;">
-        <ul class="social">
-       
-        <a class="btn-customizedlogin"onClick="
-        parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
-          <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+    </footer>
+  </div>
   
-        </a>
-      
-      </ul>
-      </div>
-      <div class="col" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin"  onClick="
-        parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
-    
-          </a>
-        
-       
-  
-      </ul>
-      </div>
-      <div class="col" >
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="
-          parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
-    
-          </a>
-        
-        
-      </ul>
-      </div>
-      <br><br>
-  
-  </footer>
   </html>

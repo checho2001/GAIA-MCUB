@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Actualizar Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Página de modificación de usuarios">
+    <title>Modificar Usuario</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
@@ -237,19 +239,31 @@ footer {
   color: #666;
   text-align: center;
   padding: 20px;
- 
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
+.alert {
+  font-size: 30px;
+}
+@media (max-width: 767px) {
+  .card-registration {
+    overflow-y: auto;
+  }
+  .footer-wrapper {
+    font-size: 12px;
+  }
+}
+
 </style>
 <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-    <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+    <img class="image_header-museo" src="/static/images/logo (1).png" alt="..." style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
     " >
   </a>
   
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="..." style="width: 30%; height:30%" >
   </a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -289,119 +303,106 @@ footer {
 </nav>
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
-  <div class=" container py-5 h-100" >
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-5">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card" style="border-radius: 15px; margin-top:200px; margin-bottom:500px;">
           <div class="card-body p-0">
+            <h1 class="h1">Modificar Usuario</h1>
             <div class="row g-0">
-                <div class="p-5">
-                  <form action= "{%url 'UpdateU' %}" method= POST class=" w-100 m-auto">
-                    {% csrf_token %}
-                    <h1 class="h1">Modificar Usuario</h1>
-                    <div class="form-group mb-2">
-                      <div class="form-floating" >
-                        {{ form.username }}
-                        
-
-                        <label class="h3">Usuario<span class="text-danger"> *</span></label>
-                        
-                        <br>
+              <div class="col-md-12 col-lg-6 p-5">
+                <form id="myformupdate" action="{% url 'UpdateU' %}" method="POST" class="w-100 m-auto">
+                  {% csrf_token %}
+                
+                  <div class="form-group mb-2">
+                    <div class="form-floating">
+                      {{ form.username }}
+                      <label class="h3">Usuario<span class="text-danger"> *</span></label>
                     </div>
-                      <div class="form-floating" >
-                        {{ form.nombre }}
-                        
-                          <label class="h3">Nombre<span class="text-danger"> *</span></label>
-                          
-                          <br>
-                      </div>
-                      <div class="form-floating">
-                        {{ form.apellido }}
-                          <label class="h3">Apellido<span class="text-danger"> *</span></label>
-                         
-                          <br>
-                      </div>
-                      <div class="form-floating">
-                        {{ form.correo }}
-                        <label class="h3">Correo<span class="text-danger"> *</span></label>
-                       
-                    </div>
-                    
                     <br>
-                    <div class="form-floating col-12 ">
-                      
+                    <div class="form-floating">
+                      {{ form.nombre }}
+                      <label class="h3">Nombre<span class="text-danger"> *</span></label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                      {{ form.apellido }}
+                      <label class="h3">Apellido<span class="text-danger"> *</span></label>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-12 col-lg-6 p-5">
+                  <div class="form-group mb-2">
+                    <div class="form-floating">
+                      {{ form.correo }}
+                      <label class="h3">Correo<span class="text-danger"> *</span></label>
+                    </div>
+                    <br>
+                    <div class="form-floating col-12">
                       {{ form.rol }}
                       <label class="h3">Rol<span class="text-danger"> *</span></label>
-                      
                     </div>
-                    <br>
-                    <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Ingresar</button>
-                    <br>
-                  
-                    <br> 
-
-
-                   
-                      {% for field in form %}
-                      {% if field.errors %}
-                      <div class="alert alert-danger alert-dismissible fade show">
-                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                               {{ field.errors }}
-
-                          </div>
-                          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                      {% endif %}
-                    
+                  </div>
+                  <div class="d-grid gap-2">
+                    <button onclick="if(!document.getElementById('miformupdate').checkValidity()) return false; location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit" formnovalidate>Ingresar</button>
+                  </div>
+                  <br>
+                  {% for field in form %}
+                  {% if field.errors %}
+                  <div class="alert alert-danger alert-dismissible fade show">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      {{ field.errors }}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                  </div>
+                  {% endif %}
                   {% endfor %}
-                     
-              
-                   
-                  </form>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
   
+  
 </body>
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
-        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-        <h6 class="h6" style="color: white">
-          Av. Cra. 9 No. 131 A - 02<br>
-          Línea gratuita: 018000 113033<br>
-          PBX: (601) 648 9000
-        </h6>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-            <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

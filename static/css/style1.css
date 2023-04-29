@@ -64,6 +64,8 @@ nav-link{
 @font-face {
     font-family: 'Lato-Black';
     src: url('fonts/Lato-Black.ttf') format('truetype');
+    font-display: swap;
+
 }
 
 
@@ -72,6 +74,8 @@ nav-link{
     src: url('fonts/Lato-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
+    font-display: swap;
+
 }
 
 
@@ -81,6 +85,8 @@ nav-link{
     src: url('fonts/acherus_grotesque_-_ultralight.otf') format('opentype');
     font-weight: 200;
     font-style: normal;
+    font-display: swap;
+
   }
   
   @font-face {

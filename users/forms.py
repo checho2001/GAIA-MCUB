@@ -433,7 +433,7 @@ class Update(forms.Form):
         choices = USUARIOS,
         widget=forms.Select(
             attrs= {
-                 'style': 'height: 70px;',
+                 'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             )
@@ -448,7 +448,7 @@ class Update(forms.Form):
                 'placeholder':'Digite su nombre',
                 'required' : True,
                 'class' : 'form-control',
-
+                'style': 'height: 80PX;',
                 }
             )
         
@@ -460,6 +460,7 @@ class Update(forms.Form):
                 'placeholder':'Digite su apellido',
                 'required' : True,
                 'class' : 'form-control',
+                'style': 'height: 80PX;',
                 }
             )
         )
@@ -469,6 +470,7 @@ class Update(forms.Form):
                 'placeholder':'Digite su correo',
                 'required' : True,
                 'class' : 'form-control',
+                'style': 'height: 80PX;',
                 }
             
             )
@@ -484,26 +486,34 @@ class Update(forms.Form):
             attrs= {
                  'style': 'height: 70px;',
                 'class' : 'form-control',
+                'style': 'height: 80PX;',
                 }
             ))    
-    def clean_correo(self):
-        mail = self.cleaned_data['correo']
-        if "@unbosque.edu.co" not in mail:   
-            raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
-        return mail      
     def clean_nombre(self):
-            nomb = self.cleaned_data['nombre']
-            for l in nomb:
-                if l.isnumeric():
-                    raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros'))
-    
-            return nomb
+        nomb = self.cleaned_data['nombre']
+        if not nomb:
+            raise forms.ValidationError("Por favor ingrese un nombre.")
+        if not re.match("^[a-zA-Z]*$", nomb):
+            raise forms.ValidationError("Nombre inválido, debe contener sólo letras.")
+        
+        return nomb
+    def clean_username(self):
+        usernm = self.cleaned_data['username']
+        if not usernm:
+            raise forms.ValidationError("Por favor ingrese un usuario.")
+        if not re.match("^[a-zA-Z\d]*$", usernm):
+            raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
+        
+        return usernm
     def clean_apellido(self):
-            apel = self.cleaned_data['apellido']
-            for l in apel:
-                if l.isnumeric():
-                    raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
-            return apel
+        apel = self.cleaned_data['apellido']
+        if not apel:
+            raise forms.ValidationError("Por favor ingrese un apellido.")
+        if not re.match("^[a-zA-Z]*$", apel):
+            raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
+        return apel
+
+
     
 class desactivarUsuario(forms.Form):
 

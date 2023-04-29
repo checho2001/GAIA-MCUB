@@ -136,7 +136,7 @@ class UserAction(models.Model):
     ejemplar = models.CharField(max_length=100)
     tiempo = models.DateTimeField(auto_now_add=True)
     estado = models.BooleanField(default=False)
-
+    Descripcion = models.CharField(max_length=900)
 class Imagenes(models.Model):
     image = models.ImageField(upload_to='media/')
 class Text(models.Model):

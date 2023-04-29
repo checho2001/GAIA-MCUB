@@ -324,7 +324,7 @@
             <div class="row g-0">
               <div class="p-5">
 
-                <form id="miform" action="{% url 'register' %}" method="POST" class="w-100 m-auto">
+                <form id="miform1" action="{% url 'register' %}" method="POST" class="w-100 m-auto" >
                   {% csrf_token %}
                   <h1 class="h1">Registro Usuario</h1>
                   <br>
@@ -370,23 +370,23 @@
                     </div>
                   </div>
                 
-                  <button onclick="if(!document.getElementById('miform').checkValidity()) return false; location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit" formnovalidate>Ingresar</button>
+                  <div class="d-grid gap-2">
+                    <button onclick="if(!document.getElementById('miform1').checkValidity()) return false; location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit" formnovalidate>Ingresar</button>
+                  </div>
                   <br>
-                
                   {% for field in form %}
                   {% if field.errors %}
-                  <br>
                     <div class="alert alert-danger alert-dismissible fade show">
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                      <strong>{{ field.label }}</strong>
                       {% for error in field.errors %}
-                        <span>{{ error }}</span><br>
+                        <div>{{ error }}</div>
                       {% endfor %}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                   {% endif %}
                 {% endfor %}
-               
                 </form>
-                
+            
 
               </div>
             </div>

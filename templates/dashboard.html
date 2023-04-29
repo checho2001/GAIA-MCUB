@@ -63,6 +63,12 @@
 
 
     <style>
+      td.desc-col {
+        max-width: 300px; /* Ajusta este valor al ancho que desees */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        vertical-align: top;
+      }
       .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background-color: transparent;
         border: none;
@@ -555,6 +561,7 @@
                               <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif;">Fecha</th>
                               <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif;">Tarea Realizada</th>
                               <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif;">Usuario</th>
+                              <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif;">Descrición</th>
                               <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif;">Ejemplar</th>
                             </tr>
                           </thead>
@@ -564,8 +571,8 @@
                             <tr>
                               <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
                               <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
-                              <td   class="h5" style="color: #404827; ">{{ action.user }}</td>
-                              
+                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
+                              <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
                               <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                               
                           
@@ -723,7 +730,7 @@
                       <br>
                       <div class="text-center" ><h2 class="h2"  style="color: #008776; text-align: center;">Gestión Tipo de Actividades</h2></div>
                      
-                        <br><br>
+                        <br>
                         <form method="post" action="{% url 'AgregarActividad' %}">
                           {% csrf_token %}
                           
@@ -740,14 +747,35 @@
                         
                          
                         </form>
-                      
-                        <br><br> 
+                        <br>
+                        <div class="col">
+                          <form action="{% url 'EliminarActividad' %}" method="get">
+                            {% csrf_token %}
+                            <div class="text"><h4 class="h4" style="color: Black;">Eliminar tipo de Actividad</h4></div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <select class="form-select" style="font-size:30px" name="actividad_id">
+                                        {% for actividad in actividades %}
+                                            <option value="{{ actividad.id }}">{{ actividad.nombreactividad }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button class="btn-customizedlogin" type="submit" value="Eliminar">
+                                        <img class="image_header-museo" src="/static/images/eliminar.png" style="height:50px; width:50px;">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                        <br>
                         <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Gestión texto pagina principal</h2></div>
                    
                         <form method="post" action="{% url 'elegirtexto' %}">
                           {% csrf_token %}  
-                          <br><br>
-                          <div class="text" ><h4   class="h4" class="h4" style="color: Black;">Seleccione que division del texto cambiar</h4></div>
+                          <br>
+                          <div class="text" ><h4   class="h4" class="h4" style="color: Black;">Seleccione que división del texto cambiar</h4></div>
                           <br>
 
                           <div class="row">

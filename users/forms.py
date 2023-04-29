@@ -17,6 +17,7 @@ import datetime
 import re
 from django.db import DatabaseError
 from datetime import date
+from django.contrib.auth.forms import PasswordResetForm
 
 class CustomUser(forms.Form):
     nombre = forms.CharField( 
@@ -25,7 +26,6 @@ class CustomUser(forms.Form):
         strip = True,
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su nombre',
                 'required' : True,
                 'style': 'height: 80PX;',
                 'class' : 'form-control',
@@ -38,7 +38,6 @@ class CustomUser(forms.Form):
         error_messages={'required':'Por favor ingresa un apellido valido'},
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su apellido',
                 'required' : True,
                 'style': 'height: 80PX;',
                 'class' : 'form-control',
@@ -48,7 +47,6 @@ class CustomUser(forms.Form):
     correo = forms.EmailField(
         widget=forms.EmailInput( 
         attrs= {
-                'placeholder':'Digite su correo',
                 'required' : True,
                 'style': 'height: 80PX;',
                 'class' : 'form-control',
@@ -59,7 +57,6 @@ class CustomUser(forms.Form):
     password =  forms.CharField(
         widget=forms.PasswordInput(
                 attrs= {
-                'placeholder':'Ingrese su contraseña',
                 'required' : True,
                 'name' : 'passUser',
                 'style': 'height: 80PX;',
@@ -72,7 +69,6 @@ class CustomUser(forms.Form):
         strip = True,
         widget=forms.TextInput(
             attrs= {
-                'placeholder':'Digite su usuario',
                 'required' : True,
                 'style': 'height: 80PX;',
                 'class' : 'form-control',
@@ -104,53 +100,41 @@ class CustomUser(forms.Form):
                 }
             ))
 
-    def clean_correo(self):
-        mail = self.cleaned_data['correo']
-        if not mail:
-            raise forms.ValidationError("Por favor ingrese un correo electrónico.")
-        elif "@unbosque.edu.co" not in mail:   
+  
+    def clean(self):
+        cleaned_data = super().clean()
+
+        correo = cleaned_data.get('correo')
+        nombre = cleaned_data.get('nombre')
+        username = cleaned_data.get('username')
+        apellido = cleaned_data.get('apellido')
+        password = cleaned_data.get('password')
+
+        if correo and "@unbosque.edu.co" not in correo:
             raise forms.ValidationError("El correo debe contener @unbosque.edu.co")
-        elif User.objects.filter(email=mail).count():
+
+        if User.objects.filter(email=correo).count():
             raise ValidationError(_('Correo no valido, este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
-        return mail      
 
-    def clean_nombre(self):
-        nomb = self.cleaned_data['nombre']
-        if not nomb:
-            raise forms.ValidationError("Por favor ingrese un nombre.")
-        if not re.match("^[a-zA-Z]*$", nomb):
+        if nombre and not re.match("^[a-zA-Z]*$", nombre):
             raise forms.ValidationError("Nombre inválido, debe contener sólo letras.")
-        
-        return nomb
-    def clean_username(self):
-        usernm = self.cleaned_data['username']
-        if not usernm:
-            raise forms.ValidationError("Por favor ingrese un usuario.")
-        if not re.match("^[a-zA-Z\d]*$", usernm):
-            raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
-        
-        return usernm
-    def clean_apellido(self):
-        apel = self.cleaned_data['apellido']
-        if not apel:
-            raise forms.ValidationError("Por favor ingrese un apellido.")
-        if not re.match("^[a-zA-Z]*$", apel):
-            raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
-        return apel
 
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        if not password:
-            raise forms.ValidationError("Por favor ingrese una contraseña.")
-        elif len(password) < 8:
-            raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
-        elif len(password) > 16:
-            raise forms.ValidationError("La contraseña no debe tener más de 16 caracteres.")
-        elif not re.search("[A-Z]", password):
-            raise forms.ValidationError("La contraseña debe tener al menos una letra mayúscula.")
-        elif not re.search("[0-9]", password):
-            raise forms.ValidationError("La contraseña debe tener al menos un número.")
-        return password
+        if username and not re.match("^[a-zA-Z\d]*$", username):
+            raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
+
+        if apellido and not re.match("^[a-zA-Z]*$", apellido):
+            raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
+
+        if password:
+            if len(password) < 8:
+                raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
+            elif len(password) > 16:
+                raise forms.ValidationError("La contraseña no debe tener más de 16 caracteres.")
+            elif not re.search("[A-Z]", password):
+                raise forms.ValidationError("La contraseña debe tener al menos una letra mayúscula.")
+            elif not re.search("[0-9]", password):
+                raise forms.ValidationError("La contraseña debe tener al menos un número.")
+        return cleaned_data
 
 class loginForm(forms.Form):
     username = forms.CharField(
@@ -273,8 +257,9 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    CONJUNTODEDATOS = [    "Colección de Exhibición de Anfibios",    "Colección de Exhibición de Aves",    "Colección de exhibición de Reptiles",    "Colección de exhibición de Mammalia",    "Colección de exhibición de Myriapoda",    "Colección de referencia de Arachnida","Colección de exhibición de Mollusca"]
-
+    CONJUNTODEDATOS = []
+    for departamentos in departamento.objects.all():
+        CONJUNTODEDATOS.append((departamentos.id,departamentos.nombre))
     NombreDelConjuntoDatos = forms.ChoiceField(
         choices=[(i, i) for i in CONJUNTODEDATOS],
         widget=forms.Select(
@@ -435,6 +420,7 @@ class Update(forms.Form):
 
     for useri in User.objects.all():
         USUARIOS.append((useri.id, useri.username))
+    
     username = forms.ChoiceField(
         choices = USUARIOS,
         widget=forms.Select(
@@ -446,35 +432,34 @@ class Update(forms.Form):
         )
 
     nombre = forms.CharField( 
-        
-        error_messages={'required':'Por favor ingresa un nombre valido'},
-        strip = True,
+        required=False,
+        strip=True,
         widget=forms.TextInput(
             attrs= {
                 'placeholder':'Digite su nombre',
-                'required' : True,
+                
                 'class' : 'form-control',
                 'style': 'height: 80PX;',
                 }
             )
-        
         )
     apellido = forms.CharField(
-        error_messages={'required':'Por favor ingresa un apellido valido'},
+        required=False,
         widget=forms.TextInput(
             attrs= {
                 'placeholder':'Digite su apellido',
-                'required' : True,
+                
                 'class' : 'form-control',
                 'style': 'height: 80PX;',
                 }
             )
         )
     correo = forms.EmailField(
+        required=False,
         widget=forms.EmailInput( 
         attrs= {
                 'placeholder':'Digite su correo',
-                'required' : True,
+                
                 'class' : 'form-control',
                 'style': 'height: 80PX;',
                 }
@@ -495,28 +480,39 @@ class Update(forms.Form):
                 'style': 'height: 80PX;',
                 }
             ))    
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        user_id = self.initial.get('username', None)
+        if user_id:
+            user = User.objects.get(id=user_id)
+            self.fields['nombre'].initial = user.nombre
+            self.fields['apellido'].initial = user.apellido
+            self.fields['correo'].initial = user.email
+    
     def clean_nombre(self):
         nomb = self.cleaned_data['nombre']
-        if not nomb:
-            raise forms.ValidationError("Por favor ingrese un nombre.")
-        if not re.match("^[a-zA-Z]*$", nomb):
+       
+        if nomb and not re.match("^[a-zA-Z]*$", nomb):
             raise forms.ValidationError("Nombre inválido, debe contener sólo letras.")
         
         return nomb
+    
     def clean_username(self):
         usernm = self.cleaned_data['username']
-        if not usernm:
-            raise forms.ValidationError("Por favor ingrese un usuario.")
+       
         if not re.match("^[a-zA-Z\d]*$", usernm):
             raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
         
         return usernm
+    
     def clean_apellido(self):
         apel = self.cleaned_data['apellido']
-        if not apel:
-            raise forms.ValidationError("Por favor ingrese un apellido.")
-        if not re.match("^[a-zA-Z]*$", apel):
+        
+        if apel and not re.match("^[a-zA-Z]*$", apel):
             raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
+        
         return apel
 
 
@@ -584,67 +580,3 @@ class ContactForm(forms.Form):
         error_messages={'required': 'Por favor ingresa un mensaje válido'}
     )
 
-class CustomPasswordChangeForm(PasswordChangeForm):
-    old_password = forms.CharField(
-        label=_("Contraseña actual"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'})
-    )
-
-    new_password1 = forms.CharField(
-        label=_("Nueva contraseña"),
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
-        strip=False,
-        help_text=_("La contraseña no puede ser demasiado similar a otras información personal."
-                    "La contraseña debe contener al menos 8 caracteres."
-                    "La contraseña no puede ser completamente numérica."),
-    )
-
-    new_password2 = forms.CharField(
-        label=_("Confirmar nueva contraseña"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
-    )
-
-    def clean_new_password1(self):
-        password1 = self.cleaned_data.get('new_password1')
-        if len(password1) < 8:
-            raise ValidationError("La contraseña debe contener al menos 8 caracteres.")
-        if password1.isnumeric():
-            raise ValidationError("La contraseña no puede ser completamente numérica.")
-        return password1
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields['old_password'].widget.attrs.update({
-            'class': 'form-control',
-            'id': 'PassActual',
-            'placeholder': 'Contraseña Actual',
-        })
-
-        self.fields['new_password1'].widget.attrs.update({
-            'class': 'form-control',
-            'id': 'NewPass',
-            'placeholder': 'Nueva Contraseña',
-        })
-
-        self.fields['new_password2'].widget.attrs.update({
-            'class': 'form-control',
-            'id': 'ConfPass',
-            'placeholder': 'Confirmar Contraseña',
-        })
-
-    def send_email(self, email):
-        subject = 'Confirmación de cambio de contraseña'
-        message = f'Hola {self.user.username}, se ha cambiado la contraseña exitosamente'
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
-        send_mail(subject, message, from_email, recipient_list)
-
-    def save(self, commit=True):
-        response = super().save(commit)
-
-        # Send email confirmation
-        self.send_email(self.user.email)
-
-        return response

@@ -23,7 +23,6 @@ from tkinter import filedialog
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 from django.shortcuts import render, redirect
-from .forms import CustomPasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.conf import settings
 from django.http import HttpResponse
@@ -36,9 +35,15 @@ import io
 from io import BytesIO
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.views.generic.edit import FormView
 
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 
 from django.core.mail import send_mail
+from django.http import JsonResponse
 
 
 class IndexView(View):
@@ -179,7 +184,6 @@ class Dashboard_Cur(View):
             if user.is_authenticated:
                 if Rol.objects.filter(user=user, id=3):
                     clase = Class_User.objects.get(id_user_id= request.user.id)
-                    #Filtrar por usuarios del area
                     usuarios = Class_User.objects.filter(id_clase_id = clase.id_clase_id)
                     lista = []
                     for i in usuarios:
@@ -200,13 +204,15 @@ class Dashboard(View):
         def get(self,request):
             error = request.session.pop('error', None)
             user = request.user 
+            actividades = TipoActividad.objects.all()
+
             if user.is_authenticated:
                 
                 if Rol.objects.filter(user=user, id=4):
                   
                     especimenes = especimen.objects.all()
                     actions = UserAction.objects.order_by('tiempo').all()
-                    return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions,'error': error})
+                    return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions,'error': error, 'actividades': actividades})
                 else:
                     return HttpResponseRedirect(reverse('redirect'))
 
@@ -228,7 +234,14 @@ class EjemplarP(View):
                 rol = Rol.objects.get(user=user)
             return render(request,"paginaejemplar.html",{'rol': rol })		            		
 
-
+def obtener_usuario(request, id_usuario):
+    usuario = User.objects.get(id=id_usuario)
+    usuario_info = {
+        'nombre': usuario.nombre,
+        'apellido': usuario.apellido,
+        'correo': usuario.email,
+    }
+    return JsonResponse(usuario_info)
 def login(request):
     form = loginForm(request.POST) 
     if request.method == 'POST':
@@ -258,7 +271,7 @@ def register(request):
     user1 = request.user 
     if user1.is_authenticated:
             rol = Rol.objects.get(user=user1)
-    if request.method == 'P OST':
+    if request.method == 'POST':
         form = CustomUser(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -328,7 +341,7 @@ def registroActividad(request):
             else:
                 estado = False
 
-            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo), estado = estado)
+            userAction = UserAction(user=request.user, tarea= TipoActividad.objects.get(id=TareaRealizada),ejemplar= especimen.objects.get(id=NumeroCatalogo), estado = estado,Descripcion=Descripcion)
             userAction.save()
             
             rol_id = request.user.rol.id
@@ -524,28 +537,8 @@ def update_record_ejemplar(request,id):
     return HttpResponseRedirect(reverse('dashboard'))
 
 
-@login_required(login_url='redirect')
-def update_aux(request):
-    group = Group.objects.get(name="Auxiliar")
-    users = User.objects.filter(groups__name="Auxiliar")
-    if request.method == 'POST':
-        form = Update(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            nombre = form.cleaned_data['nombre']
-            apellido = form.cleaned_data['apellido']
-            correo = form.cleaned_data['correo']
-            rol = form.cleaned_data['rol']
-            user = username=User.objects.get(id=username)
-            user.nombre=nombre
-            user.apellido= apellido
-            user.email=correo
-            user.rol=Rol.objects.get(id=rol)
-            user.save()
-            
-    else:
-        form = Update()
-    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})
+
+
 @login_required(login_url='redirect')
 def update_aux_curatoria(request):
     rol =0
@@ -580,56 +573,7 @@ def update_aux_curatoria(request):
     else:
         form = Update()
     return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
-@login_required(login_url='redirect')
-def update_pasante(request):
-    if request.method == 'POST':
-        form = Update(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            nombre = form.cleaned_data['nombre']
-            apellido = form.cleaned_data['apellido']
-            correo = form.cleaned_data['correo']
-            rol = form.cleaned_data['rol']
-            user = username=User.objects.get(id=username)
-            user.nombre=nombre
-            user.apellido= apellido
-            user.email=correo
-            user.rol=Rol.objects.get(id=rol)
-            user.save()
-            
-    else:
-        form = Update()
-    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
-@login_required(login_url='redirect')
-def update_curador(request):
-    if request.method == 'POST':
-        form = Update(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            nombre = form.cleaned_data['nombre']
-            apellido = form.cleaned_data['apellido']
-            correo = form.cleaned_data['correo']
-            rol = form.cleaned_data['rol']
-            user = username=User.objects.get(id=username)
-            user.nombre=nombre
-            user.apellido= apellido
-            user.email=correo
-            user.rol=Rol.objects.get(id=rol)
-            user.save()
-             
-            rol_id = request.user.rol.id
-
-            if rol_id == 4:
-                return redirect('dashboard')
-            elif rol_id == 1:
-                return redirect('dashboardAux')
-            elif rol_id == 2:
-                return redirect('dashboardPas')
-            elif rol_id == 3:
-                return redirect('dashboardCur')
-    else:
-        form = Update()
-    return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
+   
 def load_data(request):
     root = tk.Tk()
     root.withdraw()
@@ -858,6 +802,15 @@ def AgregarActividad(request):
     else:
         form = TipoActividadForm()
     return render(request, 'dashboard.html', {'form': form})
+def EliminarActividad(request):
+    actividad_id = request.GET.get('actividad_id')
+    if actividad_id:
+        actividad = get_object_or_404(TipoActividad, id=actividad_id)
+        actividad.delete()
+        return redirect('dashboard')
+    else:
+        actividades = TipoActividad.objects.all()
+        return render(request, 'dashboard.html', {'actividades': actividades})
 def estado_usuarios(request):
     user = request.user 
     if user.is_authenticated:
@@ -1023,18 +976,4 @@ def enviar_correo(request):
     
     return render(request, 'contactenos.html',  {'form':form})
 
-@login_required
-def change_password(request):
-    print('!!!!'*20)
-    if request.method == 'POST':
-        form = CustomPasswordChangeForm(user=request.user, data=request.POST)
-        if form.is_valid():
-            form.save()
-            update_session_auth_hash(request, form.user)
-            messages.success(request, 'Tu contraseña fue actualizada con éxito.')
-            print('!!!'*20)
-            return redirect('index')
-    else:
-        form = CustomPasswordChangeForm(user=request.user)
-    return render(request, 'changepassword.html', {'form': form})
-    
+

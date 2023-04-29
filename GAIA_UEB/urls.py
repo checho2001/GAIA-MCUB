@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,update_record_ejemplar,estado_usuarios,desactivar_usuario, activar_usuario,estado_especimenes,activar_especimen,qr_code,qr_code1
-from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,elegir,AgregarActividad,update_aux_curatoria,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail,enviar_correo
+from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,update_ejemplar
+from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail,EliminarActividad
 from django.views.defaults import page_not_found
 from users import views
 from django.conf import settings
@@ -55,8 +55,8 @@ urlpatterns = [
     path('qr_code/<str:data>/', views.qr_code, name='qr_code'),
     path('paginaejemplar/<int:pk>/qr_code/', views.qr_code1, name="qr_code1"),
     path('enviarcorreo/', views.enviar_correo, name='enviar_correo'),
-    path('changepass/', views.change_password, name='change_password'),
-
+    path('EliminarActividad/', views.EliminarActividad, name='EliminarActividad'),
+    path('obtener_usuario/<int:id_usuario>/', views.obtener_usuario, name='obtener_usuario'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:

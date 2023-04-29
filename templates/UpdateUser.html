@@ -254,7 +254,13 @@ footer {
     font-size: 12px;
   }
 }
+.form-floating input[type=text] {
+  font-size: 30px;
+}
 
+.form-floating input[type=email] {
+font-size: 30px;
+}
 </style>
 <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
@@ -298,6 +304,7 @@ footer {
     <div class="text-end" >
       <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
     </div>
+
     </div>
   </div>
 </nav>
@@ -317,25 +324,25 @@ footer {
                   <div class="form-group mb-2">
                     <div class="form-floating">
                       {{ form.username }}
-                      <label class="h3">Usuario<span class="text-danger"> *</span></label>
+                      <label class="h3" id="id_username">Usuario<span class="text-danger"> *</span></label>
                     </div>
                     <br>
                     <div class="form-floating">
                       {{ form.nombre }}
-                      <label class="h3">Nombre<span class="text-danger"> *</span></label>
+                      <label class="h3" id="id_nombre">Nombre<span class="text-danger"> *</span></label>
                     </div>
                     <br>
                     <div class="form-floating">
                       {{ form.apellido }}
-                      <label class="h3">Apellido<span class="text-danger"> *</span></label>
-                    </div>
+                      <label class="h3" id="id_apellido">Apellido<span class="text-danger"> *</span></label>
+                    </div>  
                   </div>
               </div>
               <div class="col-md-12 col-lg-6 p-5">
                   <div class="form-group mb-2">
                     <div class="form-floating">
                       {{ form.correo }}
-                      <label class="h3">Correo<span class="text-danger"> *</span></label>
+                      <label class="h3" id="id_correo">Correo<span class="text-danger"> *</span></label>
                     </div>
                     <br>
                     <div class="form-floating col-12">
@@ -406,3 +413,29 @@ footer {
     </div>
   </footer>
 </div>
+<script>
+  const usernameSelect = document.getElementById("id_username");
+const nombreInput = document.getElementById("id_nombre");
+const apellidoInput = document.getElementById("id_apellido");
+const correoInput = document.getElementById("id_correo");
+
+// Función para llenar los campos
+function llenarCampos(usuario) {
+    nombreInput.value = usuario.nombre;
+    apellidoInput.value = usuario.apellido;
+    correoInput.value = usuario.correo;
+}
+
+// Evento al seleccionar un usuario
+usernameSelect.addEventListener("change", function() {
+    const idUsuario = this.value;
+    // Petición AJAX para obtener la información del usuario
+    fetch(`/obtener_usuario/${idUsuario}`)
+        .then(response => response.json())
+        .then(data => {
+            llenarCampos(data);
+        })
+        .catch(error => console.error(error));
+});
+
+</script>

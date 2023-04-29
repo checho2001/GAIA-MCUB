@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de registro de especimenes">
+
     <title>Register</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
@@ -184,6 +187,7 @@ z-index: 999;
 body {
 background-image: url('../static/images/fondo.png');
 background-size: cover;
+height: 2000%;
 }
 
 
@@ -236,7 +240,8 @@ footer {
   color: #666;
   text-align: center;
   padding: 20px;
- 
+  position: fixed;
+
   bottom: 0;
   width: 100%;
 }
@@ -286,221 +291,223 @@ footer {
     </div>
   </div>
 </nav>
-<body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
-  <div class=" container py-5 h-100" >
+<body class="m-0 vh-100 row text-center align-items-center justify-content-center">
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-8">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+      <div class="col-md-8">
+        <div class="card" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
-                
-                  <form action= "{%url 'registerE' %}" method= POST class="  m-auto" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <br>
-                    <br><br>
-                    <br>
-                    <h1 class="h1">Registro Ejemplar</h1>
-                    <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group m-2">
-                        <div class="form-floating">
-                          
-                          {{ form.NumeroCatalogo }}
-                          
-                          <label class="h3">Numero Catalogo<span class="text-danger"> *</span></label>
-                          
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                          
-                          {{ form.NombreDelConjuntoDatos }}
-                          
-                          <label class="h3">Nombre Del Conjunto De Datos<span class="text-danger"> *</span></label>
-                          
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.ComentarioRegistroBiologico }}
-                            <label class="h3">Comentario Registro Biologico<span class="text-danger"> *</span></label>
-                          
-                            <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.RegistradoPor }}
-                          <label class="h3">Registrado Por<span class="text-danger"> *</span></label>
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                            {{ form.NumeroIndividuo }}
-                            <label   class="h3">Numero Individuo<span class="text-danger"> *</span></label>
-                          
-                            <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.FechaEvento }}
-                          <label  class="h3">Fecha Evento<span class="text-danger"> *</span></label>
-                        
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.Habitad }}
-                          <label   class="h3">Habitad<span class="text-danger"> *</span></label>
-                        
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.Departamento }}
-                          <label class="h3">Departamento<span class="text-danger"> *</span></label>
-                        
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.Municipio }}
-                          <label class="h3">Municipio<span class="text-danger"> *</span></label>
-                          <br>
-                        </div>
-                        <div class="form-floating">
-                          {{ form.NombreComun }}
-                          <label  type="password" class="h3">Nombre Comun<span class="text-danger"> *</span></label>
-                        
-                          <br>
-                        </div>
-                        
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group m-2">
-
-            <div class="form-floating">
-              {{ form.IdentificadoPor }}
-              <label   class="h3">Identificado Por<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.FechaIdentificacion }}
-              <label  class="h3">Fecha Identificacion<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.IdentificacionReferencias }}
-              <label  class="h3">Identificacion Referencias<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.ComentarioIdentificacion }}
-              <label class="h3">Comentario Identificacion<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-              {{ form.NombreCientificoComentarioRegistroBiologico }}
-              <label  class="h3">Nombre Cientifico<span class="text-danger"> *</span></label>
-            
-              <br>
-            </div>
-            <div class="form-floating">
-                                  
-              {{ form.ClaseE }}
-              <label  class="h3">Clase<span class="text-danger"> *</span></label>
-              
-            </div>
-            <br>
-            <div class="form-floating">
-                                  
-              {{ form.Orden }}
-              <label class="h3">Orden<span class="text-danger"> *</span></label>
-              
-            </div>
-            <br>
-            <div class="form-floating">
-                                  
-              {{ form.Genero }}
-              <label  class="h3">Genero<span class="text-danger"> *</span></label>
-              
-            </div>
-            <br>
-            <div class="form-floating">
-                                  
-              {{ form.Familia }}
-              <label  class="h3">Familia<span class="text-danger"> *</span></label>
-              
-            </div>
-            <br>
-            <div class="form-floating">
-                                  
-              <input type="file" name="imagen" id="imagen">
-              <label  class="h3">Imagen<span class="text-danger"> *</span></label>
-              
-            </div>
-            
-  <br>
-
-
+              <form action= "{%url 'registerE' %}" id="formespecimen" method= POST class="  m-auto" enctype="multipart/form-data">
+                {% csrf_token %}
+                <br>
+                <br><br>
+                <br>
+                <h1 class="h1">Registro Ejemplar</h1>
+                <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group m-2">
+                    <div class="form-floating">
+                      
+                      {{ form.NumeroCatalogo }}
+                      
+                      <label class="h3">Numero Catalogo<span class="text-danger"> *</span></label>
+                      
                       <br>
-                      <button class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit" style="background-color:#008776 ; ">Ingresar</button>
-
-                    
                     </div>
+                    <div class="form-floating">
+                      
+                      {{ form.NombreDelConjuntoDatos }}
+                      
+                      <label class="h3">Nombre Del Conjunto De Datos<span class="text-danger"> *</span></label>
+                      
+                      <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.ComentarioRegistroBiologico }}
+                        <label class="h3">Comentario Registro Biologico<span class="text-danger"> *</span></label>
+                      
+                        <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.RegistradoPor }}
+                      <label class="h3">Registrado Por<span class="text-danger"> *</span></label>
+                      <br>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.NumeroIndividuo }}
+                        <label   class="h3">Numero Individuo<span class="text-danger"> *</span></label>
+                      
+                        <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.FechaEvento }}
+                      <label  class="h3">Fecha Evento<span class="text-danger"> *</span></label>
+                    
+                      <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.Habitad }}
+                      <label   class="h3">Habitad<span class="text-danger"> *</span></label>
+                    
+                      <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.Departamento }}
+                      <label class="h3">Departamento<span class="text-danger"> *</span></label>
+                    
+                      <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.Municipio }}
+                      <label class="h3">Municipio<span class="text-danger"> *</span></label>
+                      <br>
+                    </div>
+                    <div class="form-floating">
+                      {{ form.NombreComun }}
+                      <label  type="password" class="h3">Nombre Comun<span class="text-danger"> *</span></label>
+                    
+                      <br>
+                    </div>
+                    
                   </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group m-2">
+
+        <div class="form-floating">
+          {{ form.IdentificadoPor }}
+          <label   class="h3">Identificado Por<span class="text-danger"> *</span></label>
+        
+          <br>
+        </div>
+        <div class="form-floating">
+          {{ form.FechaIdentificacion }}
+          <label  class="h3">Fecha Identificacion<span class="text-danger"> *</span></label>
+        
+          <br>
+        </div>
+        <div class="form-floating">
+          {{ form.IdentificacionReferencias }}
+          <label  class="h3">Identificacion Referencias<span class="text-danger"> *</span></label>
+        
+          <br>
+        </div>
+        <div class="form-floating">
+          {{ form.ComentarioIdentificacion }}
+          <label class="h3">Comentario Identificacion<span class="text-danger"> *</span></label>
+        
+          <br>
+        </div>
+        <div class="form-floating">
+          {{ form.NombreCientificoComentarioRegistroBiologico }}
+          <label  class="h3">Nombre Cientifico<span class="text-danger"> *</span></label>
+        
+          <br>
+        </div>
+        <div class="form-floating">
+                              
+          {{ form.ClaseE }}
+          <label  class="h3">Clase<span class="text-danger"> *</span></label>
+          
+        </div>
+        <br>
+        <div class="form-floating">
+                              
+          {{ form.Orden }}
+          <label class="h3">Orden<span class="text-danger"> *</span></label>
+          
+        </div>
+        <br>
+        <div class="form-floating">
+                              
+          {{ form.Genero }}
+          <label  class="h3">Genero<span class="text-danger"> *</span></label>
+          
+        </div>
+        <br>
+        <div class="form-floating">
+                              
+          {{ form.Familia }}
+          <label  class="h3">Familia<span class="text-danger"> *</span></label>
+          
+        </div>
+        <br>
+        <div class="form-floating">
+                              
+          <input type="file" name="imagen" id="imagen">
+          <label  class="h3">Imagen<span class="text-danger"> *</span></label>
+          
+        </div>
+        
+<br>
+
+
+                  <br>
+                  <div class="d-grid gap-2">
+                    <button onclick="if(!document.getElementById('formespecimen').checkValidity()) return false; location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit" formnovalidate>Ingresar</button>
+                  </div>
+                  <br>
                   {% for field in form %}
                   {% if field.errors %}
-                  <br>
-                    <div class="alert alert-danger alert-dismissible fade show">
-                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-                      {% for error in field.errors %}
-                        <span>{{ error }}</span><br>
-                      {% endfor %}
+                  <div class="alert alert-danger alert-dismissible fade show">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                      {{ field.errors }}
                     </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                  </div>
                   {% endif %}
-                {% endfor %}
+                  {% endfor %}
+
                 
-                  </form>  
-                  
+                </div>
+              </div>
+              
+            
+              </form>  
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
 </body>
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
-        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-        <h6 class="h6" style="color: white">
-          Av. Cra. 9 No. 131 A - 02<br>
-          Línea gratuita: 018000 113033<br>
-          PBX: (601) 648 9000
-        </h6>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-            <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

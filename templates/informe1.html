@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Página de registro de informes">
 
-    <title>Register</title>
+    <title>Registro Actividad</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
@@ -273,19 +274,27 @@ footer {
   color: #666;
   text-align: center;
   padding: 20px;
- 
+  position: fixed;
   bottom: 0;
   width: 100%;
+  margin-top: 90px;
+}
+input[type=time], input[type=date] {
+  height: 80px;
+  font-size: 30px;
+}
+.alert {
+  font-size: 30px;
 }
 </style>
 <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
     <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
-    " >
+    " alt="...">
   </a>
   
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%"  alt="...">
   </a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -325,139 +334,139 @@ footer {
 </nav>
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center "  >
 
-  <div class=" container py-5 h-100">
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-5">
+      <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
-                <div class="p-5">
-                  <h1 class="h1" >Informe de la actividad</h1>
-                  <form action= "{%url 'registroActividad' %}" method= POST class=" w-100 m-auto">
-                    <br> 
-                    {% csrf_token %}
-                    <div class="form-group mb-2">
-                      <div class="form-floating">
-                        
-                        <select name="NumeroCatalogo" class="form-control" id="id_NumeroCatalogo" style="height: 70px; ">
-                          {% for esp in especimenes%}
-                          <option  value="{{esp.id}}">{{esp.NumeroCatalogo}}</option>   
-                          {% endfor%}                   
-                        </select>
-                        <label class="h3" >Número Catalogo<span class="text-danger"> *</span></label>
-                        <br>
-                    </div>
-                      
-                      <div class="form-floating">
-                        {{ form.Hora }}
-                        <label  class="h3">Hora<span class="text-danger"> *</span></label>
-                         
+              <div class="p-5">
+                <h1 class="h1">Informe de la actividad</h1>
+                <form id="miforminforme" action="{% url 'registroActividad' %}" method="POST" class="w-100 m-auto">
+                  <br>
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          <select name="NumeroCatalogo" class="form-control" id="id_NumeroCatalogo" style="height: 70px;">
+                            {% for esp in especimenes %}
+                            <option value="{{ esp.id }}">{{ esp.NumeroCatalogo }}</option>
+                            {% endfor %}
+                          </select>
+                          <label class="h3">Número Catálogo<span class="text-danger"> *</span></label>
                           <br>
+                        </div>
                       </div>
-                      <div class="form-floating">
-                        {{ form.Fecha }}
-                        <label class="h3">Fecha<span class="text-danger"> *</span></label>
-
-                        
-                        
-                        <br>
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          {{ form.Hora }}
+                          <label class="h3">Hora<span class="text-danger"> *</span></label>
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          {{ form.Fecha }}
+                          <label class="h3">Fecha<span class="text-danger"> *</span></label>
+                          <br>
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-floating">
-                      {{ form.Descripcion }}
-                      <label class="h3">Descripción<span class="text-danger"> *</span></label>
-
+                    <div class="col-md-6">
                      
-                      <br>
-                    
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          {{ form.Descripcion }}
+                          <label class="h3">Descripción<span class="text-danger"> *</span></label>
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group mb-2">
+                        <div class="form-floating">
+                          {{ form.TareaRealizada }}
+                          <label class="h3">Tarea Realizada<span class="text-danger"> *</span></label>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-floating">
-                    {{ form.TareaRealizada }}
-                    <label class="h3">Tarea realizada<span class="text-danger"> *</span></label>
-
-                      <br>
-                  </div>
-                
-                 
-                  
-                 
-            
-                    {% if rol.id == 4 %}
-                    
-                    <button  onclick="location.href = '/dash'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
+                  {% if rol.id == 4 %}
+                  <button onclick="if(!document.getElementById('miforminforme').checkValidity()) return false; location.href = '/dash'" class="btn-customizedlogin" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit">Realizar Actividad</button>
                 {% elif rol.id == 1 %}
-                   
-                    <button  onclick="location.href = '/dashAux'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
-                  {% elif rol.id == 2 %}
-                   
-                    <button  onclick="location.href = '/dashPas'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
-                  {% elif rol.id == 3 %}
-                   
-                    <button  onclick="location.href = '/dashCur'" class="btn-customizedlogin "style="background-color: #008776 border-radius: 22px;"   value="Register"  type="submit">Realizar Actividad</button>
+                  <button onclick="if(!document.getElementById('miforminforme').checkValidity()) return false; location.href = '/dashAux'" class="btn-customizedlogin" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit">Realizar Actividad</button>
+                {% elif rol.id == 2 %}
+                  <button onclick="if(!document.getElementById('miforminforme').checkValidity()) return false; location.href = '/dashPas'" class="btn-customizedlogin" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit">Realizar Actividad</button>
+                {% elif rol.id == 3 %}
+                  <button onclick="if(!document.getElementById('miforminforme').checkValidity()) return false; location.href = '/dashCur'" class="btn-customizedlogin" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit">Realizar Actividad</button>
                 {% endif %}
-            
-            
+                
+                  <br>
+                  <br>
                  
-                    <br>
-                    <br> 
-  
-                  
-                    {% for field in form %}
-                    {% if field.errors %}
-                    <div class="alert alert-danger alert-dismissible fade show">
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                             {{ field.errors }}
+                
+                
+                  {% for field in form %}
+                  {% if field.errors %}
+                      <div class="alert alert-danger alert-dismissible fade show">
+                          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                              {{ field.errors }}
+                            
+                          </div>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                  {% endif %}
+              {% endfor %}
+              
+               
+                </form>
 
-                     
-                    {% endif %}
-                  
-                {% endfor %}
-            
-                 
-                  </form>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
   
+  
 </body>
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
-        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-        <h6 class="h6" style="color: white">
-          Av. Cra. 9 No. 131 A - 02<br>
-          Línea gratuita: 018000 113033<br>
-          PBX: (601) 648 9000
-        </h6>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-            <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
-      </div>
-      <div class="col-sm-12 col-md-2">
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
-          </a>
-        </ul>
+
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>

@@ -205,7 +205,7 @@ class ActividadesForm(forms.Form):
     TareaRealizada = forms.ChoiceField(
         choices = TAREAS,  widget=forms.Select(
             attrs= {
-                'style': 'height: 70px;',
+               'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             ))
@@ -213,12 +213,12 @@ class ActividadesForm(forms.Form):
 
     Hora = forms.TimeField(   widget=TimeInput(
         
-        attrs={'class': 'form-control','style': 'height: 70px;',}
+        attrs={'class': 'form-control','style': 'height: 80PX;',}
     )
 
         )
     Fecha = forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control','style': 'height: 80px;font-size: 30px;',})
+        attrs={'class': 'form-control','style': 'height: 80PX;',})
         )
     Descripcion = forms.CharField(
         error_messages={'required':'Por favor ingresa una descripción valida'},
@@ -228,6 +228,7 @@ class ActividadesForm(forms.Form):
                 'placeholder':'Digite la descripcion',
                 'required' : True,
                 'class' : 'form-control',
+                'style': 'height: 80PX;',
                 }
             )
         ) 
@@ -238,6 +239,11 @@ class ActividadesForm(forms.Form):
         if fecha > datetime.date.today():
             raise ValidationError('La fecha no puede ser en el futuro')
         return fecha
+    def clean_Descripcion(self):
+        descripcion = self.cleaned_data['Descripcion']
+        if not descripcion:
+            raise ValidationError('El campo descripción no puede estar vacío')
+        return descripcion
     def clean(self):
         cleaned_data = super().clean()
         try:

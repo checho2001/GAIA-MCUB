@@ -258,7 +258,7 @@ def register(request):
     user1 = request.user 
     if user1.is_authenticated:
             rol = Rol.objects.get(user=user1)
-    if request.method == 'POST':
+    if request.method == 'P OST':
         form = CustomUser(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']

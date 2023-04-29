@@ -620,14 +620,17 @@ footer {
                           </div>
                         </div>
                         {% endfor %}
+                      </div>
                     </div>
+                    </div>  
+                   
                   </div>
-                  </div>   
+                  </div>
+  
+  
+              
+  
                 </div>
-              </div>
-
-
-            </div>
 
 
 
@@ -847,45 +850,48 @@ footer {
     </ul>
     </div>
     <br><br>
-    <script>
-            const cards = document.querySelectorAll('.card1');
-            const previousButton = document.querySelector('.previous-page');
-            const nextButton = document.querySelector('.next-page');
-            let currentPage = 1;
-            const cardsPerPage = 10;
-
-            showPage(currentPage);
-
-            previousButton.addEventListener('click', () => {
-              if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage);
-              }
-            });
-
-            nextButton.addEventListener('click', () => {
-              if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
-                currentPage++;
-                showPage(currentPage);
-              }
-            });
-
-            function showPage(pageNumber) {
-              for (let i = 0; i < cards.length; i++) {
-                if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
-                  cards[i].style.display = 'inline-block';
-                } else {
-                  cards[i].style.display = 'none';
-                }
-              }
-            }
-          </script>
+   
+     
           
-
             
 
 </footer>
 
+
+     
+<script>
+  const cards = document.querySelectorAll('.card1');
+  const previousButton = document.querySelector('.previous-page');
+  const nextButton = document.querySelector('.next-page');
+  let currentPage = 1;
+  const cardsPerPage = 10;
+
+  showPage(currentPage);
+
+  previousButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  function showPage(pageNumber) {
+    for (let i = 0; i < cards.length; i++) {
+      if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+        cards[i].style.display = 'inline-block';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  }
+</script>
 
 
 </html>

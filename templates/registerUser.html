@@ -1,10 +1,11 @@
 
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Página de registro de usuarios">
 
-    <title>Register</title>
+    <title>Registro Usuarios</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
@@ -198,6 +199,7 @@
   body {
     background-image: url('../static/images/fondo.png');
     background-size: cover;
+    height: 100vh;
   }
   
   .btn-custom:hover {
@@ -243,9 +245,10 @@
     color: #666;
     text-align: center;
     padding: 20px;
-   
+    position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 90px;
   }
   .form-floating input[type=text] {
     font-size: 30px;
@@ -302,67 +305,66 @@
     </div>
   </div>
 </nav>
-
+<br> <br>
 <body class="m-0 vh-100 row text-center align-items-center justify-content-center">
 
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-6">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+      <div class="col-lg-6">
+        <div class="card" style="border-radius: 15px; margin-top:100px; margin-bottom:500px;">
           <div class="card-body p-0">
             <div class="row g-0">
               <div class="p-5">
 
-                <form id="miform" action="{%url 'register' %}" method="POST" class="w-100 m-auto">
+                <form id="miform" action="{% url 'register' %}" method="POST" class="w-100 m-auto">
                   {% csrf_token %}
                   <h1 class="h1">Registro Usuario</h1>
                   <br>
                   <div class="row">
-                    <div class="form-floating">
-                     
+                    <div class="col-md-6">
+                      <div class="form-floating">
                         {{ form.username }}
-                        <label class="h3">Usuario<span class="text-danger"> *</span></label>
+                        <label class="h3" title="Introduce tu nombre de usuario">Usuario<span class="text-danger"> *</span></label>
                         <br>
-                    </div>
-                    <div class="form-floating">
-                     
+                      </div>
+                      <div class="form-floating">
                         {{ form.nombre }}
                         <label class="h3">Nombre<span class="text-danger"> *</span></label>
                         <br>
-                    </div>
-                    <div class="form-floating">
-                      
+                      </div>
+                      <div class="form-floating">
                         {{ form.apellido }}
                         <label class="h3">Apellido<span class="text-danger"> *</span></label>
                         <br>
-                    </div>
-                    <div class="form-floating">
-                      
+                      </div>
+                      <div class="form-floating">
                         {{ form.correo }}
                         <label title="Introduce tu dirección de correo electrónico" class="h3">Correo<span class="text-danger"> *</span></label>
                         <br>
+                      </div>
                     </div>
-                    <div class="form-floating">
-                      
+                    <div class="col-md-6">
+                      <div class="form-floating">
                         {{ form.password }}
                         <label type="password" class="h3">Contraseña<span class="text-danger"> *</span></label>
                         <br>
-                    </div>
-                    <div class="form-floating">
-                      {{ form.rol }}
-                      <label class="h3">Rol<span class="text-danger"> *</span></label>
-                      <br>
-                    </div>
-                    <div class="form-floating">
-                      {{ form.area }}
-                      <label class="h3">Área<span class="text-danger"> *</span></label>
-                      <br>
+                      </div>
+                      <div class="form-floating">
+                        {{ form.rol }}
+                        <label class="h3">Rol<span class="text-danger"> *</span></label>
+                        <br>
+                      </div>
+                      <div class="form-floating">
+                        {{ form.area }}
+                        <label class="h3">Área<span class="text-danger"> *</span></label>
+                        <br>
+                      </div>
                     </div>
                   </div>
-
-                  <button onclick="location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit">Ingresar</button>
+                
+                  <button onclick="if(!document.getElementById('miform').checkValidity()) return false; location.href = '/dash'" class="btn btn-customizedlogin mt-3" style="background-color: #008776; border-radius: 22px;" value="Register" type="submit" formnovalidate>Ingresar</button>
                   <br>
-
+                
                   {% for field in form %}
                   {% if field.errors %}
                   <br>
@@ -374,8 +376,9 @@
                     </div>
                   {% endif %}
                 {% endfor %}
-                
+               
                 </form>
+                
 
               </div>
             </div>

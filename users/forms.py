@@ -27,6 +27,7 @@ class CustomUser(forms.Form):
             attrs= {
                 'placeholder':'Digite su nombre',
                 'required' : True,
+                'style': 'height: 80PX;',
                 'class' : 'form-control',
 
                 }
@@ -39,6 +40,7 @@ class CustomUser(forms.Form):
             attrs= {
                 'placeholder':'Digite su apellido',
                 'required' : True,
+                'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             )
@@ -48,6 +50,7 @@ class CustomUser(forms.Form):
         attrs= {
                 'placeholder':'Digite su correo',
                 'required' : True,
+                'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             
@@ -59,6 +62,7 @@ class CustomUser(forms.Form):
                 'placeholder':'Ingrese su contraseña',
                 'required' : True,
                 'name' : 'passUser',
+                'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             )
@@ -70,6 +74,7 @@ class CustomUser(forms.Form):
             attrs= {
                 'placeholder':'Digite su usuario',
                 'required' : True,
+                'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             )
@@ -82,7 +87,7 @@ class CustomUser(forms.Form):
     rol = forms.ChoiceField(
         choices = ROLES,  widget=forms.Select(
             attrs= {
-               'style': 'height: 70px;',
+               'style': 'height: 80PX;',
                 
                 'class' : 'form-control',
                 }
@@ -94,36 +99,50 @@ class CustomUser(forms.Form):
     area = forms.ChoiceField(
         choices = AREA,  widget=forms.Select(
             attrs= {
-                'style': 'height: 70px;',
+                'style': 'height: 80PX;',
                 'class' : 'form-control',
                 }
             ))
 
     def clean_correo(self):
         mail = self.cleaned_data['correo']
-        if "@unbosque.edu.co" not in mail:   
-            raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
-        if User.objects.filter(email=mail).count():
-            raise ValidationError(_('Correo no valido - Este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
+        if not mail:
+            raise forms.ValidationError("Por favor ingrese un correo electrónico.")
+        elif "@unbosque.edu.co" not in mail:   
+            raise forms.ValidationError("El correo debe contener @unbosque.edu.co")
+        elif User.objects.filter(email=mail).count():
+            raise ValidationError(_('Correo no valido, este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
         return mail      
+
     def clean_nombre(self):
-            nomb = self.cleaned_data['nombre']
-            for l in nomb:
-                if l.isnumeric():
-                    raise ValidationError(_('Nombre invalido - Tu nombre no puede contener numeros'))
-    
-            return nomb
+        nomb = self.cleaned_data['nombre']
+        if not nomb:
+            raise forms.ValidationError("Por favor ingrese un nombre.")
+        if not re.match("^[a-zA-Z]*$", nomb):
+            raise forms.ValidationError("Nombre inválido, debe contener sólo letras.")
+        
+        return nomb
+    def clean_username(self):
+        usernm = self.cleaned_data['username']
+        if not usernm:
+            raise forms.ValidationError("Por favor ingrese un usuario.")
+        if not re.match("^[a-zA-Z\d]*$", usernm):
+            raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
+        
+        return usernm
     def clean_apellido(self):
-            apel = self.cleaned_data['apellido']
-            for l in apel:
-                if l.isnumeric():
-                    raise ValidationError(_('Apellido invalido - Tu apellido no puede contener numeros'))
-            return apel
-    
+        apel = self.cleaned_data['apellido']
+        if not apel:
+            raise forms.ValidationError("Por favor ingrese un apellido.")
+        if not re.match("^[a-zA-Z]*$", apel):
+            raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
+        return apel
+
     def clean_password(self):
         password = self.cleaned_data.get('password')
-        
-        if len(password) < 8:
+        if not password:
+            raise forms.ValidationError("Por favor ingrese una contraseña.")
+        elif len(password) < 8:
             raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
         elif len(password) > 16:
             raise forms.ValidationError("La contraseña no debe tener más de 16 caracteres.")
@@ -131,8 +150,8 @@ class CustomUser(forms.Form):
             raise forms.ValidationError("La contraseña debe tener al menos una letra mayúscula.")
         elif not re.search("[0-9]", password):
             raise forms.ValidationError("La contraseña debe tener al menos un número.")
-        
         return password
+
 class loginForm(forms.Form):
     username = forms.CharField(
         error_messages={'required':'Por favor ingresa un correo valido'},

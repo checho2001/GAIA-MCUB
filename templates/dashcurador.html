@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="description" content="Dashboard ">
         <title>DashBoard</title>
     
         <link rel="stylesheet" href="../static/css/style1.css">
@@ -45,6 +45,12 @@
         </script>
       
     <style>
+      td.desc-col {
+        max-width: 300px; /* Ajusta este valor al ancho que desees */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        vertical-align: top;
+      }
       .dataTables_wrapper .dataTables_paginate .paginate_button.current {
         background-color: transparent;
         border: none;
@@ -253,7 +259,7 @@
         padding: 10px 7px 5px;
     }
     .table-responsive {
-      max-height: 450px; 
+      max-height: 550px; 
       overflow-y: scroll;
     }
     .DivWithScroll{
@@ -334,6 +340,8 @@
           }
           .navbar {
             background-color: #008776;
+            position: fixed;
+
             
           }
           .navbar-custom {
@@ -401,10 +409,12 @@
           color: #666;
           text-align: center;
           padding: 20px;
-         
+          position: fixed;
+
           bottom: 0;
           width: 100%;
         }
+        
     </style>
   </head>
   
@@ -436,7 +446,7 @@
       </div>
     </nav>
       <div  class="row" >
-        <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 1200px;">
+        <div class="col-sm-2 mw-100 " style="background-color: #008776 ; height: 1600px;">
             <div class="flex-shrink-0 p-3 " style="width: 280px; ">
               
              
@@ -513,10 +523,11 @@
                   
                   <thead>
                     <tr style="background-color: #404827;color:white;">
-                      <th scope="col">Fecha</th>
-                      <th scope="col">Tarea Realizada</th>
-                      <th scope="col">Usuario</th>
-                      <th scope="col">Ejemplar</th>
+                      <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Fecha</th>
+                      <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Tarea Realizada</th>
+                      <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Usuario</th>
+                      <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Descrición</th>
+                      <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Ejemplar</th>
                       <th scope="col">Aprobar</th>
                     </tr>
                   </thead>
@@ -524,10 +535,11 @@
                     {% for action in actions %}
                     {% if action.estado == False %}
                     <tr>
-                      <td>{{ action.tiempo }}</td>
-                      <td>{{ action.tarea }}</td>
-                      <td>{{ action.user }}</td>
-                      <td>{{ action.ejemplar }}</td>
+                      <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
+                              <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
+                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
+                              <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
+                              <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                       <td> <a class="a" href="aprobar/{{action.id_user_action}}"  >
                         <img class="image_header-museo" src="/static/images/215490.png" style="height:50px; width:50px;" >
                       </a></td>
@@ -560,20 +572,22 @@
               
               <thead>
                 <tr style="background-color: #404827;color:white;">
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Tarea Realizada</th>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Ejemplar</th>
+                  <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;" >Fecha</th>
+                  <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Tarea Realizada</th>
+                  <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Usuario</th>
+                  <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Descrición</th>
+                  <th scope="col"  class="h5" style=" font-family: 'Lato-Black', sans-serif; color:white;">Ejemplar</th>
                 </tr>
               </thead>
               <tbody>
                 {% for action in actions %}
                 {% if action.estado == True %}
                 <tr>
-                  <td>{{ action.tiempo }}</td>
-                  <td>{{ action.tarea }}</td>
-                  <td>{{ action.user }}</td>
-                  <td>{{ action.ejemplar }}</td>
+                  <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
+                              <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
+                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
+                              <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
+                              <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                 {% endif %}
 
                 {% endfor %}
@@ -587,9 +601,9 @@
 
           
         </div>
-
+        <br><br><br>
     </div>
-
+  
    
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <br>
@@ -620,12 +634,11 @@
         <table id="tabla3"  class="table table-sm table-striped"   data-toggle="table">
           <thead>
             <tr style="background-color: #404827;color:white;">
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Fecha</th>
-              <th> Nombre Cientifico</th>
-              <th>Editar</th>
-              <th>Archivar  </th>
+              <th class="h5" style="background-color: #404827;color:white;">ID</th>
+              <th class="h5" style="background-color: #404827;color:white;">Nombre</th>
+              <th class="h5" style="background-color: #404827;color:white;">Fecha</th>
+              <th class="h5" style="background-color: #404827;color:white;">Científico</th>
+              <th class="h5" style="background-color: #404827;color:white;">Editar</th><th class="h5">Archivar</th>
             </tr>
           </thead>
           <tbody>
@@ -633,16 +646,18 @@
             {% if esp.estado == True %}
             <tr>
               
-              <td>{{ esp.NumeroCatalogo }}</td>
-              <td>{{ esp.NombreComun }}</td>
-              <td>{{ esp.FechaIdentificacion }}</td>
-              <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
-              <td> <a class="a" href="../updateE/{{esp.id}}"  >
-                <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
-              </a>  </td>
-              <td><a class="a" href="../dardebaja/{{esp.id}}"  >
-                <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
-              </a>  </td>
+              <td class="h5">{{ esp.NumeroCatalogo }}</td>
+              <td class="h5">{{ esp.NombreComun }}</td>
+              <td class="h5">{{ esp.FechaIdentificacion }}</td>
+              <td class="h5">{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
+              <td style="color: #404827;"> <a class="a" href="../updateE/{{esp.id}}"  >
+                <img class="image_header-museo" src="/static/images/1159633.png" style="height:70px; width:70px;" >
+              </a>     </td>
+              <td style="color: #404827;">
+                <a class="a" href="../dardebaja/{{esp.id}}"  >
+                  <img class="image_header-museo" src="/static/images/25402.png" style="height:70px; width:70px;" >
+                </a>  
+              </td>
 
             </tr>
             {% endif %}
@@ -654,7 +669,7 @@
       
     </div>
       
-    <br> <br>
+    <br> <br><br><br>
     <div   class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Ejemplares Archivados</h2></div>
     <br>
     <div   class="table-responsive">
@@ -663,12 +678,12 @@
     <table id="tabla4"  class="table table-sm table-striped" data-toggle="table">
       <thead>
         <tr style="background-color: #404827;color:white;">
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Fecha</th>
-          <th>Nombre Cientifico</th>
-          <th>Editar</th>
-          <th>Desarchivar</th>
+          <th class="h5" style="background-color: #404827;color:white;" >ID</th>
+          <th  class="h5" style="background-color: #404827;color:white;">Nombre</th>
+          <th class="h5" style="background-color: #404827;color:white;">Fecha</th>
+          <th  class="h5" style="background-color: #404827;color:white;">Nombre Cientifico</th>
+          <th  class="h5" style="background-color: #404827;color:white;">Editar</th>
+          <th  class="h5" style="background-color: #404827;color:white;">Desarchivar</th>
         </tr>
       </thead>
       <tbody>
@@ -676,10 +691,10 @@
         {% if esp.estado == False %}
         <tr>
           
-          <td>{{ esp.NumeroCatalogo }}</td>
-          <td>{{ esp.NombreComun }}</td>
-          <td>{{ esp.FechaIdentificacion }}</td>
-          <td>{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
+          <td class="h5">{{ esp.NumeroCatalogo }}</td>
+          <td class="h5">{{ esp.NombreComun }}</td>
+          <td class="h5">{{ esp.FechaIdentificacion }}</td>
+          <td class="h5">{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
           <td><a class="a" href="../updateE/{{esp.id}}"  >
             <img class="image_header-museo" src="/static/images/1159633.png" style="height:50px; width:50px;" >
           </a> </td>
@@ -736,6 +751,7 @@
  
   
 </body>
+<br> <br>   <br> <br>   <br> <br>   <br> <br>   <br> <br>
 <footer>
   <div class="row">
     <div class="col" style="border-right: 1px solid white;">

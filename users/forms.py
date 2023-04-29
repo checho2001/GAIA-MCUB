@@ -257,9 +257,8 @@ class EjemplarForm(forms.Form):
                 'class' : 'form-control',
                 }
             ))
-    CONJUNTODEDATOS = []
-    for departamentos in departamento.objects.all():
-        CONJUNTODEDATOS.append((departamentos.id,departamentos.nombre))
+    CONJUNTODEDATOS = [    "Colección de Exhibición de Anfibios",    "Colección de Exhibición de Aves",    "Colección de exhibición de Reptiles",    "Colección de exhibición de Mammalia",    "Colección de exhibición de Myriapoda",    "Colección de referencia de Arachnida","Colección de exhibición de Mollusca"]
+
     NombreDelConjuntoDatos = forms.ChoiceField(
         choices=[(i, i) for i in CONJUNTODEDATOS],
         widget=forms.Select(

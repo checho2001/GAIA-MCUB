@@ -92,7 +92,7 @@ $(function () {
 }
 
 #colecciones:hover {
-  background-image: url('/static/images/llamarobles.png');
+  background-image: url('/static/images/llamaroble.png');
 }
 #nosotros {
 background-image: url('/static/images/equipo.png');
@@ -187,7 +187,7 @@ background-image: url('/static/images/pizarron (1).png');
 }
 .h5 {
   font-family: 'Acherus Grotesque', sans-serif;
-  font-size: 30px;
+  font-size: 40px;
 }
 .h6 {
   font-family: 'Acherus Grotesque', sans-serif;
@@ -428,110 +428,112 @@ background-image: url('/static/images/pizarron (1).png');
       </div>
     </div>
   </nav>
-  <div class=" container py-5 h-100" >
+  <div class="container-fluid py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-6">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+      <div class="col-lg-8">
+        <div class="card " style="border-radius: 15px; margin-top:200px; margin-bottom:500px;">
           <div class="card-body p-0">
             <div class="row g-0">
-                <div class="p-5">
-                  <form action= "{%url 'DesactivarUser' %}" method= POST class=" w-100 m-auto">
-                    {% csrf_token %}
-                    <h1 class="h1">Estado Usuarios</h1>
-                    <nav>
+              <div class="p-5">
+                <form action= "{%url 'DesactivarUser' %}" method= POST class=" w-100 m-auto">
+                  {% csrf_token %}
+                  <h1 class="h1">Estado Usuarios</h1>
+                  <nav>
 
 
 
-                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios Activos</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Usuarios Desactivos</button>
-                      </div>
-                    </nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios Activos</button>
+                      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Usuarios Desactivos</button>
+                    </div>
+                  </nav>
 
 
 
 
-                    <div class="tab-content" id="nav-tabContent">
-                      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div class="table-responsive">
-                          <br>
-                          <br>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <div class="table-responsive">
+                        <br>
+                        <br>
 
-                  
-                        <table id="tabla" class="table table-sm table-striped" data-toggle="table">
-                          <thead>
-                            <tr style="background-color: #404827;color:white;">
-                              <th  class="h5" style="background-color: #404827;color:white;" >Usuario</th>
-                              <th class="h5"  style="background-color: #404827;color:white;">Correo</th>
-                              <th  class="h5" style="background-color: #404827;color:white;" >Desactivar</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for usuario in usuarios %}
-                            {% if usuario.is_active == True%}
-                            <tr>
-                              <td class="h5"  style="color: #404827;">{{ usuario.username }}</td>
-                              <td class="h5"  style="color: #404827;">{{ usuario.email }}</td>
-                              <td  class="h5" style="color: #404827;">
-                                <a class="a" href="../desactivarU/{{usuario.id}}"  >
-                                  <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
-                                </a>  
-                              </td>                                                   
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                        </div>
-                      
+                
+                      <table id="tabla" class="table table-sm table-striped" data-toggle="table">
+                        <thead>
+                          <tr style="background-color: #404827;color:white;">
+                            <th  class="h5" style="background-color: #404827;color:white;" >Usuario</th>
+                            <th class="h5"  style="background-color: #404827;color:white;">Correo</th>
+                            <th class="h5"  style="background-color: #404827;color:white;">Rol</th>
+                            
+                            <th  class="h5" style="background-color: #404827;color:white;" >Desactivar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for usuario in usuarios %}
+                          {% if usuario.is_active == True%}
+                          <tr>
+                            <td class="h5"  style="color: #404827;">{{ usuario.username }}</td>
+                            <td class="h5"  style="color: #404827;">{{ usuario.email }}</td>
+                            <td class="h5"  style="color: #404827;">{{ usuario.rol }}</td>
+                            <td  class="h5" style="color: #404827;">
+                              <a class="a" href="../desactivarU/{{usuario.id}}"  >
+                                <img class="image_header-museo" src="/static/images/25402.png" style="height:70px; width:70px;" >
+                              </a>  
+                            </td>                                                   
+                          </tr>
+                          {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
                       </div>
                     
-
-        
-                      <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <br>
-                        <br>
-
-                        <table id="tabla2" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
-                          <thead>
-                            <tr style="background-color: #404827;color:white;">
-                              <th scope="col">Usuario</th>
-                              <th scope="col">Correo</th>
-                              <th scope="col">Desactivar</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for usuario in usuarios %}
-                            {% if usuario.is_active == False%}
-                            <tr>
-                              <td style="color: #404827;">{{ usuario.username }}</td>
-                              <td style="color: #404827;">{{ usuario.email }}</td>
-                              <td style="color: #404827;">
-                                <a class="a" href="../activarU/{{usuario.id}}"  >
-                                  <img class="image_header-museo" src="/static/images/25402.png" style="height:50px; width:50px;" >
-                                </a>  
-                              </td>                                                   
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                      </div>
                     </div>
+                  
 
+      
+                    <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <br>
+                      <br>
+
+                      <table id="tabla2" class="table table-sm table-striped" data-page-size="4" data-toggle="table">
+                        <thead>
+                          <tr style="background-color: #404827;color:white;">
+                            <th class="h5" style="background-color: #404827;color:white;">Usuario</th>
+                            <th sclass="h5" style="background-color: #404827;color:white;">Correo</th>
+                            <th class="h5" style="background-color: #404827;color:white;">Activar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for usuario in usuarios %}
+                          {% if usuario.is_active == False%}
+                          <tr>
+                            <td  class="h5"  style="color: #404827;">{{ usuario.username }}</td>
+                            <td class="h5"  style="color: #404827;">{{ usuario.email }}</td>
+                            <td style="color: #404827;">
+                              <a class="a" href="../activarU/{{usuario.id}}"  >
+                                <img class="image_header-museo" src="/static/images/25402.png" style="height:70px; width:70px;" >
+                              </a>  
+                            </td>                                                   
+                          </tr>
+                          {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-              
-                   
-                  </form>
+
                 </div>
+            
+                 
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
+  
   
 </body>
 <div class="footer-wrapper d-none d-sm-block">

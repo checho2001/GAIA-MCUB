@@ -314,13 +314,10 @@ footer {
                 <div class="col-lg-6">
                   <div class="form-group m-2">
                     <div class="form-floating">
-                      
-                      {{ form.NumeroCatalogo }}
-                      
+                      <input type="text" name="{{ form.NumeroCatalogo.name }}" value="{% if form.NumeroCatalogo.value %}{{ form.NumeroCatalogo.value }}{% else %}MCUB-E-{% endif %}" maxlength="{{ form.NumeroCatalogo.field.max_length }}" required class="form-control" style="height: 80px;">
                       <label class="h3">Numero Catalogo<span class="text-danger"> *</span></label>
-                      
                       <br>
-                    </div>
+                  </div>
                     <div class="form-floating">
                       
                       {{ form.NombreDelConjuntoDatos }}
@@ -329,12 +326,16 @@ footer {
                       
                       <br>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating" id="comentario-biologico">
                       {{ form.ComentarioRegistroBiologico }}
-                        <label class="h3">Comentario Registro Biologico<span class="text-danger"> *</span></label>
-                      
-                        <br>
-                    </div>
+                      <label class="h3">Comentario Registro Biologico<span class="text-danger"> *</span></label>
+                      <br>
+                  </div>
+                  <div class="form-floating" id="otro-comentario" style="display:none;">
+                      {{ form.ComentarioRegistroBiologico_otro }}
+                      <label class="h3">Comentario Registro Biologico<span class="text-danger"> *</span></label>
+                      <br>
+                  </div>
                     <div class="form-floating">
                       {{ form.RegistradoPor }}
                       <label class="h3">Registrado Por<span class="text-danger"> *</span></label>
@@ -517,3 +518,12 @@ footer {
     </div>
   </footer>
 </div>
+
+<script>
+  var select = document.getElementById("id_ComentarioRegistroBiologico");
+var otroComentario = document.getElementById("otro-comentario");
+select.addEventListener("change", function() {
+    otroComentario.style.display = (select.value == "3") ? "block" : "none";
+});
+
+</script>

@@ -289,13 +289,13 @@ class EjemplarForm(forms.Form):
         )
     )
     
-
-    ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : False,
-                'class' : 'form-control','style': 'height: 80px;',
-                }
-            ))
+    COMENTARIO_CHOICES = [       ('1', 'Encontrado muerto en una salida de campo académica'),    ('2', 'Donación'),    ('3', 'Otro'),]
+    ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.Select(choices=COMENTARIO_CHOICES, attrs={
+            'class': 'form-control','style': 'height: 80px;',
+        }))
+    ComentarioRegistroBiologico_otro = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={
+            'class': 'form-control', 'style': 'height: 80px;',  'required' : False,
+        }))
     RegistradoPor = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 'required' : False,
@@ -433,13 +433,19 @@ class EjemplarForm(forms.Form):
         error_messages={'required':'Seleccione la imagen del ejemplar ', 'invalid':'El formato es erroneo'},
     )
     def clean_NumeroCatalogo(self):
-        data = self.cleaned_data['NumeroCatalogo']
+        numero_catalogo = self.cleaned_data.get('NumeroCatalogo')
+        if numero_catalogo is None:
+            return 'MCUB-E-'
+        numero_catalogo_con_prefijo = 'MCUB-E-{}'.format(numero_catalogo)
+            
         try:
-         if especimen.objects.filter(NumeroCatalogo=data).exists():
-             raise forms.ValidationError('El número de catálogo ya está registrado.')
+            if especimen.objects.filter(NumeroCatalogo=numero_catalogo_con_prefijo).exists():
+                raise forms.ValidationError('El número de catálogo ya está registrado.')
         except DatabaseError:
             raise forms.ValidationError('El número de catálogo ya está registrado.')
-        return data
+        
+        return numero_catalogo_con_prefijo
+
     def clean_Fecha_evento(self):
         fecha_evento = self.cleaned_data['FechaEvento']
         if fecha_evento > datetime.date.today():
@@ -452,6 +458,10 @@ class EjemplarForm(forms.Form):
         return fecha_I
     def clean(self):
         cleaned_data = super().clean()
+        comentario = cleaned_data.get('ComentarioRegistroBiologico')
+        otro_comentario = cleaned_data.get('ComentarioRegistroBiologico_otro')
+        if comentario == 'otro' and not otro_comentario:
+            raise forms.ValidationError("Debe especificar un comentario si selecciona 'Otro'.")
         try:
             
             self.clean_Fecha_evento()

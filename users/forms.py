@@ -110,31 +110,51 @@ class CustomUser(forms.Form):
         apellido = cleaned_data.get('apellido')
         password = cleaned_data.get('password')
 
-        if correo and "@unbosque.edu.co" not in correo:
-            raise forms.ValidationError("El correo debe contener @unbosque.edu.co")
+        try:
+            if correo and "@unbosque.edu.co" not in correo:
+                raise forms.ValidationError("El correo debe contener @unbosque.edu.co")
+        except forms.ValidationError as error:
+            self.add_error('correo', error)
 
-        if User.objects.filter(email=correo).count():
-            raise ValidationError(_('Correo no valido, este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
+        try:
+            if User.objects.filter(email=correo).count():
+                raise forms.ValidationError(_('Correo no valido, este correo ya se encuentra registrado, por favor vuelva a intentarlo'))
+        except forms.ValidationError as error:
+            self.add_error('correo', error)
 
-        if nombre and not re.match("^[a-zA-Z]*$", nombre):
-            raise forms.ValidationError("Nombre inválido, debe contener sólo letras.")
+        try:
+            if nombre and not re.match("^[a-zA-Z]*$", nombre):
+                raise forms.ValidationError("Nombre inválido, debe contener sólo letras.")
+        except forms.ValidationError as error:
+            self.add_error('nombre', error)
 
-        if username and not re.match("^[a-zA-Z\d]*$", username):
-            raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
+        try:
+            if username and not re.match("^[a-zA-Z\d]*$", username):
+                raise forms.ValidationError("Usuario inválido, debe contener sólo letras y números.")
+        except forms.ValidationError as error:
+            self.add_error('username', error)
 
-        if apellido and not re.match("^[a-zA-Z]*$", apellido):
-            raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
+        try:
+            if apellido and not re.match("^[a-zA-Z]*$", apellido):
+                raise forms.ValidationError("Apellido inválido, debe contener sólo letras.")
+        except forms.ValidationError as error:
+            self.add_error('apellido', error)
 
-        if password:
-            if len(password) < 8:
-                raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
-            elif len(password) > 16:
-                raise forms.ValidationError("La contraseña no debe tener más de 16 caracteres.")
-            elif not re.search("[A-Z]", password):
-                raise forms.ValidationError("La contraseña debe tener al menos una letra mayúscula.")
-            elif not re.search("[0-9]", password):
-                raise forms.ValidationError("La contraseña debe tener al menos un número.")
+        try:
+            if password:
+                if len(password) < 8:
+                    raise forms.ValidationError("La contraseña debe tener al menos 8 caracteres.")
+                elif len(password) > 16:
+                    raise forms.ValidationError("La contraseña no debe tener más de 16 caracteres.")
+                elif not re.search("[A-Z]", password):
+                    raise forms.ValidationError("La contraseña debe tener al menos una letra mayúscula.")
+                elif not re.search("[0-9]", password):
+                    raise forms.ValidationError("La contraseña debe tener al menos un número.")
+        except forms.ValidationError as error:
+            self.add_error('password', error)
+
         return cleaned_data
+
 
 class loginForm(forms.Form):
     username = forms.CharField(
@@ -254,7 +274,7 @@ class EjemplarForm(forms.Form):
     NumeroCatalogo = forms.CharField(max_length=500,required=True,  widget=forms.TextInput(
             attrs= {
                 'required' : True,
-                'class' : 'form-control',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     CONJUNTODEDATOS = [    "Colección de Exhibición de Anfibios",    "Colección de Exhibición de Aves",    "Colección de exhibición de Reptiles",    "Colección de exhibición de Mammalia",    "Colección de exhibición de Myriapoda",    "Colección de referencia de Arachnida","Colección de exhibición de Mollusca"]
@@ -263,7 +283,8 @@ class EjemplarForm(forms.Form):
         choices=[(i, i) for i in CONJUNTODEDATOS],
         widget=forms.Select(
             attrs={
-                'class': 'form-control','style': 'height: 70px;',
+                'required' : False,
+                'class': 'form-control','style': 'height: 80px;',
             }
         )
     )
@@ -271,29 +292,33 @@ class EjemplarForm(forms.Form):
 
     ComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     RegistradoPor = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
-    NumeroIndividuo =  forms.CharField(max_length=500, widget=forms.TextInput(
-            attrs= {
-                'required' : True,
-                'class' : 'form-control',
-                }
-            ))
+    NumeroIndividuo = forms.IntegerField(
+    widget=forms.NumberInput(attrs={
+        'class': 'form-control',
+        'style': 'height: 80px;',
+        'step': '1',  
+        'min': '0',  
+        'max': '1000',  
+        'required' : False,
+    })
+)
     FechaEvento =  forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control','style': 'height: 70px;',})
+        attrs={'class': 'form-control','style': 'height: 80px;',})
         )
     Habitad= forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     DEPARTAMENTOS= []
@@ -305,8 +330,9 @@ class EjemplarForm(forms.Form):
         choices = DEPARTAMENTOS,
         widget=forms.Select(
             attrs= {
+                'required' : False,
                 'default' : 0,
-                'class' : 'form-control','style': 'height: 70px;',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             )
         )
@@ -319,37 +345,38 @@ class EjemplarForm(forms.Form):
         choices = MUNICIPIOS,
         widget=forms.Select(
             attrs= {
+                'required' : False,
                 'default' : 1,
-                'class' : 'form-control','style': 'height: 70px;',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             )
         )
     IdentificadoPor= forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     FechaIdentificacion =  forms.DateField(   widget=DateInput(  
-        attrs={'class': 'form-control','style': 'height: 70px;',})
+        attrs={'required' : False,'class': 'form-control','style': 'height: 80px;',})
         )
     IdentificacionReferencias = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     ComentarioIdentificacion = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     NombreCientificoComentarioRegistroBiologico = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     CLASES = []
@@ -369,35 +396,35 @@ class EjemplarForm(forms.Form):
         choices = CLASES, widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control','style': 'height: 70px;',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             )) 
     Orden = forms.ChoiceField(
         choices = ORDENES, widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control','style': 'height: 70px;',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             )) 
     Genero = forms.ChoiceField(
         choices = GENEROS,widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control','style': 'height: 70px;',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ) ) 
     Familia = forms.ChoiceField(
         choices = FAMILIAS,widget=forms.Select(
             attrs= {
                 'default' : 1,
-                'class' : 'form-control','style': 'height: 70px;',
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ) ) 
     NombreComun = forms.CharField(max_length=500, widget=forms.TextInput(
             attrs= {
                 
-                'required' : True,
-                'class' : 'form-control',
+                'required' : False,
+                'class' : 'form-control','style': 'height: 80px;',
                 }
             ))
     
@@ -413,7 +440,31 @@ class EjemplarForm(forms.Form):
         except DatabaseError:
             raise forms.ValidationError('El número de catálogo ya está registrado.')
         return data
-
+    def clean_Fecha_evento(self):
+        fecha_evento = self.cleaned_data['FechaEvento']
+        if fecha_evento > datetime.date.today():
+            raise ValidationError('La fecha no puede ser en el futuro')
+        return fecha_evento
+    def clean_Fecha_Identificacion(self):
+        fecha_I = self.cleaned_data['FechaIdentificacion']
+        if fecha_I > datetime.date.today():
+            raise ValidationError('La fecha no puede ser en el futuro')
+        return fecha_I
+    def clean(self):
+        cleaned_data = super().clean()
+        try:
+            
+            self.clean_Fecha_evento()
+        except ValidationError as e:
+           
+            self.add_error('FechaEvento', e)
+        try:
+            self.clean_Fecha_Identificacion()
+            
+        except ValidationError as e:
+            self.add_error('FechaIdentificacion', e)
+           
+        return cleaned_data
 class Update(forms.Form):
     USUARIOS = []
 

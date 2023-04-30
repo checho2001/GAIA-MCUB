@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="login ">
 
         <meta charset="utf-8">
         <title>Login</title>
         <link rel="stylesheet" href="../static/css/style1.css" >
-        <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
         <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="../static/css/sidebars.css" >
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    
-  
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+       
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
-        <script type="text/javascript" src="../static/js/sidebars.js"> </script>
+ 
     <style>
       #Library {
         background-image: url('/static/images/casa.png');
@@ -141,11 +136,15 @@
       }
       .h4 {
         font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 40px;
+        font-size: 30px;
       }
       .h5 {
         font-family: 'Acherus Grotesque', sans-serif;
         font-size: 30px;
+      }
+      .h6 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 25px;
       }
           .nav-pills .nav-link.active {
             background-color:#404827;;
@@ -171,13 +170,13 @@
             margin: 0;
           }
           .btn-customizedlogin :hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             color: #404827; 
             border: none;
             font-size: 30px;
           }
           .btn-custom:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             color: #404827; 
             border: none;
             font-size: 30px;
@@ -221,9 +220,11 @@
             font-family: 'Lato', sans-serif;
             font-size: 16px;
             color: #f6f6f6;
+            position:fixed;
+            bottom:0;
           }
           .btn-custom:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             color: #404827; 
             border: none;
             font-size: 30px;
@@ -246,7 +247,7 @@
             
           }
           .btn-customizedlogin :hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             color: #404827; 
             border: none;
             font-size: 30px;
@@ -259,12 +260,12 @@
      
   <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+      <img class="image_header-museo" src="/static/images/logo (1).png" alt="..."  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
       " >
     </a>
     
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="..."   style="width: 30%; height:30%" >
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -333,10 +334,10 @@
                     </div>
                     <br>
                     <br>
-                    <div class="form-floating" >
+                    <div class="form-floating">
                       {{ form.captcha }}
-                      <br>
-                    </div>
+                      <label for="{{ form.captcha.id }}">Captcha</label>
+                  </div>
                     <br>
                     <br>
                     
@@ -359,9 +360,9 @@
   <div class="row">
     <div class="col" style="border-right: 1px solid white;">
       
-      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+      <h2 class="h2" style="color: white; font-size:30px;">Universidad El Bosque</h2>
+      <h3 class="h3" style="color: white; font-size:30px;">Instalaciones Bogotá</h3>
+      <h4 class="h4" style="color: white; font-size:30px;"> Av. Cra. 9 No. 131 A - 02
         Línea gratuita:
         018000 113033
         
@@ -371,37 +372,30 @@
     </div>
     <div class="col" style="border-right: 1px solid white;">
       <ul class="social">
-     
-      <a class="btn-customizedlogin"onClick="
-      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
-        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
-
-      </a>
-    
-    </ul>
+        <li>
+          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+            <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+          </a>
+        </li>
+      </ul>
     </div>
     <div class="col" style="border-right: 1px solid white;">
       <ul class="social">
-        <a class="btn-customizedlogin"  onClick="
-      parent.location='https://www.unbosque.edu.co'">
-          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
-  
-        </a>
-      
-     
-
-    </ul>
+        <li>
+          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+            <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="col" >
+    <div class="col">
       <ul class="social">
-        <a class="btn-customizedlogin" onClick="
-        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
-  
-        </a>
-      
-      
-    </ul>
+        <li>
+          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+            <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
+          </a>
+        </li>
+      </ul>
     </div>
     <br><br>
 

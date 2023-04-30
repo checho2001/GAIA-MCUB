@@ -5,31 +5,26 @@
     <meta name="description" content="Dashboard ">
         <meta charset="utf-8">
         <title>DashBoard</title>
-        <link rel="stylesheet" href="../static/css/style1.css" >
-        <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
-        <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="../static/css/sidebars.css" >
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
-        <script type="text/javascript" src="../static/js/sidebars.js"> </script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/sidebars.css">
+<link rel="stylesheet" href="../static/css/style1.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../static/js/sidebars.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 <script>
   $(document).ready(function() {
     $('#myTable').DataTable({
       "paging": true,
       "pageLength": 5,
       "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+        "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
         "paginate": {
           "previous": 'Anterior',
           "next": 'Siguiente'
@@ -42,7 +37,7 @@
       "paging": true,
       "pageLength": 5, 
       "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
+        "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
         "paginate": {
           "previous": 'Anterior',
           "next": 'Siguiente'
@@ -428,12 +423,12 @@
     
     <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-        <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+        <img class="image_header-museo" src="/static/images/logo (1).png" alt="..." style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
         " >
       </a>
       
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-        <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+        <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="..."  style="width: 30%; height:30%" >
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -513,7 +508,7 @@
                      <br>
                      
                     <div class="col" >
-                      <button class="btn-customizedlogin "   onclick="location.href = '/register'" type="button"><img class="image_header-museo" src="/static/images/4175032.png"  style="height:150px; width:150px;" ></button>
+                      <button class="btn-customizedlogin "   onclick="location.href = '/register'" type="button"><img class="image_header-museo" src="/static/images/4175032.png" alt="..." style="height:150px; width:150px;" ></button>
                    
                     
                       <div class="text">
@@ -526,7 +521,7 @@
 
 
                     <div class="col">
-                      <button class="btn-customizedlogin "  onclick="location.href = '/UpdateUser'"  type="button"><img class="image_header-museo" src="/static/images/edit.png"  style="height:150px; width:150px;" ></button>
+                      <button class="btn-customizedlogin "  onclick="location.href = '/UpdateUser'"  type="button"><img class="image_header-museo" alt="..." src="/static/images/edit.png"  style="height:150px; width:150px;" ></button>
                    
                       <div class="text" ><h4 class="h4" style="color: #008776; " data-toggle="tooltip" title="Modificar  usuarios">Modificar Usuarios</h4></div>
                     
@@ -538,7 +533,7 @@
                   <div class="col">
                      
                         
-                    <button class="btn-customizedlogin "  onclick="location.href = '/DesactivarUser'"type="button"><img class="image_header-museo" src="/static/images/747386.png"  style="height:150px; width:150px;" ></button>
+                    <button class="btn-customizedlogin "  onclick="location.href = '/DesactivarUser'"type="button"><img class="image_header-museo" src="/static/images/747386.png" alt="..."  style="height:150px; width:150px;" ></button>
                     <div class="text" ><h4  class="h4" style="color: #008776; ">Estado Usuarios</h4></div>
                     
                  
@@ -609,24 +604,31 @@
                   <div class="row">
                     <br> <br>
                     <div class="col">
-                      <button class="btn-customizedlogin "  onclick="location.href = '/load_data'" type="button"><img class="image_header-museo" src="/static/images/7191951.png"  style="height:150px; width:150px;" ></button>
+                      <button class="btn-customizedlogin "  onclick="location.href = '/load_data'" type="button"><img class="image_header-museo" src="/static/images/7191951.png"  alt="..." style="height:150px; width:150px;" ></button>
 
                     <div class="text" ><h4  class="h4" style="color: #008776;">Importar Ejemplares</h4></div>
                   
                     {% if error %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ error }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
+                
+                {% if success %}
+                    <div class="alert alert-success" role="alert">
+                        {{ success }}
+                    </div>
+                {% endif %}
+                
+
+
+
                   </div>
                       
                     
 
                     <div class="col">
-                      <button class="btn-customizedlogin "   onclick="location.href = '/informe'" type="button"><img class="image_header-museo"  src="/static/images/a.png"  style="height:150px; width:150px;" ></button>
+                      <button class="btn-customizedlogin "   onclick="location.href = '/informe'" type="button"><img class="image_header-museo"  src="/static/images/a.png" alt="..."  style="height:150px; width:150px;" ></button>
                    
                     <div class="text" ><h4   class="h4" style="color: #008776; ">Registrar Actividad</h4></div>
                   
@@ -634,14 +636,14 @@
                     </div>
 
                     <div class="col">
-                      <button class="btn-customizedlogin "   onclick="location.href = '/registerE'" type="button"><img class="image_header-museo" src="/static/images/3729028.png" style="height:150px; width:150px;" ></button>
+                      <button class="btn-customizedlogin "   onclick="location.href = '/registerE'" type="button"><img class="image_header-museo" src="/static/images/3729028.png"  alt="..." style="height:150px; width:150px;" ></button>
                     
                       <div class="text" ><h4   class="h4" style="color: #008776;">Registrar Ejemplar</h4></div>
                   
           
                     </div>
                     <div class="col">
-                      <button class="btn-customizedlogin "   onclick="location.href = '/ActivarEspecimen'" type="button"><img class="image_header-museo" src="/static/images/503832.png" style="height:150px; width:150px;" ></button>
+                      <button class="btn-customizedlogin "   onclick="location.href = '/ActivarEspecimen'" type="button"><img class="image_header-museo" src="/static/images/503832.png" alt="..." style="height:150px; width:150px;" ></button>
                     
                       <div class="text" ><h4   class="h4" style="color: #008776;">Activar Ejemplar</h4></div>
                   
@@ -675,11 +677,11 @@
                         <td class="h5">{{ esp.FechaIdentificacion }}</td>
                         <td class="h5">{{ esp.NombreCientificoComentarioRegistroBiologico }}</td>
                         <td style="color: #404827;"> <a class="a" href="../updateE/{{esp.id}}"  >
-                          <img class="image_header-museo" src="/static/images/1159633.png" style="height:70px; width:70px;" >
+                          <img class="image_header-museo" src="/static/images/1159633.png"  alt="..." style="height:70px; width:70px;" >
                         </a>     </td>
                         <td style="color: #404827;">
                           <a class="a" href="../dardebaja/{{esp.id}}"  >
-                            <img class="image_header-museo" src="/static/images/25402.png" style="height:70px; width:70px;" >
+                            <img class="image_header-museo" src="/static/images/25402.png"  alt="..." style="height:70px; width:70px;" >
                           </a>  
                         </td>
     
@@ -720,7 +722,7 @@
                         </div >
                         <div class="col">
                           <button  class="btn-customizedlogin " type="submit" style="border:none;" >
-                            <img class="image_header-museo" src="/static/images/1248845.png" style="height:50px; width:50px;">
+                            <img class="image_header-museo"  alt="..." src="/static/images/1248845.png" style="height:50px; width:50px;">
                             
                         </button>
                       </div >
@@ -742,7 +744,7 @@
                               <input class="form-control" type="text" id="name" name="name" style="font-size:30px">
                             </div>
                             <div class="col">
-                              <button class="btn-customizedlogin " type="submit"><img class="image_header-museo" src="/static/images/1004759.png" style="height:50px; width:50px;"></button>
+                              <button class="btn-customizedlogin " type="submit"><img class="image_header-museo" src="/static/images/1004759.png"  alt="..." style="height:50px; width:50px;"></button>
                             </div></div>
                         
                          
@@ -763,7 +765,7 @@
                                 </div>
                                 <div class="col">
                                     <button class="btn-customizedlogin" type="submit" value="Eliminar">
-                                        <img class="image_header-museo" src="/static/images/eliminar.png" style="height:50px; width:50px;">
+                                        <img class="image_header-museo" src="/static/images/eliminar.png"   alt="..." style="height:50px; width:50px;">
                                     </button>
                                 </div>
                             </div>
@@ -806,7 +808,7 @@
                           </div >
                             <div class="col">
                           <button  class="btn-customizedlogin " type="submit" style="border:none;" >
-                            <img class="image_header-museo" src="/static/images/9147804.png" style="height:50px; width:50px;">
+                            <img class="image_header-museo" src="/static/images/9147804.png"  alt="..."  style="height:50px; width:50px;">
 
                         </button>
                       </div >
@@ -883,29 +885,33 @@
               PBX: (601) 648 9000
             </h6>
           </div>
-          <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <div class="col" style="border-right: 1px solid white;">
             <ul class="social">
-              <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-                <img class="img" src="/static/images/facebook.png" style="height:100px; width:100px;">
-              </a>
+              <li>
+                <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+                  <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+                </a>
+              </li>
             </ul>
           </div>
-          <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <div class="col" style="border-right: 1px solid white;">
             <ul class="social">
-              <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-                <img class="img" src="/static/images/edificio.png" style="height:100px; width:100px;">
-              </a>
+              <li>
+                <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+                  <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
+                </a>
+              </li>
             </ul>
           </div>
-          <div class="col-sm-12 col-md-2">
+          <div class="col">
             <ul class="social">
-              <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-                <img class="img" src="/static/images/instagram.png" style="height:100px; width:100px;">
-              </a>
+              <li>
+                <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+                  <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
+                </a>
+              </li>
             </ul>
           </div>
-        </div>
-      </div>
     </footer>
   </div>
   

@@ -37,6 +37,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.generic.edit import FormView
+from django.db.models import Q
 
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import force_bytes
@@ -203,22 +204,30 @@ class Dashboard(View):
         
         def get(self,request):
             error = request.session.pop('error', None)
+            success = request.session.pop('success', None)
+            context = {}
+            if error:
+                context.update({'error': error})
+            if success:
+                context.update({'success': success})
             user = request.user 
             actividades = TipoActividad.objects.all()
 
             if user.is_authenticated:
                 
                 if Rol.objects.filter(user=user, id=4):
-                  
+                
                     especimenes = especimen.objects.all()
                     actions = UserAction.objects.order_by('tiempo').all()
-                    return render(request,"dashboard.html",{'especimenes':especimenes,'actions': actions,'error': error, 'actividades': actividades})
+                    context.update({'especimenes':especimenes,'actions': actions, 'actividades': actividades})
+                    return render(request,"dashboard.html", context)
                 else:
                     return HttpResponseRedirect(reverse('redirect'))
 
             else:
-        
+
                 return HttpResponseRedirect(reverse('redirect'))
+
 class PerfilU(View):
         def get(self,request):
 
@@ -573,67 +582,88 @@ def update_aux_curatoria(request):
     else:
         form = Update()
     return render(request, 'UpdateUser.html', {'form':form ,'rol': rol})    
-   
 def load_data(request):
-    root = tk.Tk()
-    root.withdraw()
+    try:
+        root = tk.Tk()
+        root.withdraw()
 
-    file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
-    
-    if not file_path:
-       request.session['error'] = 'No se seleccionó ningún archivo'
-       return redirect('dashboard')
-    else:
-        data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=['catalogNumber', 'datasetName', 'occurrenceRemarks', 'recordedBy', 'individualCount',
-                                              'eventDate', 'habitat', 'stateProvince', 'county', 'identifiedBy',  'dateIdentified',
-                                                'identificationReferences', 'identificationRemarks', 'scientificName', 'class', 'order', 'family', 'genus', 
-                                                'vernacularName'])
-    
-        for _, row in data.iterrows():
-            if not pd.isnull(row['eventDate']):
-                try:
-                    event_date_obj = pd.to_datetime(row['eventDate'])
-                except ValueError as e:
-                    print(f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}")
+        file_path = filedialog.askopenfilename(parent=root,title="Seleccionar archivo de Excel", filetypes=[("Archivos de Excel", "*.xlsx")])
+
+        if not file_path:
+            request.session['error'] = 'No se seleccionó ningún archivo'
+            return redirect('dashboard')
+        else:
+            data = pd.read_excel(file_path, sheet_name="Plantilla", skiprows=[1],usecols=['catalogNumber', 'datasetName', 'occurrenceRemarks', 'recordedBy', 'individualCount',
+                                                  'eventDate', 'habitat', 'stateProvince', 'county', 'identifiedBy',  'dateIdentified',
+                                                    'identificationReferences', 'identificationRemarks', 'scientificName', 'class', 'order', 'family', 'genus', 
+                                                    'vernacularName'])
+
+
+            for _, row in data.iterrows():
+                catalog_number = row['catalogNumber']
+                if especimen.objects.filter(Q(NumeroCatalogo=catalog_number)).exists():
+
+                    continue
+
+                for col in ['datasetName', 'occurrenceRemarks', 'recordedBy', 'individualCount',
+                    'eventDate', 'habitat', 'stateProvince', 'county', 'identifiedBy', 'dateIdentified',
+                    'identificationReferences', 'identificationRemarks', 'scientificName', 'class', 'order',
+                    'family', 'genus', 'vernacularName']:
+                    if pd.isnull(row[col]):
+                        row[col] = None
+
+                if not pd.isnull(row['eventDate']):
+                    try:
+                        event_date_obj = pd.to_datetime(row['eventDate'])
+                    except ValueError as e:
+                        print(f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}")
+                        event_date_obj = None
+                else:
                     event_date_obj = None
-            else:
-                event_date_obj = None
 
-            if not pd.isnull(row['dateIdentified']):
-                try:
-                    date_identified_obj = pd.to_datetime(row['dateIdentified'])
-                except ValueError as e:
-                    print(f"Error converting dateIdentified '{row['dateIdentified']}' to datetime object: {e}")
+                if not pd.isnull(row['dateIdentified']):
+                    try:
+                        date_identified_obj = pd.to_datetime(row['dateIdentified'])
+                    except ValueError as e:
+                        print(f"Error converting dateIdentified '{row['dateIdentified']}' to datetime object: {e}")
+                        date_identified_obj = None
+                else:
                     date_identified_obj = None
-            else:
-                date_identified_obj = None
 
-            e = especimen(
-                NumeroCatalogo=row['catalogNumber'],
-                NombreDelConjuntoDatos=row['datasetName'],
-                ComentarioRegistroBiologico=row['occurrenceRemarks'],
-                RegistradoPor=row['recordedBy'],
-                NumeroIndividuo=row['individualCount'],
-                FechaEvento=event_date_obj, # Use the converted eventDate datetime object
-                Habitad=row['habitat'],
-                Departamento=row['stateProvince'],
-                Municipio=row['county'],
-                IdentificadoPor=row['identifiedBy'],
-                FechaIdentificacion=date_identified_obj, # Use the converted dateIdentified datetime object
-                IdentificacionReferencias=row['identificationReferences'],
-                ComentarioIdentificacion=row['identificationRemarks'],
-                NombreCientificoComentarioRegistroBiologico=row['scientificName'],
-                ClaseE=row['class'],
-                Orden=row['order'],
-                Genero=row['genus'],
-                Familia=row['family'],
-                NombreComun=row['vernacularName']
-            )
-            e.save()
+                e = especimen(
+                    NumeroCatalogo=catalog_number,
+                    NombreDelConjuntoDatos=row['datasetName'],
+                    ComentarioRegistroBiologico=row['occurrenceRemarks'],
+                    RegistradoPor=row['recordedBy'],
+                    NumeroIndividuo=row['individualCount'],
+                    FechaEvento=event_date_obj, 
+                    Habitad=row['habitat'],
+                    Departamento=row['stateProvince'],
+                    Municipio=row['county'],
+                    IdentificadoPor=row['identifiedBy'],
+                    FechaIdentificacion=date_identified_obj, 
+                    IdentificacionReferencias=row['identificationReferences'],
+                    ComentarioIdentificacion=row['identificationRemarks'],
+                    NombreCientificoComentarioRegistroBiologico=row['scientificName'],
+                    ClaseE=row['class'],
+                    Orden=row['order'],
+                    Genero=row['genus'],
+                    Familia=row['family'],
+                    NombreComun=row['vernacularName']
+                )
+                e.save()
+
+            messages.success(request, 'Los datos se cargaron exitosamente')
+
+            return redirect('dashboard')       
         
-        context = {'success': 'Los datos se cargaron exitosamente'}
 
-    return render(request, 'dashboard.html', context)
+
+    except Exception as e:
+        print(f"Error occurred while loading data from file: {e}")
+        return redirect('dashboard')
+    
+
 
 def elegir(request):
     if request.method == 'POST':

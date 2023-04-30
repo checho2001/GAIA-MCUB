@@ -29,11 +29,7 @@
     opacity: initial;
     outline: 0;
 }
-nav-link{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18;
-    color: #666;
-}
+
 
   .forms-login {
     max-width: 500px;
@@ -132,22 +128,7 @@ nav-link{
     font-family: 'Acherus Grotesque';
     src: url('fonts/acherus_grotesque_-_bold_italic.otf') format('opentype');
 }
-.btn.btn-verde-claro.rounded {
-  background-color: #8cd15c;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
-}
+
 .btn.btn-verde-claro.rounded:hover {
   background-color: #7dcf5a;
 }

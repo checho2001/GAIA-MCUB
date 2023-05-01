@@ -511,22 +511,19 @@
                 </div>
 
               </nav>
-
-
-
-
-
-
-
               <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <br>
                 <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
                 <br> 
-                <a class="btn-customizedlogin"  onclick="location.href = '/informe'">
-                  <img class="img" src="/static/images/a.png"   alt="..." style="height:128px; width:128px;">
-                
-                </a>
+                <div class="col">
+                  <div class="d-flex flex-column align-items-center">
+                    <button class="btn-customizedlogin" onclick="location.href = '/informe'" type="button">
+                      <img class="image_header-museo" src="/static/images/a.png" alt="Registrar Actividad" style="height:150px; width:150px;">
+                    </button>
+                    <img class="mt-3" src="../static/images/info.png" alt="Tooltip" data-toggle="tooltip" title="Permite registrar actividades que se hayan realizado sobre los ejemplares del museo">
+                  </div>
+                </div>
                 <br>
             
               
@@ -553,7 +550,7 @@
                     <tr>
                       <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
                               <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
-                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
+                              <td   class="h5" style="color: #404827; ">{{ action.user }}</td>
                               <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
                               <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                       <td> <a class="a" href="aprobar/{{action.id_user_action}}"  >
@@ -601,7 +598,7 @@
                 <tr>
                   <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
                               <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
-                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
+                              <td   class="h5" style="color: #404827; ">{{ action.user }}</td>
                               <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
                               <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                 {% endif %}
@@ -626,9 +623,14 @@
       <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Ejemplares</h2></div>
       <br>
 
-      <a class="btn-customizedlogin"  onclick="location.href = '/registerE'">
-        <img class="img" src="/static/images/3729028.png"    alt="..." style="height:128px; width:128px;">
-      </a>
+      <div class="col">
+        <div class="d-flex flex-column align-items-center">
+          <button class="btn-customizedlogin" onclick="location.href = '/registerE'" type="button">
+            <img class="image_header-museo" src="/static/images/3729028.png" alt="..." style="height:150px; width:150px;">
+          </button>
+          <img class="mt-3" src="../static/images/info.png" alt="Tooltip" data-toggle="tooltip" title="Permite agregar más ejemplares al sistema sean de exhibición o no">
+        </div>
+      </div>
     
     
       <br>
@@ -726,8 +728,8 @@
   
   </div>
 </div>
-    </div>
-</div>   
+              </div>
+          </div>   
               <div class="col-sm-6 mw-100 ">
     
               <script>
@@ -761,7 +763,7 @@
 
         
         </div>
-      </div>
+        </div>
     </ul>
     
  

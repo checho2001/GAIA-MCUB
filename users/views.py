@@ -1007,3 +1007,69 @@ def enviar_correo(request):
     return render(request, 'contactenos.html',  {'form':form})
 
 
+
+
+def export_data(request):
+
+
+    columnas = ['occurrenceID', 'basisOfRecord', 'institutionCode', 'collectionCode', 'catalogNumber', 'type', 'modified',
+            'language', 'license', 'rightsHolder', 'accessRights', 'bibliographicCitation', 'references', 'institutionID',
+            'collectionID', 'datasetID', 'datasetName', 'ownerInstitutionCode', 'informationWithheld',
+            'dataGeneralizations', 'dynamicProperties', 'occurrenceRemarks', 'recordNumber', 'recordedBy', 'organismID',
+            'individualCount', 'organismQuantity', 'organismQuantityType', 'organismName', 'sex', 'lifeStage',
+            'reproductiveCondition', 'behavior', 'establishmentMeans', 'occurrenceStatus', 'preparations', 'disposition',
+            'otherCatalogNumbers', 'previousIdentifications', 'associatedMedia', 'associatedReferences',
+            'associatedOccurrences', 'associatedSequences', 'associatedTaxa', 'materialSampleID', 'parentEventID',
+            'eventID', 'samplingProtocol', 'sampleSizeValue', 'sampleSizeUnit', 'samplingEffort', 'eventDate',
+            'eventTime', 'year', 'month', 'day', 'verbatimEventDate', 'habitat', 'fieldNumber', 'fieldNotes',
+            'eventRemarks', 'locationID', 'higherGeographyID', 'higherGeography', 'continent', 'waterBody',
+            'islandGroup', 'island', 'country', 'countryCode', 'stateProvince', 'county', 'municipality', 'locality',
+            'verbatimLocality', 'verbatimElevation', 'minimumElevationInMeters', 'maximumElevationInMeters',
+            'minimumDepthInMeters', 'maximumDepthInMeters', 'locationRemarks', 'verbatimCoordinates', 'verbatimLatitude',
+            'verbatimLongitude', 'verbatimCoordinateSystem', 'verbatimSRS', 'decimalLatitude', 'decimalLongitude',
+            'geodeticDatum', 'coordinateUncertaintyInMeters', 'georeferencedBy', 'georeferencedDate', 'identifiedBy',
+            'dateIdentified', 'identificationReferences', 'identificationVerificationStatus', 'identificationRemarks',
+            'identificationQualifier', 'typeStatus', 'taxonID', 'scientificNameID', 'acceptedNameUsageID',
+            'scientificName', 'kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'subgenus', 'specificEpithet',
+            'infraspecificEpithet', 'taxonRank', 'verbatimTaxonRank', 'scientificNameAuthorship', 'vernacularName',
+            'nomenclaturalCode', 'taxonomicStatus', 'nomenclaturalStatus', 'taxonRemarks', 'Tipo de Montaje',
+            ]
+    
+    df = pd.DataFrame(columns=columnas)
+    column_name_mapping = {
+    'catalogNumber': 'NumeroCatalogo',
+    'datasetName': 'NombreDelConjuntoDatos',
+    'institutionCode': 'ComentarioRegistroBiologico',
+    'recordedBy': 'RegistradoPor',
+    'individualCount': 'NumeroIndividuo',
+    'eventDate': 'FechaEvento',
+    'habitat': 'Habitad',
+    'stateProvince': 'Departamento',
+    'county': 'Municipio',
+    'identifiedBy': 'IdentificadoPor',
+    'dateIdentified': 'FechaIdentificacion',
+    'identificationReferences': 'IdentificacionReferencias',
+    'identificationRemarks': 'ComentarioIdentificacion',
+    'scientificName': 'NombreCientificoComentarioRegistroBiologico',
+    'class': 'ClaseE',
+    'order': 'Orden',
+    'genus': 'Genero',
+    'family': 'Familia',
+    'vernacularName': 'NombreComun'
+} 
+    data = especimen.objects.all().values('NumeroCatalogo', 'NombreDelConjuntoDatos', 'ComentarioRegistroBiologico', 'RegistradoPor', 'NumeroIndividuo',
+                                       'FechaEvento', 'Habitad', 'Departamento', 'Municipio', 'IdentificadoPor', 'FechaIdentificacion',
+                                       'IdentificacionReferencias', 'ComentarioIdentificacion', 'NombreCientificoComentarioRegistroBiologico', 'ClaseE',
+                                       'Orden', 'Genero', 'Familia', 'NombreComun')
+    data = list(data)  # Convert QuerySet to list
+
+    # Change column names in data to English
+    for item in data:
+        for key, value in column_name_mapping.items():
+            item[key] = item.pop(value)
+    df = df.append(pd.DataFrame(data), ignore_index=True)
+    
+    response = HttpResponse(content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="especimenes.xlsx"'
+    df.to_excel(response, index=False)
+    return response

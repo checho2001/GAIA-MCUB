@@ -57,6 +57,8 @@ urlpatterns = [
     path('enviarcorreo/', views.enviar_correo, name='enviar_correo'),
     path('EliminarActividad/', views.EliminarActividad, name='EliminarActividad'),
     path('obtener_usuario/<int:id_usuario>/', views.obtener_usuario, name='obtener_usuario'),
+    path('exportar-datos/', views.export_data, name='exportar_datos'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
 
 if settings.DEBUG:

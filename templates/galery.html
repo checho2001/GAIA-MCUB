@@ -26,6 +26,59 @@
           });
           </script>
     <style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .page-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0 15px;
+    padding: 0;
+  }
+
+  .page-numbers li {
+    background-color: #404827;
+    border-radius: 50%;
+    color: white;
+    margin: 2px;
+    padding: 5px 10px;
+  }
+
+  .page-numbers li.active {
+    background-color: white;
+    color: #404827;
+  }
+
+  .previous-page,
+  .next-page {
+    background-color: #404827;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .previous-page:hover,
+  .next-page:hover {
+    background-color: #555;
+    cursor: pointer;
+  }
+
+  .previous-page[disabled],
+  .next-page[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: default;
+  }
+
       #Library {
         background-image: url('/static/images/casa.png');
         background-position: left 90px center;
@@ -561,9 +614,18 @@ footer {
                 </div>
                 <div class="pagination">
                   <button class="previous-page">Previous</button>
-                  <button class="next-page">Next</button>
+                  <ul class="page-numbers"></ul>
+                  {% for page in page_numbers %}
+                  {% if page == current_page %}
+                    <li class="page-item active">{{ page }}</li>
+                  {% else %}
+                    <li class="page-item"><a href="?page={{ page }}" class="page-link">{{ page }}</a></li>
+                  {% endif %}
+                {% endfor %}
+                <button class="next-page">Next</button>
                 </div>
-              </div>
+                
+                
               
               </div>
 
@@ -632,10 +694,6 @@ footer {
               
   
                 </div>
-
-
-
-
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">  
 
               <div  class="container">
@@ -864,6 +922,7 @@ footer {
   const cards = document.querySelectorAll('.card1');
   const previousButton = document.querySelector('.previous-page');
   const nextButton = document.querySelector('.next-page');
+  const pageNumberContainer = document.querySelector('.page-numbers');
   let currentPage = 1;
   const cardsPerPage = 10;
 
@@ -884,6 +943,25 @@ footer {
   });
 
   function showPage(pageNumber) {
+    let pageNumbersHTML = '';
+    let maxPageNumber = Math.ceil(cards.length / cardsPerPage);
+    let startPageNumber = (Math.floor((pageNumber - 1) / 15) * 15) + 1;
+    let endPageNumber = Math.min(startPageNumber + 14, maxPageNumber);
+
+    for (let i = startPageNumber; i <= endPageNumber; i++) {
+      pageNumbersHTML += `<button class="page-number${i === currentPage ? ' active' : ''}" data-page="${i}">${i}</button>`;
+    }
+
+    pageNumberContainer.innerHTML = pageNumbersHTML;
+
+    const pageNumbers = document.querySelectorAll('.page-number');
+    pageNumbers.forEach(pageNumber => {
+      pageNumber.addEventListener('click', () => {
+        currentPage = parseInt(pageNumber.dataset.page);
+        showPage(currentPage);
+      });
+    });
+
     for (let i = 0; i < cards.length; i++) {
       if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
         cards[i].style.display = 'inline-block';

@@ -10,6 +10,58 @@
         <script type="text/javascript" src="../../../static/js/bootstrap.bundle.min.js"> </script>
         <script type="text/javascript" src="../../../static/js/sidebars.js"> </script>
         <style>
+            .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .page-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0 15px;
+    padding: 0;
+  }
+
+  .page-numbers li {
+    background-color: #404827;
+    border-radius: 50%;
+    color: white;
+    margin: 2px;
+    padding: 5px 10px;
+  }
+
+  .page-numbers li.active {
+    background-color: white;
+    color: #404827;
+  }
+
+  .previous-page,
+  .next-page {
+    background-color: #404827;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .previous-page:hover,
+  .next-page:hover {
+    background-color: #555;
+    cursor: pointer;
+  }
+
+  .previous-page[disabled],
+  .next-page[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: default;
+  }
           #vertical-line {
             border-left: 1px solid white;
             height: 50px;
@@ -310,7 +362,7 @@
             <br>
         </div>
 
-    </div> 
+        </div> 
 
 
         <div   class="col-10" style="height: 100vh; ">
@@ -389,8 +441,19 @@
 
       
        
-    </div>
-
+        </div>
+        <div class="pagination">
+          <button class="previous-page">Previous</button>
+          <ul class="page-numbers"></ul>
+          {% for page in page_numbers %}
+          {% if page == current_page %}
+            <li class="page-item active">{{ page }}</li>
+          {% else %}
+            <li class="page-item"><a href="?page={{ page }}" class="page-link">{{ page }}</a></li>
+          {% endif %}
+        {% endfor %}
+        <button class="next-page">Next</button>
+        </div>
     <script>
     fetch('../../../data.json')
   .then(response => response.json())

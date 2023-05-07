@@ -945,7 +945,6 @@ def elegir_texto(request):
     else:
         return redirect('dashboard.html')
     
-@csrf_exempt
 def qr_code(request,data):
     # Crear el objeto QRCode
     qr = qrcode.QRCode(
@@ -1061,9 +1060,8 @@ def export_data(request):
                                        'FechaEvento', 'Habitad', 'Departamento', 'Municipio', 'IdentificadoPor', 'FechaIdentificacion',
                                        'IdentificacionReferencias', 'ComentarioIdentificacion', 'NombreCientificoComentarioRegistroBiologico', 'ClaseE',
                                        'Orden', 'Genero', 'Familia', 'NombreComun')
-    data = list(data)  # Convert QuerySet to list
+    data = list(data)  
 
-    # Change column names in data to English
     for item in data:
         for key, value in column_name_mapping.items():
             item[key] = item.pop(value)

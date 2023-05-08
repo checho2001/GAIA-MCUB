@@ -1,435 +1,636 @@
+<!doctype html>
 <html lang="en">
   <head>
    
         <meta charset="utf-8">
         <title>Galeria</title>
-        <link rel="stylesheet" href="../../../static/css/style1.css" >
-        <link rel="stylesheet" href="../../../static/fonts/linearicons/style.css" >
-        <link rel="stylesheet" href="../../../static/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="../../../static/css/sidebars.css" >
-        <script type="text/javascript" src="../../../static/js/bootstrap.bundle.min.js"> </script>
-        <script type="text/javascript" src="../../../static/js/sidebars.js"> </script>
-        <style>
-          #vertical-line {
-            border-left: 1px solid white;
-            height: 50px;
-          }
-          main {
-            overflow-x: hidden;
-            overflow-y: auto;
-          }
-          #global {
-            overflow-x: hidden;
-            overflow-y: auto;
-            
-          }
-          .h1 {
-            font-family: 'Lato-Black', sans-serif;
-          }
-          html::-webkit-scrollbar {
-            display: none;
-            height: 0;
-        }
-        html::-webkit-scrollbar {
-          display: none;
-          height: 0;
-      }
-        html::-webkit-scrollbar {
-          height: 0;
-          width: 0;
-          -webkit-appearance: none;
-        }
-        html {
-          overflow-x: auto;
-          overflow-y: auto;
-        }
-          .container {
-            max-width: 2000px;
-          }
-          .card {
-            margin-top: 20px;
-            margin-bottom: 20px;
-          
-            object-fit: cover; 
-          }
-          .h2 {
-            font-family: 'Lato-Black', sans-serif;
-            color: #81bb26;
-          }
-          .h3 {
-            font-family: 'Acherus Grotesque', sans-serif;
-          }
-          .h4 {
-            font-family: 'Lato-Black', sans-serif;
-            
-          }
-          .h5 {
-            font-family: 'Lato-Black', sans-serif;
-           
-          }
-          #galeria {
-            width: 80%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .imagen {
-            float: left;
-            width: 100%;
-            margin-right: 2%;
-            margin-bottom: 20px;
-        }
-        
-        .imagen img {
-            width: 100%;
-        }
-          .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-          }
-    
-          @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-              font-size: 3.5rem;
-            }
-          }
-    
-          .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-          }
-    
-          .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-          }
-    
-          .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-          }
-    
-          .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            
-          }
-    
-          .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-          }
-          #radio-cards label {
-      width: 100%;
-    }
-    
-    #radio-cards .card-input-element {
-      display: none;
-    }
-    
-    #radio-cards .card-input:hover {
-      cursor: pointer;
-      background-color: hsl(144, 60%, 95.9%);
-      -webkit-transition: 0.5s;
-      -o-transition: 0.5s;
-      transition: 0.5s;
-    }
-    
-    #radio-cards .card-input-element:checked + .card-input {
-      border: 1px solid #008776;
-    }
-    .nav-pills .nav-link.active {
-      background-color:#404827;;
-      color: white;
-    }
-    .navbar {
-      background-color: #404827;
-    }
-    .navbar-custom {
-      background-color: #404827; 
-    }
-    
-    
-    .btn-custom:hover {
-      transform: scale(1.2);
-      color: black; 
-    }
-    .btn-custom {
-      color: white;
-      background-color: #404827; 
-      padding: 10px 20px;
-      
-      transition: transform 0.3s ease;
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../../static/css/style1.css" >
+        <link rel="icon" href="data:,">
+
+        <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../static/css/style1.css">
+        <link rel="stylesheet" href="../../static/css/sidebars.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="../../static/js/sidebars.js"></script>
+        <script>
+          $(document).ready(function(){
+            $("#search").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $(".card").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+            });
+          });
+          </script>
+    <style>
+      #Library {
+        background-image: url('/static/images/casa.png');
+        background-position: left 90px center;
+        width: 140px; 
+        height:60px;
+        background-size: 25%;
+        background-repeat: no-repeat;
+        text-align: left;
+        font-family: 'Lato-Black', sans-serif;
+        font-size:26px
+     }
      
-    }
-    .my-input {
-      border: none;
+     #Library:hover {
+        background-image: url('/static/images/home (2).png');
+     }
+     #colecciones {
+      background-image: url('/static/images/llamablanca.png');
+      background-position: left 170px center;
+      width: 240px; 
+      height:60px;
+      background-size: 20%;
+      background-repeat: no-repeat;
+      text-align: left;
+      font-family: 'Lato-Black', sans-serif;
+      font-size:26px
       
+    
     }
     
-        </style>
-  </head>
-  <body  id="global">
+    #colecciones:hover {
+      background-image: url('/static/images/llamaverde.png');
+    }
+    #nosotros {
+    background-image: url('/static/images/equipo.png');
+    background-position: left 130px center;
+    width: 190px; 
+    background-size: 25%;
+    text-align: left;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px;
+    
+    height:60px;
+    background-repeat: no-repeat;
+    
+    
+    }
+    
+    #nosotros:hover {
+    background-image: url('/static/images/equipo (3).png');
+    }
+    #contacto {
+    background-image: url('/static/images/informacion.png');
+    background-position: left 140px center;
+    width: 190px; 
+    background-size: 20%;
+    text-align: left;
+    
+    height:60px;
+    background-repeat: no-repeat;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px
+    
+    }
+    @media only screen and (max-width: 767px) {
+      .col-md-6 {
+        width: 100%;
+        padding: 0;
+      }
+    }
+    #contacto:hover {
+    background-image: url('/static/images/informacion (2).png');
+    }
+    #dashboard {
+    background-image: url('/static/images/pizarron.png');
+    background-position: left 160px center;
+    width: 210px; 
+    background-size: 20%;
+    text-align: left;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px;
+    height:60px;
+    background-repeat: no-repeat;
+    
+    
+    }
+    
+    #dashboard:hover {
+    background-image: url('/static/images/pizarron (2).png');
+    }
+    #login {
+      background-image: url('/static/images/login.png');
+      background-position: left 90px center;
+      width: 200px; 
+      background-size: 25%;
+      text-align: left;
       
-  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0 ">
-    <a class="navbar-nav justify-content-center" href="#" onclick="location.href = '/index'" >
-      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%" >
+      height:60px;
+      background-repeat: no-repeat;
+      
+      font-family: 'Lato-Black', sans-serif;
+      font-size:26px;
+      }
+      
+      #login:hover {
+      background-image: url('/static/images/login (2).png');
+      }
+      #vertical-line {
+        border-left: 1px solid white;
+        height: 50px;
+      }
+      @media (max-width: 767px) {
+        .col-sm-2 {
+          width: 100%;
+          /* otros estilos */
+        }
+      }
+      main {
+        overflow-x: hidden;
+        
+      }
+      #global {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 1000px;
+      }
+      .h1 {
+        font-family: 'Lato-Black', sans-serif;
+        font-size: 70px;
+      }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+        font-size: 60px;
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 50px;
+      }
+      .h4 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 40px;
+      }
+      .h5 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 30px;
+      }
+      .h6 {
+        font-family: 'Acherus Grotesque', sans-serif;
+        font-size: 20px;
+      }
+      html::-webkit-scrollbar {
+        display: none;
+        height: 0;
+    }
+    .container {
+      border: none;
+   
+      border: 0;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+      height: 0;
+  }
+    html::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+      -webkit-appearance: none;
+    }
+  
+    html {
+      overflow-x: auto;
+      overflow-y: scroll;
+    }
+      .container {
+        max-width: 2000px;
+      }
+      .card {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      
+        object-fit: cover; 
+      }
+      .h2 {
+        font-family: 'Lato-Black', sans-serif;
+        color: #81bb26;
+      }
+      .h3 {
+        font-family: 'Acherus Grotesque', sans-serif;
+      }
+      .h4 {
+        font-family: 'Lato-Black', sans-serif;
+        
+      }
+      .h5 {
+        font-family: 'Lato-Black', sans-serif;
+       
+      }
+      #galeria {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .imagen {
+        float: left;
+        width: 100%;
+        margin-right: 2%;
+        margin-bottom: 20px;
+    }
+    
+    .imagen img {
+        width: 100%;
+    }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      #radio-cards label {
+  width: 100%;
+}
+
+#radio-cards .card-input-element {
+  display: none;
+}
+li {
+  font-size: 20px; 
+}
+#radio-cards .card-input:hover {
+  cursor: pointer;
+  background-color: hsl(144, 60%, 95.9%);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#radio-cards .card-input-element:checked + .card-input {
+  border: 1px solid #008776;
+}
+.nav-pills .nav-link.active {
+  background-color:#404827;;
+  color: white;
+}
+.navbar {
+  background-color: #404827;
+}
+.navbar-custom {
+  background-color: #404827; 
+}
+
+footer {
+  background-color: #404827;
+  padding: 50px 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #f6f6f6;
+}
+.btn-custom:hover {
+  transform: scale(1.1);
+  color: #81bb26; 
+}
+.btn-custom {
+  color: white;
+  background-color: #404827; 
+  padding: 10px 20px;
+  
+  transition: transform 0.3s ease;
+ 
+}
+.my-input {
+  border: none;
+  
+}
+
+    </style>
+  </head>
+<body  id="global">
+      
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+      " >
     </a>
     
-    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
       <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
     </a>
-    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" style="border-right: 1px solid white;">Inicio</button>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button" style="border-right: 1px solid white;">Colecciones</button>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button" style="border-right: 1px solid white;">Quiénes Somos</button>
-        <button class="btn btn-custom btn-fade btn-lg navbar-spa" href="#" onclick="location.href = '/enviarcorreo'"  type="button" style="border-right: 1px solid white;" >Contáctenos </button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
         {% if  user.is_authenticated  %}
-        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled style="border-right: 1px solid white;"> Hola {{ user.nombre }}</button>
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
+
         {% if rol.id == 4 %}
         
-        <button class="btn btn-custom btn-fade btn-lg "   href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard"  href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
     {% elif rol.id == 1 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
       {% elif rol.id == 2 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
       {% elif rol.id == 3 %}
        
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/dashCur'"  type="button style="border-right: 1px solid white;"">Volver al DashBoard</button>
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashCur'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
     {% endif %}
 
 
        
       {% endif %}
 
-       
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="margin-top: 10px; margin-left: 20px;" >
+          <input id="search" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Buscar" aria-label="Search" style="border-right: 1px solid white;">
+        </form>
+
         <div class="text-end" >
-          <button class="btn btn-custom btn-fade btn-lg " onclick="location.href = '/login'" >Login</button>
+          <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
         </div>
      
       </div>
     </div>
   </nav>
 
-
-    <main id="global">
-      <div  class="row flex" style=" height: 1000px; " >
-        <div class="col-sm-2" style="background-color: #404827; height: 10000px;  ">
-          <div class="flex-shrink-0 p-3 ">
+      
+  <main id="global" >
+    <div  class="row "  >
+      <div class="col-sm-2 mw-100" style="background-color: #404827;  ">
+          
+         
+            <div class="flex-shrink-0 p-3 " >
 
              
                 
           
               
-            <span class="fs-5 fw-semibold text-light">Categorías </span>
-            
-            <ul class="list-unstyled ps-0">
+                <span class="h4" style="color:white">Categorías </span>
+                
+                <ul class="list-unstyled ps-0">
+                  <br>
+                  <li class="mb-1" style="border-bottom: 1px solid white;">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false"  style="font-size: 30px;">
+                    Clase
+                    </button>
+                    <div class="collapse" id="filo-collapse">
+                      {% for i in clases %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="../clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
+             
+                    </ul>
+                    {% endfor %}
+                    </div>
+                </li>
+                <br>
+                <li class="mb-1" style="border-bottom: 1px solid white;">
+                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false"  style="font-size: 30px;">
+                  Orden
+                  </button>
+                  <div class="collapse" id="orden-collapse">
+                    {% for i in ordenes %}
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a href="../orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
+                    </ul>
+                    {% endfor %}
+
+
+                  </div>
+              </li>
               <br>
-            <li class="mb-1" style="border-bottom: 1px solid white;">
+                <li class="mb-1" style="border-bottom: 1px solid white;">
+
+                  
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true" style="font-size: 30px;" >
+                    Familia
+                    </button>
+                    <div class="collapse " id="reino-collapse"  style="font-size: 25px;">
+                      {% for i in familias %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                     
+              
+                    <li><a href="../familia/{{i.nombreFamilia}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
+                   
+                     
+                    </ul>
+                    {% endfor %}
+                       
+                    </div>
+                </li>
+                <br>
+                <li class="mb-1" style="border-bottom: 1px solid white;">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false"  style="font-size: 30px;">
+                    Género
+                    </button>
+                    <div class="collapse" id="subgrupo-collapse">
+                      {% for i in generos %}
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="../genero/{{i.nombreGenero}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
+          
+                    </ul>
+                    {% endfor %}
+
+                    </div>
+                </li>
+                <br>
+               
+                <br>
+               
 
               
-                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#reino-collapse" aria-expanded="true"  >
-                Familia
-                </button>
-                <div class="collapse " id="reino-collapse">
-                  {% for i in familias %}
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                 
-          
-                <li><a href="../familia/{{i.nombreFamilia}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreFamilia }}</a></li>
+                
+                </ul>
+
+
+                <br>
                
-                 
-                </ul>
-                {% endfor %}
-                   
-                </div>
-            </li>
-            <br>
-            <li class="mb-1" style="border-bottom: 1px solid white;">
-                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#subgrupo-collapse" aria-expanded="false">
-                Genero
-                </button>
-                <div class="collapse" id="subgrupo-collapse">
-                  {% for i in generos %}
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="../genero/{{i.nombreGenero}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreGenero }}</a></li>
-      
-                </ul>
-                {% endfor %}
-
-                </div>
-            </li>
-            <br>
-            <li class="mb-1" style="border-bottom: 1px solid white;">
-                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#filo-collapse" aria-expanded="false">
-                Clase
-                </button>
-                <div class="collapse" id="filo-collapse">
-                  {% for i in clases %}
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="../clase/{{i.nombreClase}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreClase }}</a></li>
-         
-                </ul>
-                {% endfor %}
-                </div>
-            </li>
-            <br>
-            <li class="mb-1">
-              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-light" data-bs-toggle="collapse" data-bs-target="#orden-collapse" aria-expanded="false">
-              Orden
-              </button>
-              <div class="collapse" id="orden-collapse">
-                {% for i in ordenes %}
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a href="../orden/{{i.nombreOrden}}" class="link-dark d-inline-flex text-decoration-none rounded text-light">{{ i.nombreOrden }}</a></li>
-                </ul>
-                {% endfor %}
-              </div>
-          </li>
-            <li class="border-top my-3"></li>
-            </ul>
-            <br>
-            <br>
-        </div>
-
-    </div> 
 
 
-        <div   class="col-10" style="height: 100vh; ">
-          
-          <div id="radio-cards">
-            <br>
-            <div class="row gx-lg-5">
-              <h1 style="color: #404827; text-align: center"> Ejemplares</h1>
-          </div>
-            <div class="album py-5 " style="height: 100vh; ">
-                    <div  class="container">
-                      <div class="card">  
-                        <div id="galeria" class="gallery">    
-                          
-                        
-                          <div class="imagen">
-                            
-                            <div class="row">
-                              {% for element in especimenes %}
-                              <div class="col-sm-6">
-                              
-                                <div class="card">
-                                  <a href="{% url 'element_detail' element.pk %}">
-                                  <img 
-                                  src="/media/{{element.Image}}"  alt="{{ element.NombreCientificoComentarioRegistroBiologico }}"
-                                  class="card-img-top"
-                                    alt="Waterfall" width="300" height="700"
-                                  />
-                                  </a>
-                                  <div class="card-body">
-                                    <h5 class="card-title">{{ element.NombreCientificoComentarioRegistroBiologico }}</h5>
-                                    <p class="card-text">
-                                      {{  element.NumeroCatalogo }}
-                                     
-                                    </p>
-                                    <p class="card-text">
-                                 
-                                      {{  element.NombreDelConjuntoDatos }}
-                                    </p>
-                                    <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary" style=" 
-                                    font-family: 'Latoblack', sans-serif;
-                                    background: #404827;
-                                    color: #fff;
-                                    border: none;
-                                    padding: 10px 20px;
-                                    border-radius: 50px;
-                                    text-align: center;
-                                    text-decoration: none;
-                                    display: inline-block;
-                                    font-size: 16px;
-                                    margin: 5px;
-                                    cursor: pointer;
-                                    -webkit-transition-duration: 0.4s;
-                                    transition-duration: 0.4s;
-                                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Ver más</a>
 
-                                  
-                                  </div>
+                <br>
+            </div>
 
-                                </div>
-                              
-                              </div>
+        </div> 
 
-                              {% endfor %}
 
-                            
-                            
-                                
-                            
+
+        <div   class="col-10" >
+
+          <br> 
+          <div   class="text-center" ><h1 class= "h1" style="color: #404827; text-align: center;">Ejemplares</h1></div>
+          <br>
+          <div class="tab-content" id="pills-tabContent">
+
+
+            <div class="tab-pane fade show active" id="pills-quinto" role="tabpanel" aria-labelledby="pills-cuarto-tab">
+
+              <div class="container">
+                <div class="card flex" style="border: none; border: 0;">  
+                  <div id="galeria" class="gallery">    
+                    <div class="row">
+                      {% for element in especimenes %}
+                      <div class="col-md-6">
+                        <div class="card1">
+                          <a href="{% url 'element_detail' element.pk %}">
+                            <img src="/media/{{element.Image}}" alt="{{ element.NombreCientificoComentarioRegistroBiologico }}" class="card-img-top" alt="Waterfall" height="800px" width="500px" />
+                          </a>
+                          <div class="card-body">
+                            <h5 class="h4"><i>{{ element.NombreCientificoComentarioRegistroBiologico }}</i></h5>
+                            <p class="h5" style="font-family: 'Acherus Grotesque', sans-serif;">{{ element.NumeroCatalogo }}</p>
+                            <p class="h5" style="font-family: 'Acherus Grotesque', sans-serif;">{{ element.NombreDelConjuntoDatos }}</p>
+                            <a href="{% url 'element_detail' element.pk %}" class="btn btn-primary" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Ver más</a>
                           </div>
-                       
                         </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
                        
-        </div>   
-    </div>
-
-      
-       
-    </div>
-
-    <script>
-    fetch('../../../data.json')
-  .then(response => response.json())
-  .then(data => {
-    // Iterate through each element and create an HTML element for it
-    data.forEach(element => {
-      const img = document.createElement('img');
-      img.src = element.image;
-      img.alt = element.name;
-      
-      // Add event listener to each image to redirect to information page
-      img.addEventListener('click', () => {
-        window.location.href = `information.html?id=${element.id}`;
-      });
-      
-      // Add image to gallery
-      document.querySelector('.gallery').appendChild(img);
-    });
-  });
-
-  $(document).ready(function(){
-      $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $(".card").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-</script>
-<script>
-  $(document).ready(function(){
-    $("#search").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $(".card").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-  </script>
-    </main> 
+              </div>
+        </div> 
+    </main>
+    
 </body>
+  <footer>
+    <div class="row">
+      <div class="col" style="border-right: 1px solid white;">
+        
+        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+        <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
+          Línea gratuita:
+          018000 113033
+          
+          PBX:
+          (601) 648 9000</h6>
+  
+      </div>
+      <div class="col" style="border-right: 1px solid white;">
+        <ul class="social">
+      
+        <a class="btn-customizedlogin"onClick="
+        parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
+          <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+
+        </a>
+      
+      </ul>
+      </div>
+      <div class="col" style="border-right: 1px solid white;">
+        <ul class="social">
+          <a class="btn-customizedlogin"  onClick="
+        parent.location='https://www.unbosque.edu.co'">
+            <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
+    
+          </a>
+        
+      
+
+      </ul>
+      </div>
+      <div class="col" >
+        <ul class="social">
+          <a class="btn-customizedlogin" onClick="
+          parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+            <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
+    
+          </a>
+        
+        
+      </ul>
+      </div>
+      <br><br>
+    
+      
+            
+              
+
+  </footer>
+
+
+     
+<script>
+  const cards = document.querySelectorAll('.card1');
+  const previousButton = document.querySelector('.previous-page');
+  const nextButton = document.querySelector('.next-page');
+  let currentPage = 1;
+  const cardsPerPage = 10;
+
+  showPage(currentPage);
+
+  previousButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  function showPage(pageNumber) {
+    for (let i = 0; i < cards.length; i++) {
+      if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+        cards[i].style.display = 'inline-block';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+
+
 </html>

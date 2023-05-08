@@ -38,7 +38,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.views.generic.edit import FormView
 from django.db.models import Q
-
+from django.shortcuts import render, redirect
+from .forms import CustomPasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.conf import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -1607,3 +1610,17 @@ def export_data_cur(request, clase):
     response["Content-Disposition"] = 'attachment; filename="especimenes.xlsx"'
     df.to_excel(response, index=False)
     return response
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Tu contraseña fue actualizada con éxito.')
+            print('!!!'*20)
+            return redirect('home')
+    else:
+        form = CustomPasswordChangeForm(user=request.user)
+    return render(request, 'changepassword.html', {'form': form})

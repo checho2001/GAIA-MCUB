@@ -29,6 +29,13 @@ from django.db import DatabaseError
 from datetime import date
 from django.contrib.auth.forms import PasswordResetForm
 
+from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.urls import reverse_lazy
+from django.conf import settings
 
 class CustomUser(forms.Form):
     nombre = forms.CharField(
@@ -784,3 +791,67 @@ class ContactForm(forms.Form):
         ),
         error_messages={"required": "Por favor ingresa un mensaje válido"},
     )
+class CustomPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label=_("Contraseña actual"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'})
+    )
+
+    new_password1 = forms.CharField(
+        label=_("Nueva contraseña"),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+        strip=False,
+        help_text=_("La contraseña no puede ser demasiado similar a otras información personal."
+                    "La contraseña debe contener al menos 8 caracteres."
+                    "La contraseña no puede ser completamente numérica."),
+    )
+
+    new_password2 = forms.CharField(
+        label=_("Confirmar nueva contraseña"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+    )
+
+    def clean_new_password1(self):
+        password1 = self.cleaned_data.get('new_password1')
+        if len(password1) < 8:
+            raise ValidationError("La contraseña debe contener al menos 8 caracteres.")
+        if password1.isnumeric():
+            raise ValidationError("La contraseña no puede ser completamente numérica.")
+        return password1
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['old_password'].widget.attrs.update({
+            'class': 'form-control',
+            'id': 'PassActual',
+            'placeholder': 'Contraseña Actual',
+        })
+
+        self.fields['new_password1'].widget.attrs.update({
+            'class': 'form-control',
+            'id': 'NewPass',
+            'placeholder': 'Nueva Contraseña',
+        })
+
+        self.fields['new_password2'].widget.attrs.update({
+            'class': 'form-control',
+            'id': 'ConfPass',
+            'placeholder': 'Confirmar Contraseña',
+        })
+
+    def send_email(self, email):
+        subject = 'Confirmación de cambio de contraseña'
+        message = f'Hola {self.user.username}, se ha cambiado la contraseña exitosamente'
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+        send_mail(subject, message, from_email, recipient_list)
+
+    def save(self, commit=True):
+        response = super().save(commit)
+
+        # Send email confirmation
+        self.send_email(self.user.email)
+
+        return response

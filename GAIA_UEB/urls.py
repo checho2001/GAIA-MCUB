@@ -101,6 +101,7 @@ urlpatterns = [
         views.obtener_usuario,
         name="obtener_usuario",
     ),
+    path('changepass/', views.change_password, name='change_password'),
     path(
         "exportar-datos-cur/<str:clase>",
         views.export_data_cur,

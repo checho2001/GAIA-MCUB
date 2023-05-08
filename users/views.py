@@ -190,7 +190,7 @@ class Dashboard_Cur(View):
                     for i in usuarios:
                         lista.append(i.id_user_id)
                     c = Clase.objects.get(id = clase.id_clase_id)
-                    print(c.nombreClase)
+                    #print(c.nombreClase)
                     clase_genero = c.nombreClase
                     especimenes = especimen.objects.filter(ClaseE = c.nombreClase)
                     actions = UserAction.objects.filter(user__in = lista)
@@ -1073,7 +1073,6 @@ def export_data(request):
 
 def export_data_cur(request,clase):
 
-    print(clase)
     columnas = ['occurrenceID', 'basisOfRecord', 'institutionCode', 'collectionCode', 'catalogNumber', 'type', 'modified',
             'language', 'license', 'rightsHolder', 'accessRights', 'bibliographicCitation', 'references', 'institutionID',
             'collectionID', 'datasetID', 'datasetName', 'ownerInstitutionCode', 'informationWithheld',

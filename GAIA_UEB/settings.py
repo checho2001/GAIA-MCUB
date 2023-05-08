@@ -16,7 +16,7 @@ SECRET_KEY = "django-insecure-z^%r=a+r%r)c)xx9-$l6t3+f8ht@78#ywsu7a1pwivgdh*f@4g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "52.4.94.183", "127.0.0.1"]
+ALLOWED_HOSTS = ['3.84.42.146','www.gaiamuseociencias.com','gaiamuseociencias.com','127.0.0.1','localhost']
 # Application definition
 AUTH_USER_MODEL = "users.User"
 CAPTCHA_IMAGE_SIZE = (200, 50)

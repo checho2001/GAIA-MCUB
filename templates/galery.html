@@ -594,6 +594,10 @@ footer {
                         </div>
                         {% endfor %}
                       </div>
+                      <div class="pagination" style="text-align: center;">
+                        <button class="previous-page2" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Anterior</button>
+                        <button class="next-page2" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Siguiente</button>
+                      </div>
                     </div>
                     </div>  
                    
@@ -631,6 +635,10 @@ footer {
                           </div>
                         </div>
                         {% endfor %}
+                    </div>
+                    <div class="pagination" style="text-align: center;">
+                        <button class="previous-page3" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Anterior</button>
+                        <button class="next-page3" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Siguiente</button>
                     </div>
                   </div>
                   </div>   
@@ -671,6 +679,10 @@ footer {
                         </div>
                         {% endfor %}
                     </div>
+                    <div class="pagination" style="text-align: center;">
+                        <button class="previous-page4" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Anterior</button>
+                        <button class="next-page4" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Siguiente</button>
+                    </div>
                   </div>
                   </div>   
                 </div>
@@ -706,6 +718,10 @@ footer {
                           </div>
                         </div>
                         {% endfor %}
+                    </div>
+                    <div class="pagination" style="text-align: center;">
+                        <button class="previous-page5" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Anterior</button>
+                        <button class="next-page5" style="font-family: 'Latoblack', sans-serif; background: #404827; color: #fff; border: none; padding: 10px 20px; border-radius: 50px; text-align: center; text-decoration: none; display: inline-block; font-size: 26px; margin: 5px; cursor: pointer; -webkit-transition-duration: 0.4s; transition-duration: 0.4s; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);">Siguiente</button>
                     </div>
                   </div>
                   </div>   
@@ -773,10 +789,7 @@ footer {
           
             
 
-</footer>
-
-
-     
+</footer>  
 <script>
   const cards = document.querySelectorAll('.card1');
   const previousButton = document.querySelector('.previous-page');
@@ -809,7 +822,193 @@ footer {
       }
     }
   }
-</script>
+  var navItems1 = document.querySelector('#pills-home-tab');
+  navItems1.addEventListener('click', function() {
+    // Script para el primer elemento de la barra de navegación
+    console.log('Anfibios');
+    const cards = document.querySelectorAll('.card2');
+    const previousButton = document.querySelector('.previous-page2');
+    const nextButton = document.querySelector('.next-page2');
+    let currentPage = 1;
+    const cardsPerPage = 10;
 
+    showPage(currentPage);
+
+    previousButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    function showPage(pageNumber) {
+      for (let i = 0; i < cards.length; i++) {
+        if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+          cards[i].style.display = 'inline-block';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+  });
+
+
+  var navItems2 = document.querySelector('#pills-profile-tab');
+  navItems2.addEventListener('click', function() {
+    // Script para el primer elemento de la barra de navegación
+    console.log('Mamiferos');
+    const cards = document.querySelectorAll('.card3');
+    const previousButton = document.querySelector('.previous-page3');
+    const nextButton = document.querySelector('.next-page3');
+    let currentPage = 1;
+    const cardsPerPage = 10;
+
+    showPage(currentPage);
+
+    previousButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    function showPage(pageNumber) {
+      for (let i = 0; i < cards.length; i++) {
+        if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+          cards[i].style.display = 'inline-block';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+  });
+
+
+  var navItems3 = document.querySelector('#pills-contact-tab');
+  navItems3.addEventListener('click', function() {
+    // Script para el primer elemento de la barra de navegación
+    console.log('Reptiles');
+    const cards = document.querySelectorAll('.card4');
+    const previousButton = document.querySelector('.previous-page4');
+    const nextButton = document.querySelector('.next-page4');
+    let currentPage = 1;
+    const cardsPerPage = 10;
+
+    showPage(currentPage);
+
+    previousButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    function showPage(pageNumber) {
+      for (let i = 0; i < cards.length; i++) {
+        if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+          cards[i].style.display = 'inline-block';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+  });
+
+  var navItems3 = document.querySelector('#pills-contact-tab');
+  navItems3.addEventListener('click', function() {
+    // Script para el primer elemento de la barra de navegación
+    console.log('Reptiles');
+    const cards = document.querySelectorAll('.card4');
+    const previousButton = document.querySelector('.previous-page4');
+    const nextButton = document.querySelector('.next-page4');
+    let currentPage = 1;
+    const cardsPerPage = 10;
+
+    showPage(currentPage);
+
+    previousButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    function showPage(pageNumber) {
+      for (let i = 0; i < cards.length; i++) {
+        if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+          cards[i].style.display = 'inline-block';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+  });
+
+  var navItems4 = document.querySelector('#pills-cuarto-tab');
+  navItems4.addEventListener('click', function() {
+    // Script para el primer elemento de la barra de navegación
+    console.log('Aves');
+    const cards = document.querySelectorAll('.card5');
+    const previousButton = document.querySelector('.previous-page5');
+    const nextButton = document.querySelector('.next-page5');
+    let currentPage = 1;
+    const cardsPerPage = 10;
+
+    showPage(currentPage);
+
+    previousButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < Math.ceil(cards.length / cardsPerPage)) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    });
+
+    function showPage(pageNumber) {
+      for (let i = 0; i < cards.length; i++) {
+        if (i >= (pageNumber - 1) * cardsPerPage && i < pageNumber * cardsPerPage) {
+          cards[i].style.display = 'inline-block';
+        } else {
+          cards[i].style.display = 'none';
+        }
+      }
+    }
+  });
+  
+</script>
 
 </html>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,update_ejemplar
+from users.views import IndexView,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,update_ejemplar,export_data_cur, export_data
 from users.views import IndexView,Quienessomos,Galry,Dashboard,Dashboard_Aux,load_data,Dashboard_Pas,Dashboard_Cur,PerfilU,registroActividad,registerE,EjemplarP,CambioContrasenia,Not_Logged,register,update_ejemplar,element_detail,EliminarActividad
 from django.views.defaults import page_not_found
 from users import views
@@ -57,6 +57,7 @@ urlpatterns = [
     path('enviarcorreo/', views.enviar_correo, name='enviar_correo'),
     path('EliminarActividad/', views.EliminarActividad, name='EliminarActividad'),
     path('obtener_usuario/<int:id_usuario>/', views.obtener_usuario, name='obtener_usuario'),
+    path('exportar-datos-cur/<str:clase>', views.export_data_cur, name='exportar_datos_cur'),
     path('exportar-datos/', views.export_data, name='exportar_datos'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

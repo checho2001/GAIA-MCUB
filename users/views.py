@@ -1611,7 +1611,7 @@ def export_data_cur(request, clase):
     df.to_excel(response, index=False)
     return response
 
-@login_required
+@login_required(login_url="redirect")
 def change_password(request):
     if request.method == 'POST':
         form = CustomPasswordChangeForm(user=request.user, data=request.POST)
@@ -1620,7 +1620,7 @@ def change_password(request):
             update_session_auth_hash(request, form.user)
             messages.success(request, 'Tu contraseña fue actualizada con éxito.')
             print('!!!'*20)
-            return redirect('home')
+            return redirect('index')
     else:
         form = CustomPasswordChangeForm(user=request.user)
     return render(request, 'changepassword.html', {'form': form})

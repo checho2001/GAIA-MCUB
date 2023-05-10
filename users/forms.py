@@ -27,8 +27,11 @@ import datetime
 import re
 from django.db import DatabaseError
 from datetime import date
-from django.contrib.auth.forms import PasswordResetForm
-
+from django.contrib import messages
+from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
+from django.views.generic import FormView
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import send_mail
@@ -855,3 +858,32 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         self.send_email(self.user.email)
 
         return response
+class RecoverPasswordForm(forms.Form):
+    email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(
+        label="Contraseña Nueva",
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        strip=False,
+        help_text=("La contraseña no puede ser demasiado similar a otras información personal."
+                    "La contraseña debe contener al menos 8 caracteres."
+                    "La contraseña no puede ser completamente numérica.")
+    )
+    password2 = forms.CharField(
+        label="Confirmación de la contraseña",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+    )
+
+class RecoverPasswordView(FormView):
+    template_name = "recoverpass.html"
+    form_class = RecoverPasswordForm
+    success_url = reverse_lazy("index")
+
+    def form_valid(self, form):
+        email = form.cleaned_data["email"]
+        password = form.cleaned_data["password1"]
+        user = get_user_model().objects.get(email=email)
+        user.set_password(password)
+        user.save()
+        messages.success(self.request, f"La contraseña del usuario {email} ha sido actualizada exitosamente.")
+        return super().form_valid(form)

@@ -437,38 +437,51 @@
         </div>
       </div>
     </nav>
-      <div  class="row" >
-        <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1200px;">
-            <div class="flex-shrink-0 p-3 " style="width: 280px; ">
-    
-              
+    <div  class="row" >
+      <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1290px ;">
+          <div class="flex-shrink-0 p-3 " style="width: 280px;">
+              <h2 class="h3" style="color : white" style="text-align: center;" > Hola {{ user.nombre }}</h2>
 
-                <p class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
-  
-  
-                <div class="dropdown border-top">
-  
-                  <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
-                    
-                  </a>
+
+              <div class="dropdown border-top">
+
+                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
                   
-                  <p href="#" class="h2"  style="color : white"  > Rol {{ user.rol }}</p>
-                  <br>
-                  
-                  <p href="#" class="h3"  style="color : white"  > <span id="current-time"></span></p>
-                 
-  
-                  <ul class="dropdown-menu text-small shadow">
-                    <li><a class="dropdown-item" onclick="location.href = '/perfilU'" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item"  href="#" onclick="location.href = '/index'">Ir al inicio</a></li>
-                    <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                  </ul>
+                </a>
                 
-                </div>
-            </div>
-        </div> 
-  
+                
+                <p href="#" class="h3"  style="color : white; text-align: center;"  > Rol {{ user.rol }}</p>
+                <br>
+                
+                <p href="#" class="h3"  style="color : white; text-align: center;"  > <span id="current-time"></span></p>
+               
+
+                <br>
+                <ul class="list-unstyled">
+                  <li>
+                    <a class="btn-customizedlogin" onclick="location.href = '/perfilU'" style= "color:white; ">
+                      <img src="../static/images/perfil.png" alt="..." style="height:80px; width:80px;" > Perfil
+                    </a>
+                    
+                  </li>
+                 
+                <br>
+                  <li>
+
+                    <a class="btn-customizedlogin" onclick="location.href = '{% url 'logout' %}'" style= "color:white; ">
+                      <img src="../static/images/salida.png"alt="..." style="height:80px; width:80px;" > Cerrar Sesión
+                    </a>
+                    
+                  </li>
+                </ul>
+                
+                
+              </div>
+          </div>
+      </div> 
+
+
   
         <div  class="col" style="background-color: #eee;">
          

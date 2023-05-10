@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
   <style>
@@ -64,23 +63,7 @@
 #nosotros:hover {
   background-image: url('/static/images/equipo (2).png');
 }
-#contacto {
-background-image: url('/static/images/informacion.png');
-background-position: left 140px center;
-width: 190px; 
-background-size: 20%;
-text-align: left;
 
-height:60px;
-background-repeat: no-repeat;
-font-family: 'Lato-Black', sans-serif;
-font-size:26px
-
-}
-
-#contacto:hover {
-background-image: url('/static/images/informacion (1).png');
-}
 #dashboard {
   background-image: url('/static/images/pizarron.png');
   background-position: left 160px center;
@@ -126,14 +109,10 @@ background-image: url('/static/images/informacion (1).png');
       font-family: 'Lato-Black', sans-serif;
       font-size: 70px;
     }
-    .h2 {
-      font-family: 'Lato-Black', sans-serif;
-      font-size: 60px;
-      color: #81bb26;
-    }
     .h3 {
-      font-family: 'Lato-Black', sans-serif;
-      font-size: 20px;
+      font-family: 'Acherus Grotesque', sans-serif;
+      font-size: 50px;
+      
     }
     .h4 {
       font-family: 'Acherus Grotesque', sans-serif;
@@ -141,56 +120,20 @@ background-image: url('/static/images/informacion (1).png');
     }
     .h5 {
       font-family: 'Acherus Grotesque', sans-serif;
-      font-size: 20px;
+      font-size: 30px;
     }
     .h6 {
       font-family: 'Acherus Grotesque', sans-serif;
-      font-size: 20px;
+      font-size: 22px;
     }
-    footer {
-  background-color: #f6f6f6;
-  padding: 50px 0;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  color: #f6f6f6;
-}
-
-.h1 {
-  font-family: 'Lato-Black', sans-serif;
-  text-decoration-line: underline;
-  text-underline-offset: 12px; 
-  text-decoration-color: #81bb26;
-}
-.h2 {
-  font-family: 'Lato-Black', sans-serif;
-
-  color: #81bb26;
-}
-.h3 {
-  font-family: 'Acherus Grotesque', sans-serif;
-}
-.h4 {
-  font-family: 'Lato-Black', sans-serif;
-  
-}
-.h5 {
-  font-family: 'Lato-Black', sans-serif;
  
-}
+
 .social {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-footer {
-  background-color: #81bb26;
-  color: #666;
-  text-align: center;
-  padding: 20px;
- 
-  bottom: 0;
-  width: 100%;
-}
+
 .nav-pills .nav-link.active {
   background-color:#404827;;
   color: white;
@@ -223,6 +166,16 @@ footer {
   transition: transform 0.3s ease;
   font-family:'Lato-Black', sans-serif;
 }
+footer {
+  background-color: #81bb26;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  bottom: 0;
+  width: 100%;
+  height:10%;
+  margin-top: 90px;
+}
   </style>
 </head>
 <body>
@@ -243,7 +196,6 @@ footer {
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
        
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
@@ -286,7 +238,7 @@ footer {
         <div class="col-sm-5">
           <h2 class="h2">Misión</h2>
           <br>
-          <h3 class="h3" style="text-align: justify";>El Museo de Ciencias tiene como misión contribuir a generar espacios de formación académica y a su vez de productividad económica, a través del aprovechamiento de la diversidad animal y vegetal, mediante las diferentes líneas de trabajos divulgativos y científicos, fomentando la investigación y la educación ambiental, con el firme propósito de mejorar la calidad de vida de las comunidades, creando una ética biopsicosocial.</h3>
+          <h3 class="h3" style="text-align: justify; font-size:22px;">El Museo de Ciencias tiene como misión contribuir a generar espacios de formación académica y a su vez de productividad económica, a través del aprovechamiento de la diversidad animal y vegetal, mediante las diferentes líneas de trabajos divulgativos y científicos, fomentando la investigación y la educación ambiental, con el firme propósito de mejorar la calidad de vida de las comunidades, creando una ética biopsicosocial.</h3>
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-5">
@@ -303,7 +255,7 @@ footer {
         <div class="col-sm-5">
           <h2 class="h2">Visión</h2>
           <br>
-          <h3 class="h3">El Museo de Ciencias de la Universidad El Bosque, será protagonista en los procesos de gestión ambiental, especialmente en lo que se refiere a la Divulgación de la Biodiversidad Colombiana, a la Investigación de la flora y fauna, con una proyección de generar Productividad por parte de los estudiantes universitarios, ajustada a la realidad y necesidad socioeconómica del país.
+          <h3 class="h3"  style="text-align: justify; font-size:22px;">El Museo de Ciencias de la Universidad El Bosque, será protagonista en los procesos de gestión ambiental, especialmente en lo que se refiere a la Divulgación de la Biodiversidad Colombiana, a la Investigación de la flora y fauna, con una proyección de generar Productividad por parte de los estudiantes universitarios, ajustada a la realidad y necesidad socioeconómica del país.
             <br><br>
             El Museo se integrará a las redes nacionales e internacionales para realizar convenios y colaborar con proyectos en conjunto con otras entidades ambientales.
             <br><br>
@@ -317,7 +269,7 @@ footer {
     </div>
 
 <br>
-                     <br>
+  <br>
               
                     
 
@@ -336,50 +288,44 @@ footer {
 </main>
 </body>
 <br><br>
-<footer>
-  <div class="row">
-    <div class="col" style="border-right: 1px solid white;">
-      
-      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
-        Línea gratuita:
-        018000 113033
-        
-        PBX:
-        (601) 648 9000</h6>
- 
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>   
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col" style="border-right: 1px solid white;">
-      <ul class="social">
-        <li>
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-            <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="col" style="border-right: 1px solid white;">
-      <ul class="social">
-        <li>
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="col">
-      <ul class="social">
-        <li>
-          <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    <br><br>
+  </footer>
+</div>
 
-</footer>
 
 </html>

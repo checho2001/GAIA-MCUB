@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="../static/css/style1.css" >
-    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
+    <title>No logeado</title>
+    <link rel="stylesheet" href="../static/css/style1.css" media="screen">
+    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" media="screen">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
 </head>
 <style>
   #Library {
@@ -153,9 +152,17 @@ background-image: url('/static/images/pizarron (1).png');
     left: -1px;
     padding: 10px 7px 5px;
 }
-.table-responsive {
-  max-height: 350px; 
-  overflow-y: scroll;
+.btn-customizedlogin {
+  color: white;
+  background-color: #008776; 
+  font-size: 30px;
+
+  padding: 12px 24px;
+  font-size: 20px;
+  border-radius: 22px;
+  border: 2px solid;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
 }
 .DivWithScroll{
     height:120px;
@@ -206,6 +213,31 @@ background-image: url('/static/images/pizarron (1).png');
     z-index: 2;
     height: 2.75rem;
     
+  }
+  .h1 {
+    font-family: 'Lato-Black', sans-serif;
+    font-size: 70px;
+  }
+  .h2 {
+    font-family: 'Lato-Black', sans-serif;
+    font-size: 60px;
+    color: #008776;
+  }
+  .h3 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 50px;
+  }
+  .h4 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 30px;
+  }
+  .h5 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 30px;
+  }
+  .h6 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 22px;
   }
   #btnSearch,
   #btnClear{
@@ -302,6 +334,16 @@ background-image: url('/static/images/pizarron (1).png');
       color: #404827; 
       border: none;
     }
+    footer {
+      background-color: #008776;
+      color: #666;
+      text-align: center;
+      padding: 20px;
+      bottom: 0;
+      width: 100%;
+      height:10%;
+      margin-top: 90px;
+    }
 </style>
 <body class="m-0 vh-100 row  text-center align-items-center justify-content-center"  >
   <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
@@ -321,7 +363,6 @@ background-image: url('/static/images/pizarron (1).png');
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
        
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
@@ -359,10 +400,10 @@ background-image: url('/static/images/pizarron (1).png');
       
                         <form  action="{% url 'login' %}" method= POST class=" w-100 m-auto">
                           {% csrf_token %}
-                          <h2 class="mb-3 fw-normal"style="color: #008776">Aún no se ha iniciado sesión</h2>
+                          <h2 class="h2">Aún no se ha iniciado sesión</h2>
 
 
-                          <button class="btn-login w-100 btn-lg border-light text-light " onclick="location.href = '/login'"  type="submit">Llevame ahí</button>
+                          <button class="btn-customizedlogin " onclick="location.href = '/login'"  type="submit">Llevame ahí</button>
       
                         </form>
                       </div>
@@ -374,3 +415,41 @@ background-image: url('/static/images/pizarron (1).png');
 
   
 </body>
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>   
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

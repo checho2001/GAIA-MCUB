@@ -76,28 +76,14 @@
     #nosotros:hover {
     background-image: url('/static/images/equipo (3).png');
     }
-    #contacto {
-    background-image: url('/static/images/informacion.png');
-    background-position: left 140px center;
-    width: 190px; 
-    background-size: 20%;
-    text-align: left;
-    
-    height:60px;
-    background-repeat: no-repeat;
-    font-family: 'Lato-Black', sans-serif;
-    font-size:26px
-    
-    }
+   
     @media only screen and (max-width: 767px) {
       .col-md-6 {
         width: 100%;
         padding: 0;
       }
     }
-    #contacto:hover {
-    background-image: url('/static/images/informacion (2).png');
-    }
+    
     #dashboard {
     background-image: url('/static/images/pizarron.png');
     background-position: left 160px center;
@@ -149,7 +135,6 @@
       #global {
         overflow-x: hidden;
         overflow-y: scroll;
-        height: 1000px;
       }
       .h1 {
         font-family: 'Lato-Black', sans-serif;
@@ -174,12 +159,9 @@
       }
       .h6 {
         font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 20px;
+        font-size: 22px;
       }
-      html::-webkit-scrollbar {
-        display: none;
-        height: 0;
-    }
+    
     .container {
       border: none;
    
@@ -189,15 +171,11 @@
       display: none;
       height: 0;
   }
-    html::-webkit-scrollbar {
-      height: 0;
-      width: 0;
-      -webkit-appearance: none;
-    }
+
   
     html {
       overflow-x: auto;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
       .container {
         max-width: 2000px;
@@ -208,21 +186,7 @@
       
         object-fit: cover; 
       }
-      .h2 {
-        font-family: 'Lato-Black', sans-serif;
-        color: #81bb26;
-      }
-      .h3 {
-        font-family: 'Acherus Grotesque', sans-serif;
-      }
-      .h4 {
-        font-family: 'Lato-Black', sans-serif;
-        
-      }
-      .h5 {
-        font-family: 'Lato-Black', sans-serif;
-       
-      }
+      
       #galeria {
         width: 80%;
         margin: 0 auto;
@@ -323,10 +287,12 @@ li {
 
 footer {
   background-color: #404827;
-  padding: 50px 0;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  color: #f6f6f6;
+  color: #666;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    
 }
 .btn-custom:hover {
   transform: scale(1.1);
@@ -366,7 +332,6 @@ footer {
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
 
@@ -611,7 +576,7 @@ footer {
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">  
 
               <div  class="container">
-                <div class="card">  
+                <div class="card flex" style="border: none; border: 0;">  
                   <div id="galeria" class="gallery">    
                     
                   
@@ -654,7 +619,7 @@ footer {
 
 
               <div  class="container">
-                <div class="card">  
+                <div class="card flex" style="border: none; border: 0;">  
                   <div id="galeria" class="gallery">    
                     
                   
@@ -694,7 +659,7 @@ footer {
             <div class="tab-pane fade" id="pills-cuarto" role="tabpanel" aria-labelledby="pills-cuarto-tab">
 
               <div  class="container">
-                <div class="card">  
+                <div class="card flex" style="border: none; border: 0;">  
                   <div id="galeria" class="gallery">    
                     
                   
@@ -735,61 +700,45 @@ footer {
     </main>
     
 </body>
-<footer>
-  <div class="row">
-    <div class="col" style="border-right: 1px solid white;">
-      
-      <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-      <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-      <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
-        Línea gratuita:
-        018000 113033
-        
-        PBX:
-        (601) 648 9000</h6>
- 
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>   
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col" style="border-right: 1px solid white;">
-      <ul class="social">
-     
-      <a class="btn-customizedlogin"onClick="
-      parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
-        <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
+  </footer>
+</div>
 
-      </a>
-    
-    </ul>
-    </div>
-    <div class="col" style="border-right: 1px solid white;">
-      <ul class="social">
-        <a class="btn-customizedlogin"  onClick="
-      parent.location='https://www.unbosque.edu.co'">
-          <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
-  
-        </a>
-      
-     
-
-    </ul>
-    </div>
-    <div class="col" >
-      <ul class="social">
-        <a class="btn-customizedlogin" onClick="
-        parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-          <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
-  
-        </a>
-      
-      
-    </ul>
-    </div>
-    <br><br>
-   
-     
-          
-            
-
-</footer>  
 <script>
   const cards = document.querySelectorAll('.card1');
   const previousButton = document.querySelector('.previous-page');

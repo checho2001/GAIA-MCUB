@@ -6,3 +6,4 @@ users/__pycache__/models.cpython-311.pyc
 users/__pycache__/views.cpython-311.pyc
 users/migrations/__pycache__/0001_initial.cpython-311.pyc
 users/migrations/__pycache__/__init__.cpython-311.pyc
+*.pyc

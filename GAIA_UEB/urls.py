@@ -17,6 +17,7 @@ from users.views import (
     update_ejemplar,
     export_data_cur,
     export_data,
+    RecoverPasswordView,
 )
 from users.views import (
     IndexView,
@@ -108,6 +109,7 @@ urlpatterns = [
         name="exportar_datos_cur",
     ),
     path("exportar-datos/", views.export_data, name="exportar_datos"),
+     path('recoverpass/', RecoverPasswordView.as_view(), name='recover_password'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

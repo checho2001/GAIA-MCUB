@@ -45,6 +45,11 @@ from django.conf import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from django.views.generic import FormView
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.forms import SetPasswordForm
 
 from django.core.mail import send_mail
 from django.http import JsonResponse
@@ -1619,8 +1624,30 @@ def change_password(request):
             form.save()
             update_session_auth_hash(request, form.user)
             messages.success(request, 'Tu contraseña fue actualizada con éxito.')
-            print('!!!'*20)
-            return redirect('index')
+            return redirect('home')
     else:
         form = CustomPasswordChangeForm(user=request.user)
     return render(request, 'changepassword.html', {'form': form})
+
+def recover_password(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+
+        if password1 != password2:
+            messages.error(request, "Las contraseñas no coinciden.")
+            return redirect("recoverpass")
+
+        user = get_user_model().objects.filter(email=email).first()
+
+        if user:
+            user.set_password(password1)
+            user.save()
+            messages.success(request, f"La contraseña del usuario {email} ha sido cambiada exitosamente.")
+            return redirect("home")
+        else:
+            messages.error(request, "No existe un usuario con ese correo electrónico.")
+            return redirect("recoverpass")
+    else:
+        return render(request, "recoverpass.html")

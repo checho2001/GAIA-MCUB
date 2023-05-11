@@ -429,7 +429,6 @@
           padding: 20px;
           bottom: 0;
           width: 100%;
-          padding-bottom: 100px;
         }
     
     
@@ -509,15 +508,6 @@
             
                                 <a class="btn-customizedlogin" onclick="location.href = '{% url 'logout' %}'" style= "color:white; ">
                                   <img src="../static/images/salida.png"alt="..." style="height:80px; width:80px;" > Cerrar Sesión
-                                </a>
-                                
-                              </li>
-                              <br>
-                              <li>
-                               
-                                <a class="btn-customizedlogin" onclick="location.href = '/changepass'" style= "color:white; text-align: justify;">
-                                  <svg style="height:80px; width:80px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>lock-plus-outline</title><path d="M6 20V10H18V13.09C18.33 13.04 18.66 13 19 13C19.34 13 19.67 13.04 20 13.09V10C20 8.9 19.11 8 18 8H17V6C17 3.24 14.76 1 12 1S7 3.24 7 6V8H6C4.89 8 4 8.89 4 10V20C4 21.1 4.89 22 6 22H13.81C13.46 21.39 13.22 20.72 13.09 20H6M9 6C9 4.34 10.34 3 12 3S15 4.34 15 6V8H9V6M14 15C14 16.11 13.11 17 12 17C10.89 17 10 16.1 10 15C10 13.89 10.89 13 12 13C13.11 13 14 13.9 14 15M23 18V20H20V23H18V20H15V18H18V15H20V18H23Z" /></svg>
-                                  Cambiar clave
                                 </a>
                                 
                               </li>
@@ -797,50 +787,47 @@
         </div>
     </ul>
     
-    <br>
-    <br> <br>
-    <br>
-    <div class="footer-wrapper d-none d-sm-block">
-      <footer>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
-              <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-              <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-              <h6 class="h6" style="color: white">
-                Av. Cra. 9 No. 131 A - 02<br>   
-                Línea gratuita: 018000 113033<br>
-                PBX: (601) 648 9000
-              </h6>
-            </div>
-            <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-              <ul class="social">
-                <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-                  <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
-                </a>
-              </ul>
-            </div>
-            <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-              <ul class="social">
-                <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-                  <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
-                </a>
-              </ul>
-            </div>
-            <div class="col-sm-12 col-md-2">
-              <ul class="social">
-                <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-                  <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
-                </a>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
+ 
   
 </body>
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>   
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
 
 
 

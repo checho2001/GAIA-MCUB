@@ -843,19 +843,8 @@ class CustomPasswordChangeForm(PasswordChangeForm):
             'id': 'ConfPass',
             'placeholder': 'Confirmar Contraseña',
         })
-
-    def send_email(self, email):
-        subject = 'Confirmación de cambio de contraseña'
-        message = f'Hola {self.user.username}, se ha cambiado la contraseña exitosamente'
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
-        send_mail(subject, message, from_email, recipient_list)
-
     def save(self, commit=True):
         response = super().save(commit)
-
-        # Send email confirmation
-        self.send_email(self.user.email)
 
         return response
 class RecoverPasswordForm(forms.Form):
@@ -877,7 +866,7 @@ class RecoverPasswordForm(forms.Form):
 class RecoverPasswordView(FormView):
     template_name = "recoverpass.html"
     form_class = RecoverPasswordForm
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("home")
 
     def form_valid(self, form):
         email = form.cleaned_data["email"]

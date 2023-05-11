@@ -1624,7 +1624,7 @@ def change_password(request):
             form.save()
             update_session_auth_hash(request, form.user)
             messages.success(request, 'Tu contraseña fue actualizada con éxito.')
-            return redirect('index')
+            return redirect('home')
     else:
         form = CustomPasswordChangeForm(user=request.user)
     return render(request, 'changepassword.html', {'form': form})
@@ -1645,7 +1645,7 @@ def recover_password(request):
             user.set_password(password1)
             user.save()
             messages.success(request, f"La contraseña del usuario {email} ha sido cambiada exitosamente.")
-            return redirect("index")
+            return redirect("home")
         else:
             messages.error(request, "No existe un usuario con ese correo electrónico.")
             return redirect("recoverpass")

@@ -1,22 +1,21 @@
 <!doctype html>
 <html lang="es">
   <head>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dashboard ">
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Dashboard ">
         <title>DashBoard</title>
-    
-        <link rel="stylesheet" href="../static/css/style1.css">
-        <link rel="stylesheet" href="../static/fonts/linearicons/style.css">
         <link rel="stylesheet" href="../static/css/bootstrap.min.css">
         <link rel="stylesheet" href="../static/css/sidebars.css">
+        <link rel="stylesheet" href="../static/css/style1.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="../static/js/sidebars.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
         
         <script>
@@ -43,417 +42,390 @@
           });
         </script>
       
-    <style>
-      td.desc-col {
-        max-width: 300px; /* Ajusta este valor al ancho que desees */
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        vertical-align: top;
-      }
-      .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        background-color: transparent;
-        border: none;
-        border-bottom: 8px solid #f08013;
-      }
-      .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        background-color: #f08013 !important;
-        color: white !important;
-    }
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-      background-color: #f08013 !important;
-        color: white !important;
-    }
-    
-    .dataTables_wrapper .dataTables_paginate .paginate_button.next:hover {
-      background-color: #f08013 !important;
-      color: white !important;
-    }
-      .dataTables_wrapper .dataTables_paginate .paginate_button {
-        background-color: transparent;
-        border: none;
-        border-bottom: 2px solid #f08013;
-      }
-      
-      .dataTables_wrapper .dataTables_paginate .paginate_button {
-        margin: 0 5px;
-        color: black;
-        font-family: 'Lato-Black', sans-serif;
-        font-size: 30px;
-        text-decoration-color: #f08013;
-    }
-      #Library {
-        background-image: url('/static/images/casa.png');
-        background-position: left 90px center;
-        width: 140px; 
-        height:60px;
-        background-size: 25%;
-        background-repeat: no-repeat;
-        text-align: left;
-        font-family: 'Lato-Black', sans-serif;
-        font-size:26px
-     }
-     
-     #Library:hover {
-        background-image: url('/static/images/casa (1).png');
-     }
-     #colecciones {
-      background-image: url('/static/images/crab (2).png');
-      background-position: left 170px center;
-      width: 240px; 
-      height:60px;
-      background-size: 20%;
-      background-repeat: no-repeat;
-      text-align: left;
-      font-family: 'Lato-Black', sans-serif;
-      font-size:26px
-      
-  
-   }
    
-   #colecciones:hover {
-      background-image: url('/static/images/crab (3).png');
-   }
-   #nosotros {
-    background-image: url('/static/images/equipo.png');
-    background-position: left 130px center;
-    width: 190px; 
-    background-size: 25%;
-    text-align: left;
-    font-family: 'Lato-Black', sans-serif;
-    font-size:26px;
-  
-    height:60px;
-    background-repeat: no-repeat;
-    
-  
-  }
-  
-  #nosotros:hover {
-    background-image: url('/static/images/equipo (2).png');
-  }
-  #contacto {
-  background-image: url('/static/images/informacion.png');
-  background-position: left 140px center;
-  width: 190px; 
-  background-size: 20%;
-  text-align: left;
-  
-  height:60px;
-  background-repeat: no-repeat;
-  font-family: 'Lato-Black', sans-serif;
-  font-size:26px
-  
-  }
-  
-  #contacto:hover {
-  background-image: url('/static/images/informacion (1).png');
-  }
-      #Library {
-        background-image: url('/static/images/casa.png');
-        background-position: left 100px center;
-        width: 180px; 
-        background-repeat: no-repeat;
+        <style>
+          td.desc-col {
+            max-width: 300px; /* Ajusta este valor al ancho que desees */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            vertical-align: top;
+          }
+          .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: transparent;
+            border: none;
+            border-bottom: 8px solid #f08013;
+          }
+          .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #f08013 !important;
+            color: white !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+          background-color: #f08013 !important;
+            color: white !important;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.next:hover {
+          background-color: #f08013 !important;
+          color: white !important;
+        }
+          .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #f08013;
+          }
+          
+          .dataTables_wrapper .dataTables_paginate .paginate_button {
+            margin: 0 5px;
+            color: black;
+            font-family: 'Lato-Black', sans-serif;
+            font-size: 30px;
+            text-decoration-color: #f08013;
+        }
+          #Library {
+            background-image: url('/static/images/casa.png');
+            background-position: left 90px center;
+            width: 140px; 
+            height:60px;
+            background-size: 25%;
+            background-repeat: no-repeat;
+            text-align: left;
+            font-family: 'Lato-Black', sans-serif;
+            font-size:26px
+         }
+         
+         #Library:hover {
+            background-image: url('/static/images/casa (1).png');
+         }
+         #colecciones {
+          background-image: url('/static/images/crab (2).png');
+          background-position: left 170px center;
+          width: 240px; 
+          height:60px;
+          background-size: 20%;
+          background-repeat: no-repeat;
+          text-align: left;
+          font-family: 'Lato-Black', sans-serif;
+          font-size:26px
+          
+      
+       }
+       
+       #colecciones:hover {
+          background-image: url('/static/images/crab (3).png');
+       }
+       #nosotros {
+        background-image: url('/static/images/equipo.png');
+        background-position: left 130px center;
+        width: 190px; 
+        background-size: 25%;
         text-align: left;
-
-
-     }
-     
-     #Library:hover {
-        background-image: url('/static/images/casa (1).png');
-     }
-     #colecciones {
-      background-image: url('/static/images/llamablanca.png');
-      background-position: left 170px center;
-      width: 240px; 
-      height:60px;
+        font-family: 'Lato-Black', sans-serif;
+        font-size:26px;
+      
+        height:60px;
+        background-repeat: no-repeat;
+        
+      
+      }
+      
+      #nosotros:hover {
+        background-image: url('/static/images/equipo (2).png');
+      }
+      #contacto {
+      background-image: url('/static/images/informacion.png');
+      background-position: left 140px center;
+      width: 190px; 
       background-size: 20%;
-      background-repeat: no-repeat;
       text-align: left;
+      
+      height:60px;
+      background-repeat: no-repeat;
       font-family: 'Lato-Black', sans-serif;
       font-size:26px
       
+      }
+      
+      #contacto:hover {
+      background-image: url('/static/images/informacion (1).png');
+      }
+          #Library {
+            background-image: url('/static/images/casa.png');
+            background-position: left 100px center;
+            width: 180px; 
+            background-repeat: no-repeat;
+            text-align: left;
     
-    }
     
-    #colecciones:hover {
-      background-image: url('/static/images/llamaroble.png');
-    }
-   #nosotros {
-    background-image: url('/static/images/equipo.png');
-    background-position: left 230px center;
-    width: 310px; 
-    background-repeat: no-repeat;
-    
-    text-align: left;
-
- }
- 
- #nosotros:hover {
-    background-image: url('/static/images/equipo (2).png');
- }
- #contacto {
-  background-image: url('/static/images/informacion.png');
-  background-position: left 200px center;
-  width: 270px; 
-  background-repeat: no-repeat;
-  text-align: left;
-
-
-}
-
-#contacto:hover {
-  background-image: url('/static/images/informacion (1).png');
-}
-
-            #vertical-line {
-  border-left: 1px solid white;
-  height: 50px;
-}
-      #global {
-       
-        border: 2px solid #ddd;
-        height: 1000px;
-        overflow-y: scroll;
-      }
-      .h1 {
-        font-family: 'Lato-Black', sans-serif;
-        font-size: 70px;
-      }
-      .h2 {
-        font-family: 'Lato-Black', sans-serif;
-        font-size: 60px;
-        color: #81bb26;
-      }
-      .h3 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 50px;
-      }
-      .h4 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 40px;
-      }
-      .h5 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 30px;
-      }
-      .h6 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 25px;
-      }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      .DivToScroll{   
-        background-color: #F5F5F5;
-        border: 1px solid #DDDDDD;
-        border-radius: 4px 0 4px 0;
-        color: #3B3C3E;
-        font-size: 12px;
-        font-weight: bold;
-        left: -1px;
-        padding: 10px 7px 5px;
-    }
-    .table-responsive {
-      max-height: 550px; 
-      overflow-y: scroll;
-    }
-    .DivWithScroll{
-        height:120px;
-        overflow:scroll;
-        overflow-x:hidden;
-    }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      .img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-      .sidebar {
-        width: 100%;
-        max-width: 280px;
-        float: none;
-      }
-      @media (min-width: 768px) {
-        .sidebar {
-          width: 20%;
-          float: left;
-        }
-      }
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
+         }
+         
+         #Library:hover {
+            background-image: url('/static/images/casa (1).png');
+         }
+         #colecciones {
+          background-image: url('/static/images/llamablanca.png');
+          background-position: left 170px center;
+          width: 240px; 
+          height:60px;
+          background-size: 20%;
+          background-repeat: no-repeat;
+          text-align: left;
+          font-family: 'Lato-Black', sans-serif;
+          font-size:26px
+          
         
-      }
-      #btnSearch,
-      #btnClear{
-          display: inline-block;
-          vertical-align: top;
-      }
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-      .nav-link {
-        color: #404827;
-        font-size: 150%;
         }
-        .nav-link:hover {
-          color:  #008776;
-          }
-          .nav-pills .nav-link.active {
-            background-color:#404827;;
-            color: white;
-          }
-          .navbar {
-            background-color: #008776;
-            position: fixed;
-
+        
+        #colecciones:hover {
+          background-image: url('/static/images/llamaroble.png');
+        }
+       #nosotros {
+        background-image: url('/static/images/equipo.png');
+        background-position: left 230px center;
+        width: 310px; 
+        background-repeat: no-repeat;
+        
+        text-align: left;
+    
+     }
+     
+     #nosotros:hover {
+        background-image: url('/static/images/equipo (2).png');
+     }
+     #contacto {
+      background-image: url('/static/images/informacion.png');
+      background-position: left 200px center;
+      width: 270px; 
+      background-repeat: no-repeat;
+      text-align: left;
+    
+    
+    }
+    
+    #contacto:hover {
+      background-image: url('/static/images/informacion (1).png');
+    }
+    
+          #vertical-line {
+      border-left: 1px solid white;
+      height: 50px;
+    }
+          body {
+            font-size: 20px;
+            font-family: 'Lato-Black', sans-serif;
             
           }
-          .navbar-custom {
-            background-color: #008776; 
+          #global {
            
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            
-          }
-          html::-webkit-scrollbar {
-            height: 0;
-            width: 0;
-            -webkit-appearance: none;
-          }
-          html {
+            height: 1000px;
+            overflow-y: scroll;
             overflow-x: hidden;
           }
+          .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh; /* adjust the height as needed */
+          }
+          .col {
+            height: 100%;
+           
+          }
+          .h1 {
+            font-family: 'Lato-Black', sans-serif;
+            font-size: 70px;
+          }
+          .h2 {
+            font-family: 'Lato-Black', sans-serif;
+            font-size: 60px;
+            color: #81bb26;
+          }
+          .h3 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 50px;
+          }
+          .h4 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 40px;
+          }
+          .h5 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 30px;
+          }
+          .h6 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 22px;
+          }
+        .table-responsive {
+          max-height: 690px; 
           
+          overflow-y: scroll;
+        }
+        
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+            .footer-wrapper {
+              font-size: 12px;
+            }
+          }
+    
+          select {
+            font-size: 30px; /* Tamaño de la letra por defecto */
+          }
+          
+          
+          .nav-link {
+            color: #404827;
+            font-size: 150%;
+            }
+            .nav-link:hover {
+              color:  #008776;
+              }
+              .container {
+                width: 90%; 
+                max-width: 1200px; 
+                margin: 0 auto; 
+              }
+              @media only screen and (max-width: 600px) {
+                body {
+                  font-size: 14px;
+                }
+              }
+             
+              .body {
               
-          .btn-custom:hover {
-            transform: scale(1.1);
-            color: #404827; 
-            border: none;
+                height: 100%;
+             
+             
+              }
+              .container-fluid {
+                width: 100%;
+                height: 100%;
+              }
+              
+              .row {
+                height: 100%;
+              }
+    
+              .container {
+                height: 100%;
+        
+            
+              }
+              .nav-pills .nav-link.active {
+                background-color:#404827;;
+                color: white;
+              }
+              .navbar {
+                background-color: #008776;
+                
+              }
+              .navbar-custom {
+                background-color: #008776; 
+               
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                
+              }
+              main {
+                flex: 1;
+              }  
+              row {            flex: 1;
+              }  
+              .btn-custom:hover {
+                transform: scale(1.2);
+                color: #404827; 
+                border: none;
+                font-size: 30px;
+              }
+              .btn-custom {
+                color: white;
+                display: flex;
+    
+                background-color: #008776; 
+                padding: 10px 20px;
+                border: none;
+                transition: transform 0.3s ease;
+                font-family:'Lato-Black', sans-serif;
+                font-size: 30px;
+              }
+              .tab-pane {
+              
+                display: flex; 
+                flex: 1;
+              }
+              html::-webkit-scrollbar {
+                display: none;
+                height: 0;
+            }
+            html::-webkit-scrollbar {
+              display: none;
+              height: 0;
           }
-          .btn-custom {
-            color: white;
-            background-color: #008776; 
-            padding: 10px 20px;
-            border: none;
-            transition: transform 0.3s ease;
-            font-family:'Lato-Black', sans-serif;
-          }
-          
-          html::-webkit-scrollbar {
-            display: none;
-            height: 0;
-        }
-        html::-webkit-scrollbar {
-          display: none;
-          height: 0;
-      }
-        html::-webkit-scrollbar {
-          height: 0;
-          width: 0;
-          -webkit-appearance: none;
-        }
-        html {
-          overflow-x: hidden;
-        }
-        .btn-customizedlogin {
-          color: white;
-          border:none;
-          transition: transform 0.3s ease;
-          
-        }
-        .btn-customizedlogin :hover {
-          transform: scale(1.1);
-          color: #404827; 
-          border: none;
-        }
-        footer {
-          background-color: #008776;
-          color: #666;
-          text-align: center;
-          padding: 20px;
-          position: fixed;
-
-          bottom: 0;
-          width: 100%;
-        }
-        .col-sm-2.mw-100 {
-          background-color: #006C5E;
-          height: 1600px;
-        }
-        @media (max-width: 767px) {
-          .col-sm-2.mw-100 {
-            height: 50px;
-          }
-        }
-        @media (max-width: 767px) {
-          .card-registration {
-            overflow-y: auto;
-          }
-          .footer-wrapper {
-            font-size: 12px;
-          }
-        }
-        footer {
-          background-color: #006C5E;
-          color: #666;
-          text-align: center;
-          padding: 20px;
-          bottom: 0;
-          width: 100%;
-        }
-    </style>
+            html::-webkit-scrollbar {
+              height: 0;
+              width: 0;
+              -webkit-appearance: none;
+            }
+            html, body {
+              height: 100%;
+              background-color: #f5f5f5
+    
+            }
+            
+            html {
+              overflow-x: hidden;
+              background-color: #f5f5f5
+    
+            }
+            .btn-customizedlogin {
+              color: white;
+              border:none;
+              transition: transform 0.3s ease;
+              font-size: 30px;
+              
+            }
+            .btn-customizedlogin :hover {
+              transform: scale(1.2);
+              color: #404827; 
+              border: none;
+              font-size: 30px;
+            }
+            footer {
+              background-color: #006C5E;
+              color: #666;
+              text-align: center;
+              padding: 20px;
+              bottom: 0;
+              width: 100%;
+              padding-bottom: 100px;
+            }
+        
+            .btn-block {
+      margin-bottom: 10px;
+    }
+    
+    
+        </style>
   </head>
   
   <body>
  
     
   
-    
+   
     <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-        <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
-        "   alt="..." >
+        <img class="image_header-museo" src="/static/images/logo (1).png" alt="..." style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+        " >
       </a>
       
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-        <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%"   alt="..." >
+        <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png" alt="..."  style="width: 30%; height:30%" >
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -463,12 +435,11 @@
           <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
               <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
               <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-              <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
      
         </div>
       </div>
     </nav>
-    <div  class="row" >
+      <div  class="row" >
       <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1290px ;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
               <h2 class="h3" style="color : white" style="text-align: center;" > Hola {{ user.nombre }}</h2>
@@ -494,12 +465,16 @@
                     <a class="btn-customizedlogin" onclick="location.href = '/perfilU'" style= "color:white; ">
                       <img src="../static/images/perfil.png" alt="..." style="height:80px; width:80px;" > Perfil
                     </a>
+                    
                   </li>
+                 
                 <br>
                   <li>
+
                     <a class="btn-customizedlogin" onclick="location.href = '{% url 'logout' %}'" style= "color:white; ">
                       <img src="../static/images/salida.png"alt="..." style="height:80px; width:80px;" > Cerrar Sesión
                     </a>
+                    
                   </li>
                   <br>
                   <li>
@@ -518,7 +493,10 @@
       </div> 
 
 
-  
+
+
+
+
   
         <div  class="col" style="background-color: #eee;">
          
@@ -706,6 +684,9 @@
   </div>
 </div> 
 </div>
+<br>
+<br> <br>
+<br>
 <div class="footer-wrapper d-none d-sm-block">
   <footer>
     <div class="container-fluid">
@@ -744,6 +725,7 @@
     </div>
   </footer>
 </div>
+
 
 
 

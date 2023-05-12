@@ -50,6 +50,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth import get_user_model
 
 from django.core.mail import send_mail
 from django.http import JsonResponse
@@ -1104,7 +1105,7 @@ def estado_usuarios(request):
     user = request.user
     if user.is_authenticated:
         rol = Rol.objects.get(user=user)
-    usuarios = User.objects.all()
+    usuarios = get_user_model().objects.all()
     return render(request, "desactivarUsuario.html", {"usuarios": usuarios, "rol": rol})
 
 

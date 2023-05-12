@@ -218,12 +218,12 @@ background-image: url('/static/images/pizarron (1).png');
         margin: 0;
       }
       .btn-customizedlogin :hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
         color: #404827; 
         border: none;
       }
       .btn-custom:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
         color: #404827; 
         border: none;
       }
@@ -288,7 +288,7 @@ background-image: url('/static/images/pizarron (1).png');
             
           
           .btn-custom:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
             color: #404827; 
             border: none;
           }
@@ -324,7 +324,7 @@ background-image: url('/static/images/pizarron (1).png');
           
         }
         .btn-custom:hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
           color: #404827; 
           border: none;
         }
@@ -350,7 +350,7 @@ background-image: url('/static/images/pizarron (1).png');
           
         }
         .btn-customizedlogin :hover {
-          transform: scale(1.2);
+          transform: scale(1.1);
           color: #008776; 
           border: none;
           font-size: 30px;
@@ -397,7 +397,6 @@ background-image: url('/static/images/pizarron (1).png');
         <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
             <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
        
         {% if  user.is_authenticated  %}
         <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>

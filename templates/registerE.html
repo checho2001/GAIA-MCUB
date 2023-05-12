@@ -269,7 +269,6 @@ footer {
       <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
           <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
           <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-          <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
      
       {% if  user.is_authenticated  %}
       <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
@@ -291,9 +290,7 @@ footer {
 
      
     {% endif %}
-    <div class="text-end" >
-      <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
-    </div>
+   
     </div>
   </div>
 </nav>
@@ -478,46 +475,49 @@ footer {
       </div>
     </div>
   </div>
-</body>
-<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-<div class="footer-wrapper d-none d-sm-block">
-  <footer>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
-          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-          <h6 class="h6" style="color: white">
-            Av. Cra. 9 No. 131 A - 02<br>
-            Línea gratuita: 018000 113033<br>
-            PBX: (601) 648 9000
-          </h6>
-        </div>
-        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-          <ul class="social">
-            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-              <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
-            </a>
-          </ul>
-        </div>
-        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
-          <ul class="social">
-            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-              <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
-            </a>
-          </ul>
-        </div>
-        <div class="col-sm-12 col-md-2">
-          <ul class="social">
-            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-              <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
-            </a>
-          </ul>
+  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+  <div class="footer-wrapper d-none d-sm-block">
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+            <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+            <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+            <h6 class="h6" style="color: white">
+              Av. Cra. 9 No. 131 A - 02<br>
+              Línea gratuita: 018000 113033<br>
+              PBX: (601) 648 9000
+            </h6>
+          </div>
+          <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+            <ul class="social">
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+                <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+              </a>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+            <ul class="social">
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+                <img class="img" src="/static/images/edificio.png" alt="..." style="height:100px; width:100px;">
+              </a>
+            </ul>
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <ul class="social">
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+                <img class="img" src="/static/images/instagram.png" alt="..." style="height:100px; width:100px;">
+              </a>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-</div>
+    </footer>
+  </div>
+  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+</body>
 
 <script>
   var select = document.getElementById("id_ComentarioRegistroBiologico");

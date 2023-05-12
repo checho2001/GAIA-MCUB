@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
 from django.core.validators import RegexValidator
 from .fields import ActionField
+from django.contrib.auth.models import User
 
 
 class Rol(models.Model):

@@ -304,7 +304,6 @@ input[type=time], input[type=date] {
       <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
           <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
           <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
-          <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/enviarcorreo'"  id="contacto" type="button" style="border-right: 1px solid white;" >Contacto</button>
      
       {% if  user.is_authenticated  %}
       <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
@@ -326,9 +325,7 @@ input[type=time], input[type=date] {
 
      
     {% endif %}
-    <div class="text-end" >
-      <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
-    </div>
+    
     </div>
   </div>
 </nav>

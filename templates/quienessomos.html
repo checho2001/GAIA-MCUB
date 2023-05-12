@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es"><head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Página de index del MCUB.">
+
     <meta charset="utf-8">
     <title>Inicio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página de quien es el MCUB.">
-
     <link rel="stylesheet" href="../static/css/style1.css" media="screen">
+    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" media="screen">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 
     <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
   <style>
@@ -98,42 +97,61 @@
     #login:hover {
     background-image: url('/static/images/login (1).png');
     }
-      #vertical-line {
-        border-left: 1px solid white;
-        height: 50px;
-      }
-    *{
-      text-align: justify;
-    }
-    .h1 {
-      font-family: 'Lato-Black', sans-serif;
-      font-size: 70px;
-    }
-    .h3 {
-      font-family: 'Acherus Grotesque', sans-serif;
-      font-size: 50px;
-      
-    }
-    .h4 {
-      font-family: 'Acherus Grotesque', sans-serif;
-      font-size: 40px;
-    }
-    .h5 {
-      font-family: 'Acherus Grotesque', sans-serif;
-      font-size: 30px;
-    }
-    .h6 {
-      font-family: 'Acherus Grotesque', sans-serif;
-      font-size: 22px;
-    }
- 
+    #vertical-line {
+  border-left: 1px solid white;
+  height: 60px;
+  margin-left: -90px
+}
 
+
+p {
+  font-family: 'Lato-Black', sans-serif;
+}
+.h1 {
+  font-family: 'Lato-Black', sans-serif;
+  text-decoration-line: underline;
+  text-underline-offset: 12px; 
+  text-decoration-color: #81bb26;
+}
+.h2 {
+  font-family: 'Lato-Black', sans-serif;
+  color: #81bb26;
+}
+.h3 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 50px;
+  
+}
+.h4 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 40px;
+}
+.h5 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 30px;
+}
+.h6 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 22px;
+}
 .social {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
+.navbar-expand-md {
+  flex-direction: row;
+  }
+  footer {
+    background-color: #81bb26;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    height:10%;
+    margin-top: 90px;
+  }
 .nav-pills .nav-link.active {
   background-color:#404827;;
   color: white;
@@ -166,27 +184,29 @@
   transition: transform 0.3s ease;
   font-family:'Lato-Black', sans-serif;
 }
-footer {
-  background-color: #81bb26;
-  color: #666;
-  text-align: center;
-  padding: 20px;
-  bottom: 0;
-  width: 100%;
-  height:10%;
-  margin-top: 90px;
+.btn-customizedlogin {
+  color: white;
+  border:none;
+  transition: transform 0.3s ease;
+  
+}
+.btn-customizedlogin :hover {
+  transform: scale(1.1);
+  color: #404827; 
+  border: none;
 }
   </style>
 </head>
 <body>
+     
   <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
-      <img class="image_header-museo"  alt="..." src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
-      " >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+      " alt="imagenuniversidad" >
     </a>
     
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" alt="..." >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" alt="imagenmuseo">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -224,14 +244,8 @@ footer {
     </div>
   </nav>
   <br>
-
-  <br>
-  <br>
-  <br><br>
-  <br>
-  
-  <br>
-  <main>
+  <br><br><br><br>
+  <main><br>
    
     <div class="container">
       <div class="row">

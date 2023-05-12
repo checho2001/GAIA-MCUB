@@ -95,7 +95,6 @@ urlpatterns = [
     path("galery/orden/<str:nombre>", views.galery_orden, name="galeryO"),
     path("qr_code/<str:data>/", views.qr_code, name="qr_code"),
     path("paginaejemplar/<int:pk>/qr_code/", views.qr_code1, name="qr_code1"),
-    path("enviarcorreo/", views.enviar_correo, name="enviar_correo"),
     path("EliminarActividad/", views.EliminarActividad, name="EliminarActividad"),
     path(
         "obtener_usuario/<int:id_usuario>/",

@@ -1074,13 +1074,19 @@ def AgregarActividad(request):
     if request.method == "POST":
         form = TipoActividadForm(request.POST)
         nombreactividad = request.POST.get("name")
+        
+        if not nombreactividad:
+            request.session["error"] = "No se agrego ninguna actividad debido a que no habia texto"
+            return redirect("dashboard")
+
         max_id = TipoActividad.objects.all().aggregate(Max("id"))["id__max"]
         a = TipoActividad(id=max_id + 1, nombreactividad=nombreactividad)
         a.save()
-        return redirect("dashboard")
+        success = "Actividad agregada correctamente"
+        return render(request, "dashboard.html", {"form": form, "success": success})
     else:
         form = TipoActividadForm()
-    return render(request, "dashboard.html", {"form": form})
+        return render(request, "dashboard.html", {"form": form})
 
 
 def EliminarActividad(request):
@@ -1232,27 +1238,6 @@ def error_404(request, exception):
     return render(request, "404.html", {})
 
 
-def enviar_correo(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            nombre = form.cleaned_data["nombre"]
-            correo = form.cleaned_data["correo"]
-            mensaje = form.cleaned_data["mensaje"]
-
-            send_mail(
-                "Asunto del correo",
-                f"{nombre} ({correo}) dice: {mensaje}",
-                correo,  # Correo electrónico del remitente
-                ["mvlopezl@unbosque.edu.co"],
-                fail_silently=False,
-            )
-
-            return render(request, "contactenos.html")
-    else:
-        form = ContactForm()
-
-    return render(request, "contactenos.html", {"form": form})
 
 
 def export_data(request):

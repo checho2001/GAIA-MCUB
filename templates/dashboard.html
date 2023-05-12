@@ -323,7 +323,7 @@
 
           .container {
             height: 100%;
-    
+            background-color: #eee;
         
           }
           .nav-pills .nav-link.active {
@@ -343,9 +343,7 @@
             z-index: 999;
             
           }
-          main {
-            flex: 1;
-          }  
+          
           row {            flex: 1;
           }  
           .btn-custom:hover {
@@ -385,14 +383,13 @@
         }
         html, body {
           height: 100%;
-          background-color: #f5f5f5
-
+          background-color: #eee;
         }
         
         html {
           overflow-x: hidden;
-          background-color: #f5f5f5
-
+       
+          background-color: #eee;
         }
         .btn-customizedlogin {
           color: white;
@@ -505,7 +502,7 @@
 
 
       
-        <div class="col" style="background-color: #eee;">
+        <div class="col">
          
           <div   class="text-center" ><h1  class="h1" style="color: #008776; text-align: center;">Tablero de trabajo</h1></div>
           
@@ -729,7 +726,11 @@
                     </tbody>
                   </table>
                 </div>
-                <a href="{% url 'exportar_datos' %}" class="btn btn-primary" style="background-color:#008776">Exportar a Excel</a>
+                <a href="{% url 'exportar_datos' %}" class="btn btn-primary" style="background-color:#008776 ; color: white;
+               font-size:22px;
+                background-color: #008776; 
+                padding: 10px 20px;  border-radius: 22px;
+               ">Exportar a Excel</a>
 
                 <br><br>
 
@@ -783,7 +784,24 @@
                               <div class="col-sm-8">
                               <input class="form-control" type="text" id="name" name="name" style="font-size:30px">
                             </div>
-                            <div class="col">
+                            
+                       
+                        
+                        
+                        
+                        <div class="col">
+                          {% if error %}
+                          <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                          </div>
+                        {% endif %}
+                                    
+                        {% if success %}
+                          <div class="alert alert-success" role="alert">
+                            {{ success }}
+                          </div>
+                        {% endif %}
+                 
                               <button class="btn-customizedlogin " type="submit"><img class="image_header-museo" src="/static/images/1004759.png"  alt="..." style="height:50px; width:50px;"></button>
                             </div></div>
                         

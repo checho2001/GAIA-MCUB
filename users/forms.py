@@ -763,43 +763,16 @@ class TextForm(forms.Form):
     content = forms.CharField(label="New Text", max_length=255)
 
 
-class ContactForm(forms.Form):
-    nombre = forms.CharField(
-        error_messages={"required": "Por favor ingresa un nombre valido"},
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Digite su Nombre",
-                "required": True,
-                "class": "form-control",
-            }
-        ),
-    )
-    correo = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
-                "placeholder": "Digite su correo",
-                "required": True,
-                "class": "form-control",
-            }
-        )
-    )
-    mensaje = forms.CharField(
-        widget=forms.Textarea(
-            attrs={
-                "placeholder": "Digite su Mensaje",
-                "class": "form-control",
-                "rows": 5,
-                "required": True,
-            }
-        ),
-        error_messages={"required": "Por favor ingresa un mensaje válido"},
-    )
+
 class CustomPasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(
-        label=_("Contraseña actual"),
-        strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'})
-    )
+    label=_("Contraseña actual"),
+    strip=False,
+    widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'}),
+    label_suffix='',
+)
+
+    old_password.label = f'<label for="{old_password.id_for_label}" style="font-size:30px;">{old_password.label}</label>'
 
     new_password1 = forms.CharField(
         label=_("Nueva contraseña"),
@@ -808,13 +781,20 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         help_text=_("La contraseña no puede ser demasiado similar a otras información personal."
                     "La contraseña debe contener al menos 8 caracteres."
                     "La contraseña no puede ser completamente numérica."),
+        label_suffix='',
     )
+
+    new_password1.label = f'<label for="{new_password1.id_for_label}" style="font-size:30px;">{new_password1.label}</label>'
 
     new_password2 = forms.CharField(
         label=_("Confirmar nueva contraseña"),
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
+        label_suffix='',
     )
+
+    new_password2.label = f'<label for="{new_password2.id_for_label}" style="font-size:30px;">{new_password2.label}</label>'
+
 
     def clean_new_password1(self):
         password1 = self.cleaned_data.get('new_password1')
@@ -827,21 +807,24 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         super().__init__(*args, **kwargs)
 
         self.fields['old_password'].widget.attrs.update({
-            'class': 'form-control',
-            'id': 'PassActual',
-            'placeholder': 'Contraseña Actual',
-        })
+    'class': 'form-control',
+    'id': 'PassActual',
+    'placeholder': 'Contraseña Actual',
+    'style': 'font-size: 30px;'
+    })
 
         self.fields['new_password1'].widget.attrs.update({
             'class': 'form-control',
             'id': 'NewPass',
             'placeholder': 'Nueva Contraseña',
+            'style': 'font-size: 30px;'
         })
 
         self.fields['new_password2'].widget.attrs.update({
             'class': 'form-control',
             'id': 'ConfPass',
             'placeholder': 'Confirmar Contraseña',
+            'style': 'font-size: 30px;'
         })
     def save(self, commit=True):
         response = super().save(commit)

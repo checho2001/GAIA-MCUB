@@ -1,12 +1,23 @@
-from statistics import mode
+"""
+Module Name: models.py
+
+Description: This module contains the Django models for the application.
+It defines the structure of the database tables and their relationships.
+
+
+"""
+
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group
-from django.core.validators import RegexValidator
+from django.contrib.auth.models import AbstractUser, Group,User
+
 from .fields import ActionField
-from django.contrib.auth.models import User
+
 
 
 class Rol(models.Model):
+    """
+    Representa un rol que un usuario puede tener.
+    """
     id = models.AutoField(primary_key=True)
     nombrerol = models.CharField(max_length=50)
 
@@ -15,11 +26,17 @@ class Rol(models.Model):
 
 
 class Area(models.Model):
+    """
+    Representa un área del usuario.
+    """
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
 
 
 class User(AbstractUser):
+    """
+    Representa un usuario en el sistema.
+    """
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=60)
     nombre = models.CharField(max_length=60)
@@ -34,6 +51,9 @@ class User(AbstractUser):
     ]
 
     def group_defined():
+        """
+        Define el grupo al que pertenece un usuario según su rol.
+        """
         if Rol.id == 1:
             grupo = Group.objects.get_or_create(name="Auxiliar")
         if Rol.id == 2:
@@ -41,12 +61,18 @@ class User(AbstractUser):
 
 
 class Area_User(models.Model):
+    """
+    Relaciona un usuario con un área.
+    """
     id = models.AutoField(primary_key=True)
     id_user = models.ForeignKey(User, on_delete=models.CASCADE)
     id_area = models.ForeignKey(Area, on_delete=models.CASCADE)
 
 
 class Genero(models.Model):
+    """
+    Representa el género del especimen.
+    """
     id = models.AutoField(primary_key=True)
     nombreGenero = models.CharField(max_length=50)
 
@@ -54,7 +80,11 @@ class Genero(models.Model):
         return self.nombreGenero
 
 
+
 class familia(models.Model):
+    """
+    Representa la familia del especimen.
+    """
     id = models.AutoField(primary_key=True)
     nombreFamilia = models.CharField(max_length=50)
 
@@ -63,6 +93,9 @@ class familia(models.Model):
 
 
 class Orden(models.Model):
+    """
+    Representa el orden del especimen.
+    """
     id = models.AutoField(primary_key=True)
     nombreOrden = models.CharField(max_length=50)
 
@@ -71,6 +104,9 @@ class Orden(models.Model):
 
 
 class Clase(models.Model):
+    """
+    Representa la clase del especimen.
+    """
     id = models.AutoField(primary_key=True)
     nombreClase = models.CharField(max_length=50)
     estado = models.BooleanField(default=True)
@@ -80,12 +116,18 @@ class Clase(models.Model):
 
 
 class Class_User(models.Model):
+    """
+    Relaciona un usuario con una clase.
+    """
     id = models.AutoField(primary_key=True)
     id_user = models.ForeignKey(User, on_delete=models.CASCADE)
     id_clase = models.ForeignKey(Clase, on_delete=models.CASCADE)
 
 
 class TipoActividad(models.Model):
+    """
+    Es el tipo de actividad que un usuario puede registrar.
+    """
     id = models.AutoField(primary_key=True)
     nombreactividad = models.CharField(max_length=500)
     estado = models.BooleanField(default=True)
@@ -95,6 +137,9 @@ class TipoActividad(models.Model):
 
 
 class Actividades(models.Model):
+    """
+    Es la actividad que un usuario puede registrar.
+    """
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=50)
     TareaRealizada = models.ForeignKey(TipoActividad, on_delete=models.CASCADE)
@@ -107,17 +152,26 @@ class Actividades(models.Model):
 
 
 class departamento(models.Model):
+    """
+    Es el departamento donde se encontro el especimen.
+    """
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
 
 
 class municipio(models.Model):
+    """
+    Es el municipio donde se encontro el especimen.
+    """
     id = models.AutoField(primary_key=True)
     departamento = models.ForeignKey(departamento, on_delete=models.CASCADE)
     municipio = models.CharField(max_length=50)
 
 
 class especimen(models.Model):
+    """
+    Es el especimen.
+    """
     id = models.AutoField(primary_key=True)
     NumeroCatalogo = models.CharField(max_length=500, unique=True)
     NombreDelConjuntoDatos = models.CharField(
@@ -164,6 +218,9 @@ class especimen(models.Model):
 
 
 class UserAction(models.Model):
+    """
+    Es el registro de la actividad que se realizo
+    """
     id_user_action = ActionField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tarea = models.CharField(max_length=100)
@@ -174,10 +231,16 @@ class UserAction(models.Model):
 
 
 class Imagenes(models.Model):
+    """
+    Es la imagen del especimen.
+    """
     image = models.ImageField(upload_to="media/")
 
 
 class Text(models.Model):
+    """
+    Es el texto del index.
+    """
     id = models.AutoField(primary_key=True)
     content = models.TextField()
 

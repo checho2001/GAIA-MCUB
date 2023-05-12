@@ -1,4 +1,20 @@
+"""
+Module Name: forms.py
+Description: This module contains the Django forms for the application.
+"""
+from datetime import date
+import re
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+from captcha.fields import CaptchaField
+from django.contrib.auth.forms import PasswordChangeForm
+from django.urls import reverse_lazy
+import datetime
 from django import forms
+from django.db import DatabaseError
+from django.contrib import messages
+from django.contrib.auth import get_user_model
+from django.views.generic import FormView
 from .models import (
     User,
     departamento,
@@ -9,38 +25,11 @@ from .models import (
     familia,
     Orden,
     Genero,
-)
-from django.core.exceptions import ValidationError
-from .models import Rol, Area
-from django.utils.translation import gettext_lazy as _
-from django.core.validators import RegexValidator
-from django import forms
-from captcha.fields import CaptchaField
-from django import forms
-from django.contrib.auth.forms import PasswordChangeForm
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from django.urls import reverse_lazy
-from django.conf import settings
-import datetime
-import re
-from django.db import DatabaseError
-from datetime import date
-from django.contrib import messages
-from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.urls import reverse_lazy
-from django.views.generic import FormView
-from django import forms
-from django.contrib.auth.forms import PasswordChangeForm
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from django.urls import reverse_lazy
-from django.conf import settings
-
+    Rol    )
 class CustomUser(forms.Form):
+    """
+    Representa un formulario para registrar a un usuario.
+    """
     nombre = forms.CharField(
         error_messages={"required": "Por favor ingresa un nombre valido"},
         strip=True,
@@ -121,8 +110,10 @@ class CustomUser(forms.Form):
     )
 
     def clean(self):
+        """
+        Representa un clean method para realizar validaciones.
+        """
         cleaned_data = super().clean()
-
         correo = cleaned_data.get("correo")
         nombre = cleaned_data.get("nombre")
         username = cleaned_data.get("username")
@@ -138,10 +129,10 @@ class CustomUser(forms.Form):
         try:
             if User.objects.filter(email=correo).count():
                 raise forms.ValidationError(
-                    _(
-                        "Correo no valido, este correo ya se encuentra registrado, por favor vuelva a intentarlo"
-                    )
+                    _("Correo no valido, este correo ya se encuentra registrado, "
+                    "por favor vuelva a intentarlo")
                 )
+
         except forms.ValidationError as error:
             self.add_error("correo", error)
 
@@ -194,6 +185,9 @@ class CustomUser(forms.Form):
 
 
 class loginForm(forms.Form):
+    """
+    Representa un el login form para entrar al sistema.
+    """
     username = forms.CharField(
         error_messages={"required": "Por favor ingresa un correo valido"},
         strip=True,
@@ -220,6 +214,9 @@ class loginForm(forms.Form):
     captcha = CaptchaField()
 
     def clean_username(self):
+        """
+        Representa un clean method para realizar validaciones.
+        """
         mail = self.cleaned_data["username"]
         if "@unbosque.edu.co" not in mail:
             raise forms.ValidationError("El correo debe contener  unbosque.edu.co")
@@ -228,14 +225,23 @@ class loginForm(forms.Form):
 
 
 class DateInput(forms.DateInput):
+    """
+    Representa un formulario para fecha.
+    """
     input_type = "date"
 
 
 class TimeInput(forms.TimeInput):
+    """
+    Representa un formulario para hora.
+    """
     input_type = "time"
 
 
 class ActividadesForm(forms.Form):
+    """
+    Representa un formulario para las actividades.
+    """
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user", None)
         super(ActividadesForm, self).__init__(*args, **kwargs)
@@ -285,6 +291,9 @@ class ActividadesForm(forms.Form):
     )
 
     def clean_fecha(self):
+        """
+        Representa un validador para la fecha.
+        """
         fecha = self.cleaned_data["Fecha"]
         if fecha.year < 2000:
             raise ValidationError("La fecha es demasiado antigua")
@@ -293,12 +302,18 @@ class ActividadesForm(forms.Form):
         return fecha
 
     def clean_Descripcion(self):
+        """
+        Representa un validador para la descripción.
+        """
         descripcion = self.cleaned_data["Descripcion"]
         if not descripcion:
             raise ValidationError("El campo descripción no puede estar vacío")
         return descripcion
 
     def clean(self):
+        """
+        Representa un validator para los dos clean anteriores.
+        """
         cleaned_data = super().clean()
         try:
             self.clean_fecha()
@@ -307,29 +322,13 @@ class ActividadesForm(forms.Form):
         return cleaned_data
 
 
-class Especimen_Form(forms.Form):
-    NumeroCatalogo = forms.CharField(
-        max_length=500,
-        required=True,
-        widget=forms.TextInput(
-            attrs={
-                "required": True,
-                "class": "form-control",
-            }
-        ),
-    )
-    NombreDelConjuntoDatos = forms.CharField(
-        max_length=500,
-        widget=forms.TextInput(
-            attrs={
-                "required": True,
-                "class": "form-control",
-            }
-        ),
-    )
+
 
 
 class EjemplarForm(forms.Form):
+    """
+    Representa un form para los especimenes.
+    """
     NumeroCatalogo = forms.CharField(
         max_length=500,
         required=True,
@@ -582,6 +581,9 @@ class EjemplarForm(forms.Form):
     )
 
     def clean_NumeroCatalogo(self):
+        """
+        Representa un validador para el número de catalogo.
+        """
         numero_catalogo = self.cleaned_data.get("NumeroCatalogo")
         if numero_catalogo is None:
             return "MCUB-E-"
@@ -598,18 +600,27 @@ class EjemplarForm(forms.Form):
         return numero_catalogo_con_prefijo
 
     def clean_Fecha_evento(self):
+        """
+        Representa un validador para la fecha.
+        """
         fecha_evento = self.cleaned_data["FechaEvento"]
         if fecha_evento > datetime.date.today():
             raise ValidationError("La fecha no puede ser en el futuro")
         return fecha_evento
 
     def clean_Fecha_Identificacion(self):
+        """
+        Representa un validador para la fecha.
+        """
         fecha_I = self.cleaned_data["FechaIdentificacion"]
         if fecha_I > datetime.date.today():
             raise ValidationError("La fecha no puede ser en el futuro")
         return fecha_I
 
     def clean(self):
+        """
+        Representa un validador
+        """
         cleaned_data = super().clean()
         comentario = cleaned_data.get("ComentarioRegistroBiologico")
         otro_comentario = cleaned_data.get("ComentarioRegistroBiologico_otro")
@@ -631,6 +642,9 @@ class EjemplarForm(forms.Form):
 
 
 class Update(forms.Form):
+    """
+    Representa un form para actualizar el usuario .
+    """
     USUARIOS = []
 
     for useri in User.objects.all():
@@ -687,7 +701,6 @@ class Update(forms.Form):
         choices=ROLES,
         widget=forms.Select(
             attrs={
-                "style": "height: 70px;",
                 "class": "form-control",
                 "style": "height: 80PX;",
             }
@@ -705,6 +718,9 @@ class Update(forms.Form):
             self.fields["correo"].initial = user.email
 
     def clean_nombre(self):
+        """
+        Representa un validator para el nombre .
+        """
         nomb = self.cleaned_data["nombre"]
 
         if nomb and not re.match("^[a-zA-Z]*$", nomb):
@@ -713,6 +729,9 @@ class Update(forms.Form):
         return nomb
 
     def clean_username(self):
+        """
+        Representa un validator para el username .
+        """
         usernm = self.cleaned_data["username"]
 
         if not re.match("^[a-zA-Z\d]*$", usernm):
@@ -723,6 +742,9 @@ class Update(forms.Form):
         return usernm
 
     def clean_apellido(self):
+        """
+        Representa un validator para el apellido .
+        """
         apel = self.cleaned_data["apellido"]
 
         if apel and not re.match("^[a-zA-Z]*$", apel):
@@ -732,6 +754,9 @@ class Update(forms.Form):
 
 
 class desactivarUsuario(forms.Form):
+    """
+    Representa un form para desactivar  el usuario .
+    """
     USUARIOS = []
     u = User.objects.filter(estado=True)
     for useri in User.objects.all():
@@ -748,6 +773,9 @@ class desactivarUsuario(forms.Form):
 
 
 class TipoActividadForm(forms.Form):
+    """
+    Representa un form para el tipo de actividad.
+    """
     nombreactividad = forms.CharField(
         error_messages={"required": "Por favor ingresa una actividad valida"},
         widget=forms.TextInput(
@@ -760,46 +788,22 @@ class TipoActividadForm(forms.Form):
 
 
 class TextForm(forms.Form):
+    """
+    Representa un form para desactivar  el usuario .
+    """
     content = forms.CharField(label="New Text", max_length=255)
 
 
-class ContactForm(forms.Form):
-    nombre = forms.CharField(
-        error_messages={"required": "Por favor ingresa un nombre valido"},
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Digite su Nombre",
-                "required": True,
-                "class": "form-control",
-            }
-        ),
-    )
-    correo = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
-                "placeholder": "Digite su correo",
-                "required": True,
-                "class": "form-control",
-            }
-        )
-    )
-    mensaje = forms.CharField(
-        widget=forms.Textarea(
-            attrs={
-                "placeholder": "Digite su Mensaje",
-                "class": "form-control",
-                "rows": 5,
-                "required": True,
-            }
-        ),
-        error_messages={"required": "Por favor ingresa un mensaje válido"},
-    )
+
 class CustomPasswordChangeForm(PasswordChangeForm):
+    """
+    Representa un form para cambiar la contraseña .
+    """
     old_password = forms.CharField(
         label=_("Contraseña actual"),
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'})
-    )
+)
 
     new_password1 = forms.CharField(
         label=_("Nueva contraseña"),
@@ -817,6 +821,9 @@ class CustomPasswordChangeForm(PasswordChangeForm):
     )
 
     def clean_new_password1(self):
+        """
+        Representa un validator para la contraseña .
+        """
         password1 = self.cleaned_data.get('new_password1')
         if len(password1) < 8:
             raise ValidationError("La contraseña debe contener al menos 8 caracteres.")
@@ -848,6 +855,9 @@ class CustomPasswordChangeForm(PasswordChangeForm):
 
         return response
 class RecoverPasswordForm(forms.Form):
+    """
+    Representa un form para cambiar la contraseña .
+    """
     email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(
         label="Contraseña Nueva",
@@ -864,6 +874,9 @@ class RecoverPasswordForm(forms.Form):
     )
 
 class RecoverPasswordView(FormView):
+    """
+    Representa un form para cambiar la contraseña .
+    """
     template_name = "recoverpass.html"
     form_class = RecoverPasswordForm
     success_url = reverse_lazy("home")

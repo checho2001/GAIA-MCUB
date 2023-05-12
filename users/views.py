@@ -1603,6 +1603,10 @@ def export_data_cur(request, clase):
 
 @login_required(login_url="redirect")
 def change_password(request):
+    rol = 0
+    user = request.user
+    if user.is_authenticated:
+            rol = Rol.objects.get(user=user)
     if request.method == 'POST':
         form = CustomPasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
@@ -1612,7 +1616,7 @@ def change_password(request):
             return redirect('home')
     else:
         form = CustomPasswordChangeForm(user=request.user)
-    return render(request, 'changepassword.html', {'form': form})
+    return render(request, 'changepassword.html', {'form': form}, {"rol": rol})
 
 def recover_password(request):
     if request.method == "POST":

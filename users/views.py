@@ -700,12 +700,13 @@ def update_aux_curatoria(request):
     if request.method == "POST":
         form = Update(request.POST)
         if form.is_valid():
+            User = get_user_model()
             username = form.cleaned_data["username"]
             nombre = form.cleaned_data["nombre"]
             apellido = form.cleaned_data["apellido"]
             correo = form.cleaned_data["correo"]
             rol = form.cleaned_data["rol"]
-            user = username = User.objects.get(id=username)
+            user = User.objects.get(username=username)
             user.nombre = nombre
             user.apellido = apellido
             user.email = correo
@@ -1092,16 +1093,18 @@ def estado_usuarios(request):
 
 
 def desactivar_usuario(request, id):
-    usuario = User.objects.get(id=id)
-    usuario.is_active = False
-    usuario.save()
+    User = get_user_model()
+    user = User.objects.get(id=id)
+    user.is_active = False
+    user.save()
     return HttpResponseRedirect(reverse("dashboard"))
 
 
 def activar_usuario(request, id):
-    usuario = User.objects.get(id=id)
-    usuario.is_active = True
-    usuario.save()
+    User = get_user_model()
+    user = User.objects.get(id=id)
+    user.is_active = True
+    user.save()
     return HttpResponseRedirect(reverse("dashboard"))
 
 

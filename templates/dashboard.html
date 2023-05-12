@@ -22,6 +22,7 @@
   $(document).ready(function() {
     $('#myTable').DataTable({
       "paging": true,
+      "lengthMenu": [10,25, 50],
       "pageLength": 5,
       "language": {
         "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
@@ -262,16 +263,20 @@
       }
       .h5 {
         font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 30px;
+        font-size: 25px;
       }
       .h6 {
         font-family: 'Acherus Grotesque', sans-serif;
         font-size: 22px;
       }
     .table-responsive {
-      max-height: 690px; 
-      
+      max-height: 70vh; 
+      max-width: 100%;
       overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    .dataTables_wrapper {
+      table-layout: fixed;
     }
     
       @media (min-width: 768px) {
@@ -446,7 +451,7 @@
       </div>
     </nav>
       <div  class="row" >
-      <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1290px ;">
+      <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1390px ;">
           <div class="flex-shrink-0 p-3 " style="width: 280px;">
               <h2 class="h3" style="color : white" style="text-align: center;" > Hola {{ user.nombre }}</h2>
 
@@ -584,7 +589,7 @@
                   
                   <div class="table-responsive">
                     <br>
-                    <table id="myTable" class="table table-sm table-striped" data-toggle="table">
+                    <table id="myTable" class="table table-sm table-striped" data-toggle="table" style="   max-width: 100%;">
                       <thead>
                         <tr style="background-color: #404827; color: white;">
                           <th scope="col" class="h5" style="background-color: #404827; color: white;">Fecha</th>
@@ -926,6 +931,9 @@
         </div>
       </div>
     </div>
+    <br>
+    <br> <br>
+    <br>
     <br>
     <br> <br>
     <br>

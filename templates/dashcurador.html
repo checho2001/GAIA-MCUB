@@ -23,6 +23,7 @@
             $('#myTable').DataTable({
               "paging": true,
               "pageLength": 5,
+              "lengthMenu": [10,25, 50],
               "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 "paginate": {
@@ -36,6 +37,7 @@
             $('#tabla2').DataTable({
               "paging": true,
               "pageLength": 5,
+              "lengthMenu": [10,25, 50],
               "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 "paginate": {
@@ -282,18 +284,21 @@
           }
           .h5 {
             font-family: 'Acherus Grotesque', sans-serif;
-            font-size: 30px;
+            font-size: 15px;
           }
           .h6 {
             font-family: 'Acherus Grotesque', sans-serif;
             font-size: 22px;
           }
-        .table-responsive {
-          max-height: 500px; 
-         
-       
-          overflow-y: scroll;
-        }
+          .table-responsive {
+            max-height: 70vh; 
+            max-width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+          }
+          .dataTables_wrapper {
+            table-layout: fixed;
+          }
         
           @media (min-width: 768px) {
             .bd-placeholder-img-lg {

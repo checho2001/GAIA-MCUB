@@ -2,7 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Página de modificación de ejemplares">
+    <title>Editar</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
@@ -40,7 +43,6 @@
 
 #colecciones:hover {
   background-image: url('/static/images/llamaroble.png');
-
 }
 #nosotros {
 background-image: url('/static/images/equipo.png');
@@ -126,29 +128,38 @@ p {
 font-family: 'Lato-Black', sans-serif;
 }
 .h1 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Lato-Black', sans-serif;
+  font-size: 70px;
 }
 .h2 {
-font-family: 'Lato-Black', sans-serif;
-color: #81bb26;
+  font-family: 'Lato-Black', sans-serif;
+  font-size: 60px;
+  color: #81bb26;
 }
+
 .h3 {
-font-family: 'Acherus Grotesque', sans-serif;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 50px;
+  
 }
 .h4 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 40px;
 }
 .h5 {
-font-family: 'Lato-Black', sans-serif;
-
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 30px;
+}
+.h6 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-size: 25px;
 }
 .social {
 list-style: none;
 padding: 0;
 margin: 0;
 }
+
 footer {
 background-color: #81bb26;
 color: #666;
@@ -175,7 +186,33 @@ right: 0;
 z-index: 999;
 
 }
+.form-floating input[type=text] {
+  font-size: 30px;
+}
+.form-floating select {
+  font-size: 30px;
+}
+.form-control {
+  font-size: 30px;
+}
+.form-floating  {
+  font-size: 30px;
+}
+@media (max-width: 767px) {
+  .card-registration {
+    overflow-y: auto;
+  }
+  .footer-wrapper {
+    font-size: 12px;
+  }
+}
+select {
+  font-size: 30px;  }
+.form-floating label {
+  font-size: 30px;  
 
+  font-family: 'Lato', sans-serif;
+}
 body {
 background-image: url('../static/images/fondo.png');
 background-size: cover;
@@ -210,6 +247,34 @@ color: white;
 transform: scale(1.2);
 color: #008776; 
 border: none;
+}
+.btn-customizedlogin {
+  color: white;
+  background-color: #008776; 
+
+  padding: 12px 24px;
+  font-size: 20px;
+  border:none;
+  transition: transform 0.3s ease;
+  font-family:'Lato-Black', sans-serif;
+  font-size: 30px;
+  
+}
+.btn-customizedlogin :hover {
+  transform: scale(1.1);
+  color: #008776; 
+  border: none;
+  font-size: 30px;
+}
+footer {
+  background-color: #008776;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 90px;
 }
 </style>
 <nav class="navbar navbar-expand-md navbar-light navbar-custom border-0">
@@ -271,133 +336,150 @@ border: none;
                     <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group m-2">
+                        <label class="font-weight-bold" style="font-size:30px;">Numero de Catalogo<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           
                           <input name="NumeroCatalogo" value="{{ contexto.numeroCatalogo }}" class = "form-control">
-                          <label class="font-weight-bold">NumeroCatalogo<span class="text-danger"> *</span></label>
+                         
                           
                           <br>
                         </div>
+                        <label class="font-weight-bold"  style="font-size:30px;">Nombre Del ConjuntoDatos<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           
                           <input name="NombreDelConjuntoDatos" value="{{ contexto.nombreDelConjuntoDatos }}"  class = "form-control">
-                          <label class="font-weight-bold">NombreDelConjuntoDatos<span class="text-danger"> *</span></label>
+                      
                           
                           <br>
                         </div>
+                        <label class="font-weight-bold"  style="font-size:30px;">Comentario del Registro Biologico<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                            <input name="ComentarioRegistroBiologico" value="{{ contexto.comentarioRegistro }}"  class = "form-control">
-                            <label class="font-weight-bold">ComentarioRegistroBiologico<span class="text-danger"> *</span></label>
+                          
                           
                             <br>
                         </div>
+                        <label class="font-weight-bold" style="font-size:30px;">Registrado Por<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           <input name="RegistradoPor" value="{{ contexto.registrado }}" class = "form-control">
-                          <label class="font-weight-bold">RegistradoPor<span class="text-danger"> *</span></label>
+                          
                           <br>
                         </div>
+                        <label   class="font-weight-bold" style="font-size:30px;">Numero Individuo<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                             <input name="NumeroIndividuo" value="{{ contexto.numeroIndividuo }}" class = "form-control" >
-                            <label   class="font-weight-bold">NumeroIndividuo<span class="text-danger"> *</span></label>
+                           
                           
                             <br>
                         </div>
+                        <label class="font-weight-bold" style="font-size:30px;">Fecha Evento<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           <input name="FechaEvento" value="{{ contexto.fechaEvento }}" class = "form-control" disabled>
-                          <label class="font-weight-bold">FechaEvento<span class="text-danger"> *</span></label>
-                        
                           <br>
                         </div>
+                        <label   class="font-weight-bold" style="font-size:30px;">Hábitad<span class="text-danger"> *</span></label>   
                         <div class="form-floating">
                           <input name="Habitad" value="{{ contexto.habitad }}" class = "form-control">
-                          <label   class="font-weight-bold">Habitad<span class="text-danger"> *</span></label>   
+                         
                         
                           <br>
                         </div>
+                        <label  class="font-weight-bold" style="font-size:30px;">Departamento<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           <input name="Departamento" value="{{ contexto.departamento }}" class = "form-control">
-                          <label  class="font-weight-bold">Departamento<span class="text-danger"> *</span></label>
+                         
                         
                           <br>
                         </div>
+                        <label   class="font-weight-bold" style="font-size:30px;">Nombre Común<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           <input name="NombreComun" value="{{ contexto.nombreComun }}" class = "form-control">
-                          <label  type="password" class="font-weight-bold">Nombre Común<span class="text-danger"> *</span></label>
+                         
                         
                           <br>
                         </div>
+                        <label class="font-weight-bold" style="font-size:30px;">Municipio<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           <input name="Municipio" value="{{ contexto.municipio }}" class = "form-control">
-                          <label class="font-weight-bold">Municipio<span class="text-danger"> *</span></label>
+                       
                           <br>
                         </div>                        
                       </div>
                     </div>                   
                     <div class="col-lg-6">
                       <div class="form-group m-2">
-
+                        <label   class="font-weight-bold" style="font-size:30px;">IdentificadoPor<span class="text-danger"> *</span></label>
             <div class="form-floating">
               <input name="IdentificadoPor" value="{{ contexto.identificadoPor }}" class = "form-control">
-              <label   class="font-weight-bold">IdentificadoPor<span class="text-danger"> *</span></label>
+              
             
               <br>
             </div>
+            <label   class="font-weight-bold" style="font-size:30px;">Fecha Identificación<span class="text-danger"> *</span></label>
             <div class="form-floating">
-              <input name="FechaIdentificacion" value="{{ contexto.fechaIdentificacion }}" class = "form-control" disabled>
-              <label   class="font-weight-bold">FechaIdentificacion<span class="text-danger"> *</span></label>
+              <input name="FechaIdentificacion" value="{{ contexto.fechaIdentificacion }}" class = "form-control" >
+             
             
               <br>
             </div>
+            <label  class="font-weight-bold" style="font-size:30px;">Identificacion deReferencias<span class="text-danger"> *</span></label>
             <div class="form-floating">
               <input name="IdentificacionReferencias" value="{{ contexto.identificacionReferencias }}" class = "form-control">
-              <label  class="font-weight-bold">IdentificacionReferencias<span class="text-danger"> *</span></label>
+             
             
               <br>
             </div>
+            <label  class="font-weight-bold" style="font-size:30px;">Comentario de Identificacion<span class="text-danger"> *</span></label>
             <div class="form-floating">
               <input name="ComentarioIdentificacion" value="{{ contexto.comentarioIdentificacion }}" class = "form-control">
-              <label  class="font-weight-bold">ComentarioIdentificacion<span class="text-danger"> *</span></label>
+           
             
               <br>
             </div>
+            <label  class="font-weight-bold" style="font-size:30px;">Nombre Cientifíco<span class="text-danger"> *</span></label>
             <div class="form-floating">
               <input name="NombreCientifico" value="{{ contexto.nombreCientifico }}" class = "form-control" >
-              <label  class="font-weight-bold">NombreCientifico<span class="text-danger"> *</span></label>
+             
             
               <br>
             </div>
+            <label  class="font-weight-bold" style="font-size:30px;">Clase<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
               <input name="Clase" value="{{ contexto.clase }}" class = "form-control">                   
-              <label  class="font-weight-bold">Clase<span class="text-danger"> *</span></label>
+             
               
             </div>
             <br>
+            <label  class="font-weight-bold" style="font-size:30px;">Orden<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
               <input name="Orden" value="{{ contexto.orden }}" class = "form-control">                   
-              <label  class="font-weight-bold">Orden<span class="text-danger"> *</span></label>
+            
               
             </div>
             <br>
+            <label  class="font-weight-bold" style="font-size:30px;">Género<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
               <input name="Genero" value="{{ contexto.genero }}" class = "form-control">                   
-              <label  class="font-weight-bold">Genero<span class="text-danger"> *</span></label>
+             
               
             </div>
             <br>
+            <label  class="font-weight-bold" style="font-size:30px;">Familia<span class="text-danger"> *</span></label>
+
             <div class="form-floating">
                                   
               <input name="Familia" value="{{ contexto.familia }}" class = "form-control">                   
-              <label  class="font-weight-bold">Familia<span class="text-danger"> *</span></label>
               
             </div>
             <br>
+            <label  class="font-weight-bold" style="font-size:30px;">Imagen<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
               <input type="file" name="imagen" id="imagen">
-              <label  class="font-weight-bold">Imagen<span class="text-danger"> *</span></label>
+              
               
             </div>
             
@@ -430,6 +512,48 @@ border: none;
     </div>
   </div>
   
+  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+ 
   
+<div class="footer-wrapper d-none d-sm-block"> 
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:100px; width:100px;">
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
 </body>
   

@@ -333,11 +333,13 @@ class EjemplarP(View):
 
 
 def obtener_usuario(request, id_usuario):
-    usuario = User.objects.get(id=id_usuario)
+    User = get_user_model()
+    user = User.objects.get(id=id_usuario)
+   
     usuario_info = {
-        "nombre": usuario.nombre,
-        "apellido": usuario.apellido,
-        "correo": usuario.email,
+        "nombre": user.nombre,
+        "apellido": user.apellido,
+        "correo": user.email,
     }
     return JsonResponse(usuario_info)
 
@@ -377,15 +379,12 @@ def register(request):
             apellido = form.cleaned_data["apellido"]
             correo = form.cleaned_data["correo"]
             password = form.cleaned_data["password"]
-            rol = form.cleaned_data["rol"]
-            user = User(
-                username=username,
-                nombre=nombre,
-                apellido=apellido,
-                email=correo,
-                rol=Rol.objects.get(id=rol),
-                password=make_password(password),
-            )
+            User = get_user_model()
+            user = User.objects.create_user(username=username, email=correo, password=password)
+            user.nombre = nombre
+            user.apellido = apellido
+            user.rol = rol
+            user.save()
 
             user.is_superuser = False
             user.is_staff = False
@@ -706,7 +705,7 @@ def update_aux_curatoria(request):
             apellido = form.cleaned_data["apellido"]
             correo = form.cleaned_data["correo"]
             rol = form.cleaned_data["rol"]
-            user = User.objects.get(username=username)
+            user = User.objects.get(id=username)
             user.nombre = nombre
             user.apellido = apellido
             user.email = correo
@@ -724,8 +723,20 @@ def update_aux_curatoria(request):
             elif rol_id == 3:
                 return redirect("dashboardCur")
     else:
-        form = Update()
+        username = request.GET.get('username')
+        if username:
+            user = User.objects.get(username=username)
+            form = Update(initial={
+                'username': user.username,
+                'nombre': user.nombre,
+                'apellido': user.apellido,
+                'correo': user.email,
+                'rol': user.rol.id,
+            })
+        else:
+            form = Update()
     return render(request, "UpdateUser.html", {"form": form, "rol": rol})
+
 
 
 def load_data(request):

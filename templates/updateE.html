@@ -1,290 +1,281 @@
-<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Página de edicion de especimenes">
 
-    <meta name="description" content="Página de modificación de ejemplares">
     <title>Editar</title>
     <link rel="stylesheet" href="../static/css/style1.css" >
     <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
-    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
-</head>
-<style>
-  #Library {
-    background-image: url('/static/images/casa.png');
-    background-position: left 90px center;
-    width: 140px; 
-    height:60px;
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js">
+       </script>
+    <style>
+      #Library {
+        background-image: url('/static/images/casa.png');
+        background-position: left 90px center;
+        width: 140px; 
+        height:60px;
+        background-size: 25%;
+        background-repeat: no-repeat;
+        text-align: left;
+        font-family: 'Lato-Black', sans-serif;
+        font-size:26px
+     }
+     
+     #Library:hover {
+        background-image: url('/static/images/casa (1).png');
+     }
+     #colecciones {
+      background-image: url('/static/images/llamablanca.png');
+      background-position: left 170px center;
+      width: 240px; 
+      height:60px;
+      background-size: 20%;
+      background-repeat: no-repeat;
+      text-align: left;
+      font-family: 'Lato-Black', sans-serif;
+      font-size:26px
+      
+    
+    }
+    
+    #colecciones:hover {
+      background-image: url('/static/images/llamaroble.png');
+    }
+   #nosotros {
+    background-image: url('/static/images/equipo.png');
+    background-position: left 130px center;
+    width: 190px; 
     background-size: 25%;
-    background-repeat: no-repeat;
     text-align: left;
     font-family: 'Lato-Black', sans-serif;
-    font-size:26px
- }
- 
- #Library:hover {
-    background-image: url('/static/images/casa (1).png');
- }
- #colecciones {
-  background-image: url('/static/images/llamablanca.png');
-  background-position: left 170px center;
-  width: 240px; 
-  height:60px;
+    font-size:26px;
+  
+    height:60px;
+    background-repeat: no-repeat;
+    
+  
+  }
+  
+  #nosotros:hover {
+    background-image: url('/static/images/equipo (2).png');
+  }
+  #contacto {
+  background-image: url('/static/images/informacion.png');
+  background-position: left 140px center;
+  width: 190px; 
   background-size: 20%;
-  background-repeat: no-repeat;
   text-align: left;
+  
+  height:60px;
+  background-repeat: no-repeat;
   font-family: 'Lato-Black', sans-serif;
   font-size:26px
   
-
-}
-
-#colecciones:hover {
-  background-image: url('/static/images/llamaroble.png');
-}
-#nosotros {
-background-image: url('/static/images/equipo.png');
-background-position: left 130px center;
-width: 190px; 
-background-size: 25%;
-text-align: left;
-font-family: 'Lato-Black', sans-serif;
-font-size:26px;
-
-height:60px;
-background-repeat: no-repeat;
-
-
-}
-
-#nosotros:hover {
-background-image: url('/static/images/equipo (2).png');
-}
-#contacto {
-background-image: url('/static/images/informacion.png');
-background-position: left 140px center;
-width: 190px; 
-background-size: 20%;
-text-align: left;
-
-height:60px;
-background-repeat: no-repeat;
-font-family: 'Lato-Black', sans-serif;
-font-size:26px
-
-}
-
-#contacto:hover {
-background-image: url('/static/images/informacion (1).png');
-}
-#dashboard {
-background-image: url('/static/images/pizarron.png');
-background-position: left 160px center;
-width: 210px; 
-background-size: 20%;
-text-align: left;
-font-family: 'Lato-Black', sans-serif;
-font-size:26px;
-height:60px;
-background-repeat: no-repeat;
-
-
-}
-
-#dashboard:hover {
-background-image: url('/static/images/pizarron (1).png');
-}
-#login {
-  background-image: url('/static/images/login.png');
-  background-position: left 90px center;
-  width: 200px; 
-  background-size: 25%;
-  text-align: left;
-  
-  height:60px;
-  background-repeat: no-repeat;
-  
-  font-family: 'Lato-Black', sans-serif;
-  font-size:26px;
   }
   
-  #login:hover {
-  background-image: url('/static/images/login (1).png');
+  #contacto:hover {
+  background-image: url('/static/images/informacion (1).png');
+  }
+  #dashboard {
+    background-image: url('/static/images/pizarron.png');
+    background-position: left 160px center;
+    width: 210px; 
+    background-size: 20%;
+    text-align: left;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px;
+    height:60px;
+    background-repeat: no-repeat;
+    
+    
+    }
+    
+    #dashboard:hover {
+    background-image: url('/static/images/pizarron (1).png');
+    }
+    #login {
+      background-image: url('/static/images/login.png');
+      background-position: left 90px center;
+      width: 200px; 
+      background-size: 25%;
+      text-align: left;
+      
+      height:60px;
+      background-repeat: no-repeat;
+      
+      font-family: 'Lato-Black', sans-serif;
+      font-size:26px;
+      }
+      
+      #login:hover {
+      background-image: url('/static/images/login (1).png');
+      }
+      footer {
+    background-color: #f6f6f6;
+    padding: 50px 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: #f6f6f6;
+  }
+  .form-floating select {
+    font-size: 30px;
+  }
+  .form-floating  {
+    font-size: 30px;
+  }
+  @media (max-width: 767px) {
+    .card-registration {
+      overflow-y: auto;
+    }
+    .footer-wrapper {
+      font-size: 12px;
+    }
+  }
+  select {
+    font-size: 30px;  }
+  .form-floating label {
+    font-size: 30px;  
+ 
+    font-family: 'Lato', sans-serif;
+  }
+  
+  p {
+    font-family: 'Lato-Black', sans-serif;
+  }
+  .h1 {
+    font-family: 'Lato-Black', sans-serif;
+    font-size: 70px;
+  }
+  .h2 {
+    font-family: 'Lato-Black', sans-serif;
+    font-size: 60px;
+    color: #81bb26;
+  }
+ 
+  .h3 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 50px;
+    
+  }
+  .h4 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 40px;
+  }
+  .h5 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 30px;
+  }
+  .h6 {
+    font-family: 'Acherus Grotesque', sans-serif;
+    font-size: 25px;
+  }
+  .social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
   footer {
-background-color: #f6f6f6;
-padding: 50px 0;
-font-family: 'Lato', sans-serif;
-font-size: 16px;
-color: #f6f6f6;
-}
-@font-face {
-font-family: 'Lato-Black';
-src: url('fonts/Lato-Black.ttf') format('truetype');
-}
-p {
-font-family: 'Lato-Black', sans-serif;
-}
-.h1 {
-  font-family: 'Lato-Black', sans-serif;
-  font-size: 70px;
-}
-.h2 {
-  font-family: 'Lato-Black', sans-serif;
-  font-size: 60px;
-  color: #81bb26;
-}
-
-.h3 {
-  font-family: 'Acherus Grotesque', sans-serif;
-  font-size: 50px;
-  
-}
-.h4 {
-  font-family: 'Acherus Grotesque', sans-serif;
-  font-size: 40px;
-}
-.h5 {
-  font-family: 'Acherus Grotesque', sans-serif;
-  font-size: 30px;
-}
-.h6 {
-  font-family: 'Acherus Grotesque', sans-serif;
-  font-size: 25px;
-}
-.social {
-list-style: none;
-padding: 0;
-margin: 0;
-}
-
-footer {
-background-color: #81bb26;
-color: #666;
-text-align: center;
-padding: 20px;
-
-bottom: 0;
-width: 100%;
-}
-.nav-pills .nav-link.active {
-background-color:#404827;;
-color: white;
-}
-.navbar {
-background-color: #008776;
-
-}
-.navbar-custom {
-background-color: #008776; 
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-z-index: 999;
-
-}
-.form-floating input[type=text] {
-  font-size: 30px;
-}
-.form-floating select {
-  font-size: 30px;
-}
-.form-control {
-  font-size: 30px;
-}
-.form-floating  {
-  font-size: 30px;
-}
-@media (max-width: 767px) {
-  .card-registration {
-    overflow-y: auto;
+    background-color: #81bb26;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+   
+    bottom: 0;
+    width: 100%;
   }
-  .footer-wrapper {
-    font-size: 12px;
+  .nav-pills .nav-link.active {
+    background-color:#404827;;
+    color: white;
   }
-}
-select {
-  font-size: 30px;  }
-.form-floating label {
-  font-size: 30px;  
-
-  font-family: 'Lato', sans-serif;
-}
-body {
-background-image: url('../static/images/fondo.png');
-background-size: cover;
-}
-
-.btn-custom:hover {
-transform: scale(1.2);
-color: #008776; 
-border: none;
-}
-.btn-custom {
-color: white;
-background-color: #008776; 
-padding: 10px 20px;
-border: none;
-transition: transform 0.3s ease;
-font-family:'Lato-Black', sans-serif;
-}
-.btn-customizedlogin {
-color: white;
-        background-color: #008776; 
-      
-        padding: 12px 24px;
-        font-size: 20px;
-        border-radius: 22px;
-        border: 2px solid;
-        transition: transform 0.3s ease;
-        font-family:'Lato-Black', sans-serif;
-
-}
-.btn-customizedlogin :hover {
-transform: scale(1.2);
-color: #008776; 
-border: none;
-}
-.btn-customizedlogin {
-  color: white;
-  background-color: #008776; 
-
-  padding: 12px 24px;
-  font-size: 20px;
-  border:none;
-  transition: transform 0.3s ease;
-  font-family:'Lato-Black', sans-serif;
-  font-size: 30px;
+  .navbar {
+    background-color: #008776;
+    
+  }
+  .navbar-custom {
+    background-color: #008776; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    
+  }
   
-}
-.btn-customizedlogin :hover {
-  transform: scale(1.1);
-  color: #008776; 
-  border: none;
+  body {
+    background-image: url('../static/images/fondo.png');
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .btn-custom:hover {
+    transform: scale(1.1);
+    color: #404827; 
+    border: none;
+    font-size: 30px;
+  }
+  .btn-custom:hover {
+    transform: scale(1.1);
+    color: #404827; 
+    border: none;
+  }
+  .btn-custom {
+    color: white;
+    background-color: #008776; 
+    padding: 10px 20px;
+    border: none;
+    transition: transform 0.3s ease;
+    font-family:'Lato-Black', sans-serif;
+    font-size: 30px;
+  }
+  .btn-customizedlogin {
+    color: white;
+    background-color: #008776; 
+  
+    padding: 12px 24px;
+    font-size: 20px;
+    border:none;
+    transition: transform 0.3s ease;
+    font-family:'Lato-Black', sans-serif;
+    font-size: 30px;
+    
+  }
+  .btn-customizedlogin :hover {
+    transform: scale(1.1);
+    color: #008776; 
+    border: none;
+    font-size: 30px;
+  }
+  footer {
+    background-color: #008776;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 100px;
+  }
+  .form-floating input[type=text] {
+    font-size: 30px;
+  }
+  
+.form-floating input[type=email] {
   font-size: 30px;
 }
-footer {
-  background-color: #008776;
-  color: #666;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  margin-top: 90px;
+.alert {
+  font-size: 30px;
 }
-</style>
+    </style>
+</head>
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
     <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
-    " >
+    "  alt="..." >
   </a>
   
   <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%"  alt="..." >
   </a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -315,7 +306,7 @@ footer {
 
      
     {% endif %}
- 
+   
     </div>
   </div>
 </nav>
@@ -330,7 +321,6 @@ footer {
                   <form action= "updateEjemplar/{{contexto.id}}" method= POST class="  m-auto" enctype="multipart/form-data">
                     {% csrf_token %}
                     <br>
-                    <br><br>
                     <br>
                     <h1 class="h1">Actualizar Ejemplar</h1>
                     <div class="row">
@@ -339,70 +329,68 @@ footer {
                         <label class="font-weight-bold" style="font-size:30px;">Numero de Catalogo<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           
-                          <input name="NumeroCatalogo" value="{{ contexto.numeroCatalogo }}" class = "form-control">
+                          <input name="NumeroCatalogo" style="font-size:30px;" value="{{ contexto.numeroCatalogo }}" class = "form-control">
                          
                           
-                          <br>
+                        
                         </div>
                         <label class="font-weight-bold"  style="font-size:30px;">Nombre Del ConjuntoDatos<span class="text-danger"> *</span></label>
                         <div class="form-floating">
                           
-                          <input name="NombreDelConjuntoDatos" value="{{ contexto.nombreDelConjuntoDatos }}"  class = "form-control">
+                          <input name="NombreDelConjuntoDatos" style="font-size:30px;"value="{{ contexto.nombreDelConjuntoDatos }}"  class = "form-control">
                       
                           
-                          <br>
+                    
                         </div>
                         <label class="font-weight-bold"  style="font-size:30px;">Comentario del Registro Biologico<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                           <input name="ComentarioRegistroBiologico" value="{{ contexto.comentarioRegistro }}"  class = "form-control">
+                           <input name="ComentarioRegistroBiologico" style="font-size:30px;"value="{{ contexto.comentarioRegistro }}"  class = "form-control">
                           
                           
-                            <br>
+                       
                         </div>
                         <label class="font-weight-bold" style="font-size:30px;">Registrado Por<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                          <input name="RegistradoPor" value="{{ contexto.registrado }}" class = "form-control">
+                          <input name="RegistradoPor" style="font-size:30px;" value="{{ contexto.registrado }}" class = "form-control">
                           
-                          <br>
+                       
                         </div>
                         <label   class="font-weight-bold" style="font-size:30px;">Numero Individuo<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                            <input name="NumeroIndividuo" value="{{ contexto.numeroIndividuo }}" class = "form-control" >
+                            <input name="NumeroIndividuo" style="font-size:30px;"value="{{ contexto.numeroIndividuo }}" class = "form-control" >
                            
                           
-                            <br>
+                        
                         </div>
                         <label class="font-weight-bold" style="font-size:30px;">Fecha Evento<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                          <input name="FechaEvento" value="{{ contexto.fechaEvento }}" class = "form-control" disabled>
-                          <br>
+                          <input name="FechaEvento"  style="font-size:30px;" value="{{ contexto.fechaEvento }}" class = "form-control" disabled>
+                      
                         </div>
                         <label   class="font-weight-bold" style="font-size:30px;">Hábitad<span class="text-danger"> *</span></label>   
                         <div class="form-floating">
-                          <input name="Habitad" value="{{ contexto.habitad }}" class = "form-control">
+                          <input name="Habitad"  style="font-size:30px;"value="{{ contexto.habitad }}" class = "form-control">
                          
                         
-                          <br>
                         </div>
                         <label  class="font-weight-bold" style="font-size:30px;">Departamento<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                          <input name="Departamento" value="{{ contexto.departamento }}" class = "form-control">
+                          <input name="Departamento" style="font-size:30px;" value="{{ contexto.departamento }}" class = "form-control">
                          
                         
-                          <br>
+                          
                         </div>
                         <label   class="font-weight-bold" style="font-size:30px;">Nombre Común<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                          <input name="NombreComun" value="{{ contexto.nombreComun }}" class = "form-control">
+                          <input name="NombreComun" style="font-size:30px;" value="{{ contexto.nombreComun }}" class = "form-control">
                          
                         
-                          <br>
                         </div>
                         <label class="font-weight-bold" style="font-size:30px;">Municipio<span class="text-danger"> *</span></label>
                         <div class="form-floating">
-                          <input name="Municipio" value="{{ contexto.municipio }}" class = "form-control">
+                          <input name="Municipio" style="font-size:30px;" value="{{ contexto.municipio }}" class = "form-control">
                        
-                          <br>
+                         
                         </div>                        
                       </div>
                     </div>                   
@@ -410,71 +398,71 @@ footer {
                       <div class="form-group m-2">
                         <label   class="font-weight-bold" style="font-size:30px;">IdentificadoPor<span class="text-danger"> *</span></label>
             <div class="form-floating">
-              <input name="IdentificadoPor" value="{{ contexto.identificadoPor }}" class = "form-control">
+              <input name="IdentificadoPor"  style="font-size:30px;" value="{{ contexto.identificadoPor }}" class = "form-control">
               
             
-              <br>
+           
             </div>
             <label   class="font-weight-bold" style="font-size:30px;">Fecha Identificación<span class="text-danger"> *</span></label>
             <div class="form-floating">
-              <input name="FechaIdentificacion" value="{{ contexto.fechaIdentificacion }}" class = "form-control" >
+              <input name="FechaIdentificacion" style="font-size:30px;" value="{{ contexto.fechaIdentificacion }}" class = "form-control" >
              
             
-              <br>
+             
             </div>
             <label  class="font-weight-bold" style="font-size:30px;">Identificacion deReferencias<span class="text-danger"> *</span></label>
             <div class="form-floating">
-              <input name="IdentificacionReferencias" value="{{ contexto.identificacionReferencias }}" class = "form-control">
+              <input name="IdentificacionReferencias" style="font-size:30px;" value="{{ contexto.identificacionReferencias }}" class = "form-control">
              
             
-              <br>
+             
             </div>
             <label  class="font-weight-bold" style="font-size:30px;">Comentario de Identificacion<span class="text-danger"> *</span></label>
             <div class="form-floating">
-              <input name="ComentarioIdentificacion" value="{{ contexto.comentarioIdentificacion }}" class = "form-control">
+              <input name="ComentarioIdentificacion" style="font-size:30px;" value="{{ contexto.comentarioIdentificacion }}" class = "form-control">
            
             
-              <br>
+              
             </div>
             <label  class="font-weight-bold" style="font-size:30px;">Nombre Cientifíco<span class="text-danger"> *</span></label>
             <div class="form-floating">
-              <input name="NombreCientifico" value="{{ contexto.nombreCientifico }}" class = "form-control" >
+              <input name="NombreCientifico" style="font-size:30px;" value="{{ contexto.nombreCientifico }}" class = "form-control" >
              
             
-              <br>
+             
             </div>
             <label  class="font-weight-bold" style="font-size:30px;">Clase<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
-              <input name="Clase" value="{{ contexto.clase }}" class = "form-control">                   
+              <input name="Clase" style="font-size:30px;"  value="{{ contexto.clase }}" class = "form-control">                   
              
               
             </div>
-            <br>
+           
             <label  class="font-weight-bold" style="font-size:30px;">Orden<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
-              <input name="Orden" value="{{ contexto.orden }}" class = "form-control">                   
+              <input name="Orden" style="font-size:30px;" value="{{ contexto.orden }}" class = "form-control">                   
             
               
             </div>
-            <br>
+           
             <label  class="font-weight-bold" style="font-size:30px;">Género<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
-              <input name="Genero" value="{{ contexto.genero }}" class = "form-control">                   
+              <input name="Genero" style="font-size:30px;" value="{{ contexto.genero }}" class = "form-control">                   
              
               
             </div>
-            <br>
+            
             <label  class="font-weight-bold" style="font-size:30px;">Familia<span class="text-danger"> *</span></label>
 
             <div class="form-floating">
                                   
-              <input name="Familia" value="{{ contexto.familia }}" class = "form-control">                   
+              <input name="Familia" style="font-size:30px;" value="{{ contexto.familia }}" class = "form-control">                   
               
             </div>
-            <br>
+           
             <label  class="font-weight-bold" style="font-size:30px;">Imagen<span class="text-danger"> *</span></label>
             <div class="form-floating">
                                   
@@ -512,9 +500,13 @@ footer {
     </div>
   </div>
   
-  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+</div>
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
  
+</body>
+
   
 <div class="footer-wrapper d-none d-sm-block"> 
   <footer>
@@ -531,23 +523,29 @@ footer {
         </div>
         <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
           <ul class="social">
-            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
-              <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
-            </a>
+            <li>
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+                <img class="img" src="/static/images/facebook.png" alt="..." style="height:100px; width:100px;">
+              </a>
+            </li>
           </ul>
         </div>
         <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
           <ul class="social">
-            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
-              <img class="img" src="/static/images/edificio.png" alt="..."style="height:100px; width:100px;">
-            </a>
+            <li>
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+                <img class="img" src="/static/images/edificio.png" alt="..."style="height:100px; width:100px;">
+              </a>
+            </li>
           </ul>
         </div>
         <div class="col-sm-12 col-md-2">
           <ul class="social">
-            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-              <img class="img" src="/static/images/instagram.png"alt="..." style="height:100px; width:100px;">
-            </a>
+            <li>
+              <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+                <img class="img" src="/static/images/instagram.png"alt="..." style="height:100px; width:100px;">
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -555,5 +553,3 @@ footer {
   </footer>
 </div>
 
-</body>
-  

@@ -421,8 +421,12 @@
         }
     
         .btn-block {
-  margin-bottom: 10px;
-}
+          margin-bottom: 10px;
+        }
+        #nav-contact{
+          position: relative;
+          left: 100px;
+        }
 
 
     </style>
@@ -741,19 +745,19 @@
 
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                   <br>
-                  <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Gestión Clasificaciones</h2></div>
+                  <div class="text-center" ><h3 class="h2" style="color: #008776; text-align: left;">Gestión Clasificaciones</h3></div>
                
                         <form method="post" action="{% url 'elegir' %}">
                           {% csrf_token %}
                          
-                          <br><br>
+                          <br>
                           <div class="text" ><h4 class="h4" style="color: Black;">Seleccione que clasificación agregar por excel</h4></div>
                           <br>
 
                           <div class="row">
       
-                          <div class="col-6">
-                          <select  name="option" id="option" class="form-select" style="font-size:30px">
+                          <div class="col-sm-8">
+                          <select  class="form-select" style="font-size:30px;" name="actividad_id">
             
                             <option class="h5" selected value="option1">Clase</option>
                             <option class="h5" value="option2">Orden</option>
@@ -771,7 +775,8 @@
                         </form>
                       
                       <br>
-                      <div class="text-center" ><h2 class="h2"  style="color: #008776; text-align: center;">Gestión Tipo de Actividades</h2></div>
+                      <br>
+                      <div class="text-center" ><h3 class="h2"  style="color: #008776; text-align: left;">Gestión Tipo de Actividades</h3></div>
                      
                         <br>
                         <form method="post" action="{% url 'AgregarActividad' %}">
@@ -830,7 +835,8 @@
                         </form>
                     </div>
                         <br>
-                        <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Gestión texto pagina principal</h2></div>
+                        <br>
+                        <div class="text-center" ><h3 class="h2" style="color: #008776; text-align: left;">Gestión texto pagina principal</h3></div>
                    
                         <form method="post" action="{% url 'elegirtexto' %}">
                           {% csrf_token %}  

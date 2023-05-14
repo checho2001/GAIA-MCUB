@@ -37,7 +37,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
-
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import SetPasswordForm
+from django.contrib.auth import login
+from .forms import CustomPasswordChangeForm 
 
 class IndexView(View):
     def get(self, request):
@@ -1613,7 +1616,7 @@ def change_password(request):
             return redirect('home')
     else:
         form = CustomPasswordChangeForm(user=request.user)
-    return render(request, 'changepassword.html', {'form': form}, {"rol": rol})
+    return render(request, 'changepassword.html', {'form': form})
 
 def recover_password(request):
     if request.method == "POST":

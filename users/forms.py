@@ -237,7 +237,6 @@ class TimeInput(forms.TimeInput):
     """
     input_type = "time"
 
-
 class ActividadesForm(forms.Form):
     """
     Representa un formulario para las actividades.
@@ -320,10 +319,6 @@ class ActividadesForm(forms.Form):
         except ValidationError as e:
             self.add_error("Fecha", e)
         return cleaned_data
-
-
-
-
 
 class EjemplarForm(forms.Form):
     """
@@ -640,7 +635,6 @@ class EjemplarForm(forms.Form):
 
         return cleaned_data
 
-
 class Update(forms.Form):
     """
     Representa un form para actualizar el usuario .
@@ -752,7 +746,6 @@ class Update(forms.Form):
 
         return apel
 
-
 class desactivarUsuario(forms.Form):
     """
     Representa un form para desactivar  el usuario .
@@ -770,7 +763,6 @@ class desactivarUsuario(forms.Form):
             }
         ),
     )
-
 
 class TipoActividadForm(forms.Form):
     """
@@ -795,6 +787,7 @@ class TextForm(forms.Form):
 
 
 
+
 class CustomPasswordChangeForm(PasswordChangeForm):
     """
     Representa un form para cambiar la contraseña .
@@ -803,15 +796,15 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         label=_("Contraseña actual"),
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'class': 'form-control'})
-)
+    )
 
     new_password1 = forms.CharField(
         label=_("Nueva contraseña"),
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'form-control'}),
         strip=False,
-        help_text=_("La contraseña no puede ser demasiado similar a otras información personal."
-                    "La contraseña debe contener al menos 8 caracteres."
-                    "La contraseña no puede ser completamente numérica."),
+  
+
+
     )
 
     new_password2 = forms.CharField(
@@ -830,6 +823,7 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         if password1.isnumeric():
             raise ValidationError("La contraseña no puede ser completamente numérica.")
         return password1
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -850,10 +844,10 @@ class CustomPasswordChangeForm(PasswordChangeForm):
             'id': 'ConfPass',
             'placeholder': 'Confirmar Contraseña',
         })
-    def save(self, commit=True):
-        response = super().save(commit)
 
-        return response
+    def save(self, commit=True):
+        return super().save(commit)
+    
 class RecoverPasswordForm(forms.Form):
     """
     Representa un form para cambiar la contraseña .

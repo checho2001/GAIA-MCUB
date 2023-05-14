@@ -112,13 +112,7 @@
       #login:hover {
       background-image: url('/static/images/login (1).png');
       }
-      footer {
-    background-color: #f6f6f6;
-    padding: 50px 0;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    color: #f6f6f6;
-  }
+  
   .form-floating select {
     font-size: 30px;
   }
@@ -176,15 +170,7 @@
     padding: 0;
     margin: 0;
   }
-  footer {
-    background-color: #81bb26;
-    color: #666;
-    text-align: center;
-    padding: 20px;
-   
-    bottom: 0;
-    width: 100%;
-  }
+
   .nav-pills .nav-link.active {
     background-color:#404827;;
     color: white;
@@ -207,6 +193,7 @@
     background-image: url('../static/images/fondo.png');
     background-size: cover;
     height: 100vh;
+    padding-bottom: 150px;
   }
   
   .btn-custom:hover {
@@ -252,10 +239,11 @@
     color: #666;
     text-align: center;
     padding: 20px;
-    bottom: 0;
     width: 100%;
-    padding-bottom: 100px;
+    height: auto; 
+    margin-top: 50px; 
   }
+  
   .form-floating input[type=text] {
     font-size: 30px;
   }
@@ -320,8 +308,7 @@
                 
                   <form action= "updateEjemplar/{{contexto.id}}" method= POST class="  m-auto" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <br>
-                    <br>
+                   
                     <h1 class="h1">Actualizar Ejemplar</h1>
                     <div class="row">
                     <div class="col-lg-6">

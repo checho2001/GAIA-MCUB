@@ -16,16 +16,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="../static/js/sidebars.js"></script>
-        <script>
-          $(document).ready(function(){
-            $("#search").on("keyup", function() {
-              var value = $(this).val().toLowerCase();
-              $(".card").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
-            });
-          });
-          </script>
     <style>
       #Library {
         background-image: url('/static/images/casa.png');
@@ -740,6 +730,28 @@ footer {
 </div>
 
 <script>
+
+  $(document).ready(function(){
+    $("#search").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $(".card1").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      $(".card2").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      $(".card3").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      $(".card4").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      $(".card5").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  
   const cards = document.querySelectorAll('.card1');
   const previousButton = document.querySelector('.previous-page');
   const nextButton = document.querySelector('.next-page');
@@ -957,7 +969,5 @@ footer {
       }
     }
   });
-  
 </script>
-
 </html>

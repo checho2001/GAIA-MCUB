@@ -100,24 +100,14 @@
   }
   
   
-  @font-face {
-    font-family: 'Acherus Grotesque';
-    src: url('fonts/acherus_grotesque_-_light_italic.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
-  }
+ 
   @font-face {
     font-family: 'Acherus Grotesque';
     src: url('fonts/acherus_grotesque_-_light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
   }
-  @font-face {
-    font-family: 'Acherus Grotesque';
-    src: url('fonts/acherus_grotesque_-_extrabold_italic.otf') format('opentype');
-    font-weight: 800;
-    font-style: italic;
-  }
+
   @font-face {
     font-family: 'Acherus Grotesque';
     src: url('fonts/acherus_grotesque_-_extrabold.otf') format('opentype');

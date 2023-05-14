@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
    
         <meta charset="utf-8">
         <title>Galeria</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Página de la galeria del MCUB.">
 
         <link rel="stylesheet" href="../../static/css/style1.css" >
         <link rel="icon" href="data:,">
@@ -344,7 +345,15 @@ footer {
   border: none;
   
 }
-
+footer {
+  background-color: #404827;
+  color: #666;
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    
+}
     </style>
   </head>
 <body  id="global">
@@ -352,11 +361,11 @@ footer {
   <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
       <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
-      " >
+      "  alt="...">
     </a>
     
     <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
-      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%"  alt="...">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -518,7 +527,7 @@ footer {
                       <div class="col-md-6">
                         <div class="card1">
                           <a href="{% url 'element_detail' element.pk %}">
-                            <img src="/media/{{element.Image}}" alt="{{ element.NombreCientificoComentarioRegistroBiologico }}" class="card-img-top" alt="Waterfall" height="800px" width="500px" />
+                            <img src="/media/{{element.Image}}" alt="{{ element.NombreCientificoComentarioRegistroBiologico }}" alt="..." class="card-img-top" alt="Waterfall" height="800px" width="500px" />
                           </a>
                           <div class="card-body">
                             <h5 class="h4"><i>{{ element.NombreCientificoComentarioRegistroBiologico }}</i></h5>
@@ -539,63 +548,44 @@ footer {
     </main>
     
 </body>
+<div class="footer-wrapper d-none d-sm-block">
   <footer>
-    <div class="row">
-      <div class="col" style="border-right: 1px solid white;">
-        
-        <h5 class="h5" style="color: white">Universidad El Bosque</h5>
-        <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
-        <h6 class="h6" style="color: white"> Av. Cra. 9 No. 131 A - 02
-          Línea gratuita:
-          018000 113033
-          
-          PBX:
-          (601) 648 9000</h6>
-  
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>   
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
       </div>
-      <div class="col" style="border-right: 1px solid white;">
-        <ul class="social">
-      
-        <a class="btn-customizedlogin"onClick="
-        parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'" >
-          <img class="img" src="/static/images/facebook.png"    style="height:100px; width:100px;">
-
-        </a>
-      
-      </ul>
-      </div>
-      <div class="col" style="border-right: 1px solid white;">
-        <ul class="social">
-          <a class="btn-customizedlogin"  onClick="
-        parent.location='https://www.unbosque.edu.co'">
-            <img class="img" src="/static/images/edificio.png"   style="height:100px; width:100px;">
-    
-          </a>
-        
-      
-
-      </ul>
-      </div>
-      <div class="col" >
-        <ul class="social">
-          <a class="btn-customizedlogin" onClick="
-          parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
-            <img class="img" src="/static/images/instagram.png"   style="height:100px; width:100px;">
-    
-          </a>
-        
-        
-      </ul>
-      </div>
-      <br><br>
-    
-      
-            
-              
-
+    </div>
   </footer>
-
-
+</div>
      
 <script>
   const cards = document.querySelectorAll('.card1');

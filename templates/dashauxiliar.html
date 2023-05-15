@@ -450,9 +450,7 @@
   </head>
   
   <body>
- 
-    
-  
+
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
         <img class="image_header-museo" src="/static/images/logo (1).png" alt="..." style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
@@ -475,19 +473,12 @@
       </div>
     </nav>
       <div  class="row" >
-        <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1100px;">
-            <div class="flex-shrink-0 p-3 " style="width: 280px; ">
-              
-             
-                
-  
-         
+        <div class="col-lg-2 mw-100 " style="background-color: #006C5E ; ">
+          <div class="flex-shrink-0 p-3 " >
+              <h2 class="h3" style="color : white" style="text-align: center;" > Hola {{ user.nombre }}</h2>
 
-  
-                <p class="h2 link-dark d-inline-flex text-decoration-none rounded text-light" > Hola {{ user.nombre }}</p>
-  
-  
-                <div class="dropdown border-top">
+
+              <div class="dropdown border-top">
 
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../static/images/17004.png" alt="mdo" width="200" height="200" >
@@ -531,8 +522,8 @@
                 
                 
               </div>
-            </div>
-        </div> 
+          </div>
+      </div> 
   
   
         <div  class="col" style="background-color: #eee;">
@@ -546,20 +537,12 @@
                   <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Actividades</button>
                   <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ejemplares</button>
                 </div>
-
               </nav>
-
-
-
-
-
-
 
               <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <br>
+
                 <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
-                <br> 
                 <div class="col">
                   <div class="d-flex flex-column align-items-center">
                     <button class="btn-customizedlogin" onclick="location.href = '/informe'" type="button">
@@ -581,8 +564,7 @@
             <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Actividades Realizadas</h2></div>
           <div class="list-group">
           <div   class="table-responsive">
-            <br>
-          
+
             <table  id="tabla2"  class="table table-sm table-striped"  data-toggle="table">
               
               <thead>
@@ -600,7 +582,7 @@
                 <tr>
                   <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
                               <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
-                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
+                              <td   class="h5" style="color: #404827; ">{{ action.user }}</td>
                               <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
                               <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                 {% endif %}

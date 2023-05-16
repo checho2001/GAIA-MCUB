@@ -1,9 +1,10 @@
-from django.shortcuts import render
+ from django.shortcuts import render
 from django.views import View
+from django.contrib.auth import login
 from users.forms import *
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from users.forms import loginForm
+from users.forms import loginForm, ContactForm
 from django.urls import reverse
 from .models import *
 from .forms import loginForm
@@ -23,25 +24,30 @@ from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
+from django.conf import settings
 from django.http import HttpResponse
 from django.db.models import Max
 from .models import Text
+from django.urls import reverse_lazy
+from django.contrib.auth.decorators import user_passes_test
 import qrcode
 import io
+from io import BytesIO
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.views.generic.edit import FormView
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from .forms import CustomPasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
-from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
-from django.http import JsonResponse
-from django.urls import reverse_lazy
-from django.contrib.auth.forms import SetPasswordForm
-from django.contrib.auth import login
-from .forms import CustomPasswordChangeForm 
+from django.conf import settings
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 
+from django.core.mail import send_mail
+from django.http import JsonResponse
 class IndexView(View):
     def get(self, request):
         texto = {

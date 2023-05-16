@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from users.forms import *
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from users.forms import loginForm, ContactForm
+
 from django.urls import reverse
 from .models import *
 from .forms import loginForm

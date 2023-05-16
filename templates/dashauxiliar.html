@@ -1,29 +1,30 @@
 <!doctype html>
 <html lang="es">
   <head>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dashboard ">
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Dashboard auxiliar ">
         <title>DashBoard</title>
-        <link rel="icon" href="/static/images/logo-museo-de-ciencias-naturales.png">
-  
-        <link rel="stylesheet" href="../static/css/style1.css">
         <link rel="stylesheet" href="../static/css/bootstrap.min.css">
         <link rel="stylesheet" href="../static/css/sidebars.css">
+        <link rel="stylesheet" href="../static/css/style1.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="../static/js/sidebars.js"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
         
         <script>
           $(document).ready(function() {
             $('#myTable').DataTable({
               "paging": true,
-              "pageLength": 5,"language": {
+              "pageLength": 5,
+              "lengthMenu": [10,25, 50],
+              "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 "paginate": {
                   "previous": 'Anterior',
@@ -35,7 +36,9 @@
             
             $('#tabla2').DataTable({
               "paging": true,
-              "pageLength": 5,"language": {
+              "pageLength": 5,
+              "lengthMenu": [10,25, 50],
+              "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 "paginate": {
                   "previous": 'Anterior',
@@ -46,7 +49,9 @@
             });
             $('#tabla3').DataTable({
               "paging": true,
-              "pageLength": 5,"language": {
+              "pageLength": 5,
+              "lengthMenu": [10,25, 50],
+              "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 "paginate": {
                   "previous": 'Anterior',
@@ -57,7 +62,9 @@
             });
             $('#tabla4').DataTable({
               "paging": true,
-              "pageLength": 5,"language": {
+              "pageLength": 5,
+              "lengthMenu": [10,25, 50],
+              "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json",
                 "paginate": {
                   "previous": 'Anterior',
@@ -71,386 +78,380 @@
           });
         </script>
       
-     <style>
-      
-      td.desc-col {
-        max-width: 300px; /* Ajusta este valor al ancho que desees */
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        vertical-align: top;
-      }
-      .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        background-color: transparent;
-        border: none;
-        border-bottom: 8px solid #f08013;
-      }
-      .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        background-color: #f08013 !important;
-        color: white !important;
-    }
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-      background-color: #f08013 !important;
-        color: white !important;
-    }
-    
-    .dataTables_wrapper .dataTables_paginate .paginate_button.next:hover {
-      background-color: #f08013 !important;
-      color: white !important;
-    }
-      .dataTables_wrapper .dataTables_paginate .paginate_button {
-        background-color: transparent;
-        border: none;
-        border-bottom: 2px solid #f08013;
-      }
-      
-      .dataTables_wrapper .dataTables_paginate .paginate_button {
-        margin: 0 5px;
-        color: black;
-        font-family: 'Lato-Black', sans-serif;
-        font-size: 30px;
-        text-decoration-color: #f08013;
-    }
-      #Library {
-        background-image: url('/static/images/casa.png');
-        background-position: left 90px center;
-        width: 140px; 
-        height:60px;
-        background-size: 25%;
-        background-repeat: no-repeat;
-        text-align: left;
-        font-family: 'Lato-Black', sans-serif;
-        font-size:26px
-     }
-     
-     #Library:hover {
-        background-image: url('/static/images/casa (1).png');
-     }
-     #colecciones {
-      background-image: url('/static/images/crab (2).png');
-      background-position: left 170px center;
-      width: 240px; 
-      height:60px;
-      background-size: 20%;
-      background-repeat: no-repeat;
-      text-align: left;
-      font-family: 'Lato-Black', sans-serif;
-      font-size:26px
-      
-  
-   }
    
-   #colecciones:hover {
-      background-image: url('/static/images/crab (3).png');
-   }
-   #nosotros {
-    background-image: url('/static/images/equipo.png');
-    background-position: left 130px center;
-    width: 190px; 
-    background-size: 25%;
-    text-align: left;
-    font-family: 'Lato-Black', sans-serif;
-    font-size:26px;
-  
-    height:60px;
-    background-repeat: no-repeat;
-    
-  
-  }
-  
-  #nosotros:hover {
-    background-image: url('/static/images/equipo (2).png');
-  }
-  #contacto {
-  background-image: url('/static/images/informacion.png');
-  background-position: left 140px center;
-  width: 190px; 
-  background-size: 20%;
-  text-align: left;
-  
-  height:60px;
-  background-repeat: no-repeat;
-  font-family: 'Lato-Black', sans-serif;
-  font-size:26px
-  
-  }
-  
-  #contacto:hover {
-  background-image: url('/static/images/informacion (1).png');
-  }
-      #Library {
-        background-image: url('/static/images/casa.png');
-        background-position: left 100px center;
-        width: 180px; 
-        background-repeat: no-repeat;
+        <style>
+          td.desc-col {
+            max-width: 300px; /* Ajusta este valor al ancho que desees */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            vertical-align: top;
+          }
+          .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: transparent;
+            border: none;
+            border-bottom: 8px solid #f08013;
+          }
+          .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #f08013 !important;
+            color: white !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+          background-color: #f08013 !important;
+            color: white !important;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.next:hover {
+          background-color: #f08013 !important;
+          color: white !important;
+        }
+          .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #f08013;
+          }
+          
+          .dataTables_wrapper .dataTables_paginate .paginate_button {
+            margin: 0 5px;
+            color: black;
+            font-family: 'Lato-Black', sans-serif;
+            font-size: 30px;
+            text-decoration-color: #f08013;
+        }
+          #Library {
+            background-image: url('/static/images/casa.png');
+            background-position: left 90px center;
+            width: 140px; 
+            height:60px;
+            background-size: 25%;
+            background-repeat: no-repeat;
+            text-align: left;
+            font-family: 'Lato-Black', sans-serif;
+            font-size:26px
+         }
+         
+         #Library:hover {
+            background-image: url('/static/images/casa (1).png');
+         }
+         #colecciones {
+          background-image: url('/static/images/crab (2).png');
+          background-position: left 170px center;
+          width: 240px; 
+          height:60px;
+          background-size: 20%;
+          background-repeat: no-repeat;
+          text-align: left;
+          font-family: 'Lato-Black', sans-serif;
+          font-size:26px
+          
+      
+       }
+       
+       #colecciones:hover {
+          background-image: url('/static/images/crab (3).png');
+       }
+       #nosotros {
+        background-image: url('/static/images/equipo.png');
+        background-position: left 130px center;
+        width: 190px; 
+        background-size: 25%;
         text-align: left;
-
-
-     }
-     
-     #Library:hover {
-        background-image: url('/static/images/casa (1).png');
-     }
-     #colecciones {
-      background-image: url('/static/images/llamablanca.png');
-      background-position: left 170px center;
-      width: 240px; 
-      height:60px;
+        font-family: 'Lato-Black', sans-serif;
+        font-size:26px;
+      
+        height:60px;
+        background-repeat: no-repeat;
+        
+      
+      }
+      
+      #nosotros:hover {
+        background-image: url('/static/images/equipo (2).png');
+      }
+      #contacto {
+      background-image: url('/static/images/informacion.png');
+      background-position: left 140px center;
+      width: 190px; 
       background-size: 20%;
-      background-repeat: no-repeat;
       text-align: left;
+      
+      height:60px;
+      background-repeat: no-repeat;
       font-family: 'Lato-Black', sans-serif;
       font-size:26px
       
+      }
+      
+      #contacto:hover {
+      background-image: url('/static/images/informacion (1).png');
+      }
+          #Library {
+            background-image: url('/static/images/casa.png');
+            background-position: left 100px center;
+            width: 180px; 
+            background-repeat: no-repeat;
+            text-align: left;
     
-    }
     
-    #colecciones:hover {
-      background-image: url('/static/images/llamaroble.png');
-    }
-   #nosotros {
-    background-image: url('/static/images/equipo.png');
-    background-position: left 230px center;
-    width: 310px; 
-    background-repeat: no-repeat;
-    
-    text-align: left;
-
- }
- 
- #nosotros:hover {
-    background-image: url('/static/images/equipo (2).png');
- }
- #contacto {
-  background-image: url('/static/images/informacion.png');
-  background-position: left 200px center;
-  width: 270px; 
-  background-repeat: no-repeat;
-  text-align: left;
-
-
-}
-
-#contacto:hover {
-  background-image: url('/static/images/informacion (1).png');
-}
-
-      #vertical-line {
-  border-left: 1px solid white;
-  height: 50px;
-}
-      body {
-        font-size: 20px;
-        font-family: 'Lato-Black', sans-serif;
+         }
+         
+         #Library:hover {
+            background-image: url('/static/images/casa (1).png');
+         }
+         #colecciones {
+          background-image: url('/static/images/llamablanca.png');
+          background-position: left 170px center;
+          width: 240px; 
+          height:60px;
+          background-size: 20%;
+          background-repeat: no-repeat;
+          text-align: left;
+          font-family: 'Lato-Black', sans-serif;
+          font-size:26px
+          
         
-      }
-      #global {
-       
-        height: 1000px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-      }
-      .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100vh; /* adjust the height as needed */
-      }
-      .col {
-        height: 100%;
-       
-      }
-      .h1 {
-        font-family: 'Lato-Black', sans-serif;
-        font-size: 70px;
-      }
-      .h2 {
-        font-family: 'Lato-Black', sans-serif;
-        font-size: 60px;
-        color: #81bb26;
-      }
-      .h3 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 50px;
-      }
-      .h4 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 40px;
-      }
-      .h5 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 25px;
-      }
-      .h6 {
-        font-family: 'Acherus Grotesque', sans-serif;
-        font-size: 22px;
-      }
-    .table-responsive {
-      max-height: 70vh; 
-      max-width: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
-    .dataTables_wrapper {
-      table-layout: fixed;
+        }
+        
+        #colecciones:hover {
+          background-image: url('/static/images/llamaroble.png');
+        }
+       #nosotros {
+        background-image: url('/static/images/equipo.png');
+        background-position: left 230px center;
+        width: 310px; 
+        background-repeat: no-repeat;
+        
+        text-align: left;
+    
+     }
+     
+     #nosotros:hover {
+        background-image: url('/static/images/equipo (2).png');
+     }
+     #contacto {
+      background-image: url('/static/images/informacion.png');
+      background-position: left 200px center;
+      width: 270px; 
+      background-repeat: no-repeat;
+      text-align: left;
+    
+    
     }
     
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-        .footer-wrapper {
-          font-size: 12px;
-        }
-      }
-      
-
-      select {
-        font-size: 30px; /* Tamaño de la letra por defecto */
-      }
-      
-      
-      .nav-link {
-        color: #404827;
-        font-size: 150%;
-        }
-        .nav-link:hover {
-          color:  #008776;
+    #contacto:hover {
+      background-image: url('/static/images/informacion (1).png');
+    }
+    
+          #vertical-line {
+      border-left: 1px solid white;
+      height: 50px;
+    }
+          body {
+            font-size: 20px;
+            font-family: 'Lato-Black', sans-serif;
+            
           }
-          .container {
-            width: 90%; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+          #global {
+           
+            height: 1000px;
+            overflow-y: scroll;
+            overflow-x: hidden;
           }
-          @media only screen and (max-width: 600px) {
-            body {
-              font-size: 14px;
+          .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh; /* adjust the height as needed */
+          }
+          .col {
+            height: 100%;
+           
+          }
+          .h1 {
+            font-family: 'Lato-Black', sans-serif;
+            font-size: 70px;
+          }
+          .h2 {
+            font-family: 'Lato-Black', sans-serif;
+            font-size: 60px;
+            color: #81bb26;
+          }
+          .h3 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 50px;
+          }
+          .h4 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 40px;
+          }
+          .h5 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 30px;
+          }
+          .h6 {
+            font-family: 'Acherus Grotesque', sans-serif;
+            font-size: 22px;
+          }
+        .table-responsive {
+          max-height: 690px; 
+          
+          overflow-y: scroll;
+        }
+        
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+            .footer-wrapper {
+              font-size: 12px;
             }
           }
-         
-          .body {
-          
-            height: 100%;
-         
-         
-          }
-          .container-fluid {
-            width: 100%;
-            height: 100%;
+    
+          select {
+            font-size: 30px; /* Tamaño de la letra por defecto */
           }
           
-          .row {
-            height: 100%;
-          }
-
-          .container {
-            height: 100%;
-            background-color: #eee;
+          
+          .nav-link {
+            color: #404827;
+            font-size: 150%;
+            }
+            .nav-link:hover {
+              color:  #008776;
+              }
+              .container {
+                width: 90%; 
+                max-width: 1200px; 
+                margin: 0 auto; 
+              }
+              @media only screen and (max-width: 600px) {
+                body {
+                  font-size: 14px;
+                }
+              }
+             
+              .body {
+              
+                height: 100%;
+             
+             
+              }
+              .container-fluid {
+                width: 100%;
+                height: 100%;
+              }
+              
+              .row {
+                height: 100%;
+              }
+    
+              .container {
+                height: 100%;
         
-          }
-          .nav-pills .nav-link.active {
-            background-color:#404827;;
-            color: white;
-          }
-          .navbar {
-            background-color: #008776;
             
+              }
+              .nav-pills .nav-link.active {
+                background-color:#404827;;
+                color: white;
+              }
+              .navbar {
+                background-color: #008776;
+                
+              }
+              .navbar-custom {
+                background-color: #008776; 
+               
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                
+              }
+              main {
+                flex: 1;
+              }  
+              row {            flex: 1;
+              }  
+              .btn-custom:hover {
+                transform: scale(1.2);
+                color: #404827; 
+                border: none;
+                font-size: 30px;
+              }
+              .btn-custom {
+                color: white;
+                display: flex;
+    
+                background-color: #008776; 
+                padding: 10px 20px;
+                border: none;
+                transition: transform 0.3s ease;
+                font-family:'Lato-Black', sans-serif;
+                font-size: 30px;
+              }
+              .tab-pane {
+              
+                display: flex; 
+                flex: 1;
+              }
+              html::-webkit-scrollbar {
+                display: none;
+                height: 0;
+            }
+            html::-webkit-scrollbar {
+              display: none;
+              height: 0;
           }
-          .navbar-custom {
-            background-color: #008776; 
-           
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 999;
+            html::-webkit-scrollbar {
+              height: 0;
+              width: 0;
+              -webkit-appearance: none;
+            }
+            html, body {
+              height: 100%;
+              background-color: #eee;    
+            }
             
-          }
-          
-          row {            flex: 1;
-          }  
-          .btn-custom:hover {
-            transform: scale(1.2);
-            color: #404827; 
-            border: none;
-            font-size: 30px;
-          }
-          .btn-custom {
-            color: white;
-            display: flex;
-
-            background-color: #008776; 
-            padding: 10px 20px;
-            border: none;
-            transition: transform 0.3s ease;
-            font-family:'Lato-Black', sans-serif;
-            font-size: 30px;
-          }
-          .tab-pane {
-          
-            display: flex; 
-            flex: 1;
-          }
-          html::-webkit-scrollbar {
-            display: none;
-            height: 0;
-        }
-        html::-webkit-scrollbar {
-          display: none;
-          height: 0;
-      }
-        html::-webkit-scrollbar {
-          height: 0;
-          width: 0;
-          -webkit-appearance: none;
-        }
-        html, body {
-          height: 100%;
-          background-color: #eee;
-        }
+            html {
+              overflow-x: hidden;
+              background-color: #eee;    
+            }
+            .btn-customizedlogin {
+              color: white;
+              border:none;
+              transition: transform 0.3s ease;
+              font-size: 30px;
+              
+            }
+            .btn-customizedlogin :hover {
+              transform: scale(1.2);
+              color: #404827; 
+              border: none;
+              font-size: 30px;
+            }
+            footer {
+              background-color: #006C5E;
+              color: #666;
+              text-align: center;
+              padding: 20px;
+              bottom: 0;
+              width: 100%;
+              padding-bottom: 100px;
+            }
         
-        html {
-          overflow-x: hidden;
-       
-          background-color: #eee;
-        }
-        .btn-customizedlogin {
-          color: white;
-          border:none;
-          transition: transform 0.3s ease;
-          font-size: 30px;
-          
-        }
-        .btn-customizedlogin :hover {
-          transform: scale(1.2);
-          color: #404827; 
-          border: none;
-          font-size: 30px;
-        }
-        footer {
-          background-color: #006C5E;
-          color: #666;
-          text-align: center;
-          padding: 20px;
-          bottom: 0;
-          width: 100%;
-          padding-bottom: 100px;
-        }
-    
-        .btn-block {
-          margin-bottom: 10px;
-        }
-        #nav-contact{
-          position: relative;
-          left: 100px;
-        }
+            .btn-block {
+      margin-bottom: 10px;
+    }
     
     
-        
-    </style>
+        </style>
   </head>
   
   <body>
-
+ 
+    
+  
+   
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
       <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
         <img class="image_header-museo" src="/static/images/logo (1).png" alt="..." style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
@@ -473,8 +474,8 @@
       </div>
     </nav>
       <div  class="row" >
-        <div class="col-lg-2 mw-100 " style="background-color: #006C5E ; ">
-          <div class="flex-shrink-0 p-3 " >
+      <div class="col-sm-2 mw-100 " style="background-color: #006C5E ; height: 1290px ;">
+          <div class="flex-shrink-0 p-3 " style="width: 280px;">
               <h2 class="h3" style="color : white" style="text-align: center;" > Hola {{ user.nombre }}</h2>
 
 
@@ -524,7 +525,12 @@
               </div>
           </div>
       </div> 
-  
+
+
+
+
+
+
   
         <div  class="col" style="background-color: #eee;">
          
@@ -537,12 +543,20 @@
                   <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Actividades</button>
                   <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ejemplares</button>
                 </div>
+
               </nav>
+
+
+
+
+
+
 
               <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
+                <br>
                 <div class="text" ><h2 class="h2"  style="color: #008776; text-align: center; ">Registrar Actividades</h2></div>
+                <br> 
                 <div class="col">
                   <div class="d-flex flex-column align-items-center">
                     <button class="btn-customizedlogin" onclick="location.href = '/informe'" type="button">
@@ -564,7 +578,8 @@
             <div class="text-center" ><h2 class="h2" style="color: #008776; text-align: center;">Actividades Realizadas</h2></div>
           <div class="list-group">
           <div   class="table-responsive">
-
+            <br>
+          
             <table  id="tabla2"  class="table table-sm table-striped"  data-toggle="table">
               
               <thead>
@@ -582,7 +597,7 @@
                 <tr>
                   <td  class="h5" style="color: #404827;">{{ action.tiempo }}</td>
                               <td   class="h5" style="color: #404827;">{{ action.tarea }}</td>
-                              <td   class="h5" style="color: #404827; ">{{ action.user }}</td>
+                              <td   class="h5" style="color: #4 04827; ">{{ action.user }}</td>
                               <td   class="h5 desc-col" style="color: #404827; ">{{ action.Descripcion }}</td>
                               <td   class="h5" style="color: #404827; "> {{ action.ejemplar }}</td>
                 {% endif %}
@@ -598,6 +613,7 @@
 
           
         </div>
+        <br><br><br>
               </div>
   
    
@@ -667,8 +683,9 @@
       
     </div>
   </div>
-              </div>
-          </div>   
+
+    <br> <br><br><br>
+   
               <div class="col-sm-6 mw-100 ">
     
               <script>
@@ -702,12 +719,14 @@
 
         
         </div>
-        </div>
+      </div>
     </ul>
-    
- 
-  
-</body>
+  </div>
+</div> 
+</div>
+<br>
+<br> <br>
+<br>
 <div class="footer-wrapper d-none d-sm-block">
   <footer>
     <div class="container-fluid">
@@ -749,4 +768,7 @@
 
 
 
-</html>
+
+  
+</body>
+

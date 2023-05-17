@@ -100,6 +100,7 @@ urlpatterns = [
     path('load_data_orden/', views.load_data_orden, name='load_data_orden'),
     path('load_data_genero/', views.load_data_genero, name='load_data_genero'),
     path('load_data_familia/', views.load_data_familia, name='load_data_familia'),
+    path('exito/', views.exito, name='exito'),
     path(
         "obtener_usuario/<int:id_usuario>/",
         views.obtener_usuario,

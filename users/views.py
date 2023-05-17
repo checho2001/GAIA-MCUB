@@ -81,7 +81,12 @@ class Quienessomos(View):
 class Not_Logged(View):
     def get(self, request):
         return render(request, "notloged.html")
-
+def exito(request):
+    rol = 0
+    user = request.user
+    if user.is_authenticated:
+        rol = Rol.objects.get(user=user)
+    return render(request, "exito.html",{"rol": rol})
 
 class CambioContrasenia(View):
     def get(self, request):
@@ -749,10 +754,8 @@ def update_aux_curatoria(request):
 
 
 def load_data(request):
-    print("!!!!!!!!!!!!!!!!!!")
     if request.method == "POST" and request.FILES.get("excel_file_especimenes"):
         excel_file = request.FILES["excel_file_especimenes"]
-        print("!!!!!!!!!!!!!!!!!!")
         try:
             data = pd.read_excel(
                 excel_file,
@@ -850,7 +853,7 @@ def load_data(request):
                 )
                 e.save()
 
-            return redirect("dashboard")
+            return render(request, "exito.html")
 
         except Exception as e:
            print(f"Error occurred while loading data from file: {e}")

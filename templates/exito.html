@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exito</title>
+    <link rel="stylesheet" href="../static/css/style1.css" >
+    <link rel="stylesheet" href="../static/fonts/linearicons/style.css" >
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" >
+    <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"> </script>
+</head>
+<style>
+  #Library {
+    background-image: url('/static/images/casa.png');
+    background-position: left 90px center;
+    width: 140px; 
+    height:60px;
+    background-size: 25%;
+    background-repeat: no-repeat;
+    text-align: left;
+    font-family: 'Lato-Black', sans-serif;
+    font-size:26px
+ }
+ 
+ #Library:hover {
+    background-image: url('/static/images/casa (1).png');
+ }
+ #colecciones {
+  background-image: url('/static/images/llamablanca.png');
+  background-position: left 170px center;
+  width: 240px; 
+  height:60px;
+  background-size: 20%;
+  background-repeat: no-repeat;
+  text-align: left;
+  font-family: 'Lato-Black', sans-serif;
+  font-size:26px
+  
+
+}
+
+#colecciones:hover {
+  background-image: url('/static/images/llamaroble.png');}
+#nosotros {
+background-image: url('/static/images/equipo.png');
+background-position: left 130px center;
+width: 190px; 
+background-size: 25%;
+text-align: left;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px;
+
+height:60px;
+background-repeat: no-repeat;
+
+
+}
+
+#nosotros:hover {
+background-image: url('/static/images/equipo (2).png');
+}
+#contacto {
+background-image: url('/static/images/informacion.png');
+background-position: left 140px center;
+width: 190px; 
+background-size: 20%;
+text-align: left;
+
+height:60px;
+background-repeat: no-repeat;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px
+
+}
+
+#contacto:hover {
+background-image: url('/static/images/informacion (1).png');
+}
+#dashboard {
+background-image: url('/static/images/pizarron.png');
+background-position: left 160px center;
+width: 210px; 
+background-size: 20%;
+text-align: left;
+font-family: 'Lato-Black', sans-serif;
+font-size:26px;
+height:60px;
+background-repeat: no-repeat;
+
+
+}
+
+#dashboard:hover {
+background-image: url('/static/images/pizarron (1).png');
+}
+#login {
+  background-image: url('/static/images/login.png');
+  background-position: left 90px center;
+  width: 200px; 
+  background-size: 25%;
+  text-align: left;
+  
+  height:60px;
+  background-repeat: no-repeat;
+  
+  font-family: 'Lato-Black', sans-serif;
+  font-size:26px;
+  }
+  
+  #login:hover {
+  background-image: url('/static/images/login (1).png');
+  }
+  #global {
+   
+    border: 2px solid #ddd;
+    height: 1000px;
+    overflow-y: scroll;
+  }
+  .h1 {
+    font-family: 'Lato-Black', sans-serif;
+   
+  }
+  .h2 {
+    font-family: 'Lato-Black', sans-serif;
+  
+    color: #81bb26;
+  }
+  .h3 {
+    font-family: 'Acherus Grotesque', sans-serif;
+  }
+  .h4 {
+    font-family: 'Lato-Black', sans-serif;
+    
+  }
+  .h5 {
+    font-family: 'Lato-Black', sans-serif;
+   
+  }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  .DivToScroll{   
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #3B3C3E;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 10px 7px 5px;
+}
+.table-responsive {
+  max-height: 350px; 
+  overflow-y: scroll;
+}
+.DivWithScroll{
+    height:120px;
+    overflow:scroll;
+    overflow-x:hidden;
+}
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .b-example-divider {
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+  }
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+    float: none;
+  }
+  @media (min-width: 768px) {
+    .sidebar {
+      width: 20%;
+      float: left;
+    }
+  }
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+
+  .nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    
+  }
+  #btnSearch,
+  #btnClear{
+      display: inline-block;
+      vertical-align: top;
+  }
+  .nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-link {
+    color: #404827;
+    font-size: 150%;
+    }
+    .nav-link:hover {
+      color:  #008776;
+      }
+      .nav-pills .nav-link.active {
+        background-color:#404827;;
+        color: white;
+      }
+      .navbar {
+        background-color: #008776;
+        
+      }
+      .navbar-custom {
+        background-color: #008776; 
+       
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        
+      }
+      html::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+        -webkit-appearance: none;
+      }
+      html {
+        overflow-x: hidden;
+      }
+      
+          
+      .btn-custom:hover {
+        transform: scale(1.1);
+        color: #404827; 
+        border: none;
+      }
+      .btn-custom {
+        color: white;
+        background-color: #008776; 
+        padding: 10px 20px;
+        border: none;
+        transition: transform 0.3s ease;
+        font-family:'Lato-Black', sans-serif;
+      }
+      
+      html::-webkit-scrollbar {
+        display: none;
+        height: 0;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+      height: 0;
+  }
+    html::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+      -webkit-appearance: none;
+    }
+    html {
+      overflow-x: hidden;
+    }
+    .btn-customizedlogin {
+      color: white;
+      border:none;
+      transition: transform 0.3s ease;
+      
+    }
+    body {
+      background-image: url('../static/images/fondo.png');
+      background-size: cover;
+    }
+
+    .btn-customizedlogin :hover {
+      transform: scale(1.1);
+      color: #404827; 
+      border: none;
+    }
+    footer {
+      background-color: #81bb26;
+      color: #666;
+      text-align: center;
+      padding: 20px;
+      bottom: 0;
+      width: 100%;
+      height:10%;
+      margin-top: 90px;
+    }
+</style>
+<body class="m-0 vh-100 row  text-center align-items-center justify-content-center"  >
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom border-0">
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" >
+      <img class="image_header-museo" src="/static/images/logo (1).png"  style="width: 200%; height:200%; border-right: 1px solid white;  margin-right: 60px;
+      " >
+    </a>
+    
+    <a class="navbar-nav " href="#" onclick="location.href = '/index'" style="border-right: 1px " >
+      <img class="image_header-museo" src="/static/images/logo-museo-de-ciencias-naturales-Blanco.png"  style="width: 30%; height:30%" >
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center mx-auto" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/index'" type="button" id="Library"  style="border-right: 1px solid white;">Inicio</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/galery'"  type="button"  id="colecciones" style="border-right: 1px solid white;">Colecciones</button>
+            <button class="btn btn-custom btn-fade btn-lg " href="#" onclick="location.href = '/nosotros'" type="button"   id="nosotros" style="border-right: 1px solid white;" >Nosotros</button>
+       
+        {% if  user.is_authenticated  %}
+        <button class="btn btn-custom btn-fade btn-lg" type="button" disabled  style="border-right: 1px solid white;   text-align: left;   font-size:26px     "> Hola {{ user.nombre }}</button>
+
+        {% if rol.id == 4 %}
+        
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard"  href="#" onclick="location.href = '/dash'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
+    {% elif rol.id == 1 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashAux'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
+      {% elif rol.id == 2 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashPas'"  type="button" style="border-right: 1px solid white;">DashBoard</button>
+      {% elif rol.id == 3 %}
+       
+        <button class="btn btn-custom btn-fade btn-lg "  id="dashboard" href="#" onclick="location.href = '/dashCur'"  type="button" style="border-right: 1px solid white;"> DashBoard</button>
+    {% endif %}
+
+
+       
+      {% endif %}
+      <div class="text-end" >
+        <button class="btn btn-custom btn-fade btn-lg " id="login" onclick="location.href = '/login'" >Login</button>
+      </div>
+      </div>
+    </div>
+  </nav>
+  <div class=" container py-5 h-100" >
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-5">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+                <div class="p-5">
+                    <h1 class="mb-3 fw-normal"style="color: #008776">Se agregarón exitosamente los ejemplares</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</body>
+<div class="footer-wrapper d-none d-sm-block">
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-4" style="border-right: 1px solid white;">
+          <h5 class="h5" style="color: white">Universidad El Bosque</h5>
+          <h6 class="h6" style="color: white">Instalaciones Bogotá</h6>
+          <h6 class="h6" style="color: white">
+            Av. Cra. 9 No. 131 A - 02<br>   
+            Línea gratuita: 018000 113033<br>
+            PBX: (601) 648 9000
+          </h6>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.facebook.com/museocienciasub/?locale=es_LA'">
+              <img class="img" src="/static/images/facebook.png" alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2" style="border-right: 1px solid white;">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.unbosque.edu.co'">
+              <img class="img" src="/static/images/edificio.png" alt="..."style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <ul class="social">
+            <a class="btn-customizedlogin" onClick="parent.location='https://www.instagram.com/museocienciasub/?hl=es'">
+              <img class="img" src="/static/images/instagram.png"alt="..." style="height:80px; width:80px;">
+            </a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

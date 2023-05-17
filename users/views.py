@@ -851,7 +851,8 @@ def load_data(request):
            print(f"Error occurred while loading data from file: {e}")
 
         
-    return redirect("dashboard")
+    return render(request, "exito.html")
+
 
 
 def elegir(request):

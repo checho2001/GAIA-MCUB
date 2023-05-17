@@ -393,11 +393,13 @@ def register(request):
             apellido = form.cleaned_data["apellido"]
             correo = form.cleaned_data["correo"]
             password = form.cleaned_data["password"]
+            rol1 = form.cleaned_data["rol"]
+            rolusuario = Rol.objects.get(id=rol1)
             User = get_user_model()
-            user = User.objects.create_user(username=username, email=correo, password=password)
+            user = User.objects.create_user(username=username, email=correo, password=password ,rol=rolusuario  )
             user.nombre = nombre
             user.apellido = apellido
-            user.rol = rol
+           
             user.save()
 
             user.is_superuser = False
@@ -405,18 +407,7 @@ def register(request):
             user.is_active = True
             user.save()
 
-            if rol == "1":
-                group = Group.objects.get(name="Auxiliar")
-                group.user_set.add(user)
-            elif rol == "2":
-                group = Group.objects.get(name="Pasante")
-                group.user_set.add(user)
-            elif rol == "3":
-                group = Group.objects.get(name="Curador")
-                group.user_set.add(user)
-            elif rol == "4":
-                group = Group.objects.get(name="Director")
-                group.user_set.add(user)
+           
             clase = form.cleaned_data["area"]
             area_clase = Class_User(
                 id_user=User.objects.get(id=user.id),
@@ -449,6 +440,7 @@ def registroActividad(request):
             Hora = form.cleaned_data["Hora"]
             Fecha = form.cleaned_data["Fecha"]
             Descripcion = form.cleaned_data["Descripcion"]
+          
             a = Actividades(
                 NumeroCatalogo=especimen.objects.get(id=NumeroCatalogo),
                 TareaRealizada=TipoActividad.objects.get(id=TareaRealizada),

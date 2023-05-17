@@ -639,7 +639,7 @@
                       <div class="d-flex flex-column align-items-center">
                         <form method="post" enctype="multipart/form-data" action="{% url 'load_data_clase' %}">
                           {% csrf_token %}
-                          <input type="file" name="excel_file_clase" accept=".xlsx">
+                          <input type="file" name="excel_file_especimenes" accept=".xlsx">
                           <button class="btn-customizedlogin" onclick="location.href = '/load_data'" type="button">
                             <img class="image_header-museo" src="/static/images/7191951.png" alt="Importar Ejemplares" style="height:150px; width:150px;">
                           </button>

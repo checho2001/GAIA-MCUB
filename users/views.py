@@ -749,22 +749,13 @@ def update_aux_curatoria(request):
 
 
 def load_data(request):
+    if request.method == "POST" and request.FILES.get("excel_file_especimenes"):
+        excel_file = request.FILES["excel_file_especimenes"]
+
     try:
-        root = tk.Tk()
-        root.withdraw()
-
-        file_path = filedialog.askopenfilename(
-            parent=root,
-            title="Seleccionar archivo de Excel",
-            filetypes=[("Archivos de Excel", "*.xlsx")],
-        )
-
-        if not file_path:
-            request.session["error"] = "No se seleccionó ningún archivo"
-            return redirect("dashboard")
-        else:
-            data = pd.read_excel(
-                file_path,
+       
+        data = pd.read_excel(
+            excel_file,
                 sheet_name="Plantilla",
                 skiprows=[1],
                 usecols=[
@@ -790,7 +781,7 @@ def load_data(request):
                 ],
             )
 
-            for _, row in data.iterrows():
+        for _, row in data.iterrows():
                 catalog_number = row["catalogNumber"]
                 if especimen.objects.filter(Q(NumeroCatalogo=catalog_number)).exists():
                     continue
@@ -863,9 +854,8 @@ def load_data(request):
                 )
                 e.save()
 
-            messages.success(request, "Los datos se cargaron exitosamente")
 
-            return redirect("dashboard")
+        return redirect("dashboard")
 
     except Exception as e:
         print(f"Error occurred while loading data from file: {e}")
@@ -889,111 +879,103 @@ def elegir(request):
 
 
 def load_data_clase(request):
-    try:
-        root = tk.Tk()
-        root.withdraw()
-        file_path = filedialog.askopenfilename(
-            parent=root,
-            title="Seleccionar archivo de Excel",
-            filetypes=[("Archivos de Excel", "*.xlsx")],
-        )
-        if not file_path:
-            messages.error(request, "Error: No se seleccionó un archivo")
-            return redirect("dashboard")
+    if request.method == "POST" and request.FILES.get("excel_file_clase"):
+        excel_file = request.FILES["excel_file_clase"]
 
-        data = pd.read_excel(
-            file_path, sheet_name="Plantilla", skiprows=[1], usecols=["class"]
-        )
-        for _, row in data.iterrows():
-            clase = Clase.objects.filter(nombreClase=row["class"]).first()
-            if not clase:
-                clase = Clase(nombreClase=row["class"])
-                clase.save()
-        root.mainloop()
-        return render(request, "dashboard.html")
-    except FileNotFoundError:
-        return redirect("dashboard")
+        try:
+            data = pd.read_excel(
+                excel_file,
+                sheet_name="Plantilla",
+                skiprows=[1],
+                usecols=["class"]
+            )
+
+            for _, row in data.iterrows():
+                clase = Clase.objects.filter(nombreClase=row["class"]).first()
+                if not clase:
+                    clase = Clase(nombreClase=row["class"])
+                    clase.save()
+
+            messages.success(request, "Los datos se cargaron exitosamente")
+        except Exception as e:
+            messages.error(request, f"Error al cargar el archivo: {str(e)}")
+
+    return redirect("dashboard")
 
 
 def load_data_familia(request):
-    try:
-        root = tk.Tk()
-        root.withdraw()
-        file_path = filedialog.askopenfilename(
-            parent=root,
-            title="Seleccionar archivo de Excel",
-            filetypes=[("Archivos de Excel", "*.xlsx")],
-        )
-        if not file_path:
-            messages.error(request, "Error: No se seleccionó un archivo")
-            return redirect("dashboard")
+    if request.method == "POST" and request.FILES.get("excel_file_familia"):
+        excel_file = request.FILES["excel_file_familia"]
 
-        data = pd.read_excel(
-            file_path, sheet_name="Plantilla", skiprows=[1], usecols=["family"]
-        )
-        for _, row in data.iterrows():
-            fam = familia.objects.filter(nombreFamilia=row["family"]).first()
-            if not fam:
-                fam = familia(nombreFamilia=row["family"])
-                fam.save()
-        root.mainloop()
-        return render(request, "dashboard.html")
-    except FileNotFoundError:
-        return redirect("dashboard")
+        try:
+            data = pd.read_excel(
+                excel_file,
+                sheet_name="Plantilla",
+                skiprows=[1],
+                usecols=["family"]
+            )
 
+            for _, row in data.iterrows():
+                fam = familia.objects.filter(nombreFamilia=row["family"]).first()
+                if not fam:
+                    fam = familia(nombreFamilia=row["family"])
+                    fam.save()
+
+            messages.success(request, "Los datos se cargaron exitosamente")
+        except Exception as e:
+            messages.error(request, f"Error al cargar el archivo: {str(e)}")
+
+    return redirect("dashboard")
 
 def load_data_orden(request):
-    try:
-        root = tk.Tk()
-        root.withdraw()
-        file_path = filedialog.askopenfilename(
-            parent=root,
-            title="Seleccionar archivo de Excel",
-            filetypes=[("Archivos de Excel", "*.xlsx")],
-        )
-        if not file_path:
-            messages.error(request, "Error: No se seleccionó un archivo")
-            return redirect("dashboard")
+    if request.method == "POST" and request.FILES.get("excel_file_orden"):
+        excel_file = request.FILES["excel_file_orden"]
 
-        data = pd.read_excel(
-            file_path, sheet_name="Plantilla", skiprows=[1], usecols=["order"]
-        )
-        for _, row in data.iterrows():
-            orden = Orden.objects.filter(nombreOrden=row["order"]).first()
-            if not orden:
-                orden = Orden(nombreOrden=row["order"])
-                orden.save()
-        root.mainloop()
-        return render(request, "dashboard.html")
-    except FileNotFoundError:
-        return redirect("dashboard")
+        try:
+            data = pd.read_excel(
+                excel_file,
+                sheet_name="Plantilla",
+                skiprows=[1],
+                usecols=["order"]
+            )
+
+            for _, row in data.iterrows():
+                orden = Orden.objects.filter(nombreOrden=row["order"]).first()
+                if not orden:
+                    orden = Orden(nombreOrden=row["order"])
+                    orden.save()
+
+            messages.success(request, "Los datos se cargaron exitosamente")
+        except Exception as e:
+            messages.error(request, f"Error al cargar el archivo: {str(e)}")
+
+    return redirect("dashboard")
 
 
 def load_data_genero(request):
-    try:
-        root = tk.Tk()
-        root.withdraw()
-        file_path = filedialog.askopenfilename(
-            parent=root,
-            title="Seleccionar archivo de Excel",
-            filetypes=[("Archivos de Excel", "*.xlsx")],
-        )
-        if not file_path:
-            messages.error(request, "Error: No se seleccionó un archivo")
-            return redirect("dashboard")
+    if request.method == "POST" and request.FILES.get("excel_file_genero"):
+        excel_file = request.FILES["excel_file_genero"]
 
-        data = pd.read_excel(
-            file_path, sheet_name="Plantilla", skiprows=[1], usecols=["genus"]
-        )
-        for _, row in data.iterrows():
-            genero = Genero.objects.filter(nombreGenero=row["genus"]).first()
-            if not genero:
-                genero = Genero(nombreGenero=row["genus"])
-                genero.save()
-        root.mainloop()
-        return render(request, "dashboard.html")
-    except FileNotFoundError:
-        return redirect("dashboard")
+        try:
+            data = pd.read_excel(
+                excel_file,
+                sheet_name="Plantilla",
+                skiprows=[1],
+                usecols=["genus"]
+            )
+
+            for _, row in data.iterrows():
+                genero = Genero.objects.filter(nombreGenero=row["genus"]).first()
+                if not genero:
+                    genero = Genero(nombreGenero=row["genus"])
+                    genero.save()
+
+            messages.success(request, "Los datos se cargaron exitosamente")
+        except Exception as e:
+            messages.error(request, f"Error al cargar el archivo: {str(e)}")
+
+    return redirect("dashboard")
+
 
 
 def element_detail(request, pk):

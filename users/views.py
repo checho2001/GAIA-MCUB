@@ -749,13 +749,13 @@ def update_aux_curatoria(request):
 
 
 def load_data(request):
+    print("!!!!!!!!!!!!!!!!!!")
     if request.method == "POST" and request.FILES.get("excel_file_especimenes"):
         excel_file = request.FILES["excel_file_especimenes"]
-
-    try:
-       
-        data = pd.read_excel(
-            excel_file,
+        print("!!!!!!!!!!!!!!!!!!")
+        try:
+            data = pd.read_excel(
+                excel_file,
                 sheet_name="Plantilla",
                 skiprows=[1],
                 usecols=[
@@ -781,7 +781,7 @@ def load_data(request):
                 ],
             )
 
-        for _, row in data.iterrows():
+            for _, row in data.iterrows():
                 catalog_number = row["catalogNumber"]
                 if especimen.objects.filter(Q(NumeroCatalogo=catalog_number)).exists():
                     continue
@@ -813,9 +813,7 @@ def load_data(request):
                     try:
                         event_date_obj = pd.to_datetime(row["eventDate"])
                     except ValueError as e:
-                        print(
-                            f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}"
-                        )
+                        print(f"Error converting eventDate '{row['eventDate']}' to datetime object: {e}")
                         event_date_obj = None
                 else:
                     event_date_obj = None
@@ -824,9 +822,7 @@ def load_data(request):
                     try:
                         date_identified_obj = pd.to_datetime(row["dateIdentified"])
                     except ValueError as e:
-                        print(
-                            f"Error converting dateIdentified '{row['dateIdentified']}' to datetime object: {e}"
-                        )
+                        print(f"Error converting dateIdentified '{row['dateIdentified']}' to datetime object: {e}")
                         date_identified_obj = None
                 else:
                     date_identified_obj = None
@@ -854,12 +850,13 @@ def load_data(request):
                 )
                 e.save()
 
+            return redirect("dashboard")
 
-        return redirect("dashboard")
+        except Exception as e:
+           print(f"Error occurred while loading data from file: {e}")
 
-    except Exception as e:
-        print(f"Error occurred while loading data from file: {e}")
-        return redirect("dashboard")
+        
+    return redirect("dashboard")
 
 
 def elegir(request):

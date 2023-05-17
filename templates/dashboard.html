@@ -637,16 +637,14 @@
                     <br> <br>
                     <div class="col">
                       <div class="d-flex flex-column align-items-center">
-                        <form method="post" enctype="multipart/form-data" action="{% url 'load_data_clase' %}">
+                        <form method="post" enctype="multipart/form-data" action="{% url 'load_data' %}">
                           {% csrf_token %}
                           <input type="file" name="excel_file_especimenes" accept=".xlsx">
-                          <button class="btn-customizedlogin" onclick="location.href = '/load_data'" type="button">
+                          <button  class="btn-customizedlogin" type="submit" >
                             <img class="image_header-museo" src="/static/images/7191951.png" alt="Importar Ejemplares" style="height:150px; width:150px;">
                           </button>
-                          
                         </form>
                         <img class="mt-3" src="../static/images/info.png" alt="Tooltip" data-toggle="tooltip" title="Permite agregar ejemplares desde una base de datos de excel" width="50" height="50">
-
                         <div class="text">
                           <h4 class="h4" style="color: #008776;">Importar Ejemplares</h4>
                         </div>
